@@ -76,8 +76,26 @@ def attraction_exists(database: sqlite3.Connection, attraction_id: int) -> bool:
         return database.execute(
             "SELECT 1 FROM attractions WHERE id = ?", (attraction_id,)
         ).fetchone() is not None
-    except sqlite3.OperationalError:
-        return False
+    except sqlite3.OperationalError as error:
+        if "no such table" in str(error).lower():
+            return False
+        raise
+
+
+def _attraction_columns(database: sqlite3.Connection) -> set[str]:
+    return {
+        row["name"]
+        for row in database.execute("PRAGMA table_info(attractions)").fetchall()
+    }
+
+
+def _attraction_select(database: sqlite3.Connection, alias: str = "a") -> str:
+    columns = _attraction_columns(database)
+    selected = []
+    for column in ("name", "city", "cover_image"):
+        if column in columns:
+            selected.append(f"{alias}.{column}")
+    return ", ".join(selected) or "NULL AS attraction_name"
 
 
 def create_favorite(database: sqlite3.Connection, user_id: int, attraction_id: int):
@@ -94,11 +112,21 @@ def create_favorite(database: sqlite3.Connection, user_id: int, attraction_id: i
 
 
 def list_favorites(database: sqlite3.Connection, user_id: int) -> list[dict[str, Any]]:
-    rows = database.execute(
-        "SELECT id, attraction_id, created_at FROM favorites "
-        "WHERE user_id = ? ORDER BY created_at DESC, id DESC",
-        (user_id,),
-    ).fetchall()
+    columns = _attraction_columns(database)
+    if "id" in columns:
+        rows = database.execute(
+            "SELECT f.id, f.attraction_id, f.created_at, "
+            f"{_attraction_select(database)} FROM favorites f "
+            "JOIN attractions a ON a.id = f.attraction_id "
+            "WHERE f.user_id = ? ORDER BY f.created_at DESC, f.id DESC",
+            (user_id,),
+        ).fetchall()
+    else:
+        rows = database.execute(
+            "SELECT id, attraction_id, created_at FROM favorites "
+            "WHERE user_id = ? ORDER BY created_at DESC, id DESC",
+            (user_id,),
+        ).fetchall()
     return [dict(row) for row in rows]
 
 
@@ -216,10 +244,20 @@ def delete_itinerary(
 
 
 def _with_attractions(database: sqlite3.Connection, itinerary: dict[str, Any]):
-    rows = database.execute(
-        "SELECT attraction_id, visit_date, sort_order, notes "
-        "FROM itinerary_attractions WHERE itinerary_id = ? ORDER BY sort_order",
-        (itinerary["id"],),
-    ).fetchall()
+    columns = _attraction_columns(database)
+    if "id" in columns:
+        rows = database.execute(
+            "SELECT ia.attraction_id, ia.visit_date, ia.sort_order, ia.notes, "
+            f"{_attraction_select(database)} FROM itinerary_attractions ia "
+            "JOIN attractions a ON a.id = ia.attraction_id "
+            "WHERE ia.itinerary_id = ? ORDER BY ia.sort_order",
+            (itinerary["id"],),
+        ).fetchall()
+    else:
+        rows = database.execute(
+            "SELECT attraction_id, visit_date, sort_order, notes "
+            "FROM itinerary_attractions WHERE itinerary_id = ? ORDER BY sort_order",
+            (itinerary["id"],),
+        ).fetchall()
     itinerary["attractions"] = [dict(row) for row in rows]
     return itinerary

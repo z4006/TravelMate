@@ -3,11 +3,11 @@
 from database.connection import db_transaction, get_db
 
 
-def register_and_login(client, headers):
+def register_and_login(client, headers, username="zhangsan"):
     client.post(
         "/api/register",
         json={
-            "username": "zhangsan",
+            "username": username,
             "password": "Password123",
             "email": "test@example.com",
         },
@@ -15,7 +15,7 @@ def register_and_login(client, headers):
     )
     response = client.post(
         "/api/login",
-        json={"username": "zhangsan", "password": "Password123"},
+        json={"username": username, "password": "Password123"},
         headers=headers,
     )
     assert response.status_code == 200
@@ -95,6 +95,26 @@ def test_itinerary_crud_and_ownership(app, client, csrf_headers):
     assert client.get(f"/api/itineraries/{itinerary_id}").status_code == 404
 
 
+def test_other_user_cannot_access_itinerary(app, client, csrf_headers):
+    add_attractions(app)
+    register_and_login(client, csrf_headers, username="alice")
+    response = client.post(
+        "/api/itineraries",
+        json={"title": "私人行程", "attractions": [{"attraction_id": 1}]},
+        headers=csrf_headers,
+    )
+    itinerary_id = response.get_json()["data"]["id"]
+
+    other = app.test_client()
+    other_headers = {
+        "X-CSRF-Token": other.get("/api/csrf-token").get_json()["data"]["csrf_token"]
+    }
+    register_and_login(other, other_headers, username="bob")
+
+    assert other.get(f"/api/itineraries/{itinerary_id}").status_code == 404
+    assert other.get("/api/favorites").get_json()["data"] == []
+
+
 def test_invalid_itinerary_dates_are_rejected(app, client, csrf_headers):
     add_attractions(app)
     register_and_login(client, csrf_headers)
@@ -111,3 +131,32 @@ def test_invalid_itinerary_dates_are_rejected(app, client, csrf_headers):
     )
 
     assert response.status_code == 400
+
+
+def test_partial_update_preserves_omitted_fields(app, client, csrf_headers):
+    add_attractions(app)
+    register_and_login(client, csrf_headers)
+    response = client.post(
+        "/api/itineraries",
+        json={
+            "title": "原始行程",
+            "start_date": "2026-11-10",
+            "end_date": "2026-11-12",
+            "notes": "保留",
+            "attractions": [{"attraction_id": 1}],
+        },
+        headers=csrf_headers,
+    )
+    itinerary_id = response.get_json()["data"]["id"]
+
+    response = client.put(
+        f"/api/itineraries/{itinerary_id}",
+        json={"title": "新标题"},
+        headers=csrf_headers,
+    )
+
+    assert response.status_code == 200
+    data = response.get_json()["data"]
+    assert data["title"] == "新标题"
+    assert data["start_date"] == "2026-11-10"
+    assert data["attractions"][0]["attraction_id"] == 1
