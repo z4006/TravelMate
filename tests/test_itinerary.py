@@ -1,5 +1,6 @@
 """收藏和行程接口测试。"""
 
+from database.attractions import migrate_attractions, seed_initial_attractions
 from database.connection import db_transaction, get_db
 
 
@@ -27,25 +28,9 @@ def register_and_login(client, headers, username="zhangsan"):
 def add_attractions(app):
     with app.app_context():
         database = get_db()
-        columns = {
-            row["name"]
-            for row in database.execute("PRAGMA table_info(attractions)")
-        }
-        if not columns:
-            with db_transaction():
-                database.execute(
-                    "CREATE TABLE attractions ("
-                    "id INTEGER PRIMARY KEY, name TEXT NOT NULL, city TEXT)"
-                )
-            columns = {"id", "name", "city"}
-        insert_columns = [column for column in ("id", "name", "city") if column in columns]
-        placeholders = ", ".join("?" * len(insert_columns))
         with db_transaction():
-            database.executemany(
-                f"INSERT OR IGNORE INTO attractions ({', '.join(insert_columns)}) "
-                f"VALUES ({placeholders})",
-                [(1, "西湖", "杭州"), (2, "故宫", "北京")],
-            )
+            migrate_attractions(database)
+            seed_initial_attractions(database)
 
 
 def test_favorite_requires_login(client):

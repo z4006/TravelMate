@@ -37,12 +37,16 @@ def create_app(
     from routes.base import base_bp
     from routes.auth import auth_bp
     from routes.admin import admin_bp
+    from routes.attractions import attractions_bp
     from routes.itinerary import itinerary_bp
+    from routes.pages import pages_bp
 
     app.register_blueprint(base_bp)
     app.register_blueprint(auth_bp)
     app.register_blueprint(admin_bp)
+    app.register_blueprint(attractions_bp)
     app.register_blueprint(itinerary_bp)
+    app.register_blueprint(pages_bp)
     app.teardown_appcontext(close_db)
     if init_database:
         init_db(app)

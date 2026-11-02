@@ -21,6 +21,16 @@ $env:TRAVELMATE_SECRET_KEY="请设置正式环境密钥"
 写操作需要先调用 `GET /api/csrf-token`，再把返回的 `csrf_token` 放入
 `X-CSRF-Token` 请求头。
 
+服务和页面入口：
+
+| 方法 | 路径 | 说明 |
+| --- | --- | --- |
+| GET | `/` | 网站首页 |
+| GET | `/login` | 登录页面 |
+| GET | `/register` | 注册页面 |
+| GET | `/attractions` | 景点列表页面 |
+| GET | `/api/health` | JSON 服务健康检查 |
+
 | 方法 | 路径 | 说明 |
 | --- | --- | --- |
 | GET | `/api/csrf-token` | 获取 CSRF token |
@@ -41,6 +51,13 @@ Werkzeug 哈希保存，不会通过接口返回。
 `db_transaction()` 统一提交或回滚，避免业务模块互相提交半成品事务。
 测试应用通过 `create_app(..., overrides={"DATABASE": ...})` 注入临时数据库，
 不会初始化或污染 `database/travelmate.db`。
+
+数据库初始化会自动创建用户、景点、收藏和行程所需的数据表，但不会自动写入
+演示景点数据。若需要本地演示数据，可以执行：
+
+```powershell
+.venv\Scripts\python.exe -m scripts.seed_attractions
+```
 
 运行测试：
 

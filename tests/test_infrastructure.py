@@ -30,9 +30,41 @@ def test_database_initialization_is_idempotent(tmp_path):
     init_db(app)
 
     with app.app_context():
-        assert get_db().execute(
-            "SELECT name FROM sqlite_master WHERE name = 'users'"
-        ).fetchone()
+        tables = {
+            row["name"]
+            for row in get_db().execute(
+                "SELECT name FROM sqlite_master WHERE type = 'table'"
+            ).fetchall()
+        }
+        assert {
+            "users",
+            "audit_logs",
+            "login_attempts",
+            "attraction_categories",
+            "attractions",
+            "favorites",
+            "itineraries",
+            "itinerary_attractions",
+        } <= tables
+
+
+def test_create_app_registers_all_application_routes(tmp_path):
+    app = create_app(
+        "testing",
+        overrides={"DATABASE": str(tmp_path / "routes.db")},
+    )
+    routes = {rule.rule for rule in app.url_map.iter_rules()}
+
+    assert {
+        "/",
+        "/login",
+        "/register",
+        "/attractions",
+        "/api/health",
+        "/api/attractions",
+        "/api/attractions/categories",
+        "/api/itineraries",
+    } <= routes
 
 
 def test_timestamps_use_utc_iso_format(app, client, csrf_headers):

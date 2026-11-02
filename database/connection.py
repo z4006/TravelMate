@@ -54,6 +54,8 @@ def init_db(app: Flask) -> None:
 
     if app.extensions.get("travelmate_database_initialized"):
         return
+    from database.attractions import migrate_attractions
+    from database.itineraries import ensure_itinerary_tables
     from database.users import migrate_users
 
     schema_path = Path(__file__).with_name("schema.sql")
@@ -62,4 +64,6 @@ def init_db(app: Flask) -> None:
         with db_transaction() as database:
             database.executescript(schema)
             migrate_users(database)
+            migrate_attractions(database)
+            ensure_itinerary_tables(database)
     app.extensions["travelmate_database_initialized"] = True
