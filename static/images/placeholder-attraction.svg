@@ -1,0 +1,15 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 480 300" width="480" height="300" role="img" aria-label="景点图片占位">
+    <defs>
+        <linearGradient id="sky" x1="0" y1="0" x2="0" y2="1">
+            <stop offset="0%" stop-color="#e0f2f1"/>
+            <stop offset="100%" stop-color="#cfe3f5"/>
+        </linearGradient>
+    </defs>
+    <rect width="480" height="300" fill="url(#sky)"/>
+    <circle cx="372" cy="82" r="34" fill="#fbbf24" opacity="0.55"/>
+    <path d="M0 232l96-72 70 52 66-44 92 64 88-48 68 40v76H0z" fill="#93b8b2" opacity="0.55"/>
+    <path d="M0 262l82-46 74 34 78-30 86 42 84-26 76 32v32H0z" fill="#5f8f8a" opacity="0.65"/>
+    <path d="M186 196l34-40 34 40z" fill="#115e59" opacity="0.7"/>
+    <text x="240" y="150" text-anchor="middle" font-family="Segoe UI, Microsoft YaHei, sans-serif"
+          font-size="18" fill="#0f766e" opacity="0.85">暂无景点图片</text>
+</svg>

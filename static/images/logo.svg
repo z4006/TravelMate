@@ -1,0 +1,11 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 64 64" width="64" height="64" role="img" aria-label="TravelMate">
+    <defs>
+        <linearGradient id="tmGradient" x1="0" y1="0" x2="1" y2="1">
+            <stop offset="0%" stop-color="#0f766e"/>
+            <stop offset="100%" stop-color="#f59e0b"/>
+        </linearGradient>
+    </defs>
+    <rect x="2" y="2" width="60" height="60" rx="16" fill="url(#tmGradient)"/>
+    <path d="M32 12c-8.3 0-15 6.7-15 15 0 11.2 15 25 15 25s15-13.8 15-25c0-8.3-6.7-15-15-15zm0 20.5a5.5 5.5 0 1 1 0-11 5.5 5.5 0 0 1 0 11z"
+          fill="#ffffff" opacity="0.95"/>
+</svg>

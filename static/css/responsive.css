@@ -1,0 +1,147 @@
+/* TravelMate 响应式适配 */
+
+@media (max-width: 960px) {
+    .detail-body,
+    .detail-loading {
+        grid-template-columns: minmax(0, 1fr);
+    }
+
+    .detail-media img {
+        aspect-ratio: 16 / 9;
+    }
+
+    .filter-bar {
+        grid-template-columns: minmax(0, 1fr) minmax(0, 1fr);
+    }
+
+    .filter-actions {
+        grid-column: 1 / -1;
+    }
+}
+
+@media (max-width: 820px) {
+    :root {
+        --header-height: 62px;
+    }
+
+    .nav-toggle {
+        display: flex;
+    }
+
+    .site-nav {
+        position: absolute;
+        left: 0;
+        right: 0;
+        top: 100%;
+        display: none;
+        flex-direction: column;
+        align-items: stretch;
+        gap: 6px;
+        padding: 14px 20px 20px;
+        border-bottom: 1px solid var(--color-border);
+        background: var(--color-surface);
+        box-shadow: var(--shadow-md);
+    }
+
+    .site-nav.is-open {
+        display: flex;
+    }
+
+    .nav-link {
+        border-radius: var(--radius-sm);
+    }
+
+    .nav-auth {
+        margin-left: 0;
+        padding-top: 10px;
+        border-top: 1px solid var(--color-border);
+    }
+
+    .nav-guest,
+    .nav-user {
+        width: 100%;
+        justify-content: space-between;
+    }
+
+    .header-inner {
+        position: relative;
+        flex-wrap: wrap;
+    }
+
+    .hero {
+        padding: 56px 0 44px;
+    }
+
+    .hero-search {
+        flex-direction: column;
+        border-radius: var(--radius-lg);
+    }
+
+    .hero-search input {
+        padding: 12px 14px;
+    }
+
+    .hero-search .btn {
+        width: 100%;
+    }
+}
+
+@media (max-width: 640px) {
+    .container {
+        width: min(100% - 28px, var(--container));
+    }
+
+    .section {
+        padding: 40px 0;
+    }
+
+    .filter-bar {
+        grid-template-columns: minmax(0, 1fr);
+        padding: 16px;
+    }
+
+    .filter-actions {
+        flex-direction: column;
+    }
+
+    .filter-actions .btn {
+        width: 100%;
+    }
+
+    .auth-card {
+        padding: 26px 20px 24px;
+    }
+
+    .auth-section {
+        padding: 34px 14px 10px;
+    }
+
+    .toast-region {
+        left: 14px;
+        right: 14px;
+        bottom: 14px;
+        max-width: none;
+    }
+
+    .footer-inner {
+        flex-direction: column;
+        align-items: flex-start;
+        gap: 14px;
+    }
+
+    .card-grid {
+        grid-template-columns: minmax(0, 1fr);
+        gap: 16px;
+    }
+}
+
+@media (prefers-reduced-motion: reduce) {
+    *,
+    *::before,
+    *::after {
+        animation-duration: .001ms !important;
+        animation-iteration-count: 1 !important;
+        transition-duration: .001ms !important;
+        scroll-behavior: auto !important;
+    }
+}

@@ -1,0 +1,90 @@
+{% extends "base.html" %}
+
+{% block content %}
+<section class="hero">
+    <div class="container hero-inner">
+        <p class="hero-eyebrow">发现中国 · 说走就走</p>
+        <h1 class="hero-title">把想去的地方，<br>变成脚下的路线</h1>
+        <p class="hero-subtitle">TravelMate 汇集城市热门景点信息，按城市筛选、查看景点详情，帮你快速决定下一站去哪。</p>
+
+        <form class="hero-search" method="get" action="{{ url_for('pages.attractions') }}" role="search">
+            <label class="visually-hidden" for="hero-city">城市</label>
+            <input id="hero-city" name="city" type="text" list="city-suggestions" placeholder="想去哪座城市？例如：杭州" autocomplete="off">
+            <label class="visually-hidden" for="hero-keyword">关键词</label>
+            <input id="hero-keyword" name="keyword" type="search" placeholder="景点关键词（可选）">
+            <button class="btn btn-primary" type="submit">搜索景点</button>
+        </form>
+
+        <div class="hero-cities">
+            <span class="hero-cities-label">热门城市</span>
+            <div class="city-chips">
+                <a class="chip" href="{{ url_for('pages.attractions') }}?city=北京">北京</a>
+                <a class="chip" href="{{ url_for('pages.attractions') }}?city=上海">上海</a>
+                <a class="chip" href="{{ url_for('pages.attractions') }}?city=杭州">杭州</a>
+                <a class="chip" href="{{ url_for('pages.attractions') }}?city=成都">成都</a>
+                <a class="chip" href="{{ url_for('pages.attractions') }}?city=西安">西安</a>
+                <a class="chip" href="{{ url_for('pages.attractions') }}?city=厦门">厦门</a>
+                <a class="chip" href="{{ url_for('pages.attractions') }}?city=三亚">三亚</a>
+            </div>
+        </div>
+    </div>
+</section>
+
+<section class="section" aria-labelledby="popular-title">
+    <div class="container">
+        <div class="section-head">
+            <div>
+                <h2 id="popular-title" class="section-title">热门景点</h2>
+                <p class="section-desc">精选目的地，帮你快速锁定下一站。</p>
+            </div>
+            <a class="btn btn-ghost btn-sm" href="{{ url_for('pages.attractions') }}">查看全部景点</a>
+        </div>
+        <div class="card-grid" data-attraction-grid data-limit="6" aria-live="polite"></div>
+    </div>
+</section>
+
+<section class="section section-tint" aria-labelledby="feature-title">
+    <div class="container">
+        <h2 id="feature-title" class="section-title">用 TravelMate 规划旅行</h2>
+        <div class="feature-grid">
+            <article class="feature-card">
+                <span class="feature-icon" aria-hidden="true">城</span>
+                <h3>按城市筛选</h3>
+                <p>输入城市名称即可筛出当地景点，快速对比不同城市的热门目的地。</p>
+            </article>
+            <article class="feature-card">
+                <span class="feature-icon" aria-hidden="true">景</span>
+                <h3>景点详情一目了然</h3>
+                <p>开放时间、门票价格、地址与介绍集中展示，出发前就能掌握关键信息。</p>
+            </article>
+            <article class="feature-card">
+                <span class="feature-icon" aria-hidden="true">记</span>
+                <h3>登录后继续规划</h3>
+                <p>注册登录后可保持身份状态，为后续的行程与收藏功能做好准备。</p>
+            </article>
+        </div>
+    </div>
+</section>
+
+<datalist id="city-suggestions">
+    <option value="北京"></option>
+    <option value="上海"></option>
+    <option value="广州"></option>
+    <option value="深圳"></option>
+    <option value="杭州"></option>
+    <option value="成都"></option>
+    <option value="西安"></option>
+    <option value="重庆"></option>
+    <option value="厦门"></option>
+    <option value="三亚"></option>
+    <option value="南京"></option>
+    <option value="苏州"></option>
+    <option value="武汉"></option>
+    <option value="长沙"></option>
+    <option value="青岛"></option>
+</datalist>
+{% endblock %}
+
+{% block scripts %}
+<script src="{{ url_for('static', filename='js/home.js') }}"></script>
+{% endblock %}

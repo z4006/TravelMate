@@ -1,0 +1,65 @@
+{% extends "base.html" %}
+
+{% block content %}
+<section class="page-head">
+    <div class="container">
+        <nav class="breadcrumb" aria-label="面包屑导航">
+            <a href="{{ url_for('pages.index') }}">首页</a>
+            <span aria-hidden="true">/</span>
+            <span>景点</span>
+        </nav>
+        <h1 class="page-title">景点库</h1>
+        <p class="page-desc">按城市筛选或输入关键词，找到你感兴趣的目的地。</p>
+    </div>
+</section>
+
+<section class="section">
+    <div class="container">
+        <form class="filter-bar" method="get" action="{{ url_for('pages.attractions') }}" role="search">
+            <div class="filter-field">
+                <label for="filter-city">城市</label>
+                <input id="filter-city" name="city" type="text" list="city-suggestions"
+                       data-filter-city autocomplete="off" placeholder="全部城市">
+            </div>
+            <div class="filter-field">
+                <label for="filter-keyword">关键词</label>
+                <input id="filter-keyword" name="keyword" type="search"
+                       data-filter-keyword placeholder="景点名称或简介">
+            </div>
+            <div class="filter-actions">
+                <button class="btn btn-primary" type="submit">筛选</button>
+                <a class="btn btn-ghost" href="{{ url_for('pages.attractions') }}">重置</a>
+            </div>
+        </form>
+
+        <div class="result-bar">
+            <p class="result-count" data-result-count aria-live="polite"></p>
+            <p class="result-filter" data-active-filter></p>
+        </div>
+
+        <div class="card-grid" data-attraction-grid aria-live="polite"></div>
+    </div>
+</section>
+
+<datalist id="city-suggestions">
+    <option value="北京"></option>
+    <option value="上海"></option>
+    <option value="广州"></option>
+    <option value="深圳"></option>
+    <option value="杭州"></option>
+    <option value="成都"></option>
+    <option value="西安"></option>
+    <option value="重庆"></option>
+    <option value="厦门"></option>
+    <option value="三亚"></option>
+    <option value="南京"></option>
+    <option value="苏州"></option>
+    <option value="武汉"></option>
+    <option value="长沙"></option>
+    <option value="青岛"></option>
+</datalist>
+{% endblock %}
+
+{% block scripts %}
+<script src="{{ url_for('static', filename='js/attractions.js') }}"></script>
+{% endblock %}

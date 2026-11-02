@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>{% block title %}{{ page_title|default('TravelMate 旅游信息与行程规划') }}{% endblock %}</title>
+    <meta name="description" content="TravelMate 旅游信息与行程规划系统：浏览热门景点、按城市筛选、查看景点详情。">
+    <link rel="icon" type="image/svg+xml" href="{{ url_for('static', filename='images/logo.svg') }}">
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/base.css') }}">
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/pages.css') }}">
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/responsive.css') }}">
+</head>
+<body data-page="{{ active_page|default('') }}"
+      data-placeholder-image="{{ url_for('static', filename='images/placeholder-attraction.svg') }}"
+      data-detail-base="{{ url_for('pages.attractions') }}/"
+      data-login-url="{{ url_for('pages.login') }}"
+      data-register-url="{{ url_for('pages.register') }}">
+    <a class="skip-link" href="#main-content">跳到主要内容</a>
+    {% include "partials/navbar.html" %}
+    <main id="main-content" class="site-main">
+        {% block content %}{% endblock %}
+    </main>
+    {% include "partials/footer.html" %}
+    <div id="toast-region" class="toast-region" role="status" aria-live="polite"></div>
+    <noscript>
+        <p class="noscript-tip">TravelMate 需要启用 JavaScript 才能加载景点数据和登录状态。</p>
+    </noscript>
+    <script src="{{ url_for('static', filename='js/api.js') }}"></script>
+    <script src="{{ url_for('static', filename='js/ui.js') }}"></script>
+    <script src="{{ url_for('static', filename='js/nav.js') }}"></script>
+    {% block scripts %}{% endblock %}
+</body>
+</html>
