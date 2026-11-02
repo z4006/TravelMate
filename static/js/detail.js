@@ -130,3 +130,163 @@
         load(root, attractionId);
     });
 })(window, document);
+
+
+/* 收藏与加入行程（成员 D 接入） */
+(function (window, document) {
+    'use strict';
+
+    var api = window.TMApi;
+    var ui = window.TMUI;
+
+    function applyFavoriteState(button, favorited) {
+        button.textContent = favorited ? '已收藏（点击取消）' : '收藏';
+        button.setAttribute('data-favorited', favorited ? 'true' : 'false');
+        button.classList.toggle('btn-primary', !favorited);
+        button.classList.toggle('btn-ghost', favorited);
+    }
+
+    function findFavoriteId(list, attractionId) {
+        for (var i = 0; i < list.length; i += 1) {
+            var row = list[i] || {};
+            var id = row.attraction_id !== undefined ? row.attraction_id : row.id;
+            if (Number(id) === attractionId) {
+                return id;
+            }
+        }
+        return null;
+    }
+
+    function setup(root, attractionId) {
+        var button = root.querySelector('[data-favorite-toggle]');
+        var adder = root.querySelector('[data-itinerary-adder]');
+        var select = root.querySelector('[data-itinerary-select]');
+        var addButton = root.querySelector('[data-itinerary-add]');
+        if (!button) {
+            return;
+        }
+
+        function loadFavorites() {
+            api.get('/api/favorites').then(function (payload) {
+                var list = ui.extractList(payload).items;
+                applyFavoriteState(button, findFavoriteId(list, attractionId) !== null);
+            }).catch(function () {
+                applyFavoriteState(button, false);
+            });
+        }
+
+        function addToItinerary(itineraryId) {
+            if (!itineraryId || !addButton) {
+                return;
+            }
+            ui.setBusy(addButton, true, '添加中…');
+            api.get('/api/itineraries/' + encodeURIComponent(itineraryId)).then(function (itinerary) {
+                var attractions = (itinerary.attractions || []).map(function (item) {
+                    var payload = { attraction_id: item.attraction_id };
+                    if (item.visit_date) {
+                        payload.visit_date = item.visit_date;
+                    }
+                    if (typeof item.sort_order === 'number') {
+                        payload.sort_order = item.sort_order;
+                    }
+                    if (item.notes) {
+                        payload.notes = item.notes;
+                    }
+                    return payload;
+                });
+                var exists = attractions.some(function (item) {
+                    return Number(item.attraction_id) === attractionId;
+                });
+                if (exists) {
+                    ui.setBusy(addButton, false);
+                    ui.toast('这个景点已经在该行程里了', 'info');
+                    return null;
+                }
+                attractions.push({ attraction_id: attractionId });
+                return api.put('/api/itineraries/' + encodeURIComponent(itineraryId), {
+                    title: itinerary.title,
+                    start_date: itinerary.start_date || null,
+                    end_date: itinerary.end_date || null,
+                    notes: itinerary.notes || null,
+                    attractions: attractions
+                });
+            }).then(function (result) {
+                if (result === null) {
+                    return;
+                }
+                ui.setBusy(addButton, false);
+                ui.toast('已加入行程', 'success');
+            }).catch(function (error) {
+                ui.setBusy(addButton, false);
+                ui.toast(error.message || '加入行程失败', 'error');
+            });
+        }
+
+        function loadItineraries() {
+            if (!adder || !select) {
+                return;
+            }
+            api.get('/api/itineraries').then(function (payload) {
+                var items = ui.extractList(payload).items;
+                if (!items.length) {
+                    adder.hidden = true;
+                    return;
+                }
+                ui.clear(select);
+                items.forEach(function (itinerary) {
+                    var option = document.createElement('option');
+                    option.value = String(itinerary.id);
+                    option.textContent = itinerary.title || ('行程 #' + itinerary.id);
+                    select.appendChild(option);
+                });
+                adder.hidden = false;
+                if (addButton) {
+                    addButton.addEventListener('click', function () {
+                        addToItinerary(Number(select.value));
+                    });
+                }
+            }).catch(function () {
+                adder.hidden = true;
+            });
+        }
+
+        api.get('/api/user/info').then(function (profile) {
+            if (!profile) {
+                return;
+            }
+            button.hidden = false;
+            loadFavorites();
+            loadItineraries();
+
+            button.addEventListener('click', function () {
+                var favorited = button.getAttribute('data-favorited') === 'true';
+                ui.setBusy(button, true, favorited ? '取消中…' : '收藏中…');
+                var request = favorited
+                    ? api.request('/api/favorites/' + encodeURIComponent(attractionId), { method: 'DELETE' })
+                    : api.post('/api/favorites', { attraction_id: attractionId });
+                request.then(function () {
+                    ui.setBusy(button, false);
+                    applyFavoriteState(button, !favorited);
+                    ui.toast(favorited ? '已取消收藏' : '收藏成功', 'success');
+                }).catch(function (error) {
+                    ui.setBusy(button, false);
+                    ui.toast(error.message || '操作失败', 'error');
+                });
+            });
+        }).catch(function () {
+            return;
+        });
+    }
+
+    document.addEventListener('DOMContentLoaded', function () {
+        var root = document.querySelector('[data-attraction-id]');
+        if (!root) {
+            return;
+        }
+        var raw = (root.getAttribute('data-attraction-id') || '').trim();
+        if (!/^[0-9]+$/.test(raw)) {
+            return;
+        }
+        setup(root, parseInt(raw, 10));
+    });
+})(window, document);

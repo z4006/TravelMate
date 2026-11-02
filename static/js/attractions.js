@@ -55,7 +55,7 @@
             serverQuery.city = criteria.city;
         }
         if (criteria.keyword) {
-            serverQuery.keyword = criteria.keyword;
+            serverQuery.q = criteria.keyword;
         }
 
         api.get('/api/attractions', serverQuery).then(function (payload) {

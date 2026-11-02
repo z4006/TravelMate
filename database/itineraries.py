@@ -92,7 +92,15 @@ def _attraction_columns(database: sqlite3.Connection) -> set[str]:
 def _attraction_select(database: sqlite3.Connection, alias: str = "a") -> str:
     columns = _attraction_columns(database)
     selected = []
-    for column in ("name", "city", "cover_image"):
+    for column in (
+        "name",
+        "city",
+        "cover_image",
+        "image_url",
+        "address",
+        "opening_hours",
+        "ticket_price_cents",
+    ):
         if column in columns:
             selected.append(f"{alias}.{column}")
     return ", ".join(selected) or "NULL AS attraction_name"
