@@ -57,7 +57,12 @@
                 </dl>
 
                 <div class="detail-actions">
-                    <a class="btn btn-primary" href="{{ url_for('pages.attractions') }}">返回景点列表</a>
+                    <button class="btn btn-primary" type="button" data-favorite-toggle hidden>收藏</button>
+                    <div class="itinerary-adder" data-itinerary-adder hidden>
+                        <select class="itinerary-select" data-itinerary-select aria-label="选择要加入的行程"></select>
+                        <button class="btn btn-ghost" type="button" data-itinerary-add>加入行程</button>
+                    </div>
+                    <a class="btn btn-ghost" href="{{ url_for('pages.attractions') }}">返回景点列表</a>
                 </div>
             </div>
         </article>

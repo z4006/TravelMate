@@ -86,6 +86,13 @@
             return null;
         }
         var price = pick(raw, ['ticket_price', 'price', 'ticket', 'admission']);
+        var priceText = price === null ? '' : (typeof price === 'number' ? '¥' + price : asText(price));
+        // 后端 ticket_price_cents 以分为单位，0 表示免费
+        if (typeof raw.ticket_price_cents === 'number') {
+            priceText = raw.ticket_price_cents === 0
+                ? '免费'
+                : '¥' + (raw.ticket_price_cents / 100).toFixed(0);
+        }
         var rating = pick(raw, ['rating', 'score', 'rate']);
         return {
             id: id,
@@ -96,7 +103,7 @@
             tags: toTags(pick(raw, ['tags', 'tag', 'labels', 'category'])),
             rating: rating === null ? '' : asText(rating),
             hours: asText(pick(raw, ['open_time', 'opening_hours', 'hours', 'business_hours'])),
-            priceText: price === null ? '' : (typeof price === 'number' ? '¥' + price : asText(price)),
+            priceText: priceText,
             address: asText(pick(raw, ['address', 'addr', 'location_address'])),
             phone: asText(pick(raw, ['phone', 'telephone', 'tel', 'contact']))
         };

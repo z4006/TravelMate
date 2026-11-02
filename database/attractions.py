@@ -68,8 +68,8 @@ def list_attractions(
         conditions.append("c.slug = ?")
         parameters.append(category_slug)
     if city:
-        conditions.append("a.city = ?")
-        parameters.append(city)
+        conditions.append("a.city LIKE ? ESCAPE '\\'")
+        parameters.append(f"%{_escape_like(city)}%")
     if keyword:
         pattern = f"%{_escape_like(keyword)}%"
         conditions.append(

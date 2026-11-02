@@ -72,3 +72,25 @@ def attraction_detail(attraction_id: int):
         page_title="景点详情 - TravelMate",
         attraction_id=attraction_id,
     )
+
+
+@pages_bp.get("/favorites")
+def favorites():
+    """我的收藏页面，数据由 /api/favorites 提供。"""
+
+    return render_template(
+        "favorites.html",
+        active_page="favorites",
+        page_title="我的收藏 - TravelMate",
+    )
+
+
+@pages_bp.get("/itineraries")
+def itineraries():
+    """我的行程页面，数据由 /api/itineraries 提供。"""
+
+    return render_template(
+        "itineraries.html",
+        active_page="itineraries",
+        page_title="我的行程 - TravelMate",
+    )

@@ -1,0 +1,29 @@
+{% extends "base.html" %}
+
+{% block content %}
+<section class="page-head">
+    <div class="container">
+        <nav class="breadcrumb" aria-label="面包屑导航">
+            <a href="{{ url_for('pages.index') }}">首页</a>
+            <span aria-hidden="true">/</span>
+            <span>我的收藏</span>
+        </nav>
+        <h1 class="page-title">我的收藏</h1>
+        <p class="page-desc">收藏感兴趣的景点，方便之后安排行程。</p>
+    </div>
+</section>
+
+<section class="section">
+    <div class="container">
+        <div class="result-bar">
+            <p class="result-count" data-favorite-count aria-live="polite"></p>
+            <a class="btn btn-ghost btn-sm" href="{{ url_for('pages.attractions') }}">浏览景点</a>
+        </div>
+        <div class="card-grid" data-favorite-grid aria-live="polite"></div>
+    </div>
+</section>
+{% endblock %}
+
+{% block scripts %}
+<script src="{{ url_for('static', filename='js/favorites.js') }}"></script>
+{% endblock %}

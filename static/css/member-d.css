@@ -1,0 +1,130 @@
+/* 成员 D 接入：收藏与行程页面样式 */
+.d-panel {
+    background: #fff;
+    border: 1px solid #e2e8ec;
+    border-radius: 14px;
+    padding: 24px;
+    margin-bottom: 28px;
+}
+
+.d-panel-title {
+    margin: 0 0 16px;
+    font-size: 1.05rem;
+    color: #1f2d33;
+}
+
+.d-form {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+    gap: 16px;
+}
+
+.d-field {
+    display: flex;
+    flex-direction: column;
+    gap: 6px;
+}
+
+.d-field-wide {
+    grid-column: 1 / -1;
+}
+
+.d-field label {
+    font-size: 0.85rem;
+    color: #5c6b73;
+}
+
+.d-field input,
+.d-field textarea,
+.itinerary-select {
+    width: 100%;
+    padding: 10px 12px;
+    border: 1px solid #d7e1e6;
+    border-radius: 10px;
+    font: inherit;
+    background: #fff;
+    color: #1f2d33;
+    box-sizing: border-box;
+}
+
+.d-field input:focus,
+.d-field textarea:focus,
+.itinerary-select:focus {
+    outline: 2px solid rgba(15, 118, 110, 0.35);
+    outline-offset: 1px;
+}
+
+.d-form-actions {
+    grid-column: 1 / -1;
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    flex-wrap: wrap;
+}
+
+.d-form-error {
+    color: #b42318;
+    font-size: 0.85rem;
+}
+
+.d-list {
+    display: flex;
+    flex-direction: column;
+    gap: 16px;
+}
+
+.itinerary-card {
+    background: #fff;
+    border: 1px solid #e2e8ec;
+    border-radius: 14px;
+    padding: 18px 20px;
+}
+
+.itinerary-head {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 12px;
+}
+
+.itinerary-title {
+    margin: 0;
+    font-size: 1.05rem;
+    color: #1f2d33;
+}
+
+.itinerary-meta {
+    margin: 6px 0 0;
+    font-size: 0.85rem;
+    color: #5c6b73;
+}
+
+.itinerary-notes {
+    margin: 8px 0 0;
+    color: #40515a;
+    font-size: 0.9rem;
+}
+
+.itinerary-adder {
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    flex-wrap: wrap;
+}
+
+.itinerary-select {
+    min-width: 180px;
+    width: auto;
+}
+
+.attraction-foot {
+    flex-wrap: wrap;
+    gap: 8px;
+}
+
+@media (max-width: 640px) {
+    .itinerary-head {
+        flex-direction: column;
+        align-items: flex-start;
+    }
+}
