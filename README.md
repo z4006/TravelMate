@@ -2,11 +2,16 @@
 
 ## 本地运行
 
+在 `TravelMate` 目录下执行：
+
 ```powershell
-cd C:\Users\曾\Desktop\WorkSpace\TravelMate
+python -m venv .venv
 .venv\Scripts\python.exe -m pip install -r requirements.txt
 .venv\Scripts\python.exe app.py
 ```
+
+启动后浏览器访问 <http://127.0.0.1:5000/>。服务状态接口为
+<http://127.0.0.1:5000/api/health>。开发配置默认开启调试模式，修改代码后会自动重启。
 
 开发环境默认使用本地配置。正式环境启动前必须设置密钥：
 

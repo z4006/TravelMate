@@ -27,7 +27,7 @@
 
 | 方法 | 路径 | 说明 |
 | --- | --- | --- |
-| GET | `/api/attractions?page=1&page_size=20&category=natural&city=杭州市&q=西湖` | 分页查询，可按分类 slug、城市精确筛选，按关键词搜索名称和描述 |
+| GET | `/api/attractions?page=1&page_size=20&category=natural&city=杭州市&q=西湖` | 分页查询，可按分类 slug、城市精确筛选，按关键词搜索名称和描述；关键词同时兼容 `q` 与 `keyword` |
 | GET | `/api/attractions/categories` | 查询分类 |
 | GET | `/api/attractions/<id>` | 查询景点详情；无效 ID 返回 400，不存在或非公开景点返回 404 |
 

@@ -94,13 +94,20 @@
                 : '¥' + (raw.ticket_price_cents / 100).toFixed(0);
         }
         var rating = pick(raw, ['rating', 'score', 'rate']);
+        var tags = toTags(pick(raw, ['tags', 'tag', 'labels', 'category']));
+        // 接口把分类放在 category 对象里时，用分类名作为展示标签
+        if (raw.category && typeof raw.category === 'object' && raw.category.name) {
+            tags = [asText(raw.category.name)].concat(tags).filter(function (tag) {
+                return tag !== '';
+            }).slice(0, 4);
+        }
         return {
             id: id,
             name: asText(pick(raw, ['name', 'title', 'attraction_name'])) || '未命名景点',
             city: asText(pick(raw, ['city', 'city_name', 'location', 'province'])),
             summary: asText(pick(raw, ['description', 'summary', 'intro', 'detail', 'content'])),
             image: asText(pick(raw, ['image_url', 'cover_url', 'image', 'cover', 'thumbnail', 'photo'])),
-            tags: toTags(pick(raw, ['tags', 'tag', 'labels', 'category'])),
+            tags: tags,
             rating: rating === null ? '' : asText(rating),
             hours: asText(pick(raw, ['open_time', 'opening_hours', 'hours', 'business_hours'])),
             priceText: priceText,

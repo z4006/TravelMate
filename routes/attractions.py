@@ -52,7 +52,8 @@ def attractions():
 
     category = request.args.get("category", "").strip()
     city = request.args.get("city", "").strip()
-    keyword = request.args.get("q", "").strip()
+    # 前端（成员 B）使用 keyword 传关键词，成员 C 的接口使用 q，这里同时兼容两种写法
+    keyword = request.args.get("q", "").strip() or request.args.get("keyword", "").strip()
     if any(len(value) > 100 for value in (category, city, keyword)):
         return api_response(False, "筛选参数不能超过 100 个字符", None, 400)
 

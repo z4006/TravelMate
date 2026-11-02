@@ -80,6 +80,14 @@ def test_keyword_treats_like_wildcards_as_literals(client):
     assert client.get("/api/attractions?q=西湖").get_json()["data"]["total"] == 1
 
 
+def test_keyword_alias_matches_frontend_parameter(client):
+    """页面使用 keyword 传参，接口需同时兼容 q 与 keyword。"""
+
+    payload = client.get("/api/attractions?keyword=西湖").get_json()
+    assert payload["data"]["total"] == 1
+    assert payload["data"]["items"][0]["name"] == "西湖"
+
+
 def test_detail_categories_and_missing_attraction(client):
     categories = client.get("/api/attractions/categories")
     assert categories.status_code == 200
