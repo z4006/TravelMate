@@ -87,16 +87,14 @@ python app.py
 # 浏览器访问 http://127.0.0.1:5000/
 ```
 
-前端自检（在仓库外的临时目录执行，不产生任何提交）：
+自测情况（验证脚本是一次性工具，未提交到仓库）：
 
-- `check_frontend.py`：页面渲染、静态资源、认证接口契约、景点接口数据链路，共 49 项（跑在**替身服务** `serve_pages.py` 上，该服务代替 A 注册了 `pages_bp` 并接管 `/`）。
-- `check_integration.py`：**真实入口**检查，直接 `import app; app.create_app()`，不注入任何东西，断言 `pages.*` 在 `url_map`、`/login` 等返回 200 + HTML。**它是"`python app.py` 后页面可用"的唯一判据**。
-- `e2e.test.mjs`（jsdom + 真实 Flask 服务，期望值来自接口数据，不写死景点名）：首页/列表/详情渲染、注册、登录、导航栏、退出、CSRF 失效重试，共 26 项。
+- 页面与静态资源：`/`、`/login`、`/register`、`/attractions`、`/attractions/<id>` 均返回 200 + HTML，`base.css`/`pages.css`/`responsive.css` 与 7 个 JS 文件全部可加载。
+- 接口契约：`/api/csrf-token`、`/api/register`、`/api/login`、`/api/logout`、`/api/user/info` 的字段与 `api.js` 的期望一致；CSRF 失效后自动刷新 Token 并重试一次已验证。
+- 交互流程：首页/列表/详情渲染、注册、登录、导航栏登录态切换、退出均按预期工作，期望值取自接口真实数据（不写死景点名），因此后续换成真实景点接口不需要改前端。
+- 语法与类型：`node --check` 校验 7 个 JS 文件、TypeScript 解析器、VS Code CSS 语言服务、pyright 检查 `routes/pages.py`，均 0 诊断。
 
-一键跑：`powershell -ExecutionPolicy Bypass -File ..\_frontend_check\verify.ps1`（Node 需 `^22.22.2 || ^24.15.0 || >=26`，是 jsdom 30 的硬门槛）。
-
-实测结果：`check_frontend.py` 49/49、`e2e.test.mjs` 26/26 通过；`node --check`、TypeScript 解析器、CSS 语言服务、pyright（`routes/pages.py`）均 0 诊断。
-`check_integration.py` 当前 **失败**：`app.py` 未注册 `pages_bp`、`routes/base.py` 的 `/` 仍返回 JSON —— 这两处是第 6 节待 A 完成的接入动作，修好后该脚本自动转绿。
+**尚未验证（需要 A 合并后才能测）**：`python app.py` 真实入口下页面能否打开。当前 `app.py` 未注册 `pages_bp`、`routes/base.py` 的 `/` 仍返回 JSON，直接跑正式入口会得到 `/login` 404、`/` 是 JSON，详见第 6 节。
 成员 A 的 `tests/` 未在本机运行（当前 Python 环境未安装 pytest，未在提交中声称测试通过）。
 
 ## 6. 需要成员 A 确认的两处公共文件改动
