@@ -1,0 +1,15 @@
+<footer class="site-footer">
+    <div class="container footer-inner">
+        <div class="footer-brand">
+            <img class="footer-logo" src="{{ url_for('static', filename='images/logo.svg') }}" alt="" width="28" height="28">
+            <p>TravelMate · 旅游信息与行程规划</p>
+        </div>
+        <nav class="footer-links" aria-label="页脚导航">
+            <a href="{{ url_for('pages.index') }}">首页</a>
+            <a href="{{ url_for('pages.attractions') }}">景点库</a>
+            <a href="{{ url_for('pages.login') }}">登录</a>
+            <a href="{{ url_for('pages.register') }}">注册</a>
+        </nav>
+        <p class="footer-note">课程项目 · Python + Flask + SQLite</p>
+    </div>
+</footer>

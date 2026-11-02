@@ -1,0 +1,41 @@
+{% extends "base.html" %}
+
+{% block content %}
+<section class="auth-section">
+    <div class="auth-card">
+        <h1 class="auth-title">欢迎回来</h1>
+        <p class="auth-desc">使用账号登录 TravelMate，继续浏览和管理你的旅行计划。</p>
+
+        <div class="form-alert" data-auth-alert role="alert" hidden></div>
+
+        <form class="auth-form" data-login-form novalidate>
+            <div class="form-field">
+                <label for="login-username">用户名</label>
+                <input id="login-username" name="username" type="text" autocomplete="username"
+                       required maxlength="32" placeholder="请输入用户名">
+                <p class="field-error" data-error-for="username"></p>
+            </div>
+
+            <div class="form-field">
+                <label for="login-password">密码</label>
+                <div class="input-with-action">
+                    <input id="login-password" name="password" type="password" autocomplete="current-password"
+                           required maxlength="128" placeholder="请输入密码">
+                    <button class="input-action" type="button" data-toggle-password
+                            aria-label="显示密码" aria-pressed="false">显示</button>
+                </div>
+                <p class="field-error" data-error-for="password"></p>
+            </div>
+
+            <button class="btn btn-primary btn-block" type="submit" data-submit>登录</button>
+        </form>
+
+        <p class="auth-switch">还没有账号？<a href="{{ url_for('pages.register') }}">立即注册</a></p>
+        <p class="auth-note">登录状态通过服务端 Session 保持，前端不会保存你的密码。</p>
+    </div>
+</section>
+{% endblock %}
+
+{% block scripts %}
+<script src="{{ url_for('static', filename='js/auth.js') }}"></script>
+{% endblock %}

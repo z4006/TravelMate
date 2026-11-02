@@ -1,0 +1,72 @@
+{% extends "base.html" %}
+
+{% block content %}
+<section class="detail-page" data-attraction-id="{{ attraction_id }}">
+    <div class="container">
+        <nav class="breadcrumb" aria-label="面包屑导航">
+            <a href="{{ url_for('pages.index') }}">首页</a>
+            <span aria-hidden="true">/</span>
+            <a href="{{ url_for('pages.attractions') }}">景点</a>
+            <span aria-hidden="true">/</span>
+            <span>景点详情</span>
+        </nav>
+
+        <div class="detail-loading" data-detail-loading>
+            <div class="skeleton skeleton-media"></div>
+            <div class="detail-loading-lines">
+                <div class="skeleton skeleton-line skeleton-line-lg"></div>
+                <div class="skeleton skeleton-line"></div>
+                <div class="skeleton skeleton-line"></div>
+                <div class="skeleton skeleton-line skeleton-line-sm"></div>
+            </div>
+        </div>
+
+        <article class="detail-body" data-detail-body hidden>
+            <figure class="detail-media">
+                <img data-detail-image src="{{ url_for('static', filename='images/placeholder-attraction.svg') }}"
+                     alt="" width="960" height="600">
+                <figcaption class="detail-city" data-detail-city></figcaption>
+            </figure>
+
+            <div class="detail-info">
+                <div class="detail-title-row">
+                    <h1 class="detail-title" data-detail-name>景点详情</h1>
+                    <span class="detail-rating" data-detail-rating hidden></span>
+                </div>
+
+                <div class="detail-tags" data-detail-tags hidden></div>
+                <p class="detail-desc" data-detail-description></p>
+
+                <dl class="detail-meta">
+                    <div class="detail-meta-item">
+                        <dt>开放时间</dt>
+                        <dd data-detail-hours>暂无信息</dd>
+                    </div>
+                    <div class="detail-meta-item">
+                        <dt>参考门票</dt>
+                        <dd data-detail-price>暂无信息</dd>
+                    </div>
+                    <div class="detail-meta-item">
+                        <dt>地址</dt>
+                        <dd data-detail-address>暂无信息</dd>
+                    </div>
+                    <div class="detail-meta-item">
+                        <dt>联系电话</dt>
+                        <dd data-detail-phone>暂无信息</dd>
+                    </div>
+                </dl>
+
+                <div class="detail-actions">
+                    <a class="btn btn-primary" href="{{ url_for('pages.attractions') }}">返回景点列表</a>
+                </div>
+            </div>
+        </article>
+
+        <div class="state-block" data-detail-error hidden></div>
+    </div>
+</section>
+{% endblock %}
+
+{% block scripts %}
+<script src="{{ url_for('static', filename='js/detail.js') }}"></script>
+{% endblock %}

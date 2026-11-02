@@ -1,0 +1,62 @@
+{% extends "base.html" %}
+
+{% block content %}
+<section class="auth-section">
+    <div class="auth-card">
+        <h1 class="auth-title">创建账号</h1>
+        <p class="auth-desc">注册 TravelMate 账号，开始记录你的旅行足迹。</p>
+
+        <div class="form-alert" data-auth-alert role="alert" hidden></div>
+
+        <form class="auth-form" data-register-form novalidate>
+            <div class="form-field">
+                <label for="register-username">用户名<span class="label-hint">3-32 位字母、数字或下划线</span></label>
+                <input id="register-username" name="username" type="text" autocomplete="username"
+                       required maxlength="32" placeholder="例如 travelmate_user">
+                <p class="field-error" data-error-for="username"></p>
+            </div>
+
+            <div class="form-field">
+                <label for="register-nickname">昵称<span class="label-hint">可选，1-64 位</span></label>
+                <input id="register-nickname" name="nickname" type="text" autocomplete="nickname"
+                       maxlength="64" placeholder="展示给其他旅行者的名字">
+                <p class="field-error" data-error-for="nickname"></p>
+            </div>
+
+            <div class="form-field">
+                <label for="register-email">邮箱<span class="label-hint">可选</span></label>
+                <input id="register-email" name="email" type="email" autocomplete="email"
+                       maxlength="254" placeholder="you@example.com">
+                <p class="field-error" data-error-for="email"></p>
+            </div>
+
+            <div class="form-field">
+                <label for="register-password">密码<span class="label-hint">8-128 位，需同时包含字母和数字</span></label>
+                <div class="input-with-action">
+                    <input id="register-password" name="password" type="password" autocomplete="new-password"
+                           required maxlength="128" placeholder="请设置密码">
+                    <button class="input-action" type="button" data-toggle-password
+                            aria-label="显示密码" aria-pressed="false">显示</button>
+                </div>
+                <p class="field-error" data-error-for="password"></p>
+            </div>
+
+            <div class="form-field">
+                <label for="register-password-confirm">确认密码</label>
+                <input id="register-password-confirm" name="password_confirm" type="password"
+                       autocomplete="new-password" required maxlength="128" placeholder="请再次输入密码">
+                <p class="field-error" data-error-for="password_confirm"></p>
+            </div>
+
+            <button class="btn btn-primary btn-block" type="submit" data-submit>注册</button>
+        </form>
+
+        <p class="auth-switch">已有账号？<a href="{{ url_for('pages.login') }}">去登录</a></p>
+        <p class="auth-note">密码只提交给后端校验，不会保存在浏览器中。</p>
+    </div>
+</section>
+{% endblock %}
+
+{% block scripts %}
+<script src="{{ url_for('static', filename='js/auth.js') }}"></script>
+{% endblock %}

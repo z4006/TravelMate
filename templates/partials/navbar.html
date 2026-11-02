@@ -1,0 +1,28 @@
+<header class="site-header">
+    <div class="container header-inner">
+        <a class="brand" href="{{ url_for('pages.index') }}" aria-label="TravelMate 首页">
+            <img class="brand-logo" src="{{ url_for('static', filename='images/logo.svg') }}" alt="" width="38" height="38">
+            <span class="brand-text">Travel<em>Mate</em></span>
+        </a>
+
+        <button class="nav-toggle" type="button" aria-expanded="false" aria-controls="site-nav" aria-label="展开导航菜单">
+            <span></span><span></span><span></span>
+        </button>
+
+        <nav id="site-nav" class="site-nav" aria-label="主导航">
+            <a class="nav-link" data-nav="home" href="{{ url_for('pages.index') }}">首页</a>
+            <a class="nav-link" data-nav="attractions" href="{{ url_for('pages.attractions') }}">景点</a>
+            <div class="nav-auth" data-nav-auth>
+                <div class="nav-guest" data-nav-guest>
+                    <a class="btn btn-ghost btn-sm" href="{{ url_for('pages.login') }}">登录</a>
+                    <a class="btn btn-primary btn-sm" href="{{ url_for('pages.register') }}">注册</a>
+                </div>
+                <div class="nav-user" data-nav-user hidden>
+                    <span class="nav-avatar" data-nav-avatar aria-hidden="true">T</span>
+                    <span class="nav-username" data-nav-username>旅行者</span>
+                    <button class="btn btn-ghost btn-sm" type="button" data-nav-logout>退出</button>
+                </div>
+            </div>
+        </nav>
+    </div>
+</header>
