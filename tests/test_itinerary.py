@@ -26,13 +26,24 @@ def register_and_login(client, headers, username="zhangsan"):
 
 def add_attractions(app):
     with app.app_context():
+        database = get_db()
+        columns = {
+            row["name"]
+            for row in database.execute("PRAGMA table_info(attractions)")
+        }
+        if not columns:
+            with db_transaction():
+                database.execute(
+                    "CREATE TABLE attractions ("
+                    "id INTEGER PRIMARY KEY, name TEXT NOT NULL, city TEXT)"
+                )
+            columns = {"id", "name", "city"}
+        insert_columns = [column for column in ("id", "name", "city") if column in columns]
+        placeholders = ", ".join("?" * len(insert_columns))
         with db_transaction():
-            get_db().execute(
-                "CREATE TABLE attractions ("
-                "id INTEGER PRIMARY KEY, name TEXT NOT NULL, city TEXT)"
-            )
-            get_db().executemany(
-                "INSERT INTO attractions (id, name, city) VALUES (?, ?, ?)",
+            database.executemany(
+                f"INSERT OR IGNORE INTO attractions ({', '.join(insert_columns)}) "
+                f"VALUES ({placeholders})",
                 [(1, "西湖", "杭州"), (2, "故宫", "北京")],
             )
 
