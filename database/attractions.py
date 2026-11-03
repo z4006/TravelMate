@@ -33,6 +33,11 @@ def migrate_attractions(database: sqlite3.Connection) -> None:
             ),
             opening_hours TEXT,
             image_url TEXT,
+            source TEXT NOT NULL DEFAULT 'manual',
+            source_id TEXT,
+            source_url TEXT,
+            latitude REAL,
+            longitude REAL,
             status TEXT NOT NULL DEFAULT 'active'
                 CHECK (status IN ('active', 'inactive')),
             created_at TEXT NOT NULL,
@@ -42,14 +47,102 @@ def migrate_attractions(database: sqlite3.Connection) -> None:
         )
         """
     )
+    columns = {
+        row["name"]
+        for row in database.execute("PRAGMA table_info(attractions)").fetchall()
+    }
+    for column, definition in (
+        ("source", "TEXT NOT NULL DEFAULT 'manual'"),
+        ("source_id", "TEXT"),
+        ("source_url", "TEXT"),
+        ("latitude", "REAL"),
+        ("longitude", "REAL"),
+    ):
+        if column not in columns:
+            database.execute(
+                f"ALTER TABLE attractions ADD COLUMN {column} {definition}"
+            )
     database.execute(
         "CREATE INDEX IF NOT EXISTS ix_attractions_status_city_category_id "
         "ON attractions (status, city, category_id, id)"
+    )
+    database.execute(
+        "CREATE UNIQUE INDEX IF NOT EXISTS ux_attractions_source_id "
+        "ON attractions (source, source_id) WHERE source_id IS NOT NULL"
     )
 
 
 def _escape_like(value: str) -> str:
     return value.replace("\\", "\\\\").replace("%", "\\%").replace("_", "\\_")
+
+
+def import_elements(
+    database: sqlite3.Connection, elements: list[dict[str, Any]]
+) -> tuple[int, int]:
+    """幂等导入外部景点记录，返回（新增数，更新数）。"""
+
+    categories = {
+        row["slug"]: row["id"]
+        for row in database.execute(
+            "SELECT id, slug FROM attraction_categories"
+        ).fetchall()
+    }
+    now = utc_now()
+    inserted = updated = 0
+    for record in elements:
+        category_id = categories[record["category_slug"]]
+        existing = database.execute(
+            "SELECT id FROM attractions WHERE source = ? AND source_id = ?",
+            (record["source"], record["source_id"]),
+        ).fetchone()
+        values = (
+            record["name"],
+            record["slug"],
+            category_id,
+            record["city"],
+            record["address"],
+            record["description"],
+            record["opening_hours"],
+            record["source_url"],
+            record["latitude"],
+            record["longitude"],
+            now,
+        )
+        if existing:
+            database.execute(
+                "UPDATE attractions SET name = ?, slug = ?, category_id = ?, "
+                "city = ?, address = ?, description = ?, opening_hours = ?, "
+                "source_url = ?, latitude = ?, longitude = ?, updated_at = ? "
+                "WHERE id = ?",
+                (*values, existing["id"]),
+            )
+            updated += 1
+        else:
+            database.execute(
+                "INSERT INTO attractions "
+                "(name, slug, category_id, city, address, description, "
+                "opening_hours, source, source_id, source_url, latitude, longitude, "
+                "status, created_at, updated_at) "
+                "VALUES (?, ?, ?, ?, ?, ?, ?, 'openstreetmap', ?, ?, ?, ?, "
+                "'active', ?, ?)",
+                (
+                    record["name"],
+                    record["slug"],
+                    category_id,
+                    record["city"],
+                    record["address"],
+                    record["description"],
+                    record["opening_hours"],
+                    record["source_id"],
+                    record["source_url"],
+                    record["latitude"],
+                    record["longitude"],
+                    now,
+                    now,
+                ),
+            )
+            inserted += 1
+    return inserted, updated
 
 
 def list_attractions(
@@ -85,6 +178,7 @@ def list_attractions(
     select_clause = (
         "SELECT a.id, a.name, a.slug, a.city, a.address, a.description, "
         "a.ticket_price_cents, a.opening_hours, a.image_url, "
+        "a.source, a.source_id, a.source_url, a.latitude, a.longitude, "
         "a.created_at, a.updated_at, c.id AS category_id, "
         "c.name AS category_name, c.slug AS category_slug "
     )
@@ -119,6 +213,7 @@ def get_attraction_by_id(
     return database.execute(
         "SELECT a.id, a.name, a.slug, a.city, a.address, a.description, "
         "a.ticket_price_cents, a.opening_hours, a.image_url, "
+        "a.source, a.source_id, a.source_url, a.latitude, a.longitude, "
         "a.created_at, a.updated_at, c.id AS category_id, "
         "c.name AS category_name, c.slug AS category_slug "
         "FROM attractions AS a "

@@ -59,6 +59,28 @@ Werkzeug 哈希保存，不会通过接口返回。
 .venv\Scripts\python.exe -m scripts.seed_attractions
 ```
 
+### 导入 OpenStreetMap 景点数据
+
+项目提供本地导入脚本，支持合法获取的 Overpass JSON 文件。脚本不会自动抓取
+网络数据，也不会把原始数据文件写入仓库。建议按城市或区域分批导入：
+
+```powershell
+.venv\Scripts\python.exe -m scripts.import_osm_attractions data\beijing.json
+```
+
+对于 Geofabrik 的区域 PBF 文件，可以使用：
+
+```powershell
+.venv\Scripts\python.exe -m scripts.import_osm_pbf_attractions `
+    data\beijing-261101.osm.pbf --city 北京市
+```
+
+导入记录会保存 `source=openstreetmap`、来源对象编号、来源链接和经纬度，
+按来源编号幂等更新，不会重复插入。使用 OSM 数据时必须遵守 ODbL，
+在公开页面保留“© OpenStreetMap contributors”及数据来源链接。原始数据的
+下载范围、许可和更新时间应由团队记录；不要提交大型原始数据文件或未经授权
+的图片、描述和商业数据。
+
 运行测试：
 
 ```powershell

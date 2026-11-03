@@ -94,6 +94,8 @@
                 : '¥' + (raw.ticket_price_cents / 100).toFixed(0);
         }
         var rating = pick(raw, ['rating', 'score', 'rate']);
+        var latitude = pick(raw, ['latitude', 'lat']);
+        var longitude = pick(raw, ['longitude', 'lon', 'lng']);
         return {
             id: id,
             name: asText(pick(raw, ['name', 'title', 'attraction_name'])) || '未命名景点',
@@ -105,7 +107,10 @@
             hours: asText(pick(raw, ['open_time', 'opening_hours', 'hours', 'business_hours'])),
             priceText: priceText,
             address: asText(pick(raw, ['address', 'addr', 'location_address'])),
-            phone: asText(pick(raw, ['phone', 'telephone', 'tel', 'contact']))
+            phone: asText(pick(raw, ['phone', 'telephone', 'tel', 'contact'])),
+            latitude: latitude === null || latitude === '' ? NaN : Number(latitude),
+            longitude: longitude === null || longitude === '' ? NaN : Number(longitude),
+            sourceUrl: asText(pick(raw, ['source_url', 'sourceUrl']))
         };
     }
 
