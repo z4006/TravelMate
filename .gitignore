@@ -61,7 +61,10 @@ local_settings.py
 db.sqlite3
 db.sqlite3-journal
 database/*.db
-data/
+!data/
+data/*
+!data/core_attractions.py
+!data/core_attractions.json
 
 # Flask stuff:
 instance/

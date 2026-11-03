@@ -30,6 +30,29 @@ CATEGORY_BY_TAG = {
     "viewpoint": "natural",
 }
 
+ALLOWED_TOURISM = set(CATEGORY_BY_TAG) | {
+    "attraction",
+    "water_park",
+    "picnic_site",
+}
+ALLOWED_HISTORIC = {
+    "archaeological_site",
+    "castle",
+    "fort",
+    "manor",
+    "monastery",
+    "palace",
+    "ruins",
+    "temple",
+    "church",
+    "memorial",
+}
+CATEGORY_LABELS = {
+    "historical": "历史文化",
+    "natural": "自然风光",
+    "theme-park": "主题乐园",
+}
+
 
 def _slug(value: str) -> str:
     normalized = re.sub(r"[^a-z0-9]+", "-", value.lower()).strip("-")
@@ -84,22 +107,41 @@ def normalize_element(element: dict[str, Any]) -> dict[str, Any] | None:
     source_id = f"{element_type}/{element_id}"
     tourism = str(tags.get("tourism", "")).lower()
     historic = str(tags.get("historic", "")).lower()
-    category_slug = CATEGORY_BY_TAG.get(tourism, "historical" if historic else "natural")
+    if tourism not in ALLOWED_TOURISM and historic not in ALLOWED_HISTORIC:
+        return None
+    category_slug = CATEGORY_BY_TAG.get(
+        tourism,
+        "historical" if historic else "natural",
+    )
     latitude, longitude = _element_coordinates(element)
-    description = tags.get("description") or tags.get("wikipedia")
+    description = tags.get("description")
+    image_url = tags.get("image")
+    if not image_url and tags.get("wikimedia_commons"):
+        filename = str(tags["wikimedia_commons"]).split(":", 1)[-1].strip()
+        if filename:
+            image_url = (
+                "https://commons.wikimedia.org/wiki/Special:FilePath/"
+                + filename.replace(" ", "_")
+            )
     return {
         "name": name,
         "slug": f"osm-{_slug(source_id)}-{_slug(name)}",
         "category_slug": category_slug,
         "city": _city(tags),
         "address": _address(tags),
-        "description": str(description).strip() if description else None,
+        "description": str(description).strip() if description else (
+            f"{_city(tags)}的一处{CATEGORY_LABELS[category_slug]}景点，"
+            "可查看地图位置和开放信息。"
+        ),
         "opening_hours": str(tags["opening_hours"]).strip()
         if tags.get("opening_hours")
         else None,
         "source": "openstreetmap",
         "source_id": source_id,
         "source_url": f"https://www.openstreetmap.org/{source_id}",
+        "image_url": str(image_url).strip() if image_url else (
+            "/static/images/placeholder-attraction.svg"
+        ),
         "latitude": latitude,
         "longitude": longitude,
     }
@@ -142,18 +184,24 @@ def import_elements(database, elements: list[dict[str, Any]]) -> tuple[int, int]
             database.execute(
                 "UPDATE attractions SET name = ?, slug = ?, category_id = ?, "
                 "city = ?, address = ?, description = ?, opening_hours = ?, "
-                "source_url = ?, latitude = ?, longitude = ?, updated_at = ? "
+                "source_url = ?, latitude = ?, longitude = ?, image_url = ?, "
+                "updated_at = ? "
                 "WHERE id = ?",
-                (*values, existing["id"]),
+                (
+                    record["name"], record["slug"], category_id, record["city"],
+                    record["address"], record["description"], record["opening_hours"],
+                    record["source_url"], record["latitude"], record["longitude"],
+                    record["image_url"], now, existing["id"],
+                ),
             )
             updated += 1
         else:
             database.execute(
                 "INSERT INTO attractions "
                 "(name, slug, category_id, city, address, description, "
-                "opening_hours, source, source_id, source_url, latitude, longitude, "
+                "opening_hours, image_url, source, source_id, source_url, latitude, longitude, "
                 "status, created_at, updated_at) "
-                "VALUES (?, ?, ?, ?, ?, ?, ?, 'openstreetmap', ?, ?, ?, ?, "
+                "VALUES (?, ?, ?, ?, ?, ?, ?, ?, 'openstreetmap', ?, ?, ?, ?, "
                 "'active', ?, ?)",
                 (
                     record["name"],
@@ -163,6 +211,7 @@ def import_elements(database, elements: list[dict[str, Any]]) -> tuple[int, int]
                     record["address"],
                     record["description"],
                     record["opening_hours"],
+                    record["image_url"],
                     record["source_id"],
                     record["source_url"],
                     record["latitude"],

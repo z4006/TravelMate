@@ -112,18 +112,33 @@ def import_elements(
             database.execute(
                 "UPDATE attractions SET name = ?, slug = ?, category_id = ?, "
                 "city = ?, address = ?, description = ?, opening_hours = ?, "
-                "source_url = ?, latitude = ?, longitude = ?, updated_at = ? "
+                "source_url = ?, latitude = ?, longitude = ?, image_url = ?, "
+                "updated_at = ? "
                 "WHERE id = ?",
-                (*values, existing["id"]),
+                (
+                    record["name"],
+                    record["slug"],
+                    category_id,
+                    record["city"],
+                    record["address"],
+                    record["description"],
+                    record["opening_hours"],
+                    record["source_url"],
+                    record["latitude"],
+                    record["longitude"],
+                    record["image_url"],
+                    now,
+                    existing["id"],
+                ),
             )
             updated += 1
         else:
             database.execute(
                 "INSERT INTO attractions "
                 "(name, slug, category_id, city, address, description, "
-                "opening_hours, source, source_id, source_url, latitude, longitude, "
+                "opening_hours, image_url, source, source_id, source_url, latitude, longitude, "
                 "status, created_at, updated_at) "
-                "VALUES (?, ?, ?, ?, ?, ?, ?, 'openstreetmap', ?, ?, ?, ?, "
+                "VALUES (?, ?, ?, ?, ?, ?, ?, ?, 'openstreetmap', ?, ?, ?, ?, "
                 "'active', ?, ?)",
                 (
                     record["name"],
@@ -133,6 +148,7 @@ def import_elements(
                     record["address"],
                     record["description"],
                     record["opening_hours"],
+                    record["image_url"],
                     record["source_id"],
                     record["source_url"],
                     record["latitude"],

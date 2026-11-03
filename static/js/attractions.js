@@ -44,12 +44,11 @@
         return text.indexOf(keyword.toLowerCase()) !== -1;
     }
 
-    function load(criteria, grid, countNode, filterNode) {
+    function load(criteria, grid, countNode, filterNode, summaryNode) {
         ui.showSkeletons(grid, 6);
         if (countNode) {
             countNode.textContent = '正在加载景点…';
         }
-
         var serverQuery = {};
         if (criteria.city) {
             serverQuery.city = criteria.city;
@@ -57,9 +56,15 @@
         if (criteria.keyword) {
             serverQuery.q = criteria.keyword;
         }
+        serverQuery.page_size = 1000;
 
         api.get('/api/attractions', serverQuery).then(function (payload) {
             var result = ui.extractList(payload);
+            if (summaryNode) {
+                summaryNode.textContent = criteria.city
+                    ? '当前城市：' + criteria.city + '，共找到 ' + result.total + ' 个核心景点'
+                    : '当前城市：全部城市，共找到 ' + result.total + ' 个核心景点';
+            }
             var items = result.items.filter(function (raw) {
                 var item = ui.normalizeAttraction(raw);
                 if (!item) {
@@ -85,8 +90,12 @@
             if (countNode) {
                 ui.clear(countNode);
                 countNode.appendChild(document.createTextNode('共找到 '));
-                countNode.appendChild(ui.el('strong', null, String(rendered.length)));
-                countNode.appendChild(document.createTextNode(' 个景点'));
+                countNode.appendChild(ui.el('strong', null, String(result.total)));
+                countNode.appendChild(document.createTextNode(
+                    rendered.length < result.total
+                        ? ' 个景点（当前显示前 ' + rendered.length + ' 个）'
+                        : ' 个景点'
+                ));
             }
             if (filterNode) {
                 filterNode.textContent = describeFilter(criteria);
@@ -100,7 +109,7 @@
                     : (error.message || '请稍后重试。'),
                 '重新加载',
                 function () {
-                    load(criteria, grid, countNode, filterNode);
+                    load(criteria, grid, countNode, filterNode, summaryNode);
                 }
             ));
             if (countNode) {
@@ -120,7 +129,8 @@
         var criteria = currentQuery();
         var countNode = document.querySelector('[data-result-count]');
         var filterNode = document.querySelector('[data-active-filter]');
+        var summaryNode = document.querySelector('[data-city-summary]');
         fillControls(criteria);
-        load(criteria, grid, countNode, filterNode);
+        load(criteria, grid, countNode, filterNode, summaryNode);
     });
 })(window, document);

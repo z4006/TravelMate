@@ -52,7 +52,7 @@ def attractions():
         page_size = int(request.args.get("page_size", "20"))
     except ValueError:
         return api_response(False, "分页参数必须是整数", None, 400)
-    if page < 1 or not 1 <= page_size <= 100:
+    if page < 1 or not 1 <= page_size <= 1000:
         return api_response(False, "分页参数不合法", None, 400)
 
     category = request.args.get("category", "").strip()
