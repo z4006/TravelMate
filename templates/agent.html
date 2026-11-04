@@ -1,0 +1,66 @@
+{% extends "base.html" %}
+
+{% block content %}
+<section class="page-head">
+    <div class="container">
+        <nav class="breadcrumb" aria-label="面包屑导航">
+            <a href="{{ url_for('pages.index') }}">首页</a>
+            <span aria-hidden="true">/</span>
+            <span>AI 助手</span>
+        </nav>
+        <h1 class="page-title">AI 助手</h1>
+        <p class="page-desc">让 AI 帮你规划行程，也可以直接问景点相关的问题。</p>
+    </div>
+</section>
+
+<section class="section">
+    <div class="container agent-layout">
+        <div class="d-panel agent-panel">
+            <h2 class="d-panel-title">行程规划</h2>
+            <form class="d-form" data-plan-form novalidate>
+                <div class="d-field d-field-wide">
+                    <label for="plan-message">你的需求</label>
+                    <textarea id="plan-message" name="message" rows="3" maxlength="500"
+                              placeholder="例如：想去西安玩 3 天，喜欢历史古迹，预算 2000"></textarea>
+                </div>
+                <div class="d-field">
+                    <label for="plan-days">天数</label>
+                    <input id="plan-days" name="days" type="number" min="1" max="7" value="3">
+                </div>
+                <div class="d-field">
+                    <label for="plan-city">城市（可选）</label>
+                    <input id="plan-city" name="city" type="text" placeholder="例如：西安市">
+                </div>
+                <div class="d-field">
+                    <label for="plan-start">开始日期（可选）</label>
+                    <input id="plan-start" name="start_date" type="date">
+                </div>
+                <div class="d-form-actions">
+                    <button class="btn btn-primary" type="submit">生成行程</button>
+                    <span class="d-form-error" data-plan-error role="alert"></span>
+                </div>
+            </form>
+            <p class="agent-hint" data-agent-hint hidden></p>
+            <div class="plan-result" data-plan-result aria-live="polite"></div>
+        </div>
+
+        <div class="d-panel agent-panel">
+            <h2 class="d-panel-title">旅行问答</h2>
+            <div class="chat-log" data-chat-log aria-live="polite">
+                <div class="chat-bubble chat-bot">
+                    <p>你好，我是 TravelMate 的旅行助手。可以问我景点、门票、开放时间，也可以让我帮你安排行程。</p>
+                </div>
+            </div>
+            <form class="chat-form" data-chat-form>
+                <input data-chat-input type="text" maxlength="500" autocomplete="off"
+                       placeholder="例如：西湖需要门票吗？">
+                <button class="btn btn-primary" type="submit">发送</button>
+            </form>
+        </div>
+    </div>
+</section>
+{% endblock %}
+
+{% block scripts %}
+<script src="{{ url_for('static', filename='js/agent.js') }}"></script>
+{% endblock %}
