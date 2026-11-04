@@ -50,6 +50,20 @@ def rebuild(database: sqlite3.Connection) -> tuple[int, int]:
                 record["image_url"],
             ),
         )
+    # seed_initial_attractions 会写入若干演示景点（source 默认 'manual'），
+    # 其中部分与核心数据同名同城，这里清掉重复，避免列表出现两张一样的卡片。
+    database.execute(
+        """
+        DELETE FROM attractions
+        WHERE source <> 'core'
+          AND EXISTS (
+              SELECT 1 FROM attractions AS core
+              WHERE core.source = 'core'
+                AND core.city = attractions.city
+                AND core.name = attractions.name
+          )
+        """
+    )
     return deleted, len(records)
 
 
