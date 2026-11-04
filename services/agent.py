@@ -354,6 +354,62 @@ def to_itinerary_payload(plan: dict[str, Any], start_date: str | None) -> dict[s
     }
 
 
+COPY_SYSTEM_PROMPT = (
+    "你是小红书上的旅行博主，写文案幽默、接地气、有点夸张但不假。"
+    "要求：第一人称；150-250 字；分成 3-5 个小段，每段开头放一个 emoji；"
+    "多用短句和口语；不要写具体价格、店名和地址；"
+    "结尾给 3-5 个话题标签，以 # 开头。"
+    "只输出文案正文，不要任何解释或标题。"
+)
+
+
+def _plan_outline(plan: dict[str, Any], city: str | None) -> str:
+    lines = []
+    if city:
+        lines.append("目的地：" + city)
+    lines.append("行程标题：" + str(plan.get("title") or ""))
+    for day in plan.get("days", [])[:7]:
+        names = [str(item.get("name")) for item in day.get("items", [])[:5]]
+        lines.append("第 " + str(day.get("day")) + " 天：" + "、".join(names))
+    return "\n".join(lines)
+
+
+def build_copywrite_fallback(plan: dict[str, Any], city: str | None) -> str:
+    """模型不可用时的模板文案。"""
+
+    title = str(plan.get("title") or "这趟行程")
+    days = plan.get("days", []) or []
+    chunks = ["🎒 " + title + "，安排上了！"]
+    emojis = ["🌿", "🍜", "📸", "🌇", "🚶"]
+    for index, day in enumerate(days[:5]):
+        names = "、".join(str(item.get("name")) for item in day.get("items", [])[:3])
+        if names:
+            chunks.append(emojis[index % len(emojis)] + " Day" + str(day.get("day")) + "：" + names)
+    chunks.append("💡 主打一个随机应变，走累了就找家小店坐坐，别把行程排太满。")
+    tag_city = (city or "").rstrip("市")
+    tags = ["#旅行", "#行程分享", "#citywalk"]
+    if tag_city:
+        tags.insert(0, "#" + tag_city)
+    chunks.append(" ".join(tags[:5]))
+    return "\n\n".join(chunks)
+
+
+def write_caption(plan: dict[str, Any], city: str | None) -> tuple[str, str]:
+    """生成分享文案，返回 (文案, 来源)。"""
+
+    outline = _plan_outline(plan, city)
+    content = ask_model(
+        [
+            {"role": "system", "content": COPY_SYSTEM_PROMPT},
+            {"role": "user", "content": "根据这份行程写一条分享文案：\n" + outline},
+        ],
+        temperature=0.9,
+    )
+    if content and content.strip():
+        return content.strip(), "model"
+    return build_copywrite_fallback(plan, city), "rule"
+
+
 def chat_reply(
     message: str,
     history: list[dict[str, str]],

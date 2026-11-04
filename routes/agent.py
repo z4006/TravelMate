@@ -12,6 +12,7 @@ from services.agent import (
     pick_candidates,
     plan_itinerary,
     to_itinerary_payload,
+    write_caption,
 )
 from utils.decorators import csrf_protected, login_required
 from utils.responses import api_response, request_data
@@ -63,6 +64,57 @@ def agent_chat():
         True,
         "操作成功",
         {"reply": reply, "source": source, "model_configured": is_configured()},
+    )
+
+
+@agent_bp.post("/api/agent/copywrite")
+@csrf_protected
+@login_required
+def agent_copywrite():
+    """根据已生成的行程写一条分享文案（小红书风格）。"""
+
+    payload = request_data()
+    if payload is None:
+        return api_response(False, "请求体必须是 JSON", None, 400)
+
+    plan = payload.get("plan")
+    if not isinstance(plan, dict):
+        return api_response(False, "缺少行程数据", None, 400)
+
+    raw_days = plan.get("days")
+    if not isinstance(raw_days, list) or not raw_days:
+        return api_response(False, "行程里还没有安排景点", None, 400)
+
+    days = []
+    for index, raw_day in enumerate(raw_days[:7], start=1):
+        if not isinstance(raw_day, dict):
+            continue
+        raw_items = raw_day.get("items")
+        if not isinstance(raw_items, list):
+            continue
+        items = [
+            {"name": str(item.get("name"))[:40]}
+            for item in raw_items[:5]
+            if isinstance(item, dict) and item.get("name")
+        ]
+        if items:
+            days.append({"day": index, "items": items})
+
+    if not days:
+        return api_response(False, "行程里还没有可用的景点", None, 400)
+
+    title = plan.get("title")
+    city = payload.get("city")
+    city = city.strip() if isinstance(city, str) and city.strip() else None
+
+    text, source = write_caption(
+        {"title": title if isinstance(title, str) else "", "days": days},
+        city,
+    )
+    return api_response(
+        True,
+        "文案生成成功",
+        {"text": text, "source": source},
     )
 
 

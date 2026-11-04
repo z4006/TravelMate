@@ -162,3 +162,65 @@ def test_chat_falls_back_without_model(app, client, csrf_headers, monkeypatch):
     data = response.get_json()["data"]
     assert data["reply"]
     assert data["source"] == "rule"
+
+def test_copywrite_returns_caption(app, client, csrf_headers, monkeypatch):
+    monkeypatch.setattr(
+        "services.agent.ask_model",
+        lambda *args, **kwargs: "🎒 两天把西安逛明白了\n\n#西安 #旅行",
+    )
+    prepare(app)
+    register_and_login(client, csrf_headers)
+
+    response = client.post(
+        "/api/agent/copywrite",
+        json={
+            "plan": {
+                "title": "西安两日",
+                "days": [{"day": 1, "items": [{"name": "大雁塔"}]}],
+            }
+        },
+        headers=csrf_headers,
+    )
+
+    assert response.status_code == 200
+    data = response.get_json()["data"]
+    assert data["source"] == "model"
+    assert "西安" in data["text"]
+
+
+def test_copywrite_falls_back_without_model(app, client, csrf_headers, monkeypatch):
+    monkeypatch.setattr(
+        "services.agent.settings",
+        lambda: {"api_key": "", "model": "", "base_url": ""},
+    )
+    prepare(app)
+    register_and_login(client, csrf_headers)
+
+    response = client.post(
+        "/api/agent/copywrite",
+        json={
+            "plan": {
+                "title": "杭州两日",
+                "days": [{"day": 1, "items": [{"name": "西湖"}]}],
+            },
+            "city": "杭州市",
+        },
+        headers=csrf_headers,
+    )
+
+    assert response.status_code == 200
+    data = response.get_json()["data"]
+    assert data["source"] == "rule"
+    assert "西湖" in data["text"]
+
+
+def test_copywrite_rejects_empty_plan(app, client, csrf_headers):
+    prepare(app)
+    register_and_login(client, csrf_headers)
+
+    assert client.post(
+        "/api/agent/copywrite", json={}, headers=csrf_headers
+    ).status_code == 400
+    assert client.post(
+        "/api/agent/copywrite", json={"plan": {"days": []}}, headers=csrf_headers
+    ).status_code == 400
