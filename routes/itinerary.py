@@ -22,6 +22,7 @@ from database.itineraries import (
     update_itinerary,
 )
 from services.agent import write_caption
+from services.share import build_share_copy
 from utils.decorators import csrf_protected, login_required
 from utils.responses import api_response, request_data
 
@@ -277,6 +278,29 @@ def remove_itinerary(itinerary_id: int):
     if not removed:
         return api_response(False, "行程不存在", None, 404)
     return api_response(True, "行程删除成功", None)
+
+
+@itinerary_bp.post("/api/itineraries/<int:itinerary_id>/share-copy")
+@csrf_protected
+@login_required
+def itinerary_share_copy(itinerary_id: int):
+    """生成行程的社交分享文案（复用 AI 助手，失败自动降级为模板）。"""
+
+    _ensure_tables()
+    itinerary = get_itinerary(get_db(), g.current_user["id"], itinerary_id)
+    if itinerary is None:
+        return api_response(False, "行程不存在", None, 404)
+    copy, source = build_share_copy(itinerary)
+    return api_response(
+        True,
+        "操作成功",
+        {
+            "itinerary_id": itinerary_id,
+            "title": itinerary.get("title"),
+            "copy": copy,
+            "source": source,
+        },
+    )
 
 
 @itinerary_bp.get("/api/itineraries/recommendations")

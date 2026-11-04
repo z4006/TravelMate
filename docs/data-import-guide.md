@@ -16,22 +16,22 @@
 | 脚本 | 作用 | 命令 | 联网 | 会删数据 |
 | --- | --- | --- | --- | --- |
 | `scripts.seed_attractions` | 写入 5 条基础景点 | `.venv/bin/python -m scripts.seed_attractions` | 否 | 否（幂等） |
-| `scripts.seed_extra_attractions` | 基础 5 条 + 追加 12 条（非六城） | `.venv/bin/python -m scripts.seed_extra_attractions` | 否 | 否（幂等） |
-| `scripts.rebuild_core_attractions` | 用 `data/core_attractions.json` 重建六城数据 | `.venv/bin/python -m scripts.rebuild_core_attractions` | 否 | **是（见第 4 节）** |
+| `scripts.rebuild_core_attractions` | 用 `data/core_attractions.json` 重建全部核心城市数据 | `.venv/bin/python -m scripts.rebuild_core_attractions` | 否 | **是（见第 4 节）** |
+| `scripts.fill_demo_fields` | 为缺少字段的景点补充演示票价和开放时间 | `.venv/bin/python -m scripts.fill_demo_fields` | 否 | 会清理同名 manual 重复记录 |
 | `scripts.import_osm_attractions` | 导入本地 Overpass JSON | `.venv/bin/python -m scripts.import_osm_attractions data/beijing.json` | 否 | 否（按来源幂等） |
 | `scripts.import_osm_pbf_attractions` | 导入本地 OSM PBF | `.venv/bin/python -m scripts.import_osm_pbf_attractions data/beijing.osm.pbf --city 北京市` | 否 | 否（按来源幂等） |
 | `scripts.fetch_real_images` | 从 Wikimedia 抓真实图片 | `.venv/bin/python -m scripts.fetch_real_images` | **是** | 否（只更新 image_url） |
 
-首次拉代码后，最少跑这一条就能有可演示的数据：
-
-```bash
-.venv/bin/python -m scripts.seed_extra_attractions
-```
-
-想要 120 条六城精选数据：
+首次拉代码后，运行以下命令生成当前核心城市数据：
 
 ```bash
 .venv/bin/python -m scripts.rebuild_core_attractions
+```
+
+如需为景点列表补充演示票价和开放时间，再运行：
+
+```bash
+.venv/bin/python -m scripts.fill_demo_fields
 ```
 
 ## 3. `data/` 目录的提交规则
@@ -59,13 +59,13 @@ data/*
 `scripts.rebuild_core_attractions` 的执行逻辑是：
 
 ```sql
-DELETE FROM attractions WHERE city IN ('北京市','上海市','广州市','深圳市','成都市','西安市');
+DELETE FROM attractions WHERE source = 'core';
 ```
 
-然后再写入 JSON 里的 120 条。也就是说：
+然后再写入 JSON 中当前维护的全部核心景点。也就是说：
 
-- 如果你手动往这六个城市导过数据，**跑一次 rebuild 就全没了**；
-- 其他城市（杭州、南京、张家界等）**不受影响**。
+- 所有 `source='core'` 的核心景点会被删除并按 JSON 重新写入；
+- `source='manual'` 和 OSM 导入的数据不会被 rebuild 删除。
 
 **协作要求**：谁要跑 rebuild，先在群里说一声，避免覆盖别人刚导入的数据。
 
