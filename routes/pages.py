@@ -96,6 +96,17 @@ def itineraries():
     )
 
 
+@pages_bp.get("/footprint")
+def footprint():
+    """旅行足迹地图与海报页面，数据由 /api/footprint 提供。"""
+
+    return render_template(
+        "footprint.html",
+        active_page="footprint",
+        page_title="旅行足迹 - TravelMate",
+    )
+
+
 @pages_bp.get("/agent")
 def agent():
     """AI 助手页面：行程规划与旅行问答。"""
