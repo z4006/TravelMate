@@ -33,7 +33,10 @@
                 </div>
                 <div class="d-field">
                     <label for="plan-start">开始日期（可选）</label>
-                    <input id="plan-start" name="start_date" type="date">
+                    <input id="plan-start" name="start_date" type="text"
+                           inputmode="numeric" maxlength="10"
+                           placeholder="2026-11-10" autocomplete="off">
+                    <span class="d-field-hint">格式：YYYY-MM-DD，留空则不带日期</span>
                 </div>
                 <div class="d-form-actions">
                     <button class="btn btn-primary" type="submit">生成行程</button>

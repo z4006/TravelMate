@@ -163,6 +163,12 @@
                 }
                 return;
             }
+            if (startDate && !/^\d{4}-\d{2}-\d{2}$/.test(startDate)) {
+                if (errorNode) {
+                    errorNode.textContent = '开始日期格式应为 2026-11-10';
+                }
+                return;
+            }
 
             var payload = { message: message, days: days };
             if (city) {

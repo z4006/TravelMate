@@ -387,3 +387,10 @@
     flex-direction: column;
     gap: 8px;
 }
+
+/* 字段说明文字 */
+.d-field-hint {
+    font-size: 0.78rem;
+    color: #7b8a93;
+    line-height: 1.4;
+}
