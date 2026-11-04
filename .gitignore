@@ -1,4 +1,4 @@
-# Byte-compiled / optimized / DLL files
+﻿# Byte-compiled / optimized / DLL files
 __pycache__/
 *.py[cod]
 *$py.class
@@ -65,6 +65,7 @@ database/*.db
 data/*
 !data/core_attractions.py
 !data/core_attractions.json
+!data/city_coords.py
 
 # Flask stuff:
 instance/
