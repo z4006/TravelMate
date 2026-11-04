@@ -44,22 +44,48 @@
         return text.indexOf(keyword.toLowerCase()) !== -1;
     }
 
+    // 后端 page_size 上限为 100，传更大值会直接返回 400；这里按上限分页取完
+    var PAGE_SIZE = 100;
+    var MAX_PAGES = 50;
+
+    function fetchPage(criteria, page) {
+        var query = { page: page, page_size: PAGE_SIZE };
+        if (criteria.city) {
+            query.city = criteria.city;
+        }
+        if (criteria.keyword) {
+            query.q = criteria.keyword;
+        }
+        return api.get('/api/attractions', query).then(function (payload) {
+            return ui.extractList(payload);
+        });
+    }
+
+    function fetchAll(criteria) {
+        var items = [];
+        var total = 0;
+        function step(page) {
+            return fetchPage(criteria, page).then(function (result) {
+                if (result.total) {
+                    total = result.total;
+                }
+                items = items.concat(result.items);
+                var more = result.items.length > 0
+                    && items.length < total
+                    && page < MAX_PAGES;
+                return more ? step(page + 1) : { items: items, total: total };
+            });
+        }
+        return step(1);
+    }
+
     function load(criteria, grid, countNode, filterNode, summaryNode) {
         ui.showSkeletons(grid, 6);
         if (countNode) {
             countNode.textContent = '正在加载景点…';
         }
-        var serverQuery = {};
-        if (criteria.city) {
-            serverQuery.city = criteria.city;
-        }
-        if (criteria.keyword) {
-            serverQuery.q = criteria.keyword;
-        }
-        serverQuery.page_size = 1000;
 
-        api.get('/api/attractions', serverQuery).then(function (payload) {
-            var result = ui.extractList(payload);
+        fetchAll(criteria).then(function (result) {
             if (summaryNode) {
                 summaryNode.textContent = criteria.city
                     ? '当前城市：' + criteria.city + '，共找到 ' + result.total + ' 个核心景点'
