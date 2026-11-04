@@ -35,16 +35,22 @@ def rebuild(database: sqlite3.Connection) -> tuple[int, int]:
         database.execute(
             """
             INSERT INTO attractions (
-                name, slug, category_id, city, description, image_url,
+                name, slug, category_id, city, address, phone, description,
+                ticket_price_cents, opening_hours, image_url,
                 source, source_id, source_url, status, created_at, updated_at
-            ) VALUES (?, ?, ?, ?, ?, ?, 'core', ?, ?, 'active', datetime('now'), datetime('now'))
+            ) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, 'core', ?, ?, 'active',
+                datetime('now'), datetime('now'))
             """,
             (
                 record["name"],
                 f"core-{index:03d}-{_slug(record['city'])}-{_slug(record['name'])}",
                 category_ids[record["category_slug"]],
                 record["city"],
+                record.get("address"),
+                record.get("phone"),
                 record["description"],
+                record.get("ticket_price_cents"),
+                record.get("opening_hours"),
                 record["image_url"],
                 source_id,
                 record["image_url"],
