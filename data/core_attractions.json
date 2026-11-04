@@ -1,842 +1,1962 @@
 [
-  {
-    "name": "故宫博物院",
-    "description": "明清两代皇家宫殿，建筑群完整壮观，珍藏丰富文物，是北京最具代表性的历史文化地标。 建议结合周边街区一起游览，提前查看开放时间和交通安排，可获得更完整的旅行体验。",
-    "image_url": "https://upload.wikimedia.org/wikipedia/commons/3/33/Model_of_Palace_Museum_North_Branch_at_BIAD_stall%2C_CIFTIS_Hall_13_%2820240914161300%29.jpg",
-    "city": "北京市",
-    "category_slug": "historical"
-  },
-  {
-    "name": "天安门广场",
-    "description": "城市中心的标志性广场，可参观人民英雄纪念碑、国家博物馆等重要公共文化建筑。 建议结合周边街区一起游览，提前查看开放时间和交通安排，可获得更完整的旅行体验。 建议结合周边街区一起游览，提前查看开放时间和交通安排，可获得更完整的旅行体验。",
-    "image_url": "https://upload.wikimedia.org/wikipedia/commons/2/20/A_999_RTW_%E4%BA%ACM66133.jpg",
-    "city": "北京市",
-    "category_slug": "historical"
-  },
-  {
-    "name": "八达岭长城",
-    "description": "明长城保存较好且交通便利，山势起伏、关城雄伟，是初次游览长城的经典选择。 建议结合周边街区一起游览，提前查看开放时间和交通安排，可获得更完整的旅行体验。 建议结合周边街区一起游览，提前查看开放时间和交通安排，可获得更完整的旅行体验。",
-    "image_url": "https://upload.wikimedia.org/wikipedia/commons/1/15/Badaling_20120315-3.JPG",
-    "city": "北京市",
-    "category_slug": "natural"
-  },
-  {
-    "name": "颐和园",
-    "description": "以昆明湖和万寿山为核心的皇家园林，长廊、佛香阁与山水景观共同展现古典园林意境。 建议结合周边街区一起游览，提前查看开放时间和交通安排，可获得更完整的旅行体验。 建议结合周边街区一起游览，提前查看开放时间和交通安排，可获得更完整的旅行体验。",
-    "image_url": "https://upload.wikimedia.org/wikipedia/commons/b/bc/Construction_of_West_Gate_of_Summer_Palace_Station_%2820170524172112%29.jpg",
-    "city": "北京市",
-    "category_slug": "natural"
-  },
-  {
-    "name": "天坛公园",
-    "description": "明清皇帝祭天祈谷的礼制建筑群，祈年殿造型独特，回音壁等景观很有游览趣味。 建议结合周边街区一起游览，提前查看开放时间和交通安排，可获得更完整的旅行体验。 建议结合周边街区一起游览，提前查看开放时间和交通安排，可获得更完整的旅行体验。",
-    "image_url": "https://upload.wikimedia.org/wikipedia/commons/4/44/Chengzhen_Gate%2C_Temple_of_Heaven%2C_Dongcheng_District%2C_Beijing_%28202602231349%29.jpg",
-    "city": "北京市",
-    "category_slug": "historical"
-  },
-  {
-    "name": "圆明园遗址公园",
-    "description": "曾经的皇家园林遗址，山水格局与西洋楼遗迹相映成景，适合了解近代历史与园林文化。 建议结合周边街区一起游览，提前查看开放时间和交通安排，可获得更完整的旅行体验。 建议结合周边街区一起游览，提前查看开放时间和交通安排，可获得更完整的旅行体验。",
-    "image_url": "https://upload.wikimedia.org/wikipedia/commons/9/9e/20090731_Remains_of_the_Old_Summer_Palace_02.jpg",
-    "city": "北京市",
-    "category_slug": "natural"
-  },
-  {
-    "name": "国家体育场（鸟巢）",
-    "description": "北京奥运会主体育场，独特钢结构外观极具辨识度，夜间灯光和周边奥林匹克公园值得游览。 建议结合周边街区一起游览，提前查看开放时间和交通安排，可获得更完整的旅行体验。",
-    "image_url": "https://upload.wikimedia.org/wikipedia/commons/2/25/Beijing_China_Beijing-National-Stadium-01.jpg",
-    "city": "北京市",
-    "category_slug": "natural"
-  },
-  {
-    "name": "国家游泳中心（水立方）",
-    "description": "奥运场馆代表建筑，蓝色泡泡外墙十分醒目，现已结合水上娱乐和体育活动开放。 建议结合周边街区一起游览，提前查看开放时间和交通安排，可获得更完整的旅行体验。 建议结合周边街区一起游览，提前查看开放时间和交通安排，可获得更完整的旅行体验。",
-    "image_url": "https://upload.wikimedia.org/wikipedia/commons/9/9a/Beijing_National_Aquatics_Center_%2873253331%29.jpeg",
-    "city": "北京市",
-    "category_slug": "historical"
-  },
-  {
-    "name": "什刹海",
-    "description": "由前海、后海和西海组成的城市水域，胡同、酒吧、荷花与老北京生活气息交织。 建议结合周边街区一起游览，提前查看开放时间和交通安排，可获得更完整的旅行体验。 建议结合周边街区一起游览，提前查看开放时间和交通安排，可获得更完整的旅行体验。",
-    "image_url": "https://upload.wikimedia.org/wikipedia/commons/c/c7/Beijing_Shichahai_Sports_School_%2820221026155050%29.jpg",
-    "city": "北京市",
-    "category_slug": "historical"
-  },
-  {
-    "name": "北海公园",
-    "description": "历史悠久的皇家园林，白塔、琼华岛和湖面景色相互映衬，适合漫步和短途休闲。 建议结合周边街区一起游览，提前查看开放时间和交通安排，可获得更完整的旅行体验。 建议结合周边街区一起游览，提前查看开放时间和交通安排，可获得更完整的旅行体验。",
-    "image_url": "https://upload.wikimedia.org/wikipedia/commons/0/09/Jin%27ao-Yudongqiao_Bridge_from_southwest_side_of_Qionghuadao_Island.jpg",
-    "city": "北京市",
-    "category_slug": "historical"
-  },
-  {
-    "name": "景山公园",
-    "description": "位于故宫北侧的城市山地公园，登上万春亭可俯瞰故宫屋顶和北京中轴线。 建议结合周边街区一起游览，提前查看开放时间和交通安排，可获得更完整的旅行体验。 建议结合周边街区一起游览，提前查看开放时间和交通安排，可获得更完整的旅行体验。",
-    "image_url": "https://upload.wikimedia.org/wikipedia/commons/a/a8/Mianxi_Hall%2C_Jingshan_Park%2C_Xicheng_District%2C_Beijing_%28202602230936%29.jpg",
-    "city": "北京市",
-    "category_slug": "natural"
-  },
-  {
-    "name": "雍和宫",
-    "description": "北京著名藏传佛教寺院，牌楼、殿宇和佛像艺术保存较好，宗教文化氛围浓厚。 建议结合周边街区一起游览，提前查看开放时间和交通安排，可获得更完整的旅行体验。 建议结合周边街区一起游览，提前查看开放时间和交通安排，可获得更完整的旅行体验。",
-    "image_url": "https://upload.wikimedia.org/wikipedia/commons/8/8a/Concourse_of_L5_Yonghegong_Lama_Temple_Station_%2820210725172339%29.jpg",
-    "city": "北京市",
-    "category_slug": "historical"
-  },
-  {
-    "name": "恭王府",
-    "description": "清代王府园林代表，建筑布局与萃锦园景致兼具，适合了解王府生活和京城园林。 建议结合周边街区一起游览，提前查看开放时间和交通安排，可获得更完整的旅行体验。 建议结合周边街区一起游览，提前查看开放时间和交通安排，可获得更完整的旅行体验。",
-    "image_url": "https://upload.wikimedia.org/wikipedia/commons/b/b9/%E5%8C%97%E4%BA%AC%E6%81%AD%E7%8E%8B%E5%BA%9C_02.jpg",
-    "city": "北京市",
-    "category_slug": "historical"
-  },
-  {
-    "name": "北京国家博物馆",
-    "description": "大型综合性博物馆，历史文物、近现代史和专题展览内容丰富，适合安排半日参观。 建议结合周边街区一起游览，提前查看开放时间和交通安排，可获得更完整的旅行体验。 建议结合周边街区一起游览，提前查看开放时间和交通安排，可获得更完整的旅行体验。",
-    "image_url": "https://upload.wikimedia.org/wikipedia/commons/2/2e/BMNH_1269248_%2815176146908%29.jpg",
-    "city": "北京市",
-    "category_slug": "historical"
-  },
-  {
-    "name": "中国国家大剧院",
-    "description": "位于天安门广场西侧的现代建筑地标，椭球形外观与水面倒影很有观赏性。 建议结合周边街区一起游览，提前查看开放时间和交通安排，可获得更完整的旅行体验。 建议结合周边街区一起游览，提前查看开放时间和交通安排，可获得更完整的旅行体验。",
-    "image_url": "https://upload.wikimedia.org/wikipedia/commons/9/95/National_Centre_for_the_Performing_Arts-wide.jpg",
-    "city": "北京市",
-    "category_slug": "historical"
-  },
-  {
-    "name": "北京动物园",
-    "description": "城市内历史悠久的动物园，熊猫馆和多种动物展区适合亲子游客游览。 建议结合周边街区一起游览，提前查看开放时间和交通安排，可获得更完整的旅行体验。 建议结合周边街区一起游览，提前查看开放时间和交通安排，可获得更完整的旅行体验。",
-    "image_url": "https://upload.wikimedia.org/wikipedia/commons/4/4a/Concourse_of_Beijing_Zoo_Station_%2820210305150525%29.jpg",
-    "city": "北京市",
-    "category_slug": "theme-park"
-  },
-  {
-    "name": "北京欢乐谷",
-    "description": "大型主题乐园，拥有过山车、演艺和节庆活动，适合喜欢刺激游乐项目的游客。 建议结合周边街区一起游览，提前查看开放时间和交通安排，可获得更完整的旅行体验。 建议结合周边街区一起游览，提前查看开放时间和交通安排，可获得更完整的旅行体验。",
-    "image_url": "https://upload.wikimedia.org/wikipedia/commons/4/42/Concourse%2C_Happy_Valley_Station%2C_Chongqing_Rail_Transit_20250424.jpg",
-    "city": "北京市",
-    "category_slug": "natural"
-  },
-  {
-    "name": "慕田峪长城",
-    "description": "山岭环抱、植被茂密的长城景区，敌楼密集，景色秀美且相对安静。 建议结合周边街区一起游览，提前查看开放时间和交通安排，可获得更完整的旅行体验。 建议结合周边街区一起游览，提前查看开放时间和交通安排，可获得更完整的旅行体验。",
-    "image_url": "https://upload.wikimedia.org/wikipedia/commons/f/fa/Great_Wall_of_China_July_2006.JPG",
-    "city": "北京市",
-    "category_slug": "natural"
-  },
-  {
-    "name": "北京植物园",
-    "description": "汇集多种植物和园林景观，樱桃沟、温室与卧佛寺周边适合四季休闲观赏。 建议结合周边街区一起游览，提前查看开放时间和交通安排，可获得更完整的旅行体验。 建议结合周边街区一起游览，提前查看开放时间和交通安排，可获得更完整的旅行体验。",
-    "image_url": "https://upload.wikimedia.org/wikipedia/commons/b/b0/Beijing_Botanical_Garden_-_Oct_09_-_IMG_1193.jpg",
-    "city": "北京市",
-    "category_slug": "historical"
-  },
-  {
-    "name": "前门大街",
-    "description": "北京中轴线南端的传统商业街，老字号、历史建筑和胡同文化集中，适合步行体验。 建议结合周边街区一起游览，提前查看开放时间和交通安排，可获得更完整的旅行体验。 建议结合周边街区一起游览，提前查看开放时间和交通安排，可获得更完整的旅行体验。",
-    "image_url": "https://upload.wikimedia.org/wikipedia/commons/c/cc/6834153_at_Qianmenxi_%2820211205162912%29.jpg",
-    "city": "北京市",
-    "category_slug": "historical"
-  },
-  {
-    "name": "外滩",
-    "description": "黄浦江畔的城市名片，万国建筑群与陆家嘴天际线隔江相望，夜景和建筑观赏都很出色。 建议结合周边街区一起游览，提前查看开放时间和交通安排，可获得更完整的旅行体验。 建议结合周边街区一起游览，提前查看开放时间和交通安排，可获得更完整的旅行体验。",
-    "image_url": "https://upload.wikimedia.org/wikipedia/commons/3/39/The_Bund%2C_Shanghai%2C_China_%28December_2015%29_-_23.JPG",
-    "city": "上海市",
-    "category_slug": "historical"
-  },
-  {
-    "name": "东方明珠广播电视塔",
-    "description": "陆家嘴代表性建筑，设有观光层和城市展陈空间，可从高处欣赏上海城市景观。 建议结合周边街区一起游览，提前查看开放时间和交通安排，可获得更完整的旅行体验。 建议结合周边街区一起游览，提前查看开放时间和交通安排，可获得更完整的旅行体验。",
-    "image_url": "https://upload.wikimedia.org/wikipedia/commons/f/fc/Oriental_Pearl_Tower_2012.jpg",
-    "city": "上海市",
-    "category_slug": "historical"
-  },
-  {
-    "name": "豫园",
-    "description": "明代江南私家园林，亭台、假山和曲桥布局精巧，周边城隍庙街区也很适合一起游览。 建议结合周边街区一起游览，提前查看开放时间和交通安排，可获得更完整的旅行体验。 建议结合周边街区一起游览，提前查看开放时间和交通安排，可获得更完整的旅行体验。",
-    "image_url": "https://upload.wikimedia.org/wikipedia/commons/5/59/%E4%B8%8A%E6%B5%B7%E5%B8%82%E9%BB%84%E6%B5%A6%E5%8C%BA%E8%B1%AB%E5%9B%AD%E8%80%81%E8%B7%AF_%E6%B9%96%E5%BF%83%E4%BA%AD_-_panoramio.jpg",
-    "city": "上海市",
-    "category_slug": "natural"
-  },
-  {
-    "name": "南京路步行街",
-    "description": "上海最著名的商业街之一，百货、老字号和城市灯光集中，适合购物与夜间散步。 建议结合周边街区一起游览，提前查看开放时间和交通安排，可获得更完整的旅行体验。 建议结合周边街区一起游览，提前查看开放时间和交通安排，可获得更完整的旅行体验。",
-    "image_url": "https://upload.wikimedia.org/wikipedia/commons/9/93/BloodDonationBus-EastNanjingRd_Shanghai.JPG",
-    "city": "上海市",
-    "category_slug": "historical"
-  },
-  {
-    "name": "武康大楼",
-    "description": "上海近代历史建筑代表，外立面和街角空间很有辨识度，是衡复风貌区的热门打卡点。 建议结合周边街区一起游览，提前查看开放时间和交通安排，可获得更完整的旅行体验。 建议结合周边街区一起游览，提前查看开放时间和交通安排，可获得更完整的旅行体验。",
-    "image_url": "https://upload.wikimedia.org/wikipedia/commons/2/27/Shanghai_Wukang_Mansion.jpg",
-    "city": "上海市",
-    "category_slug": "historical"
-  },
-  {
-    "name": "徐家汇天主教堂",
-    "description": "上海重要的哥特式宗教建筑，红砖尖顶和内部空间庄重，体现城市近代建筑风貌。 建议结合周边街区一起游览，提前查看开放时间和交通安排，可获得更完整的旅行体验。 建议结合周边街区一起游览，提前查看开放时间和交通安排，可获得更完整的旅行体验。",
-    "image_url": "https://upload.wikimedia.org/wikipedia/commons/9/91/St._Ignatius_Cathedral%2C_Shanghai_2.jpg",
-    "city": "上海市",
-    "category_slug": "historical"
-  },
-  {
-    "name": "上海迪士尼乐园",
-    "description": "大型主题乐园，拥有城堡、巡游、演出和丰富游乐项目，适合亲子和年轻游客。 建议结合周边街区一起游览，提前查看开放时间和交通安排，可获得更完整的旅行体验。 建议结合周边街区一起游览，提前查看开放时间和交通安排，可获得更完整的旅行体验。",
-    "image_url": "https://upload.wikimedia.org/wikipedia/commons/c/c9/20161113%E4%B8%8A%E6%B5%B7%E8%BF%AA%E5%A3%AB%E5%B0%BC%E4%B9%90%E5%9B%AD%E5%88%9B%E6%9E%81%E9%80%9F%E5%85%89%E8%BD%AE%E8%BF%90%E8%A1%8C%E4%B8%AD.jpg",
-    "city": "上海市",
-    "category_slug": "theme-park"
-  },
-  {
-    "name": "上海博物馆",
-    "description": "综合性博物馆，青铜器、陶瓷、书画等收藏具有代表性，适合系统了解中国艺术。 建议结合周边街区一起游览，提前查看开放时间和交通安排，可获得更完整的旅行体验。 建议结合周边街区一起游览，提前查看开放时间和交通安排，可获得更完整的旅行体验。",
-    "image_url": "https://upload.wikimedia.org/wikipedia/commons/1/17/133_20100912_bt_shanghai_museum_%284986674257%29.jpg",
-    "city": "上海市",
-    "category_slug": "historical"
-  },
-  {
-    "name": "静安寺",
-    "description": "上海市中心历史悠久的佛教寺院，金色屋顶与现代都市交相辉映，夜景尤其醒目。 建议结合周边街区一起游览，提前查看开放时间和交通安排，可获得更完整的旅行体验。 建议结合周边街区一起游览，提前查看开放时间和交通安排，可获得更完整的旅行体验。",
-    "image_url": "https://upload.wikimedia.org/wikipedia/commons/b/be/A_Tudor_house_-_panoramio.jpg",
-    "city": "上海市",
-    "category_slug": "historical"
-  },
-  {
-    "name": "朱家角古镇",
-    "description": "水乡古镇代表，河道、石桥、古宅和摇橹船构成江南生活画卷，适合慢节奏游览。 建议结合周边街区一起游览，提前查看开放时间和交通安排，可获得更完整的旅行体验。 建议结合周边街区一起游览，提前查看开放时间和交通安排，可获得更完整的旅行体验。",
-    "image_url": "https://upload.wikimedia.org/wikipedia/commons/0/09/%E6%9C%B1%E5%AE%B6%E8%A7%92%E5%8F%A4%E9%95%87%EF%BC%8CZhujiajiao_Water_Village_-_panoramio.jpg",
-    "city": "上海市",
-    "category_slug": "historical"
-  },
-  {
-    "name": "田子坊",
-    "description": "由旧式里弄改造而成的文创街区，画廊、手作店和小餐馆密集，适合城市漫游。 建议结合周边街区一起游览，提前查看开放时间和交通安排，可获得更完整的旅行体验。 建议结合周边街区一起游览，提前查看开放时间和交通安排，可获得更完整的旅行体验。",
-    "image_url": "https://upload.wikimedia.org/wikipedia/commons/c/cd/%E7%94%B0%E5%AD%90%E5%9D%8A_-_panoramio.jpg",
-    "city": "上海市",
-    "category_slug": "historical"
-  },
-  {
-    "name": "上海科技馆",
-    "description": "面向公众的综合科技馆，展览互动性强，适合家庭游客和对科学感兴趣的游客。 建议结合周边街区一起游览，提前查看开放时间和交通安排，可获得更完整的旅行体验。 建议结合周边街区一起游览，提前查看开放时间和交通安排，可获得更完整的旅行体验。",
-    "image_url": "https://upload.wikimedia.org/wikipedia/commons/9/9f/200103_Shanghai_Metro_line_2_train_passing_Shanghai_Science_and_Technology_Museum_station.jpg",
-    "city": "上海市",
-    "category_slug": "historical"
-  },
-  {
-    "name": "上海自然博物馆",
-    "description": "以自然生命为主题的现代博物馆，标本、生态和地球科学展览内容丰富。 建议结合周边街区一起游览，提前查看开放时间和交通安排，可获得更完整的旅行体验。 建议结合周边街区一起游览，提前查看开放时间和交通安排，可获得更完整的旅行体验。",
-    "image_url": "https://upload.wikimedia.org/wikipedia/commons/3/39/Shanghai_Natural_History_Museum_%282015%29_-_01.JPG",
-    "city": "上海市",
-    "category_slug": "natural"
-  },
-  {
-    "name": "世纪公园",
-    "description": "浦东大型城市公园，湖泊、草坪和林地空间开阔，适合骑行、散步和亲子活动。 建议结合周边街区一起游览，提前查看开放时间和交通安排，可获得更完整的旅行体验。 建议结合周边街区一起游览，提前查看开放时间和交通安排，可获得更完整的旅行体验。",
-    "image_url": "https://upload.wikimedia.org/wikipedia/commons/b/b6/Century_Park_Gate7_in_Huamu_Road.JPG",
-    "city": "上海市",
-    "category_slug": "natural"
-  },
-  {
-    "name": "陆家嘴中心绿地",
-    "description": "位于金融中心建筑群之间的城市绿地，可近距离欣赏摩天大楼与现代上海天际线。 建议结合周边街区一起游览，提前查看开放时间和交通安排，可获得更完整的旅行体验。 建议结合周边街区一起游览，提前查看开放时间和交通安排，可获得更完整的旅行体验。",
-    "image_url": "https://upload.wikimedia.org/wikipedia/commons/9/9f/Lujiazui_2013-8-3.JPG",
-    "city": "上海市",
-    "category_slug": "historical"
-  },
-  {
-    "name": "上海海昌海洋公园",
-    "description": "以海洋生物展示和主题游乐为特色，拥有演艺、展馆和适合家庭的互动项目。 建议结合周边街区一起游览，提前查看开放时间和交通安排，可获得更完整的旅行体验。 建议结合周边街区一起游览，提前查看开放时间和交通安排，可获得更完整的旅行体验。",
-    "image_url": "/static/images/placeholder-attraction.svg",
-    "city": "上海市",
-    "category_slug": "historical"
-  },
-  {
-    "name": "新天地",
-    "description": "石库门建筑与现代商业结合的街区，餐饮、展览和夜间休闲设施集中。 建议结合周边街区一起游览，提前查看开放时间和交通安排，可获得更完整的旅行体验。 建议结合周边街区一起游览，提前查看开放时间和交通安排，可获得更完整的旅行体验。",
-    "image_url": "https://upload.wikimedia.org/wikipedia/commons/0/06/Exit_4_of_Site_of_the_First_CPC_National_Congress%C2%B7Xintiandi_Station_in_Shanghai_2025.jpg",
-    "city": "上海市",
-    "category_slug": "historical"
-  },
-  {
-    "name": "多伦路文化名人街",
-    "description": "虹口历史文化街区，保留近代建筑和文学记忆，适合步行感受城市人文气息。 建议结合周边街区一起游览，提前查看开放时间和交通安排，可获得更完整的旅行体验。 建议结合周边街区一起游览，提前查看开放时间和交通安排，可获得更完整的旅行体验。",
-    "image_url": "https://upload.wikimedia.org/wikipedia/commons/1/1a/%E4%B8%8A%E6%B5%B7%E5%A4%9A%E4%BC%A6%E8%B7%AF%E6%96%87%E5%8C%96%E5%90%8D%E4%BA%BA%E8%A1%97.jpg",
-    "city": "上海市",
-    "category_slug": "historical"
-  },
-  {
-    "name": "广富林文化遗址",
-    "description": "展示上海地区古代文明和考古成果的文化遗址公园，水乡景观与博物馆相结合。 建议结合周边街区一起游览，提前查看开放时间和交通安排，可获得更完整的旅行体验。 建议结合周边街区一起游览，提前查看开放时间和交通安排，可获得更完整的旅行体验。",
-    "image_url": "https://upload.wikimedia.org/wikipedia/commons/d/d2/Guangfulinwenhuazhanshiguan.jpg",
-    "city": "上海市",
-    "category_slug": "natural"
-  },
-  {
-    "name": "崇明东滩",
-    "description": "上海重要的湿地和生态观鸟区域，滩涂、芦苇与候鸟景观展现城市边缘的自然魅力。 建议结合周边街区一起游览，提前查看开放时间和交通安排，可获得更完整的旅行体验。 建议结合周边街区一起游览，提前查看开放时间和交通安排，可获得更完整的旅行体验。",
-    "image_url": "https://upload.wikimedia.org/wikipedia/commons/0/06/20111231%E5%B4%87%E6%98%8E%E4%B8%9C%E6%BB%A9%E5%8C%97%E4%BE%A7%E9%95%BF%E6%B1%9F%E5%A0%A4%E6%9C%9B%E6%B5%B72_-_panoramio.jpg",
-    "city": "上海市",
-    "category_slug": "natural"
-  },
-  {
-    "name": "广州塔（小蛮腰）",
-    "description": "广州城市地标和珠江景观制高点，塔身造型独特，观景平台可俯瞰珠江两岸。 建议结合周边街区一起游览，提前查看开放时间和交通安排，可获得更完整的旅行体验。 建议结合周边街区一起游览，提前查看开放时间和交通安排，可获得更完整的旅行体验。",
-    "image_url": "https://upload.wikimedia.org/wikipedia/commons/1/16/%E5%B9%BF%E5%B7%9E%E5%A1%94_%E5%B0%8F%E8%9B%AE%E8%85%B0_%282013-10-26%29_-_panoramio.jpg",
-    "city": "广州市",
-    "category_slug": "historical"
-  },
-  {
-    "name": "沙面岛",
-    "description": "保存大量近代欧陆风格建筑的珠江小岛，林荫街道和历史建筑适合慢步拍照。 建议结合周边街区一起游览，提前查看开放时间和交通安排，可获得更完整的旅行体验。 建议结合周边街区一起游览，提前查看开放时间和交通安排，可获得更完整的旅行体验。",
-    "image_url": "https://upload.wikimedia.org/wikipedia/commons/b/b0/Guangzhou_Shamian_2012.11.15_09-59-43.jpg",
-    "city": "广州市",
-    "category_slug": "historical"
-  },
-  {
-    "name": "陈家祠",
-    "description": "岭南建筑与民间工艺的代表，木雕、石雕、砖雕和彩绘装饰极为精美。 建议结合周边街区一起游览，提前查看开放时间和交通安排，可获得更完整的旅行体验。 建议结合周边街区一起游览，提前查看开放时间和交通安排，可获得更完整的旅行体验。",
-    "image_url": "https://upload.wikimedia.org/wikipedia/commons/f/f3/Chen_Clan_Academy_Station_CON.jpg",
-    "city": "广州市",
-    "category_slug": "historical"
-  },
-  {
-    "name": "石室圣心大教堂",
-    "description": "广州著名的哥特式教堂，花岗岩建筑和高耸尖塔具有鲜明的城市历史印记。 建议结合周边街区一起游览，提前查看开放时间和交通安排，可获得更完整的旅行体验。 建议结合周边街区一起游览，提前查看开放时间和交通安排，可获得更完整的旅行体验。",
-    "image_url": "https://upload.wikimedia.org/wikipedia/commons/5/57/Front_Pole_Sacred_Heart_Cathedral_Ooty_Mar25_A7CR_05524-5_Pano_Edit.jpg",
-    "city": "广州市",
-    "category_slug": "historical"
-  },
-  {
-    "name": "越秀公园",
-    "description": "广州传统城市公园，五羊石像、镇海楼和山水园景集中体现羊城文化。 建议结合周边街区一起游览，提前查看开放时间和交通安排，可获得更完整的旅行体验。 建议结合周边街区一起游览，提前查看开放时间和交通安排，可获得更完整的旅行体验。",
-    "image_url": "https://upload.wikimedia.org/wikipedia/commons/f/f3/Exit_B1%2C_Yuexiu_Park_Station%2C_Guangzhou_Metro.jpg",
-    "city": "广州市",
-    "category_slug": "natural"
-  },
-  {
-    "name": "珠江夜游",
-    "description": "乘船欣赏广州两岸夜景的经典体验，可连续观赏广州塔、猎德大桥等城市地标。 建议结合周边街区一起游览，提前查看开放时间和交通安排，可获得更完整的旅行体验。 建议结合周边街区一起游览，提前查看开放时间和交通安排，可获得更完整的旅行体验。",
-    "image_url": "https://upload.wikimedia.org/wikipedia/commons/a/a3/%E5%A4%9C%E6%B8%B8%E7%8F%A0%E6%B1%9F_-_panoramio.jpg",
-    "city": "广州市",
-    "category_slug": "historical"
-  },
-  {
-    "name": "北京路步行街",
-    "description": "广州历史悠久的商业街，千年古道遗址、老字号和现代商业集中于步行空间。 建议结合周边街区一起游览，提前查看开放时间和交通安排，可获得更完整的旅行体验。 建议结合周边街区一起游览，提前查看开放时间和交通安排，可获得更完整的旅行体验。",
-    "image_url": "https://upload.wikimedia.org/wikipedia/commons/1/12/Guangzhou_Beijinglu_Gudao_Yizhi_20190511.165835.jpg",
-    "city": "广州市",
-    "category_slug": "historical"
-  },
-  {
-    "name": "永庆坊",
-    "description": "由西关骑楼和旧街巷改造而成的文化街区，岭南建筑、非遗和文创活动丰富。 建议结合周边街区一起游览，提前查看开放时间和交通安排，可获得更完整的旅行体验。 建议结合周边街区一起游览，提前查看开放时间和交通安排，可获得更完整的旅行体验。",
-    "image_url": "https://upload.wikimedia.org/wikipedia/commons/5/58/%E8%8D%94%E6%B9%BE_%E6%B0%B8%E5%BA%86%E5%9D%8A_01.jpg",
-    "city": "广州市",
-    "category_slug": "historical"
-  },
-  {
-    "name": "白云山",
-    "description": "广州著名城市山岳景区，山林、溪谷和观景平台相连，可远眺城市和珠江。 建议结合周边街区一起游览，提前查看开放时间和交通安排，可获得更完整的旅行体验。 建议结合周边街区一起游览，提前查看开放时间和交通安排，可获得更完整的旅行体验。",
-    "image_url": "https://upload.wikimedia.org/wikipedia/commons/0/06/Guangzhou_BaiyunShan.jpg",
-    "city": "广州市",
-    "category_slug": "natural"
-  },
-  {
-    "name": "上下九步行街",
-    "description": "西关传统商业街区，骑楼建筑、广式小吃和老字号店铺体现广州生活气息。 建议结合周边街区一起游览，提前查看开放时间和交通安排，可获得更完整的旅行体验。 建议结合周边街区一起游览，提前查看开放时间和交通安排，可获得更完整的旅行体验。",
-    "image_url": "https://upload.wikimedia.org/wikipedia/commons/e/e3/SHK.jpg",
-    "city": "广州市",
-    "category_slug": "historical"
-  },
-  {
-    "name": "长隆野生动物世界",
-    "description": "大型野生动物主题乐园，动物展示和科普体验丰富，适合亲子和家庭游客。 建议结合周边街区一起游览，提前查看开放时间和交通安排，可获得更完整的旅行体验。 建议结合周边街区一起游览，提前查看开放时间和交通安排，可获得更完整的旅行体验。",
-    "image_url": "https://upload.wikimedia.org/wikipedia/commons/c/c9/Chimelong_Safari_Park_%28Safari_on_wheels_01%29.JPG",
-    "city": "广州市",
-    "category_slug": "historical"
-  },
-  {
-    "name": "长隆欢乐世界",
-    "description": "综合性主题乐园，拥有大型游乐设施、演艺和节庆活动，适合年轻游客游玩。 建议结合周边街区一起游览，提前查看开放时间和交通安排，可获得更完整的旅行体验。 建议结合周边街区一起游览，提前查看开放时间和交通安排，可获得更完整的旅行体验。",
-    "image_url": "https://upload.wikimedia.org/wikipedia/commons/d/d7/Guangzhou_Panyu_Changlong_Huanle_Shijie_2023-03-10_17.40.11.jpg",
-    "city": "广州市",
-    "category_slug": "historical"
-  },
-  {
-    "name": "广东省博物馆",
-    "description": "大型综合博物馆，岭南历史、自然资源和艺术展览内容丰富，建筑本身也很有特色。 建议结合周边街区一起游览，提前查看开放时间和交通安排，可获得更完整的旅行体验。 建议结合周边街区一起游览，提前查看开放时间和交通安排，可获得更完整的旅行体验。",
-    "image_url": "https://upload.wikimedia.org/wikipedia/commons/6/65/Namestone%2C_Southern_Han_Mausoleums_Museum_20251025.jpg",
-    "city": "广州市",
-    "category_slug": "natural"
-  },
-  {
-    "name": "广州动物园",
-    "description": "市区内的综合动物园，动物种类较多，交通方便，适合安排亲子半日游。 建议结合周边街区一起游览，提前查看开放时间和交通安排，可获得更完整的旅行体验。 建议结合周边街区一起游览，提前查看开放时间和交通安排，可获得更完整的旅行体验。",
-    "image_url": "https://upload.wikimedia.org/wikipedia/commons/f/f2/Ara-Zoo-Muenster-2013-02.jpg",
-    "city": "广州市",
-    "category_slug": "theme-park"
-  },
-  {
-    "name": "大佛寺",
-    "description": "北京路附近的历史寺院，夜间灯光与古建筑相映成趣，是老城文化游的重要一站。 建议结合周边街区一起游览，提前查看开放时间和交通安排，可获得更完整的旅行体验。 建议结合周边街区一起游览，提前查看开放时间和交通安排，可获得更完整的旅行体验。",
-    "image_url": "https://upload.wikimedia.org/wikipedia/commons/9/9e/Dafo_Jinghong.jpg",
-    "city": "广州市",
-    "category_slug": "historical"
-  },
-  {
-    "name": "黄埔军校旧址纪念馆",
-    "description": "近代中国军事教育史的重要遗址，建筑和展陈帮助游客了解近代广州历史。 建议结合周边街区一起游览，提前查看开放时间和交通安排，可获得更完整的旅行体验。 建议结合周边街区一起游览，提前查看开放时间和交通安排，可获得更完整的旅行体验。",
-    "image_url": "https://upload.wikimedia.org/wikipedia/commons/f/f4/Front_gate_of_Whampoa_Military_Academy.jpg",
-    "city": "广州市",
-    "category_slug": "historical"
-  },
-  {
-    "name": "南越王博物院",
-    "description": "展示南越国历史和出土文物的专题博物馆，玉器、墓葬和城市考古内容很有特色。 建议结合周边街区一起游览，提前查看开放时间和交通安排，可获得更完整的旅行体验。 建议结合周边街区一起游览，提前查看开放时间和交通安排，可获得更完整的旅行体验。",
-    "image_url": "https://upload.wikimedia.org/wikipedia/commons/3/3f/Inside_Nanyue_King_Museum_Site_of_Palace_and_Garden_01.jpg",
-    "city": "广州市",
-    "category_slug": "historical"
-  },
-  {
-    "name": "广州长隆国际大马戏",
-    "description": "以大型舞台、杂技和动物主题演出著称，适合喜欢现场表演的游客。 建议结合周边街区一起游览，提前查看开放时间和交通安排，可获得更完整的旅行体验。 建议结合周边街区一起游览，提前查看开放时间和交通安排，可获得更完整的旅行体验。",
-    "image_url": "https://upload.wikimedia.org/wikipedia/commons/b/ba/2025_Chimelong_International_Circus_05.jpg",
-    "city": "广州市",
-    "category_slug": "historical"
-  },
-  {
-    "name": "宝墨园",
-    "description": "岭南园林代表，水景、桥廊、雕塑和传统建筑结合，适合休闲赏景。 建议结合周边街区一起游览，提前查看开放时间和交通安排，可获得更完整的旅行体验。 建议结合周边街区一起游览，提前查看开放时间和交通安排，可获得更完整的旅行体验。",
-    "image_url": "https://upload.wikimedia.org/wikipedia/commons/c/c2/Baomo_Garden.jpg",
-    "city": "广州市",
-    "category_slug": "historical"
-  },
-  {
-    "name": "广州融创乐园",
-    "description": "综合性室内外主题娱乐空间，包含游乐设施、演艺和冰雪体验，适合家庭出行。 建议结合周边街区一起游览，提前查看开放时间和交通安排，可获得更完整的旅行体验。 建议结合周边街区一起游览，提前查看开放时间和交通安排，可获得更完整的旅行体验。",
-    "image_url": "https://upload.wikimedia.org/wikipedia/commons/9/92/%E5%B9%BF%E5%B7%9E%E8%9E%8D%E5%88%9B%E4%B9%90%E5%9B%AD.jpg",
-    "city": "广州市",
-    "category_slug": "theme-park"
-  },
-  {
-    "name": "世界之窗",
-    "description": "以微缩景观和主题演艺展示世界文化地标，适合短时间体验多国建筑和节庆氛围。 建议结合周边街区一起游览，提前查看开放时间和交通安排，可获得更完整的旅行体验。 建议结合周边街区一起游览，提前查看开放时间和交通安排，可获得更完整的旅行体验。",
-    "image_url": "https://upload.wikimedia.org/wikipedia/commons/c/cd/SZ_%E6%B7%B1%E5%9C%B3_Shenzhen_%E5%8D%97%E5%B1%B1%E5%8D%80_Nanshan_%E5%83%91%E5%9F%8E%E6%9D%B1%E8%B7%AF_Metro_QiaoCheng_East_Road_%E5%9C%B0%E9%90%B5%E7%AB%99_Metro_Station_%E5%B7%B4%E5%A3%AB%E7%AB%99_bus_stop_sign_July_2023_Px3_01.jpg",
-    "city": "深圳市",
-    "category_slug": "theme-park"
-  },
-  {
-    "name": "深圳湾公园",
-    "description": "沿海城市公园，拥有开阔海湾、绿道和观鸟景观，适合散步、骑行和欣赏日落。 建议结合周边街区一起游览，提前查看开放时间和交通安排，可获得更完整的旅行体验。 建议结合周边街区一起游览，提前查看开放时间和交通安排，可获得更完整的旅行体验。",
-    "image_url": "https://upload.wikimedia.org/wikipedia/commons/b/b1/SZMC_Line5_Qianwan_Park_Station_Platform.jpg",
-    "city": "深圳市",
-    "category_slug": "natural"
-  },
-  {
-    "name": "莲花山公园",
-    "description": "深圳中心城区的山地公园，山顶可俯瞰福田城市景观和中轴线。 建议结合周边街区一起游览，提前查看开放时间和交通安排，可获得更完整的旅行体验。 建议结合周边街区一起游览，提前查看开放时间和交通安排，可获得更完整的旅行体验。",
-    "image_url": "https://upload.wikimedia.org/wikipedia/commons/b/b4/LIANHUASHAN_PARK%2C_SHENZHEN_%2810%29.jpg",
-    "city": "深圳市",
-    "category_slug": "natural"
-  },
-  {
-    "name": "海上世界",
-    "description": "蛇口滨海综合休闲区，以明华轮、餐饮、演艺和夜间灯光形成独特城市体验。 建议结合周边街区一起游览，提前查看开放时间和交通安排，可获得更完整的旅行体验。 建议结合周边街区一起游览，提前查看开放时间和交通安排，可获得更完整的旅行体验。",
-    "image_url": "https://upload.wikimedia.org/wikipedia/commons/9/94/%E8%9B%87%E5%8F%A3_%E6%B5%B7%E4%B8%8A%E4%B8%96%E7%95%8C_hai_shang_shi_jie_-_panoramio.jpg",
-    "city": "深圳市",
-    "category_slug": "historical"
-  },
-  {
-    "name": "欢乐港湾",
-    "description": "宝安滨海公共空间，摩天轮、海景步道和夜间灯光相结合，适合家庭和情侣游览。 建议结合周边街区一起游览，提前查看开放时间和交通安排，可获得更完整的旅行体验。 建议结合周边街区一起游览，提前查看开放时间和交通安排，可获得更完整的旅行体验。",
-    "image_url": "/static/images/placeholder-attraction.svg",
-    "city": "深圳市",
-    "category_slug": "historical"
-  },
-  {
-    "name": "大鹏所城",
-    "description": "保存较完整的明代海防古城，城墙、古街和民居展现深圳的历史文化根脉。 建议结合周边街区一起游览，提前查看开放时间和交通安排，可获得更完整的旅行体验。 建议结合周边街区一起游览，提前查看开放时间和交通安排，可获得更完整的旅行体验。",
-    "image_url": "https://upload.wikimedia.org/wikipedia/commons/3/33/Dapeng_Fortress%2C_Shenzhen.jpg",
-    "city": "深圳市",
-    "category_slug": "historical"
-  },
-  {
-    "name": "杨梅坑",
-    "description": "大鹏半岛热门滨海景区，山海步道、礁石和清澈海湾适合徒步与拍照。 建议结合周边街区一起游览，提前查看开放时间和交通安排，可获得更完整的旅行体验。 建议结合周边街区一起游览，提前查看开放时间和交通安排，可获得更完整的旅行体验。",
-    "image_url": "https://upload.wikimedia.org/wikipedia/commons/c/c0/ShenZhen%2CChina%28%E6%9D%A8%E6%A2%85%E5%9D%91%29_-_panoramio.jpg",
-    "city": "深圳市",
-    "category_slug": "natural"
-  },
-  {
-    "name": "仙湖植物园",
-    "description": "大型植物园和自然教育基地，植物专类园、湖泊与梧桐山景观适合休闲游览。 建议结合周边街区一起游览，提前查看开放时间和交通安排，可获得更完整的旅行体验。 建议结合周边街区一起游览，提前查看开放时间和交通安排，可获得更完整的旅行体验。",
-    "image_url": "https://upload.wikimedia.org/wikipedia/commons/a/ab/FAIRYLAKE_BOTANICAL_GARDEN.jpg",
-    "city": "深圳市",
-    "category_slug": "natural"
-  },
-  {
-    "name": "东门老街",
-    "description": "深圳历史悠久的商业街区，餐饮、购物和城市生活氛围集中，适合夜间逛街。 建议结合周边街区一起游览，提前查看开放时间和交通安排，可获得更完整的旅行体验。 建议结合周边街区一起游览，提前查看开放时间和交通安排，可获得更完整的旅行体验。",
-    "image_url": "https://upload.wikimedia.org/wikipedia/commons/c/ca/Exit_C_of_Laojie_Station_202210.jpg",
-    "city": "深圳市",
-    "category_slug": "historical"
-  },
-  {
-    "name": "南头古城",
-    "description": "深圳重要历史城区，古城门、街巷和新型文化空间并存，适合了解城市变迁。 建议结合周边街区一起游览，提前查看开放时间和交通安排，可获得更完整的旅行体验。 建议结合周边街区一起游览，提前查看开放时间和交通安排，可获得更完整的旅行体验。",
-    "image_url": "https://upload.wikimedia.org/wikipedia/commons/1/15/%E5%85%B3%E5%B8%9D%E5%BA%99_guan_di_miao_-_panoramio.jpg",
-    "city": "深圳市",
-    "category_slug": "historical"
-  },
-  {
-    "name": "深圳野生动物园",
-    "description": "大型城市动物园，拥有多种野生动物展示和科普活动，适合亲子游客。 建议结合周边街区一起游览，提前查看开放时间和交通安排，可获得更完整的旅行体验。 建议结合周边街区一起游览，提前查看开放时间和交通安排，可获得更完整的旅行体验。",
-    "image_url": "https://upload.wikimedia.org/wikipedia/commons/a/a7/Szsafaripark0.jpg",
-    "city": "深圳市",
-    "category_slug": "theme-park"
-  },
-  {
-    "name": "深圳博物馆",
-    "description": "综合性城市博物馆，系统介绍深圳历史、改革开放和自然文化。 建议结合周边街区一起游览，提前查看开放时间和交通安排，可获得更完整的旅行体验。 建议结合周边街区一起游览，提前查看开放时间和交通安排，可获得更完整的旅行体验。",
-    "image_url": "https://upload.wikimedia.org/wikipedia/commons/f/f9/20260627-%E7%9A%87%E5%B2%97%E5%8D%9A%E7%89%A9%E9%A6%86.jpg",
-    "city": "深圳市",
-    "category_slug": "natural"
-  },
-  {
-    "name": "华侨城旅游度假区",
-    "description": "集合主题公园、生态景观、文创空间和演艺活动的综合旅游片区。 建议结合周边街区一起游览，提前查看开放时间和交通安排，可获得更完整的旅行体验。 建议结合周边街区一起游览，提前查看开放时间和交通安排，可获得更完整的旅行体验。",
-    "image_url": "https://upload.wikimedia.org/wikipedia/commons/3/30/Entrance_No.4_of_Overseas_Chinese_Town_Station.jpg",
-    "city": "深圳市",
-    "category_slug": "natural"
-  },
-  {
-    "name": "锦绣中华民俗村",
-    "description": "通过微缩景观和民俗演出展示中国地域文化，适合家庭和团队游览。 建议结合周边街区一起游览，提前查看开放时间和交通安排，可获得更完整的旅行体验。 建议结合周边街区一起游览，提前查看开放时间和交通安排，可获得更完整的旅行体验。",
-    "image_url": "https://upload.wikimedia.org/wikipedia/commons/0/0f/Gate_of_Splendid_China_%26_China_Folk_Culture_Village.jpg",
-    "city": "深圳市",
-    "category_slug": "historical"
-  },
-  {
-    "name": "东部华侨城",
-    "description": "融合山地生态、休闲度假和主题娱乐的综合景区，适合安排一日游。 建议结合周边街区一起游览，提前查看开放时间和交通安排，可获得更完整的旅行体验。 建议结合周边街区一起游览，提前查看开放时间和交通安排，可获得更完整的旅行体验。",
-    "image_url": "https://upload.wikimedia.org/wikipedia/commons/7/7e/%E6%B7%B1%E5%9C%B3%E5%B8%82%E4%B8%9C%E9%83%A8%E5%8D%8E%E4%BE%A8%E5%9F%8E_-_panoramio.jpg",
-    "city": "深圳市",
-    "category_slug": "natural"
-  },
-  {
-    "name": "梧桐山风景区",
-    "description": "深圳著名登山和自然景区，山脊视野开阔，可俯瞰城市与大鹏湾。 建议结合周边街区一起游览，提前查看开放时间和交通安排，可获得更完整的旅行体验。 建议结合周边街区一起游览，提前查看开放时间和交通安排，可获得更完整的旅行体验。",
-    "image_url": "https://upload.wikimedia.org/wikipedia/commons/0/07/%E6%B8%B8%E8%88%B9%E4%B8%8A%E6%8B%8D%E6%A1%90%E6%BA%AA%E6%B9%96%E5%BF%83%E5%B2%9B.jpg",
-    "city": "深圳市",
-    "category_slug": "natural"
-  },
-  {
-    "name": "西涌海滩",
-    "description": "大鹏半岛代表性海滩，沙滩、海岸线和露营活动丰富，适合周末亲海。 建议结合周边街区一起游览，提前查看开放时间和交通安排，可获得更完整的旅行体验。 建议结合周边街区一起游览，提前查看开放时间和交通安排，可获得更完整的旅行体验。",
-    "image_url": "/static/images/placeholder-attraction.svg",
-    "city": "深圳市",
-    "category_slug": "natural"
-  },
-  {
-    "name": "深圳音乐厅",
-    "description": "福田文化中心的重要演出场馆，建筑与城市公共空间结合，常有高质量音乐演出。 建议结合周边街区一起游览，提前查看开放时间和交通安排，可获得更完整的旅行体验。 建议结合周边街区一起游览，提前查看开放时间和交通安排，可获得更完整的旅行体验。",
-    "image_url": "https://upload.wikimedia.org/wikipedia/commons/b/b5/Shenzhen_Concert_Hall_%282%29.jpg",
-    "city": "深圳市",
-    "category_slug": "historical"
-  },
-  {
-    "name": "深圳市当代艺术与城市规划馆",
-    "description": "展示当代艺术和城市建设成果的公共文化场馆，适合了解深圳发展。 建议结合周边街区一起游览，提前查看开放时间和交通安排，可获得更完整的旅行体验。 建议结合周边街区一起游览，提前查看开放时间和交通安排，可获得更完整的旅行体验。",
-    "image_url": "https://upload.wikimedia.org/wikipedia/commons/c/c0/MOCAUP%2C_Futian%2C_Shenzhen_-_20260702_-_Front.jpg",
-    "city": "深圳市",
-    "category_slug": "historical"
-  },
-  {
-    "name": "甘坑古镇",
-    "description": "客家文化特色鲜明的历史街区，古建筑、民俗展示和文创餐饮适合休闲漫游。 建议结合周边街区一起游览，提前查看开放时间和交通安排，可获得更完整的旅行体验。 建议结合周边街区一起游览，提前查看开放时间和交通安排，可获得更完整的旅行体验。",
-    "image_url": "https://upload.wikimedia.org/wikipedia/commons/b/ba/Gankeng_at_night%2C_December_2024_-1.jpg",
-    "city": "深圳市",
-    "category_slug": "historical"
-  },
-  {
-    "name": "成都大熊猫繁育研究基地",
-    "description": "全球知名的大熊猫科研与保护基地，可近距离观察熊猫生活，是成都必游景点。 建议结合周边街区一起游览，提前查看开放时间和交通安排，可获得更完整的旅行体验。 建议结合周边街区一起游览，提前查看开放时间和交通安排，可获得更完整的旅行体验。",
-    "image_url": "https://upload.wikimedia.org/wikipedia/commons/4/4c/Chengdu_Research_Base_Eingang.jpg",
-    "city": "成都市",
-    "category_slug": "historical"
-  },
-  {
-    "name": "武侯祠",
-    "description": "纪念诸葛亮和刘备的重要三国文化遗址，红墙竹影与历史建筑形成独特游览氛围。 建议结合周边街区一起游览，提前查看开放时间和交通安排，可获得更完整的旅行体验。 建议结合周边街区一起游览，提前查看开放时间和交通安排，可获得更完整的旅行体验。",
-    "image_url": "https://upload.wikimedia.org/wikipedia/commons/f/ff/%E5%9B%9B%E5%B7%9D%E7%9C%81%E6%88%90%E9%83%BD%E5%B8%82%E6%AD%A6%E4%BE%AF%E7%A5%A0.jpg",
-    "city": "成都市",
-    "category_slug": "historical"
-  },
-  {
-    "name": "杜甫草堂",
-    "description": "唐代诗人杜甫在成都生活和创作的故居，园林清幽，适合感受诗歌与成都文化。 建议结合周边街区一起游览，提前查看开放时间和交通安排，可获得更完整的旅行体验。 建议结合周边街区一起游览，提前查看开放时间和交通安排，可获得更完整的旅行体验。",
-    "image_url": "https://upload.wikimedia.org/wikipedia/commons/b/bc/%E5%9B%9B%E5%B7%9D%E7%9C%81%E6%88%90%E9%83%BD%E5%B8%82%E6%9D%9C%E7%94%AB%E8%8D%89%E5%A0%82_-_panoramio.jpg",
-    "city": "成都市",
-    "category_slug": "historical"
-  },
-  {
-    "name": "宽窄巷子",
-    "description": "由宽巷子、窄巷子和井巷子组成的历史街区，川西民居、茶馆和特色餐饮集中。 建议结合周边街区一起游览，提前查看开放时间和交通安排，可获得更完整的旅行体验。 建议结合周边街区一起游览，提前查看开放时间和交通安排，可获得更完整的旅行体验。",
-    "image_url": "https://upload.wikimedia.org/wikipedia/commons/7/74/Artwall_in_Concourse_of_Kuanzhaixiangzi_Alleys_Station.JPG",
-    "city": "成都市",
-    "category_slug": "historical"
-  },
-  {
-    "name": "锦里古街",
-    "description": "武侯祠旁的传统风貌商业街，红灯笼、川味小吃和民俗体验很有成都特色。 建议结合周边街区一起游览，提前查看开放时间和交通安排，可获得更完整的旅行体验。 建议结合周边街区一起游览，提前查看开放时间和交通安排，可获得更完整的旅行体验。",
-    "image_url": "https://upload.wikimedia.org/wikipedia/commons/c/ce/Chengdu_Jinli-Stra%C3%9Fe_03.jpg",
-    "city": "成都市",
-    "category_slug": "historical"
-  },
-  {
-    "name": "春熙路",
-    "description": "成都最具代表性的商业街区，品牌购物、餐饮和城市地标集中，夜间人气旺盛。 建议结合周边街区一起游览，提前查看开放时间和交通安排，可获得更完整的旅行体验。 建议结合周边街区一起游览，提前查看开放时间和交通安排，可获得更完整的旅行体验。",
-    "image_url": "https://upload.wikimedia.org/wikipedia/commons/7/73/Chunxi_Road_seen_from_viaduct%2C_Chengdu.jpg",
-    "city": "成都市",
-    "category_slug": "historical"
-  },
-  {
-    "name": "太古里",
-    "description": "开放式现代商业街区，将古建筑风貌与时尚商业结合，适合购物、餐饮和城市摄影。 建议结合周边街区一起游览，提前查看开放时间和交通安排，可获得更完整的旅行体验。 建议结合周边街区一起游览，提前查看开放时间和交通安排，可获得更完整的旅行体验。",
-    "image_url": "https://upload.wikimedia.org/wikipedia/commons/5/51/Chow_Sang_Sang_Shanghai_Taikoo_Li_Qiantan_Branch.jpg",
-    "city": "成都市",
-    "category_slug": "historical"
-  },
-  {
-    "name": "金沙遗址博物馆",
-    "description": "展示古蜀文明遗址和出土文物的专题博物馆，太阳神鸟金饰是重要文化符号。 建议结合周边街区一起游览，提前查看开放时间和交通安排，可获得更完整的旅行体验。 建议结合周边街区一起游览，提前查看开放时间和交通安排，可获得更完整的旅行体验。",
-    "image_url": "https://upload.wikimedia.org/wikipedia/commons/9/9e/%E5%9B%9B%E5%B7%9D%E7%9C%81%E6%88%90%E9%83%BD%E5%B8%82%E9%87%91%E6%B2%99%E9%81%97%E5%9D%80%E5%87%BA%E5%9C%9F-%E7%8E%89%E5%88%80-%E5%95%86%E4%BB%A3%E6%99%9A%E6%9C%9F-%E8%A5%BF%E5%91%A8%E6%99%9A%E6%9C%9F%EF%BC%88%E5%89%8D1200-%E5%89%8D800%EF%BC%89-%E6%88%90%E9%83%BD%E9%87%91%E6%B2%99%E9%81%97%E5%9D%80%E5%8D%9A%E7%89%A9%E9%A6%86%E8%97%8F_2024-10-31.jpg",
-    "city": "成都市",
-    "category_slug": "historical"
-  },
-  {
-    "name": "文殊院",
-    "description": "成都历史悠久的佛教寺院，殿宇、园林和茶馆相连，体现城市悠闲的人文生活。 建议结合周边街区一起游览，提前查看开放时间和交通安排，可获得更完整的旅行体验。 建议结合周边街区一起游览，提前查看开放时间和交通安排，可获得更完整的旅行体验。",
-    "image_url": "https://upload.wikimedia.org/wikipedia/commons/9/9b/Wenshu_Monastery_-_55393262982.jpg",
-    "city": "成都市",
-    "category_slug": "historical"
-  },
-  {
-    "name": "都江堰景区",
-    "description": "两千多年历史的水利工程，鱼嘴、飞沙堰和宝瓶口展现古代工程智慧与山水景观。 建议结合周边街区一起游览，提前查看开放时间和交通安排，可获得更完整的旅行体验。 建议结合周边街区一起游览，提前查看开放时间和交通安排，可获得更完整的旅行体验。",
-    "image_url": "https://upload.wikimedia.org/wikipedia/commons/5/5d/Mount_Qingcheng_Kina_2009_0168_%284141044073%29.jpg",
-    "city": "成都市",
-    "category_slug": "natural"
-  },
-  {
-    "name": "青城山",
-    "description": "中国道教名山之一，林木幽深、宫观古朴，适合徒步、登山和感受自然清幽。 建议结合周边街区一起游览，提前查看开放时间和交通安排，可获得更完整的旅行体验。 建议结合周边街区一起游览，提前查看开放时间和交通安排，可获得更完整的旅行体验。",
-    "image_url": "https://upload.wikimedia.org/wikipedia/commons/4/41/AS1861_at_Qingchengshan_%2820180216142543%29.jpg",
-    "city": "成都市",
-    "category_slug": "natural"
-  },
-  {
-    "name": "成都博物馆",
-    "description": "综合展示成都历史、民俗和城市发展的博物馆，展览内容适合初识成都文化。 建议结合周边街区一起游览，提前查看开放时间和交通安排，可获得更完整的旅行体验。 建议结合周边街区一起游览，提前查看开放时间和交通安排，可获得更完整的旅行体验。",
-    "image_url": "https://upload.wikimedia.org/wikipedia/commons/3/33/Gallery_13_of_the_Chengdu_Tianfu_Art_Museum.jpg",
-    "city": "成都市",
-    "category_slug": "historical"
-  },
-  {
-    "name": "人民公园",
-    "description": "成都城市生活的经典场景，鹤鸣茶社、湖畔园林和市民休闲活动很有地方气息。 建议结合周边街区一起游览，提前查看开放时间和交通安排，可获得更完整的旅行体验。 建议结合周边街区一起游览，提前查看开放时间和交通安排，可获得更完整的旅行体验。",
-    "image_url": "https://upload.wikimedia.org/wikipedia/commons/9/93/20250519_%E6%88%90%E9%83%BD%E5%B8%82%E4%BA%BA%E6%B0%91%E5%85%AC%E5%9B%AD%E9%B9%A4%E9%B8%A3%E6%A1%A5.jpg",
-    "city": "成都市",
-    "category_slug": "historical"
-  },
-  {
-    "name": "望江楼公园",
-    "description": "以崇丽阁和竹园闻名的城市公园，与唐代女诗人薛涛文化记忆联系紧密。 建议结合周边街区一起游览，提前查看开放时间和交通安排，可获得更完整的旅行体验。 建议结合周边街区一起游览，提前查看开放时间和交通安排，可获得更完整的旅行体验。",
-    "image_url": "https://upload.wikimedia.org/wikipedia/commons/9/91/%E6%88%90%E9%83%BD%E6%9C%9B%E6%B1%9F%E6%A5%BC%E5%85%AC%E5%9B%AD.jpg",
-    "city": "成都市",
-    "category_slug": "natural"
-  },
-  {
-    "name": "西岭雪山",
-    "description": "成都周边著名山地度假区，雪山、森林和四季户外运动资源丰富。 建议结合周边街区一起游览，提前查看开放时间和交通安排，可获得更完整的旅行体验。 建议结合周边街区一起游览，提前查看开放时间和交通安排，可获得更完整的旅行体验。",
-    "image_url": "https://upload.wikimedia.org/wikipedia/commons/f/f8/%E5%9C%A8%E6%88%90%E9%83%BD%E9%81%A5%E6%9C%9B%E9%9B%AA%E5%B1%B1_%E8%A5%BF%E5%B2%AD%E9%9B%AA%E5%B1%B1%E4%B8%BB%E5%B3%B0%E5%A4%A7%E9%9B%AA%E5%A1%98_Chengdu_skyline_with_a_view_of_Da_Xue_Tang_%28Chengdu_peak%29.jpg",
-    "city": "成都市",
-    "category_slug": "natural"
-  },
-  {
-    "name": "安顺廊桥",
-    "description": "锦江上的城市地标，传统风格桥体与两岸夜景相映成趣，适合夜间散步。 建议结合周边街区一起游览，提前查看开放时间和交通安排，可获得更完整的旅行体验。 建议结合周边街区一起游览，提前查看开放时间和交通安排，可获得更完整的旅行体验。",
-    "image_url": "https://upload.wikimedia.org/wikipedia/commons/4/43/Anshun_Bridge_%2820250403192443%29.jpg",
-    "city": "成都市",
-    "category_slug": "historical"
-  },
-  {
-    "name": "东郊记忆",
-    "description": "由工业遗址改造而成的文创园区，音乐演出、展览和城市公共活动较为丰富。 建议结合周边街区一起游览，提前查看开放时间和交通安排，可获得更完整的旅行体验。 建议结合周边街区一起游览，提前查看开放时间和交通安排，可获得更完整的旅行体验。",
-    "image_url": "https://upload.wikimedia.org/wikipedia/commons/d/dc/Chengdu_Dongjiao_Memory_%2855562889075%29.jpg",
-    "city": "成都市",
-    "category_slug": "historical"
-  },
-  {
-    "name": "黄龙溪古镇",
-    "description": "成都周边历史悠久的水乡古镇，古街、溪流和川西民俗适合周末休闲。 建议结合周边街区一起游览，提前查看开放时间和交通安排，可获得更完整的旅行体验。 建议结合周边街区一起游览，提前查看开放时间和交通安排，可获得更完整的旅行体验。",
-    "image_url": "https://upload.wikimedia.org/wikipedia/commons/e/e6/Bridge%2C_Huanglongxi_Ancient_Town%2C_Tianfu_District_of_Chengdu%2C_Sichuan%2C_China.jpg",
-    "city": "成都市",
-    "category_slug": "historical"
-  },
-  {
-    "name": "成都欢乐谷",
-    "description": "大型主题乐园，游乐设施、演艺和节庆活动丰富，适合年轻人和家庭游玩。 建议结合周边街区一起游览，提前查看开放时间和交通安排，可获得更完整的旅行体验。 建议结合周边街区一起游览，提前查看开放时间和交通安排，可获得更完整的旅行体验。",
-    "image_url": "/static/images/placeholder-attraction.svg",
-    "city": "成都市",
-    "category_slug": "theme-park"
-  },
-  {
-    "name": "天府广场",
-    "description": "成都城市中心的公共空间，周边连接博物馆、商业区和城市文化地标。 建议结合周边街区一起游览，提前查看开放时间和交通安排，可获得更完整的旅行体验。 建议结合周边街区一起游览，提前查看开放时间和交通安排，可获得更完整的旅行体验。",
-    "image_url": "https://upload.wikimedia.org/wikipedia/commons/3/3c/Chengdu_Tianfu_Square2_-_Flickr.jpg",
-    "city": "成都市",
-    "category_slug": "historical"
-  },
-  {
-    "name": "秦始皇陵兵马俑",
-    "description": "世界著名考古遗址和博物馆，规模宏大的陶俑军阵展现秦代陵墓与统一王朝气象。 建议结合周边街区一起游览，提前查看开放时间和交通安排，可获得更完整的旅行体验。 建议结合周边街区一起游览，提前查看开放时间和交通安排，可获得更完整的旅行体验。",
-    "image_url": "https://upload.wikimedia.org/wikipedia/commons/5/54/Bingmayong_Gisela-Brantl_01.JPG",
-    "city": "西安市",
-    "category_slug": "historical"
-  },
-  {
-    "name": "大雁塔",
-    "description": "唐代长安佛教文化的重要遗存，塔院、音乐喷泉和大唐不夜城共同构成热门游览区域。 建议结合周边街区一起游览，提前查看开放时间和交通安排，可获得更完整的旅行体验。 建议结合周边街区一起游览，提前查看开放时间和交通安排，可获得更完整的旅行体验。",
-    "image_url": "https://upload.wikimedia.org/wikipedia/commons/7/73/%E5%A4%A7%E9%9B%81%E5%A1%94_-_panoramio_%281%29.jpg",
-    "city": "西安市",
-    "category_slug": "historical"
-  },
-  {
-    "name": "西安城墙",
-    "description": "保存完整的古代城市城垣之一，可骑行或步行游览，俯瞰古城街区和城市风貌。 建议结合周边街区一起游览，提前查看开放时间和交通安排，可获得更完整的旅行体验。 建议结合周边街区一起游览，提前查看开放时间和交通安排，可获得更完整的旅行体验。",
-    "image_url": "https://upload.wikimedia.org/wikipedia/commons/3/3b/%E6%9C%9B%E8%A5%BF%E5%AE%89%E5%9F%8E%E5%A2%99%E4%B8%9C%E5%8C%97%E8%A7%92_01.jpg",
-    "city": "西安市",
-    "category_slug": "historical"
-  },
-  {
-    "name": "西安钟楼",
-    "description": "位于古城中心的明代地标建筑，楼体宏伟，夜间灯光和城市轴线景观十分醒目。 建议结合周边街区一起游览，提前查看开放时间和交通安排，可获得更完整的旅行体验。 建议结合周边街区一起游览，提前查看开放时间和交通安排，可获得更完整的旅行体验。",
-    "image_url": "https://upload.wikimedia.org/wikipedia/commons/1/1e/Concourse_of_Line_6%2C_ZHONGLOU_Station%2C_Xi%27an_Metro_%28Apr_9%2C_2023%29_02.jpg",
-    "city": "西安市",
-    "category_slug": "historical"
-  },
-  {
-    "name": "西安鼓楼",
-    "description": "与钟楼相望的明代建筑，传统鼓乐表演和周边回民街共同体现古城生活气息。 建议结合周边街区一起游览，提前查看开放时间和交通安排，可获得更完整的旅行体验。 建议结合周边街区一起游览，提前查看开放时间和交通安排，可获得更完整的旅行体验。",
-    "image_url": "https://upload.wikimedia.org/wikipedia/commons/b/b1/%E8%8E%B2%E6%B9%96_%E8%A5%BF%E5%AE%89%E9%BC%93%E6%A5%BC%E4%BF%9D%E6%8A%A4%E5%8D%95%E4%BD%8D.jpg",
-    "city": "西安市",
-    "category_slug": "historical"
-  },
-  {
-    "name": "陕西历史博物馆",
-    "description": "中国重要的综合性历史博物馆，周秦汉唐文物丰富，是了解陕西文明的首选场馆。 建议结合周边街区一起游览，提前查看开放时间和交通安排，可获得更完整的旅行体验。 建议结合周边街区一起游览，提前查看开放时间和交通安排，可获得更完整的旅行体验。",
-    "image_url": "https://upload.wikimedia.org/wikipedia/commons/6/68/Ancient_Civilization_of_Shaanxi.jpg",
-    "city": "西安市",
-    "category_slug": "historical"
-  },
-  {
-    "name": "大唐芙蓉园",
-    "description": "以盛唐文化为主题的园林景区，湖面、宫苑、灯光和演艺营造浓郁的唐风体验。 建议结合周边街区一起游览，提前查看开放时间和交通安排，可获得更完整的旅行体验。 建议结合周边街区一起游览，提前查看开放时间和交通安排，可获得更完整的旅行体验。",
-    "image_url": "https://upload.wikimedia.org/wikipedia/commons/f/fe/Tang_Paradise_2024_01.jpg",
-    "city": "西安市",
-    "category_slug": "historical"
-  },
-  {
-    "name": "华清宫",
-    "description": "骊山脚下的历史园林和温泉宫苑，唐代遗迹、山水景观与近代历史记忆交织。 建议结合周边街区一起游览，提前查看开放时间和交通安排，可获得更完整的旅行体验。 建议结合周边街区一起游览，提前查看开放时间和交通安排，可获得更完整的旅行体验。",
-    "image_url": "https://upload.wikimedia.org/wikipedia/commons/c/c6/2023-10-08_Changsheng_Hall%2C_Huaqing_Palace_%E8%8F%AF%E6%B8%85%E5%AE%AE%E9%95%B7%E7%94%9F%E6%AE%BF.jpg",
-    "city": "西安市",
-    "category_slug": "natural"
-  },
-  {
-    "name": "碑林博物馆",
-    "description": "收藏历代碑石、墓志和书法文献的专题博物馆，适合书法与古代文化爱好者。 建议结合周边街区一起游览，提前查看开放时间和交通安排，可获得更完整的旅行体验。 建议结合周边街区一起游览，提前查看开放时间和交通安排，可获得更完整的旅行体验。",
-    "image_url": "https://upload.wikimedia.org/wikipedia/commons/6/6d/%E5%8D%A7%E8%99%8E-%E6%B1%89%EF%BC%88%E5%89%8D206-220%EF%BC%89-1957%E5%B9%B4%E8%A5%BF%E5%AE%89%E5%B8%82%E7%81%9E%E6%A1%A5%E7%A0%96%E7%93%A6%E5%8E%82%E5%87%BA%E5%9C%9F-%E8%A5%BF%E5%AE%89%E7%A2%91%E6%9E%97%E7%9F%B3%E5%88%BB%E8%89%BA%E6%9C%AF%E5%AE%A4.jpg",
-    "city": "西安市",
-    "category_slug": "historical"
-  },
-  {
-    "name": "回民街",
-    "description": "西安最具人气的美食文化街区之一，牛羊肉泡馍、肉夹馍和各类小吃集中。 建议结合周边街区一起游览，提前查看开放时间和交通安排，可获得更完整的旅行体验。 建议结合周边街区一起游览，提前查看开放时间和交通安排，可获得更完整的旅行体验。",
-    "image_url": "https://upload.wikimedia.org/wikipedia/commons/5/58/Beijing_-_Huimin_Xiaoxue_-_CIMG3664.JPG",
-    "city": "西安市",
-    "category_slug": "historical"
-  },
-  {
-    "name": "大明宫国家遗址公园",
-    "description": "唐长安城大明宫遗址所在地，遗址展示与开阔园区帮助游客理解盛唐都城格局。 建议结合周边街区一起游览，提前查看开放时间和交通安排，可获得更完整的旅行体验。 建议结合周边街区一起游览，提前查看开放时间和交通安排，可获得更完整的旅行体验。",
-    "image_url": "https://upload.wikimedia.org/wikipedia/commons/a/a9/%E5%A4%A7%E6%98%8E%E5%AE%AB%E5%9B%BD%E5%AE%B6%E9%81%97%E5%9D%80%E5%85%AC%E5%9B%AD_03.jpg",
-    "city": "西安市",
-    "category_slug": "historical"
-  },
-  {
-    "name": "小雁塔",
-    "description": "唐代佛教建筑遗存，环境相对清幽，周边西安博物院可一并参观。 建议结合周边街区一起游览，提前查看开放时间和交通安排，可获得更完整的旅行体验。 建议结合周边街区一起游览，提前查看开放时间和交通安排，可获得更完整的旅行体验。",
-    "image_url": "https://upload.wikimedia.org/wikipedia/commons/d/d2/Xiao_yan_ta.jpg",
-    "city": "西安市",
-    "category_slug": "historical"
-  },
-  {
-    "name": "永兴坊",
-    "description": "集中展示陕西各地美食和民俗的历史街区，适合品尝地方小吃和体验关中文化。 建议结合周边街区一起游览，提前查看开放时间和交通安排，可获得更完整的旅行体验。 建议结合周边街区一起游览，提前查看开放时间和交通安排，可获得更完整的旅行体验。",
-    "image_url": "https://upload.wikimedia.org/wikipedia/commons/7/70/%E6%96%B0%E5%9F%8E_%E6%B0%B8%E5%85%B4%E5%9D%8A_03.jpg",
-    "city": "西安市",
-    "category_slug": "historical"
-  },
-  {
-    "name": "西安博物院",
-    "description": "由博物馆、小雁塔和园林组成的综合文化空间，适合深入了解西安城市历史。 建议结合周边街区一起游览，提前查看开放时间和交通安排，可获得更完整的旅行体验。 建议结合周边街区一起游览，提前查看开放时间和交通安排，可获得更完整的旅行体验。",
-    "image_url": "https://upload.wikimedia.org/wikipedia/commons/f/f3/%E5%85%83%E6%80%A5%E9%80%92%E9%A9%BF.jpg",
-    "city": "西安市",
-    "category_slug": "historical"
-  },
-  {
-    "name": "曲江池遗址公园",
-    "description": "以唐代曲江文化为背景的城市休闲公园，湖岸步道和夜景适合散步。 建议结合周边街区一起游览，提前查看开放时间和交通安排，可获得更完整的旅行体验。 建议结合周边街区一起游览，提前查看开放时间和交通安排，可获得更完整的旅行体验。",
-    "image_url": "https://upload.wikimedia.org/wikipedia/commons/3/38/%E9%9B%81%E5%A1%94_%E6%9B%B2%E6%B1%9F%E6%B1%A0%E9%81%97%E5%9D%80%E5%85%AC%E5%9B%AD_12.jpg",
-    "city": "西安市",
-    "category_slug": "natural"
-  },
-  {
-    "name": "汉城湖景区",
-    "description": "融合汉文化展示、水上景观和城市休闲的综合公园，适合家庭游客短途游览。 建议结合周边街区一起游览，提前查看开放时间和交通安排，可获得更完整的旅行体验。 建议结合周边街区一起游览，提前查看开放时间和交通安排，可获得更完整的旅行体验。",
-    "image_url": "/static/images/placeholder-attraction.svg",
-    "city": "西安市",
-    "category_slug": "natural"
-  },
-  {
-    "name": "青龙寺遗址景区",
-    "description": "唐代佛教寺院遗址和樱花景观闻名，春季赏花与历史文化游览相结合。 建议结合周边街区一起游览，提前查看开放时间和交通安排，可获得更完整的旅行体验。 建议结合周边街区一起游览，提前查看开放时间和交通安排，可获得更完整的旅行体验。",
-    "image_url": "/static/images/placeholder-attraction.svg",
-    "city": "西安市",
-    "category_slug": "historical"
-  },
-  {
-    "name": "书院门文化街",
-    "description": "古城南门附近的传统文化街区，书画、文房四宝和关中建筑风貌集中。 建议结合周边街区一起游览，提前查看开放时间和交通安排，可获得更完整的旅行体验。 建议结合周边街区一起游览，提前查看开放时间和交通安排，可获得更完整的旅行体验。",
-    "image_url": "/static/images/placeholder-attraction.svg",
-    "city": "西安市",
-    "category_slug": "historical"
-  },
-  {
-    "name": "秦始皇帝陵博物院",
-    "description": "系统展示秦始皇陵园考古成果的博物馆群，适合与兵马俑坑安排联游。 建议结合周边街区一起游览，提前查看开放时间和交通安排，可获得更完整的旅行体验。 建议结合周边街区一起游览，提前查看开放时间和交通安排，可获得更完整的旅行体验。",
-    "image_url": "https://upload.wikimedia.org/wikipedia/commons/f/fc/Bronze_sword_of_Qin-style%2C_Warring_States_period%2C_Emperor_Qinshihuang%27s_Mausoleum_Site_Museum.jpg",
-    "city": "西安市",
-    "category_slug": "historical"
-  },
-  {
-    "name": "骊山",
-    "description": "华清宫背后的山地景区，登高可观关中景色，历史遗迹与自然景观相互结合。 建议结合周边街区一起游览，提前查看开放时间和交通安排，可获得更完整的旅行体验。 建议结合周边街区一起游览，提前查看开放时间和交通安排，可获得更完整的旅行体验。",
-    "image_url": "https://upload.wikimedia.org/wikipedia/commons/5/59/Shot_in_Lishan%2C_Lintong_District%2C_Xi%27an%2C_Shaanxi_Province.jpg",
-    "city": "西安市",
-    "category_slug": "natural"
-  }
+ {
+  "name": "故宫博物院",
+  "description": "明清两代皇家宫殿，建筑群完整壮观，珍藏丰富文物，是北京最具代表性的历史文化地标。 建议结合周边街区一起游览，提前查看开放时间和交通安排，可获得更完整的旅行体验。",
+  "image_url": "https://upload.wikimedia.org/wikipedia/commons/3/33/Model_of_Palace_Museum_North_Branch_at_BIAD_stall%2C_CIFTIS_Hall_13_%2820240914161300%29.jpg",
+  "city": "北京市",
+  "category_slug": "historical"
+ },
+ {
+  "name": "天安门广场",
+  "description": "城市中心的标志性广场，可参观人民英雄纪念碑、国家博物馆等重要公共文化建筑。 建议结合周边街区一起游览，提前查看开放时间和交通安排，可获得更完整的旅行体验。 建议结合周边街区一起游览，提前查看开放时间和交通安排，可获得更完整的旅行体验。",
+  "image_url": "https://upload.wikimedia.org/wikipedia/commons/2/20/A_999_RTW_%E4%BA%ACM66133.jpg",
+  "city": "北京市",
+  "category_slug": "historical"
+ },
+ {
+  "name": "八达岭长城",
+  "description": "明长城保存较好且交通便利，山势起伏、关城雄伟，是初次游览长城的经典选择。 建议结合周边街区一起游览，提前查看开放时间和交通安排，可获得更完整的旅行体验。 建议结合周边街区一起游览，提前查看开放时间和交通安排，可获得更完整的旅行体验。",
+  "image_url": "https://upload.wikimedia.org/wikipedia/commons/1/15/Badaling_20120315-3.JPG",
+  "city": "北京市",
+  "category_slug": "natural"
+ },
+ {
+  "name": "颐和园",
+  "description": "以昆明湖和万寿山为核心的皇家园林，长廊、佛香阁与山水景观共同展现古典园林意境。 建议结合周边街区一起游览，提前查看开放时间和交通安排，可获得更完整的旅行体验。 建议结合周边街区一起游览，提前查看开放时间和交通安排，可获得更完整的旅行体验。",
+  "image_url": "https://upload.wikimedia.org/wikipedia/commons/b/bc/Construction_of_West_Gate_of_Summer_Palace_Station_%2820170524172112%29.jpg",
+  "city": "北京市",
+  "category_slug": "natural"
+ },
+ {
+  "name": "天坛公园",
+  "description": "明清皇帝祭天祈谷的礼制建筑群，祈年殿造型独特，回音壁等景观很有游览趣味。 建议结合周边街区一起游览，提前查看开放时间和交通安排，可获得更完整的旅行体验。 建议结合周边街区一起游览，提前查看开放时间和交通安排，可获得更完整的旅行体验。",
+  "image_url": "https://upload.wikimedia.org/wikipedia/commons/4/44/Chengzhen_Gate%2C_Temple_of_Heaven%2C_Dongcheng_District%2C_Beijing_%28202602231349%29.jpg",
+  "city": "北京市",
+  "category_slug": "historical"
+ },
+ {
+  "name": "圆明园遗址公园",
+  "description": "曾经的皇家园林遗址，山水格局与西洋楼遗迹相映成景，适合了解近代历史与园林文化。 建议结合周边街区一起游览，提前查看开放时间和交通安排，可获得更完整的旅行体验。 建议结合周边街区一起游览，提前查看开放时间和交通安排，可获得更完整的旅行体验。",
+  "image_url": "https://upload.wikimedia.org/wikipedia/commons/9/9e/20090731_Remains_of_the_Old_Summer_Palace_02.jpg",
+  "city": "北京市",
+  "category_slug": "natural"
+ },
+ {
+  "name": "国家体育场（鸟巢）",
+  "description": "北京奥运会主体育场，独特钢结构外观极具辨识度，夜间灯光和周边奥林匹克公园值得游览。 建议结合周边街区一起游览，提前查看开放时间和交通安排，可获得更完整的旅行体验。",
+  "image_url": "https://upload.wikimedia.org/wikipedia/commons/2/25/Beijing_China_Beijing-National-Stadium-01.jpg",
+  "city": "北京市",
+  "category_slug": "natural"
+ },
+ {
+  "name": "国家游泳中心（水立方）",
+  "description": "奥运场馆代表建筑，蓝色泡泡外墙十分醒目，现已结合水上娱乐和体育活动开放。 建议结合周边街区一起游览，提前查看开放时间和交通安排，可获得更完整的旅行体验。 建议结合周边街区一起游览，提前查看开放时间和交通安排，可获得更完整的旅行体验。",
+  "image_url": "https://upload.wikimedia.org/wikipedia/commons/9/9a/Beijing_National_Aquatics_Center_%2873253331%29.jpeg",
+  "city": "北京市",
+  "category_slug": "historical"
+ },
+ {
+  "name": "什刹海",
+  "description": "由前海、后海和西海组成的城市水域，胡同、酒吧、荷花与老北京生活气息交织。 建议结合周边街区一起游览，提前查看开放时间和交通安排，可获得更完整的旅行体验。 建议结合周边街区一起游览，提前查看开放时间和交通安排，可获得更完整的旅行体验。",
+  "image_url": "https://upload.wikimedia.org/wikipedia/commons/c/c7/Beijing_Shichahai_Sports_School_%2820221026155050%29.jpg",
+  "city": "北京市",
+  "category_slug": "historical"
+ },
+ {
+  "name": "北海公园",
+  "description": "历史悠久的皇家园林，白塔、琼华岛和湖面景色相互映衬，适合漫步和短途休闲。 建议结合周边街区一起游览，提前查看开放时间和交通安排，可获得更完整的旅行体验。 建议结合周边街区一起游览，提前查看开放时间和交通安排，可获得更完整的旅行体验。",
+  "image_url": "https://upload.wikimedia.org/wikipedia/commons/0/09/Jin%27ao-Yudongqiao_Bridge_from_southwest_side_of_Qionghuadao_Island.jpg",
+  "city": "北京市",
+  "category_slug": "historical"
+ },
+ {
+  "name": "景山公园",
+  "description": "位于故宫北侧的城市山地公园，登上万春亭可俯瞰故宫屋顶和北京中轴线。 建议结合周边街区一起游览，提前查看开放时间和交通安排，可获得更完整的旅行体验。 建议结合周边街区一起游览，提前查看开放时间和交通安排，可获得更完整的旅行体验。",
+  "image_url": "https://upload.wikimedia.org/wikipedia/commons/a/a8/Mianxi_Hall%2C_Jingshan_Park%2C_Xicheng_District%2C_Beijing_%28202602230936%29.jpg",
+  "city": "北京市",
+  "category_slug": "natural"
+ },
+ {
+  "name": "雍和宫",
+  "description": "北京著名藏传佛教寺院，牌楼、殿宇和佛像艺术保存较好，宗教文化氛围浓厚。 建议结合周边街区一起游览，提前查看开放时间和交通安排，可获得更完整的旅行体验。 建议结合周边街区一起游览，提前查看开放时间和交通安排，可获得更完整的旅行体验。",
+  "image_url": "https://upload.wikimedia.org/wikipedia/commons/8/8a/Concourse_of_L5_Yonghegong_Lama_Temple_Station_%2820210725172339%29.jpg",
+  "city": "北京市",
+  "category_slug": "historical"
+ },
+ {
+  "name": "恭王府",
+  "description": "清代王府园林代表，建筑布局与萃锦园景致兼具，适合了解王府生活和京城园林。 建议结合周边街区一起游览，提前查看开放时间和交通安排，可获得更完整的旅行体验。 建议结合周边街区一起游览，提前查看开放时间和交通安排，可获得更完整的旅行体验。",
+  "image_url": "https://upload.wikimedia.org/wikipedia/commons/b/b9/%E5%8C%97%E4%BA%AC%E6%81%AD%E7%8E%8B%E5%BA%9C_02.jpg",
+  "city": "北京市",
+  "category_slug": "historical"
+ },
+ {
+  "name": "北京国家博物馆",
+  "description": "大型综合性博物馆，历史文物、近现代史和专题展览内容丰富，适合安排半日参观。 建议结合周边街区一起游览，提前查看开放时间和交通安排，可获得更完整的旅行体验。 建议结合周边街区一起游览，提前查看开放时间和交通安排，可获得更完整的旅行体验。",
+  "image_url": "https://upload.wikimedia.org/wikipedia/commons/2/2e/BMNH_1269248_%2815176146908%29.jpg",
+  "city": "北京市",
+  "category_slug": "historical"
+ },
+ {
+  "name": "中国国家大剧院",
+  "description": "位于天安门广场西侧的现代建筑地标，椭球形外观与水面倒影很有观赏性。 建议结合周边街区一起游览，提前查看开放时间和交通安排，可获得更完整的旅行体验。 建议结合周边街区一起游览，提前查看开放时间和交通安排，可获得更完整的旅行体验。",
+  "image_url": "https://upload.wikimedia.org/wikipedia/commons/9/95/National_Centre_for_the_Performing_Arts-wide.jpg",
+  "city": "北京市",
+  "category_slug": "historical"
+ },
+ {
+  "name": "北京动物园",
+  "description": "城市内历史悠久的动物园，熊猫馆和多种动物展区适合亲子游客游览。 建议结合周边街区一起游览，提前查看开放时间和交通安排，可获得更完整的旅行体验。 建议结合周边街区一起游览，提前查看开放时间和交通安排，可获得更完整的旅行体验。",
+  "image_url": "https://upload.wikimedia.org/wikipedia/commons/4/4a/Concourse_of_Beijing_Zoo_Station_%2820210305150525%29.jpg",
+  "city": "北京市",
+  "category_slug": "theme-park"
+ },
+ {
+  "name": "北京欢乐谷",
+  "description": "大型主题乐园，拥有过山车、演艺和节庆活动，适合喜欢刺激游乐项目的游客。 建议结合周边街区一起游览，提前查看开放时间和交通安排，可获得更完整的旅行体验。 建议结合周边街区一起游览，提前查看开放时间和交通安排，可获得更完整的旅行体验。",
+  "image_url": "https://upload.wikimedia.org/wikipedia/commons/4/42/Concourse%2C_Happy_Valley_Station%2C_Chongqing_Rail_Transit_20250424.jpg",
+  "city": "北京市",
+  "category_slug": "natural"
+ },
+ {
+  "name": "慕田峪长城",
+  "description": "山岭环抱、植被茂密的长城景区，敌楼密集，景色秀美且相对安静。 建议结合周边街区一起游览，提前查看开放时间和交通安排，可获得更完整的旅行体验。 建议结合周边街区一起游览，提前查看开放时间和交通安排，可获得更完整的旅行体验。",
+  "image_url": "https://upload.wikimedia.org/wikipedia/commons/f/fa/Great_Wall_of_China_July_2006.JPG",
+  "city": "北京市",
+  "category_slug": "natural"
+ },
+ {
+  "name": "北京植物园",
+  "description": "汇集多种植物和园林景观，樱桃沟、温室与卧佛寺周边适合四季休闲观赏。 建议结合周边街区一起游览，提前查看开放时间和交通安排，可获得更完整的旅行体验。 建议结合周边街区一起游览，提前查看开放时间和交通安排，可获得更完整的旅行体验。",
+  "image_url": "https://upload.wikimedia.org/wikipedia/commons/b/b0/Beijing_Botanical_Garden_-_Oct_09_-_IMG_1193.jpg",
+  "city": "北京市",
+  "category_slug": "historical"
+ },
+ {
+  "name": "前门大街",
+  "description": "北京中轴线南端的传统商业街，老字号、历史建筑和胡同文化集中，适合步行体验。 建议结合周边街区一起游览，提前查看开放时间和交通安排，可获得更完整的旅行体验。 建议结合周边街区一起游览，提前查看开放时间和交通安排，可获得更完整的旅行体验。",
+  "image_url": "https://upload.wikimedia.org/wikipedia/commons/c/cc/6834153_at_Qianmenxi_%2820211205162912%29.jpg",
+  "city": "北京市",
+  "category_slug": "historical"
+ },
+ {
+  "name": "外滩",
+  "description": "黄浦江畔的城市名片，万国建筑群与陆家嘴天际线隔江相望，夜景和建筑观赏都很出色。 建议结合周边街区一起游览，提前查看开放时间和交通安排，可获得更完整的旅行体验。 建议结合周边街区一起游览，提前查看开放时间和交通安排，可获得更完整的旅行体验。",
+  "image_url": "https://upload.wikimedia.org/wikipedia/commons/3/39/The_Bund%2C_Shanghai%2C_China_%28December_2015%29_-_23.JPG",
+  "city": "上海市",
+  "category_slug": "historical"
+ },
+ {
+  "name": "东方明珠广播电视塔",
+  "description": "陆家嘴代表性建筑，设有观光层和城市展陈空间，可从高处欣赏上海城市景观。 建议结合周边街区一起游览，提前查看开放时间和交通安排，可获得更完整的旅行体验。 建议结合周边街区一起游览，提前查看开放时间和交通安排，可获得更完整的旅行体验。",
+  "image_url": "https://upload.wikimedia.org/wikipedia/commons/f/fc/Oriental_Pearl_Tower_2012.jpg",
+  "city": "上海市",
+  "category_slug": "historical"
+ },
+ {
+  "name": "豫园",
+  "description": "明代江南私家园林，亭台、假山和曲桥布局精巧，周边城隍庙街区也很适合一起游览。 建议结合周边街区一起游览，提前查看开放时间和交通安排，可获得更完整的旅行体验。 建议结合周边街区一起游览，提前查看开放时间和交通安排，可获得更完整的旅行体验。",
+  "image_url": "https://upload.wikimedia.org/wikipedia/commons/5/59/%E4%B8%8A%E6%B5%B7%E5%B8%82%E9%BB%84%E6%B5%A6%E5%8C%BA%E8%B1%AB%E5%9B%AD%E8%80%81%E8%B7%AF_%E6%B9%96%E5%BF%83%E4%BA%AD_-_panoramio.jpg",
+  "city": "上海市",
+  "category_slug": "natural"
+ },
+ {
+  "name": "南京路步行街",
+  "description": "上海最著名的商业街之一，百货、老字号和城市灯光集中，适合购物与夜间散步。 建议结合周边街区一起游览，提前查看开放时间和交通安排，可获得更完整的旅行体验。 建议结合周边街区一起游览，提前查看开放时间和交通安排，可获得更完整的旅行体验。",
+  "image_url": "https://upload.wikimedia.org/wikipedia/commons/9/93/BloodDonationBus-EastNanjingRd_Shanghai.JPG",
+  "city": "上海市",
+  "category_slug": "historical"
+ },
+ {
+  "name": "武康大楼",
+  "description": "上海近代历史建筑代表，外立面和街角空间很有辨识度，是衡复风貌区的热门打卡点。 建议结合周边街区一起游览，提前查看开放时间和交通安排，可获得更完整的旅行体验。 建议结合周边街区一起游览，提前查看开放时间和交通安排，可获得更完整的旅行体验。",
+  "image_url": "https://upload.wikimedia.org/wikipedia/commons/2/27/Shanghai_Wukang_Mansion.jpg",
+  "city": "上海市",
+  "category_slug": "historical"
+ },
+ {
+  "name": "徐家汇天主教堂",
+  "description": "上海重要的哥特式宗教建筑，红砖尖顶和内部空间庄重，体现城市近代建筑风貌。 建议结合周边街区一起游览，提前查看开放时间和交通安排，可获得更完整的旅行体验。 建议结合周边街区一起游览，提前查看开放时间和交通安排，可获得更完整的旅行体验。",
+  "image_url": "https://upload.wikimedia.org/wikipedia/commons/9/91/St._Ignatius_Cathedral%2C_Shanghai_2.jpg",
+  "city": "上海市",
+  "category_slug": "historical"
+ },
+ {
+  "name": "上海迪士尼乐园",
+  "description": "大型主题乐园，拥有城堡、巡游、演出和丰富游乐项目，适合亲子和年轻游客。 建议结合周边街区一起游览，提前查看开放时间和交通安排，可获得更完整的旅行体验。 建议结合周边街区一起游览，提前查看开放时间和交通安排，可获得更完整的旅行体验。",
+  "image_url": "https://upload.wikimedia.org/wikipedia/commons/c/c9/20161113%E4%B8%8A%E6%B5%B7%E8%BF%AA%E5%A3%AB%E5%B0%BC%E4%B9%90%E5%9B%AD%E5%88%9B%E6%9E%81%E9%80%9F%E5%85%89%E8%BD%AE%E8%BF%90%E8%A1%8C%E4%B8%AD.jpg",
+  "city": "上海市",
+  "category_slug": "theme-park"
+ },
+ {
+  "name": "上海博物馆",
+  "description": "综合性博物馆，青铜器、陶瓷、书画等收藏具有代表性，适合系统了解中国艺术。 建议结合周边街区一起游览，提前查看开放时间和交通安排，可获得更完整的旅行体验。 建议结合周边街区一起游览，提前查看开放时间和交通安排，可获得更完整的旅行体验。",
+  "image_url": "https://upload.wikimedia.org/wikipedia/commons/1/17/133_20100912_bt_shanghai_museum_%284986674257%29.jpg",
+  "city": "上海市",
+  "category_slug": "historical"
+ },
+ {
+  "name": "静安寺",
+  "description": "上海市中心历史悠久的佛教寺院，金色屋顶与现代都市交相辉映，夜景尤其醒目。 建议结合周边街区一起游览，提前查看开放时间和交通安排，可获得更完整的旅行体验。 建议结合周边街区一起游览，提前查看开放时间和交通安排，可获得更完整的旅行体验。",
+  "image_url": "https://upload.wikimedia.org/wikipedia/commons/b/be/A_Tudor_house_-_panoramio.jpg",
+  "city": "上海市",
+  "category_slug": "historical"
+ },
+ {
+  "name": "朱家角古镇",
+  "description": "水乡古镇代表，河道、石桥、古宅和摇橹船构成江南生活画卷，适合慢节奏游览。 建议结合周边街区一起游览，提前查看开放时间和交通安排，可获得更完整的旅行体验。 建议结合周边街区一起游览，提前查看开放时间和交通安排，可获得更完整的旅行体验。",
+  "image_url": "https://upload.wikimedia.org/wikipedia/commons/0/09/%E6%9C%B1%E5%AE%B6%E8%A7%92%E5%8F%A4%E9%95%87%EF%BC%8CZhujiajiao_Water_Village_-_panoramio.jpg",
+  "city": "上海市",
+  "category_slug": "historical"
+ },
+ {
+  "name": "田子坊",
+  "description": "由旧式里弄改造而成的文创街区，画廊、手作店和小餐馆密集，适合城市漫游。 建议结合周边街区一起游览，提前查看开放时间和交通安排，可获得更完整的旅行体验。 建议结合周边街区一起游览，提前查看开放时间和交通安排，可获得更完整的旅行体验。",
+  "image_url": "https://upload.wikimedia.org/wikipedia/commons/c/cd/%E7%94%B0%E5%AD%90%E5%9D%8A_-_panoramio.jpg",
+  "city": "上海市",
+  "category_slug": "historical"
+ },
+ {
+  "name": "上海科技馆",
+  "description": "面向公众的综合科技馆，展览互动性强，适合家庭游客和对科学感兴趣的游客。 建议结合周边街区一起游览，提前查看开放时间和交通安排，可获得更完整的旅行体验。 建议结合周边街区一起游览，提前查看开放时间和交通安排，可获得更完整的旅行体验。",
+  "image_url": "https://upload.wikimedia.org/wikipedia/commons/9/9f/200103_Shanghai_Metro_line_2_train_passing_Shanghai_Science_and_Technology_Museum_station.jpg",
+  "city": "上海市",
+  "category_slug": "historical"
+ },
+ {
+  "name": "上海自然博物馆",
+  "description": "以自然生命为主题的现代博物馆，标本、生态和地球科学展览内容丰富。 建议结合周边街区一起游览，提前查看开放时间和交通安排，可获得更完整的旅行体验。 建议结合周边街区一起游览，提前查看开放时间和交通安排，可获得更完整的旅行体验。",
+  "image_url": "https://upload.wikimedia.org/wikipedia/commons/3/39/Shanghai_Natural_History_Museum_%282015%29_-_01.JPG",
+  "city": "上海市",
+  "category_slug": "natural"
+ },
+ {
+  "name": "世纪公园",
+  "description": "浦东大型城市公园，湖泊、草坪和林地空间开阔，适合骑行、散步和亲子活动。 建议结合周边街区一起游览，提前查看开放时间和交通安排，可获得更完整的旅行体验。 建议结合周边街区一起游览，提前查看开放时间和交通安排，可获得更完整的旅行体验。",
+  "image_url": "https://upload.wikimedia.org/wikipedia/commons/b/b6/Century_Park_Gate7_in_Huamu_Road.JPG",
+  "city": "上海市",
+  "category_slug": "natural"
+ },
+ {
+  "name": "陆家嘴中心绿地",
+  "description": "位于金融中心建筑群之间的城市绿地，可近距离欣赏摩天大楼与现代上海天际线。 建议结合周边街区一起游览，提前查看开放时间和交通安排，可获得更完整的旅行体验。 建议结合周边街区一起游览，提前查看开放时间和交通安排，可获得更完整的旅行体验。",
+  "image_url": "https://upload.wikimedia.org/wikipedia/commons/9/9f/Lujiazui_2013-8-3.JPG",
+  "city": "上海市",
+  "category_slug": "historical"
+ },
+ {
+  "name": "上海海昌海洋公园",
+  "description": "以海洋生物展示和主题游乐为特色，拥有演艺、展馆和适合家庭的互动项目。 建议结合周边街区一起游览，提前查看开放时间和交通安排，可获得更完整的旅行体验。 建议结合周边街区一起游览，提前查看开放时间和交通安排，可获得更完整的旅行体验。",
+  "image_url": "/static/images/placeholder-attraction.svg",
+  "city": "上海市",
+  "category_slug": "historical"
+ },
+ {
+  "name": "新天地",
+  "description": "石库门建筑与现代商业结合的街区，餐饮、展览和夜间休闲设施集中。 建议结合周边街区一起游览，提前查看开放时间和交通安排，可获得更完整的旅行体验。 建议结合周边街区一起游览，提前查看开放时间和交通安排，可获得更完整的旅行体验。",
+  "image_url": "https://upload.wikimedia.org/wikipedia/commons/0/06/Exit_4_of_Site_of_the_First_CPC_National_Congress%C2%B7Xintiandi_Station_in_Shanghai_2025.jpg",
+  "city": "上海市",
+  "category_slug": "historical"
+ },
+ {
+  "name": "多伦路文化名人街",
+  "description": "虹口历史文化街区，保留近代建筑和文学记忆，适合步行感受城市人文气息。 建议结合周边街区一起游览，提前查看开放时间和交通安排，可获得更完整的旅行体验。 建议结合周边街区一起游览，提前查看开放时间和交通安排，可获得更完整的旅行体验。",
+  "image_url": "https://upload.wikimedia.org/wikipedia/commons/1/1a/%E4%B8%8A%E6%B5%B7%E5%A4%9A%E4%BC%A6%E8%B7%AF%E6%96%87%E5%8C%96%E5%90%8D%E4%BA%BA%E8%A1%97.jpg",
+  "city": "上海市",
+  "category_slug": "historical"
+ },
+ {
+  "name": "广富林文化遗址",
+  "description": "展示上海地区古代文明和考古成果的文化遗址公园，水乡景观与博物馆相结合。 建议结合周边街区一起游览，提前查看开放时间和交通安排，可获得更完整的旅行体验。 建议结合周边街区一起游览，提前查看开放时间和交通安排，可获得更完整的旅行体验。",
+  "image_url": "https://upload.wikimedia.org/wikipedia/commons/d/d2/Guangfulinwenhuazhanshiguan.jpg",
+  "city": "上海市",
+  "category_slug": "natural"
+ },
+ {
+  "name": "崇明东滩",
+  "description": "上海重要的湿地和生态观鸟区域，滩涂、芦苇与候鸟景观展现城市边缘的自然魅力。 建议结合周边街区一起游览，提前查看开放时间和交通安排，可获得更完整的旅行体验。 建议结合周边街区一起游览，提前查看开放时间和交通安排，可获得更完整的旅行体验。",
+  "image_url": "https://upload.wikimedia.org/wikipedia/commons/0/06/20111231%E5%B4%87%E6%98%8E%E4%B8%9C%E6%BB%A9%E5%8C%97%E4%BE%A7%E9%95%BF%E6%B1%9F%E5%A0%A4%E6%9C%9B%E6%B5%B72_-_panoramio.jpg",
+  "city": "上海市",
+  "category_slug": "natural"
+ },
+ {
+  "name": "广州塔（小蛮腰）",
+  "description": "广州城市地标和珠江景观制高点，塔身造型独特，观景平台可俯瞰珠江两岸。 建议结合周边街区一起游览，提前查看开放时间和交通安排，可获得更完整的旅行体验。 建议结合周边街区一起游览，提前查看开放时间和交通安排，可获得更完整的旅行体验。",
+  "image_url": "https://upload.wikimedia.org/wikipedia/commons/1/16/%E5%B9%BF%E5%B7%9E%E5%A1%94_%E5%B0%8F%E8%9B%AE%E8%85%B0_%282013-10-26%29_-_panoramio.jpg",
+  "city": "广州市",
+  "category_slug": "historical"
+ },
+ {
+  "name": "沙面岛",
+  "description": "保存大量近代欧陆风格建筑的珠江小岛，林荫街道和历史建筑适合慢步拍照。 建议结合周边街区一起游览，提前查看开放时间和交通安排，可获得更完整的旅行体验。 建议结合周边街区一起游览，提前查看开放时间和交通安排，可获得更完整的旅行体验。",
+  "image_url": "https://upload.wikimedia.org/wikipedia/commons/b/b0/Guangzhou_Shamian_2012.11.15_09-59-43.jpg",
+  "city": "广州市",
+  "category_slug": "historical"
+ },
+ {
+  "name": "陈家祠",
+  "description": "岭南建筑与民间工艺的代表，木雕、石雕、砖雕和彩绘装饰极为精美。 建议结合周边街区一起游览，提前查看开放时间和交通安排，可获得更完整的旅行体验。 建议结合周边街区一起游览，提前查看开放时间和交通安排，可获得更完整的旅行体验。",
+  "image_url": "https://upload.wikimedia.org/wikipedia/commons/f/f3/Chen_Clan_Academy_Station_CON.jpg",
+  "city": "广州市",
+  "category_slug": "historical"
+ },
+ {
+  "name": "石室圣心大教堂",
+  "description": "广州著名的哥特式教堂，花岗岩建筑和高耸尖塔具有鲜明的城市历史印记。 建议结合周边街区一起游览，提前查看开放时间和交通安排，可获得更完整的旅行体验。 建议结合周边街区一起游览，提前查看开放时间和交通安排，可获得更完整的旅行体验。",
+  "image_url": "https://upload.wikimedia.org/wikipedia/commons/5/57/Front_Pole_Sacred_Heart_Cathedral_Ooty_Mar25_A7CR_05524-5_Pano_Edit.jpg",
+  "city": "广州市",
+  "category_slug": "historical"
+ },
+ {
+  "name": "越秀公园",
+  "description": "广州传统城市公园，五羊石像、镇海楼和山水园景集中体现羊城文化。 建议结合周边街区一起游览，提前查看开放时间和交通安排，可获得更完整的旅行体验。 建议结合周边街区一起游览，提前查看开放时间和交通安排，可获得更完整的旅行体验。",
+  "image_url": "https://upload.wikimedia.org/wikipedia/commons/f/f3/Exit_B1%2C_Yuexiu_Park_Station%2C_Guangzhou_Metro.jpg",
+  "city": "广州市",
+  "category_slug": "natural"
+ },
+ {
+  "name": "珠江夜游",
+  "description": "乘船欣赏广州两岸夜景的经典体验，可连续观赏广州塔、猎德大桥等城市地标。 建议结合周边街区一起游览，提前查看开放时间和交通安排，可获得更完整的旅行体验。 建议结合周边街区一起游览，提前查看开放时间和交通安排，可获得更完整的旅行体验。",
+  "image_url": "https://upload.wikimedia.org/wikipedia/commons/a/a3/%E5%A4%9C%E6%B8%B8%E7%8F%A0%E6%B1%9F_-_panoramio.jpg",
+  "city": "广州市",
+  "category_slug": "historical"
+ },
+ {
+  "name": "北京路步行街",
+  "description": "广州历史悠久的商业街，千年古道遗址、老字号和现代商业集中于步行空间。 建议结合周边街区一起游览，提前查看开放时间和交通安排，可获得更完整的旅行体验。 建议结合周边街区一起游览，提前查看开放时间和交通安排，可获得更完整的旅行体验。",
+  "image_url": "https://upload.wikimedia.org/wikipedia/commons/1/12/Guangzhou_Beijinglu_Gudao_Yizhi_20190511.165835.jpg",
+  "city": "广州市",
+  "category_slug": "historical"
+ },
+ {
+  "name": "永庆坊",
+  "description": "由西关骑楼和旧街巷改造而成的文化街区，岭南建筑、非遗和文创活动丰富。 建议结合周边街区一起游览，提前查看开放时间和交通安排，可获得更完整的旅行体验。 建议结合周边街区一起游览，提前查看开放时间和交通安排，可获得更完整的旅行体验。",
+  "image_url": "https://upload.wikimedia.org/wikipedia/commons/5/58/%E8%8D%94%E6%B9%BE_%E6%B0%B8%E5%BA%86%E5%9D%8A_01.jpg",
+  "city": "广州市",
+  "category_slug": "historical"
+ },
+ {
+  "name": "白云山",
+  "description": "广州著名城市山岳景区，山林、溪谷和观景平台相连，可远眺城市和珠江。 建议结合周边街区一起游览，提前查看开放时间和交通安排，可获得更完整的旅行体验。 建议结合周边街区一起游览，提前查看开放时间和交通安排，可获得更完整的旅行体验。",
+  "image_url": "https://upload.wikimedia.org/wikipedia/commons/0/06/Guangzhou_BaiyunShan.jpg",
+  "city": "广州市",
+  "category_slug": "natural"
+ },
+ {
+  "name": "上下九步行街",
+  "description": "西关传统商业街区，骑楼建筑、广式小吃和老字号店铺体现广州生活气息。 建议结合周边街区一起游览，提前查看开放时间和交通安排，可获得更完整的旅行体验。 建议结合周边街区一起游览，提前查看开放时间和交通安排，可获得更完整的旅行体验。",
+  "image_url": "https://upload.wikimedia.org/wikipedia/commons/e/e3/SHK.jpg",
+  "city": "广州市",
+  "category_slug": "historical"
+ },
+ {
+  "name": "长隆野生动物世界",
+  "description": "大型野生动物主题乐园，动物展示和科普体验丰富，适合亲子和家庭游客。 建议结合周边街区一起游览，提前查看开放时间和交通安排，可获得更完整的旅行体验。 建议结合周边街区一起游览，提前查看开放时间和交通安排，可获得更完整的旅行体验。",
+  "image_url": "https://upload.wikimedia.org/wikipedia/commons/c/c9/Chimelong_Safari_Park_%28Safari_on_wheels_01%29.JPG",
+  "city": "广州市",
+  "category_slug": "historical"
+ },
+ {
+  "name": "长隆欢乐世界",
+  "description": "综合性主题乐园，拥有大型游乐设施、演艺和节庆活动，适合年轻游客游玩。 建议结合周边街区一起游览，提前查看开放时间和交通安排，可获得更完整的旅行体验。 建议结合周边街区一起游览，提前查看开放时间和交通安排，可获得更完整的旅行体验。",
+  "image_url": "https://upload.wikimedia.org/wikipedia/commons/d/d7/Guangzhou_Panyu_Changlong_Huanle_Shijie_2023-03-10_17.40.11.jpg",
+  "city": "广州市",
+  "category_slug": "historical"
+ },
+ {
+  "name": "广东省博物馆",
+  "description": "大型综合博物馆，岭南历史、自然资源和艺术展览内容丰富，建筑本身也很有特色。 建议结合周边街区一起游览，提前查看开放时间和交通安排，可获得更完整的旅行体验。 建议结合周边街区一起游览，提前查看开放时间和交通安排，可获得更完整的旅行体验。",
+  "image_url": "https://upload.wikimedia.org/wikipedia/commons/6/65/Namestone%2C_Southern_Han_Mausoleums_Museum_20251025.jpg",
+  "city": "广州市",
+  "category_slug": "natural"
+ },
+ {
+  "name": "广州动物园",
+  "description": "市区内的综合动物园，动物种类较多，交通方便，适合安排亲子半日游。 建议结合周边街区一起游览，提前查看开放时间和交通安排，可获得更完整的旅行体验。 建议结合周边街区一起游览，提前查看开放时间和交通安排，可获得更完整的旅行体验。",
+  "image_url": "https://upload.wikimedia.org/wikipedia/commons/f/f2/Ara-Zoo-Muenster-2013-02.jpg",
+  "city": "广州市",
+  "category_slug": "theme-park"
+ },
+ {
+  "name": "大佛寺",
+  "description": "北京路附近的历史寺院，夜间灯光与古建筑相映成趣，是老城文化游的重要一站。 建议结合周边街区一起游览，提前查看开放时间和交通安排，可获得更完整的旅行体验。 建议结合周边街区一起游览，提前查看开放时间和交通安排，可获得更完整的旅行体验。",
+  "image_url": "https://upload.wikimedia.org/wikipedia/commons/9/9e/Dafo_Jinghong.jpg",
+  "city": "广州市",
+  "category_slug": "historical"
+ },
+ {
+  "name": "黄埔军校旧址纪念馆",
+  "description": "近代中国军事教育史的重要遗址，建筑和展陈帮助游客了解近代广州历史。 建议结合周边街区一起游览，提前查看开放时间和交通安排，可获得更完整的旅行体验。 建议结合周边街区一起游览，提前查看开放时间和交通安排，可获得更完整的旅行体验。",
+  "image_url": "https://upload.wikimedia.org/wikipedia/commons/f/f4/Front_gate_of_Whampoa_Military_Academy.jpg",
+  "city": "广州市",
+  "category_slug": "historical"
+ },
+ {
+  "name": "南越王博物院",
+  "description": "展示南越国历史和出土文物的专题博物馆，玉器、墓葬和城市考古内容很有特色。 建议结合周边街区一起游览，提前查看开放时间和交通安排，可获得更完整的旅行体验。 建议结合周边街区一起游览，提前查看开放时间和交通安排，可获得更完整的旅行体验。",
+  "image_url": "https://upload.wikimedia.org/wikipedia/commons/3/3f/Inside_Nanyue_King_Museum_Site_of_Palace_and_Garden_01.jpg",
+  "city": "广州市",
+  "category_slug": "historical"
+ },
+ {
+  "name": "广州长隆国际大马戏",
+  "description": "以大型舞台、杂技和动物主题演出著称，适合喜欢现场表演的游客。 建议结合周边街区一起游览，提前查看开放时间和交通安排，可获得更完整的旅行体验。 建议结合周边街区一起游览，提前查看开放时间和交通安排，可获得更完整的旅行体验。",
+  "image_url": "https://upload.wikimedia.org/wikipedia/commons/b/ba/2025_Chimelong_International_Circus_05.jpg",
+  "city": "广州市",
+  "category_slug": "historical"
+ },
+ {
+  "name": "宝墨园",
+  "description": "岭南园林代表，水景、桥廊、雕塑和传统建筑结合，适合休闲赏景。 建议结合周边街区一起游览，提前查看开放时间和交通安排，可获得更完整的旅行体验。 建议结合周边街区一起游览，提前查看开放时间和交通安排，可获得更完整的旅行体验。",
+  "image_url": "https://upload.wikimedia.org/wikipedia/commons/c/c2/Baomo_Garden.jpg",
+  "city": "广州市",
+  "category_slug": "historical"
+ },
+ {
+  "name": "广州融创乐园",
+  "description": "综合性室内外主题娱乐空间，包含游乐设施、演艺和冰雪体验，适合家庭出行。 建议结合周边街区一起游览，提前查看开放时间和交通安排，可获得更完整的旅行体验。 建议结合周边街区一起游览，提前查看开放时间和交通安排，可获得更完整的旅行体验。",
+  "image_url": "https://upload.wikimedia.org/wikipedia/commons/9/92/%E5%B9%BF%E5%B7%9E%E8%9E%8D%E5%88%9B%E4%B9%90%E5%9B%AD.jpg",
+  "city": "广州市",
+  "category_slug": "theme-park"
+ },
+ {
+  "name": "世界之窗",
+  "description": "以微缩景观和主题演艺展示世界文化地标，适合短时间体验多国建筑和节庆氛围。 建议结合周边街区一起游览，提前查看开放时间和交通安排，可获得更完整的旅行体验。 建议结合周边街区一起游览，提前查看开放时间和交通安排，可获得更完整的旅行体验。",
+  "image_url": "https://upload.wikimedia.org/wikipedia/commons/c/cd/SZ_%E6%B7%B1%E5%9C%B3_Shenzhen_%E5%8D%97%E5%B1%B1%E5%8D%80_Nanshan_%E5%83%91%E5%9F%8E%E6%9D%B1%E8%B7%AF_Metro_QiaoCheng_East_Road_%E5%9C%B0%E9%90%B5%E7%AB%99_Metro_Station_%E5%B7%B4%E5%A3%AB%E7%AB%99_bus_stop_sign_July_2023_Px3_01.jpg",
+  "city": "深圳市",
+  "category_slug": "theme-park"
+ },
+ {
+  "name": "深圳湾公园",
+  "description": "沿海城市公园，拥有开阔海湾、绿道和观鸟景观，适合散步、骑行和欣赏日落。 建议结合周边街区一起游览，提前查看开放时间和交通安排，可获得更完整的旅行体验。 建议结合周边街区一起游览，提前查看开放时间和交通安排，可获得更完整的旅行体验。",
+  "image_url": "https://upload.wikimedia.org/wikipedia/commons/b/b1/SZMC_Line5_Qianwan_Park_Station_Platform.jpg",
+  "city": "深圳市",
+  "category_slug": "natural"
+ },
+ {
+  "name": "莲花山公园",
+  "description": "深圳中心城区的山地公园，山顶可俯瞰福田城市景观和中轴线。 建议结合周边街区一起游览，提前查看开放时间和交通安排，可获得更完整的旅行体验。 建议结合周边街区一起游览，提前查看开放时间和交通安排，可获得更完整的旅行体验。",
+  "image_url": "https://upload.wikimedia.org/wikipedia/commons/b/b4/LIANHUASHAN_PARK%2C_SHENZHEN_%2810%29.jpg",
+  "city": "深圳市",
+  "category_slug": "natural"
+ },
+ {
+  "name": "海上世界",
+  "description": "蛇口滨海综合休闲区，以明华轮、餐饮、演艺和夜间灯光形成独特城市体验。 建议结合周边街区一起游览，提前查看开放时间和交通安排，可获得更完整的旅行体验。 建议结合周边街区一起游览，提前查看开放时间和交通安排，可获得更完整的旅行体验。",
+  "image_url": "https://upload.wikimedia.org/wikipedia/commons/9/94/%E8%9B%87%E5%8F%A3_%E6%B5%B7%E4%B8%8A%E4%B8%96%E7%95%8C_hai_shang_shi_jie_-_panoramio.jpg",
+  "city": "深圳市",
+  "category_slug": "historical"
+ },
+ {
+  "name": "欢乐港湾",
+  "description": "宝安滨海公共空间，摩天轮、海景步道和夜间灯光相结合，适合家庭和情侣游览。 建议结合周边街区一起游览，提前查看开放时间和交通安排，可获得更完整的旅行体验。 建议结合周边街区一起游览，提前查看开放时间和交通安排，可获得更完整的旅行体验。",
+  "image_url": "/static/images/placeholder-attraction.svg",
+  "city": "深圳市",
+  "category_slug": "historical"
+ },
+ {
+  "name": "大鹏所城",
+  "description": "保存较完整的明代海防古城，城墙、古街和民居展现深圳的历史文化根脉。 建议结合周边街区一起游览，提前查看开放时间和交通安排，可获得更完整的旅行体验。 建议结合周边街区一起游览，提前查看开放时间和交通安排，可获得更完整的旅行体验。",
+  "image_url": "https://upload.wikimedia.org/wikipedia/commons/3/33/Dapeng_Fortress%2C_Shenzhen.jpg",
+  "city": "深圳市",
+  "category_slug": "historical"
+ },
+ {
+  "name": "杨梅坑",
+  "description": "大鹏半岛热门滨海景区，山海步道、礁石和清澈海湾适合徒步与拍照。 建议结合周边街区一起游览，提前查看开放时间和交通安排，可获得更完整的旅行体验。 建议结合周边街区一起游览，提前查看开放时间和交通安排，可获得更完整的旅行体验。",
+  "image_url": "https://upload.wikimedia.org/wikipedia/commons/c/c0/ShenZhen%2CChina%28%E6%9D%A8%E6%A2%85%E5%9D%91%29_-_panoramio.jpg",
+  "city": "深圳市",
+  "category_slug": "natural"
+ },
+ {
+  "name": "仙湖植物园",
+  "description": "大型植物园和自然教育基地，植物专类园、湖泊与梧桐山景观适合休闲游览。 建议结合周边街区一起游览，提前查看开放时间和交通安排，可获得更完整的旅行体验。 建议结合周边街区一起游览，提前查看开放时间和交通安排，可获得更完整的旅行体验。",
+  "image_url": "https://upload.wikimedia.org/wikipedia/commons/a/ab/FAIRYLAKE_BOTANICAL_GARDEN.jpg",
+  "city": "深圳市",
+  "category_slug": "natural"
+ },
+ {
+  "name": "东门老街",
+  "description": "深圳历史悠久的商业街区，餐饮、购物和城市生活氛围集中，适合夜间逛街。 建议结合周边街区一起游览，提前查看开放时间和交通安排，可获得更完整的旅行体验。 建议结合周边街区一起游览，提前查看开放时间和交通安排，可获得更完整的旅行体验。",
+  "image_url": "https://upload.wikimedia.org/wikipedia/commons/c/ca/Exit_C_of_Laojie_Station_202210.jpg",
+  "city": "深圳市",
+  "category_slug": "historical"
+ },
+ {
+  "name": "南头古城",
+  "description": "深圳重要历史城区，古城门、街巷和新型文化空间并存，适合了解城市变迁。 建议结合周边街区一起游览，提前查看开放时间和交通安排，可获得更完整的旅行体验。 建议结合周边街区一起游览，提前查看开放时间和交通安排，可获得更完整的旅行体验。",
+  "image_url": "https://upload.wikimedia.org/wikipedia/commons/1/15/%E5%85%B3%E5%B8%9D%E5%BA%99_guan_di_miao_-_panoramio.jpg",
+  "city": "深圳市",
+  "category_slug": "historical"
+ },
+ {
+  "name": "深圳野生动物园",
+  "description": "大型城市动物园，拥有多种野生动物展示和科普活动，适合亲子游客。 建议结合周边街区一起游览，提前查看开放时间和交通安排，可获得更完整的旅行体验。 建议结合周边街区一起游览，提前查看开放时间和交通安排，可获得更完整的旅行体验。",
+  "image_url": "https://upload.wikimedia.org/wikipedia/commons/a/a7/Szsafaripark0.jpg",
+  "city": "深圳市",
+  "category_slug": "theme-park"
+ },
+ {
+  "name": "深圳博物馆",
+  "description": "综合性城市博物馆，系统介绍深圳历史、改革开放和自然文化。 建议结合周边街区一起游览，提前查看开放时间和交通安排，可获得更完整的旅行体验。 建议结合周边街区一起游览，提前查看开放时间和交通安排，可获得更完整的旅行体验。",
+  "image_url": "https://upload.wikimedia.org/wikipedia/commons/f/f9/20260627-%E7%9A%87%E5%B2%97%E5%8D%9A%E7%89%A9%E9%A6%86.jpg",
+  "city": "深圳市",
+  "category_slug": "natural"
+ },
+ {
+  "name": "华侨城旅游度假区",
+  "description": "集合主题公园、生态景观、文创空间和演艺活动的综合旅游片区。 建议结合周边街区一起游览，提前查看开放时间和交通安排，可获得更完整的旅行体验。 建议结合周边街区一起游览，提前查看开放时间和交通安排，可获得更完整的旅行体验。",
+  "image_url": "https://upload.wikimedia.org/wikipedia/commons/3/30/Entrance_No.4_of_Overseas_Chinese_Town_Station.jpg",
+  "city": "深圳市",
+  "category_slug": "natural"
+ },
+ {
+  "name": "锦绣中华民俗村",
+  "description": "通过微缩景观和民俗演出展示中国地域文化，适合家庭和团队游览。 建议结合周边街区一起游览，提前查看开放时间和交通安排，可获得更完整的旅行体验。 建议结合周边街区一起游览，提前查看开放时间和交通安排，可获得更完整的旅行体验。",
+  "image_url": "https://upload.wikimedia.org/wikipedia/commons/0/0f/Gate_of_Splendid_China_%26_China_Folk_Culture_Village.jpg",
+  "city": "深圳市",
+  "category_slug": "historical"
+ },
+ {
+  "name": "东部华侨城",
+  "description": "融合山地生态、休闲度假和主题娱乐的综合景区，适合安排一日游。 建议结合周边街区一起游览，提前查看开放时间和交通安排，可获得更完整的旅行体验。 建议结合周边街区一起游览，提前查看开放时间和交通安排，可获得更完整的旅行体验。",
+  "image_url": "https://upload.wikimedia.org/wikipedia/commons/7/7e/%E6%B7%B1%E5%9C%B3%E5%B8%82%E4%B8%9C%E9%83%A8%E5%8D%8E%E4%BE%A8%E5%9F%8E_-_panoramio.jpg",
+  "city": "深圳市",
+  "category_slug": "natural"
+ },
+ {
+  "name": "梧桐山风景区",
+  "description": "深圳著名登山和自然景区，山脊视野开阔，可俯瞰城市与大鹏湾。 建议结合周边街区一起游览，提前查看开放时间和交通安排，可获得更完整的旅行体验。 建议结合周边街区一起游览，提前查看开放时间和交通安排，可获得更完整的旅行体验。",
+  "image_url": "https://upload.wikimedia.org/wikipedia/commons/0/07/%E6%B8%B8%E8%88%B9%E4%B8%8A%E6%8B%8D%E6%A1%90%E6%BA%AA%E6%B9%96%E5%BF%83%E5%B2%9B.jpg",
+  "city": "深圳市",
+  "category_slug": "natural"
+ },
+ {
+  "name": "西涌海滩",
+  "description": "大鹏半岛代表性海滩，沙滩、海岸线和露营活动丰富，适合周末亲海。 建议结合周边街区一起游览，提前查看开放时间和交通安排，可获得更完整的旅行体验。 建议结合周边街区一起游览，提前查看开放时间和交通安排，可获得更完整的旅行体验。",
+  "image_url": "/static/images/placeholder-attraction.svg",
+  "city": "深圳市",
+  "category_slug": "natural"
+ },
+ {
+  "name": "深圳音乐厅",
+  "description": "福田文化中心的重要演出场馆，建筑与城市公共空间结合，常有高质量音乐演出。 建议结合周边街区一起游览，提前查看开放时间和交通安排，可获得更完整的旅行体验。 建议结合周边街区一起游览，提前查看开放时间和交通安排，可获得更完整的旅行体验。",
+  "image_url": "https://upload.wikimedia.org/wikipedia/commons/b/b5/Shenzhen_Concert_Hall_%282%29.jpg",
+  "city": "深圳市",
+  "category_slug": "historical"
+ },
+ {
+  "name": "深圳市当代艺术与城市规划馆",
+  "description": "展示当代艺术和城市建设成果的公共文化场馆，适合了解深圳发展。 建议结合周边街区一起游览，提前查看开放时间和交通安排，可获得更完整的旅行体验。 建议结合周边街区一起游览，提前查看开放时间和交通安排，可获得更完整的旅行体验。",
+  "image_url": "https://upload.wikimedia.org/wikipedia/commons/c/c0/MOCAUP%2C_Futian%2C_Shenzhen_-_20260702_-_Front.jpg",
+  "city": "深圳市",
+  "category_slug": "historical"
+ },
+ {
+  "name": "甘坑古镇",
+  "description": "客家文化特色鲜明的历史街区，古建筑、民俗展示和文创餐饮适合休闲漫游。 建议结合周边街区一起游览，提前查看开放时间和交通安排，可获得更完整的旅行体验。 建议结合周边街区一起游览，提前查看开放时间和交通安排，可获得更完整的旅行体验。",
+  "image_url": "https://upload.wikimedia.org/wikipedia/commons/b/ba/Gankeng_at_night%2C_December_2024_-1.jpg",
+  "city": "深圳市",
+  "category_slug": "historical"
+ },
+ {
+  "name": "成都大熊猫繁育研究基地",
+  "description": "全球知名的大熊猫科研与保护基地，可近距离观察熊猫生活，是成都必游景点。 建议结合周边街区一起游览，提前查看开放时间和交通安排，可获得更完整的旅行体验。 建议结合周边街区一起游览，提前查看开放时间和交通安排，可获得更完整的旅行体验。",
+  "image_url": "https://upload.wikimedia.org/wikipedia/commons/4/4c/Chengdu_Research_Base_Eingang.jpg",
+  "city": "成都市",
+  "category_slug": "historical"
+ },
+ {
+  "name": "武侯祠",
+  "description": "纪念诸葛亮和刘备的重要三国文化遗址，红墙竹影与历史建筑形成独特游览氛围。 建议结合周边街区一起游览，提前查看开放时间和交通安排，可获得更完整的旅行体验。 建议结合周边街区一起游览，提前查看开放时间和交通安排，可获得更完整的旅行体验。",
+  "image_url": "https://upload.wikimedia.org/wikipedia/commons/f/ff/%E5%9B%9B%E5%B7%9D%E7%9C%81%E6%88%90%E9%83%BD%E5%B8%82%E6%AD%A6%E4%BE%AF%E7%A5%A0.jpg",
+  "city": "成都市",
+  "category_slug": "historical"
+ },
+ {
+  "name": "杜甫草堂",
+  "description": "唐代诗人杜甫在成都生活和创作的故居，园林清幽，适合感受诗歌与成都文化。 建议结合周边街区一起游览，提前查看开放时间和交通安排，可获得更完整的旅行体验。 建议结合周边街区一起游览，提前查看开放时间和交通安排，可获得更完整的旅行体验。",
+  "image_url": "https://upload.wikimedia.org/wikipedia/commons/b/bc/%E5%9B%9B%E5%B7%9D%E7%9C%81%E6%88%90%E9%83%BD%E5%B8%82%E6%9D%9C%E7%94%AB%E8%8D%89%E5%A0%82_-_panoramio.jpg",
+  "city": "成都市",
+  "category_slug": "historical"
+ },
+ {
+  "name": "宽窄巷子",
+  "description": "由宽巷子、窄巷子和井巷子组成的历史街区，川西民居、茶馆和特色餐饮集中。 建议结合周边街区一起游览，提前查看开放时间和交通安排，可获得更完整的旅行体验。 建议结合周边街区一起游览，提前查看开放时间和交通安排，可获得更完整的旅行体验。",
+  "image_url": "https://upload.wikimedia.org/wikipedia/commons/7/74/Artwall_in_Concourse_of_Kuanzhaixiangzi_Alleys_Station.JPG",
+  "city": "成都市",
+  "category_slug": "historical"
+ },
+ {
+  "name": "锦里古街",
+  "description": "武侯祠旁的传统风貌商业街，红灯笼、川味小吃和民俗体验很有成都特色。 建议结合周边街区一起游览，提前查看开放时间和交通安排，可获得更完整的旅行体验。 建议结合周边街区一起游览，提前查看开放时间和交通安排，可获得更完整的旅行体验。",
+  "image_url": "https://upload.wikimedia.org/wikipedia/commons/c/ce/Chengdu_Jinli-Stra%C3%9Fe_03.jpg",
+  "city": "成都市",
+  "category_slug": "historical"
+ },
+ {
+  "name": "春熙路",
+  "description": "成都最具代表性的商业街区，品牌购物、餐饮和城市地标集中，夜间人气旺盛。 建议结合周边街区一起游览，提前查看开放时间和交通安排，可获得更完整的旅行体验。 建议结合周边街区一起游览，提前查看开放时间和交通安排，可获得更完整的旅行体验。",
+  "image_url": "https://upload.wikimedia.org/wikipedia/commons/7/73/Chunxi_Road_seen_from_viaduct%2C_Chengdu.jpg",
+  "city": "成都市",
+  "category_slug": "historical"
+ },
+ {
+  "name": "太古里",
+  "description": "开放式现代商业街区，将古建筑风貌与时尚商业结合，适合购物、餐饮和城市摄影。 建议结合周边街区一起游览，提前查看开放时间和交通安排，可获得更完整的旅行体验。 建议结合周边街区一起游览，提前查看开放时间和交通安排，可获得更完整的旅行体验。",
+  "image_url": "https://upload.wikimedia.org/wikipedia/commons/5/51/Chow_Sang_Sang_Shanghai_Taikoo_Li_Qiantan_Branch.jpg",
+  "city": "成都市",
+  "category_slug": "historical"
+ },
+ {
+  "name": "金沙遗址博物馆",
+  "description": "展示古蜀文明遗址和出土文物的专题博物馆，太阳神鸟金饰是重要文化符号。 建议结合周边街区一起游览，提前查看开放时间和交通安排，可获得更完整的旅行体验。 建议结合周边街区一起游览，提前查看开放时间和交通安排，可获得更完整的旅行体验。",
+  "image_url": "https://upload.wikimedia.org/wikipedia/commons/9/9e/%E5%9B%9B%E5%B7%9D%E7%9C%81%E6%88%90%E9%83%BD%E5%B8%82%E9%87%91%E6%B2%99%E9%81%97%E5%9D%80%E5%87%BA%E5%9C%9F-%E7%8E%89%E5%88%80-%E5%95%86%E4%BB%A3%E6%99%9A%E6%9C%9F-%E8%A5%BF%E5%91%A8%E6%99%9A%E6%9C%9F%EF%BC%88%E5%89%8D1200-%E5%89%8D800%EF%BC%89-%E6%88%90%E9%83%BD%E9%87%91%E6%B2%99%E9%81%97%E5%9D%80%E5%8D%9A%E7%89%A9%E9%A6%86%E8%97%8F_2024-10-31.jpg",
+  "city": "成都市",
+  "category_slug": "historical"
+ },
+ {
+  "name": "文殊院",
+  "description": "成都历史悠久的佛教寺院，殿宇、园林和茶馆相连，体现城市悠闲的人文生活。 建议结合周边街区一起游览，提前查看开放时间和交通安排，可获得更完整的旅行体验。 建议结合周边街区一起游览，提前查看开放时间和交通安排，可获得更完整的旅行体验。",
+  "image_url": "https://upload.wikimedia.org/wikipedia/commons/9/9b/Wenshu_Monastery_-_55393262982.jpg",
+  "city": "成都市",
+  "category_slug": "historical"
+ },
+ {
+  "name": "都江堰景区",
+  "description": "两千多年历史的水利工程，鱼嘴、飞沙堰和宝瓶口展现古代工程智慧与山水景观。 建议结合周边街区一起游览，提前查看开放时间和交通安排，可获得更完整的旅行体验。 建议结合周边街区一起游览，提前查看开放时间和交通安排，可获得更完整的旅行体验。",
+  "image_url": "https://upload.wikimedia.org/wikipedia/commons/5/5d/Mount_Qingcheng_Kina_2009_0168_%284141044073%29.jpg",
+  "city": "成都市",
+  "category_slug": "natural"
+ },
+ {
+  "name": "青城山",
+  "description": "中国道教名山之一，林木幽深、宫观古朴，适合徒步、登山和感受自然清幽。 建议结合周边街区一起游览，提前查看开放时间和交通安排，可获得更完整的旅行体验。 建议结合周边街区一起游览，提前查看开放时间和交通安排，可获得更完整的旅行体验。",
+  "image_url": "https://upload.wikimedia.org/wikipedia/commons/4/41/AS1861_at_Qingchengshan_%2820180216142543%29.jpg",
+  "city": "成都市",
+  "category_slug": "natural"
+ },
+ {
+  "name": "成都博物馆",
+  "description": "综合展示成都历史、民俗和城市发展的博物馆，展览内容适合初识成都文化。 建议结合周边街区一起游览，提前查看开放时间和交通安排，可获得更完整的旅行体验。 建议结合周边街区一起游览，提前查看开放时间和交通安排，可获得更完整的旅行体验。",
+  "image_url": "https://upload.wikimedia.org/wikipedia/commons/3/33/Gallery_13_of_the_Chengdu_Tianfu_Art_Museum.jpg",
+  "city": "成都市",
+  "category_slug": "historical"
+ },
+ {
+  "name": "人民公园",
+  "description": "成都城市生活的经典场景，鹤鸣茶社、湖畔园林和市民休闲活动很有地方气息。 建议结合周边街区一起游览，提前查看开放时间和交通安排，可获得更完整的旅行体验。 建议结合周边街区一起游览，提前查看开放时间和交通安排，可获得更完整的旅行体验。",
+  "image_url": "https://upload.wikimedia.org/wikipedia/commons/9/93/20250519_%E6%88%90%E9%83%BD%E5%B8%82%E4%BA%BA%E6%B0%91%E5%85%AC%E5%9B%AD%E9%B9%A4%E9%B8%A3%E6%A1%A5.jpg",
+  "city": "成都市",
+  "category_slug": "historical"
+ },
+ {
+  "name": "望江楼公园",
+  "description": "以崇丽阁和竹园闻名的城市公园，与唐代女诗人薛涛文化记忆联系紧密。 建议结合周边街区一起游览，提前查看开放时间和交通安排，可获得更完整的旅行体验。 建议结合周边街区一起游览，提前查看开放时间和交通安排，可获得更完整的旅行体验。",
+  "image_url": "https://upload.wikimedia.org/wikipedia/commons/9/91/%E6%88%90%E9%83%BD%E6%9C%9B%E6%B1%9F%E6%A5%BC%E5%85%AC%E5%9B%AD.jpg",
+  "city": "成都市",
+  "category_slug": "natural"
+ },
+ {
+  "name": "西岭雪山",
+  "description": "成都周边著名山地度假区，雪山、森林和四季户外运动资源丰富。 建议结合周边街区一起游览，提前查看开放时间和交通安排，可获得更完整的旅行体验。 建议结合周边街区一起游览，提前查看开放时间和交通安排，可获得更完整的旅行体验。",
+  "image_url": "https://upload.wikimedia.org/wikipedia/commons/f/f8/%E5%9C%A8%E6%88%90%E9%83%BD%E9%81%A5%E6%9C%9B%E9%9B%AA%E5%B1%B1_%E8%A5%BF%E5%B2%AD%E9%9B%AA%E5%B1%B1%E4%B8%BB%E5%B3%B0%E5%A4%A7%E9%9B%AA%E5%A1%98_Chengdu_skyline_with_a_view_of_Da_Xue_Tang_%28Chengdu_peak%29.jpg",
+  "city": "成都市",
+  "category_slug": "natural"
+ },
+ {
+  "name": "安顺廊桥",
+  "description": "锦江上的城市地标，传统风格桥体与两岸夜景相映成趣，适合夜间散步。 建议结合周边街区一起游览，提前查看开放时间和交通安排，可获得更完整的旅行体验。 建议结合周边街区一起游览，提前查看开放时间和交通安排，可获得更完整的旅行体验。",
+  "image_url": "https://upload.wikimedia.org/wikipedia/commons/4/43/Anshun_Bridge_%2820250403192443%29.jpg",
+  "city": "成都市",
+  "category_slug": "historical"
+ },
+ {
+  "name": "东郊记忆",
+  "description": "由工业遗址改造而成的文创园区，音乐演出、展览和城市公共活动较为丰富。 建议结合周边街区一起游览，提前查看开放时间和交通安排，可获得更完整的旅行体验。 建议结合周边街区一起游览，提前查看开放时间和交通安排，可获得更完整的旅行体验。",
+  "image_url": "https://upload.wikimedia.org/wikipedia/commons/d/dc/Chengdu_Dongjiao_Memory_%2855562889075%29.jpg",
+  "city": "成都市",
+  "category_slug": "historical"
+ },
+ {
+  "name": "黄龙溪古镇",
+  "description": "成都周边历史悠久的水乡古镇，古街、溪流和川西民俗适合周末休闲。 建议结合周边街区一起游览，提前查看开放时间和交通安排，可获得更完整的旅行体验。 建议结合周边街区一起游览，提前查看开放时间和交通安排，可获得更完整的旅行体验。",
+  "image_url": "https://upload.wikimedia.org/wikipedia/commons/e/e6/Bridge%2C_Huanglongxi_Ancient_Town%2C_Tianfu_District_of_Chengdu%2C_Sichuan%2C_China.jpg",
+  "city": "成都市",
+  "category_slug": "historical"
+ },
+ {
+  "name": "成都欢乐谷",
+  "description": "大型主题乐园，游乐设施、演艺和节庆活动丰富，适合年轻人和家庭游玩。 建议结合周边街区一起游览，提前查看开放时间和交通安排，可获得更完整的旅行体验。 建议结合周边街区一起游览，提前查看开放时间和交通安排，可获得更完整的旅行体验。",
+  "image_url": "/static/images/placeholder-attraction.svg",
+  "city": "成都市",
+  "category_slug": "theme-park"
+ },
+ {
+  "name": "天府广场",
+  "description": "成都城市中心的公共空间，周边连接博物馆、商业区和城市文化地标。 建议结合周边街区一起游览，提前查看开放时间和交通安排，可获得更完整的旅行体验。 建议结合周边街区一起游览，提前查看开放时间和交通安排，可获得更完整的旅行体验。",
+  "image_url": "https://upload.wikimedia.org/wikipedia/commons/3/3c/Chengdu_Tianfu_Square2_-_Flickr.jpg",
+  "city": "成都市",
+  "category_slug": "historical"
+ },
+ {
+  "name": "秦始皇陵兵马俑",
+  "description": "世界著名考古遗址和博物馆，规模宏大的陶俑军阵展现秦代陵墓与统一王朝气象。 建议结合周边街区一起游览，提前查看开放时间和交通安排，可获得更完整的旅行体验。 建议结合周边街区一起游览，提前查看开放时间和交通安排，可获得更完整的旅行体验。",
+  "image_url": "https://upload.wikimedia.org/wikipedia/commons/5/54/Bingmayong_Gisela-Brantl_01.JPG",
+  "city": "西安市",
+  "category_slug": "historical"
+ },
+ {
+  "name": "大雁塔",
+  "description": "唐代长安佛教文化的重要遗存，塔院、音乐喷泉和大唐不夜城共同构成热门游览区域。 建议结合周边街区一起游览，提前查看开放时间和交通安排，可获得更完整的旅行体验。 建议结合周边街区一起游览，提前查看开放时间和交通安排，可获得更完整的旅行体验。",
+  "image_url": "https://upload.wikimedia.org/wikipedia/commons/7/73/%E5%A4%A7%E9%9B%81%E5%A1%94_-_panoramio_%281%29.jpg",
+  "city": "西安市",
+  "category_slug": "historical"
+ },
+ {
+  "name": "西安城墙",
+  "description": "保存完整的古代城市城垣之一，可骑行或步行游览，俯瞰古城街区和城市风貌。 建议结合周边街区一起游览，提前查看开放时间和交通安排，可获得更完整的旅行体验。 建议结合周边街区一起游览，提前查看开放时间和交通安排，可获得更完整的旅行体验。",
+  "image_url": "https://upload.wikimedia.org/wikipedia/commons/3/3b/%E6%9C%9B%E8%A5%BF%E5%AE%89%E5%9F%8E%E5%A2%99%E4%B8%9C%E5%8C%97%E8%A7%92_01.jpg",
+  "city": "西安市",
+  "category_slug": "historical"
+ },
+ {
+  "name": "西安钟楼",
+  "description": "位于古城中心的明代地标建筑，楼体宏伟，夜间灯光和城市轴线景观十分醒目。 建议结合周边街区一起游览，提前查看开放时间和交通安排，可获得更完整的旅行体验。 建议结合周边街区一起游览，提前查看开放时间和交通安排，可获得更完整的旅行体验。",
+  "image_url": "https://upload.wikimedia.org/wikipedia/commons/1/1e/Concourse_of_Line_6%2C_ZHONGLOU_Station%2C_Xi%27an_Metro_%28Apr_9%2C_2023%29_02.jpg",
+  "city": "西安市",
+  "category_slug": "historical"
+ },
+ {
+  "name": "西安鼓楼",
+  "description": "与钟楼相望的明代建筑，传统鼓乐表演和周边回民街共同体现古城生活气息。 建议结合周边街区一起游览，提前查看开放时间和交通安排，可获得更完整的旅行体验。 建议结合周边街区一起游览，提前查看开放时间和交通安排，可获得更完整的旅行体验。",
+  "image_url": "https://upload.wikimedia.org/wikipedia/commons/b/b1/%E8%8E%B2%E6%B9%96_%E8%A5%BF%E5%AE%89%E9%BC%93%E6%A5%BC%E4%BF%9D%E6%8A%A4%E5%8D%95%E4%BD%8D.jpg",
+  "city": "西安市",
+  "category_slug": "historical"
+ },
+ {
+  "name": "陕西历史博物馆",
+  "description": "中国重要的综合性历史博物馆，周秦汉唐文物丰富，是了解陕西文明的首选场馆。 建议结合周边街区一起游览，提前查看开放时间和交通安排，可获得更完整的旅行体验。 建议结合周边街区一起游览，提前查看开放时间和交通安排，可获得更完整的旅行体验。",
+  "image_url": "https://upload.wikimedia.org/wikipedia/commons/6/68/Ancient_Civilization_of_Shaanxi.jpg",
+  "city": "西安市",
+  "category_slug": "historical"
+ },
+ {
+  "name": "大唐芙蓉园",
+  "description": "以盛唐文化为主题的园林景区，湖面、宫苑、灯光和演艺营造浓郁的唐风体验。 建议结合周边街区一起游览，提前查看开放时间和交通安排，可获得更完整的旅行体验。 建议结合周边街区一起游览，提前查看开放时间和交通安排，可获得更完整的旅行体验。",
+  "image_url": "https://upload.wikimedia.org/wikipedia/commons/f/fe/Tang_Paradise_2024_01.jpg",
+  "city": "西安市",
+  "category_slug": "historical"
+ },
+ {
+  "name": "华清宫",
+  "description": "骊山脚下的历史园林和温泉宫苑，唐代遗迹、山水景观与近代历史记忆交织。 建议结合周边街区一起游览，提前查看开放时间和交通安排，可获得更完整的旅行体验。 建议结合周边街区一起游览，提前查看开放时间和交通安排，可获得更完整的旅行体验。",
+  "image_url": "https://upload.wikimedia.org/wikipedia/commons/c/c6/2023-10-08_Changsheng_Hall%2C_Huaqing_Palace_%E8%8F%AF%E6%B8%85%E5%AE%AE%E9%95%B7%E7%94%9F%E6%AE%BF.jpg",
+  "city": "西安市",
+  "category_slug": "natural"
+ },
+ {
+  "name": "碑林博物馆",
+  "description": "收藏历代碑石、墓志和书法文献的专题博物馆，适合书法与古代文化爱好者。 建议结合周边街区一起游览，提前查看开放时间和交通安排，可获得更完整的旅行体验。 建议结合周边街区一起游览，提前查看开放时间和交通安排，可获得更完整的旅行体验。",
+  "image_url": "https://upload.wikimedia.org/wikipedia/commons/6/6d/%E5%8D%A7%E8%99%8E-%E6%B1%89%EF%BC%88%E5%89%8D206-220%EF%BC%89-1957%E5%B9%B4%E8%A5%BF%E5%AE%89%E5%B8%82%E7%81%9E%E6%A1%A5%E7%A0%96%E7%93%A6%E5%8E%82%E5%87%BA%E5%9C%9F-%E8%A5%BF%E5%AE%89%E7%A2%91%E6%9E%97%E7%9F%B3%E5%88%BB%E8%89%BA%E6%9C%AF%E5%AE%A4.jpg",
+  "city": "西安市",
+  "category_slug": "historical"
+ },
+ {
+  "name": "回民街",
+  "description": "西安最具人气的美食文化街区之一，牛羊肉泡馍、肉夹馍和各类小吃集中。 建议结合周边街区一起游览，提前查看开放时间和交通安排，可获得更完整的旅行体验。 建议结合周边街区一起游览，提前查看开放时间和交通安排，可获得更完整的旅行体验。",
+  "image_url": "https://upload.wikimedia.org/wikipedia/commons/5/58/Beijing_-_Huimin_Xiaoxue_-_CIMG3664.JPG",
+  "city": "西安市",
+  "category_slug": "historical"
+ },
+ {
+  "name": "大明宫国家遗址公园",
+  "description": "唐长安城大明宫遗址所在地，遗址展示与开阔园区帮助游客理解盛唐都城格局。 建议结合周边街区一起游览，提前查看开放时间和交通安排，可获得更完整的旅行体验。 建议结合周边街区一起游览，提前查看开放时间和交通安排，可获得更完整的旅行体验。",
+  "image_url": "https://upload.wikimedia.org/wikipedia/commons/a/a9/%E5%A4%A7%E6%98%8E%E5%AE%AB%E5%9B%BD%E5%AE%B6%E9%81%97%E5%9D%80%E5%85%AC%E5%9B%AD_03.jpg",
+  "city": "西安市",
+  "category_slug": "historical"
+ },
+ {
+  "name": "小雁塔",
+  "description": "唐代佛教建筑遗存，环境相对清幽，周边西安博物院可一并参观。 建议结合周边街区一起游览，提前查看开放时间和交通安排，可获得更完整的旅行体验。 建议结合周边街区一起游览，提前查看开放时间和交通安排，可获得更完整的旅行体验。",
+  "image_url": "https://upload.wikimedia.org/wikipedia/commons/d/d2/Xiao_yan_ta.jpg",
+  "city": "西安市",
+  "category_slug": "historical"
+ },
+ {
+  "name": "永兴坊",
+  "description": "集中展示陕西各地美食和民俗的历史街区，适合品尝地方小吃和体验关中文化。 建议结合周边街区一起游览，提前查看开放时间和交通安排，可获得更完整的旅行体验。 建议结合周边街区一起游览，提前查看开放时间和交通安排，可获得更完整的旅行体验。",
+  "image_url": "https://upload.wikimedia.org/wikipedia/commons/7/70/%E6%96%B0%E5%9F%8E_%E6%B0%B8%E5%85%B4%E5%9D%8A_03.jpg",
+  "city": "西安市",
+  "category_slug": "historical"
+ },
+ {
+  "name": "西安博物院",
+  "description": "由博物馆、小雁塔和园林组成的综合文化空间，适合深入了解西安城市历史。 建议结合周边街区一起游览，提前查看开放时间和交通安排，可获得更完整的旅行体验。 建议结合周边街区一起游览，提前查看开放时间和交通安排，可获得更完整的旅行体验。",
+  "image_url": "https://upload.wikimedia.org/wikipedia/commons/f/f3/%E5%85%83%E6%80%A5%E9%80%92%E9%A9%BF.jpg",
+  "city": "西安市",
+  "category_slug": "historical"
+ },
+ {
+  "name": "曲江池遗址公园",
+  "description": "以唐代曲江文化为背景的城市休闲公园，湖岸步道和夜景适合散步。 建议结合周边街区一起游览，提前查看开放时间和交通安排，可获得更完整的旅行体验。 建议结合周边街区一起游览，提前查看开放时间和交通安排，可获得更完整的旅行体验。",
+  "image_url": "https://upload.wikimedia.org/wikipedia/commons/3/38/%E9%9B%81%E5%A1%94_%E6%9B%B2%E6%B1%9F%E6%B1%A0%E9%81%97%E5%9D%80%E5%85%AC%E5%9B%AD_12.jpg",
+  "city": "西安市",
+  "category_slug": "natural"
+ },
+ {
+  "name": "汉城湖景区",
+  "description": "融合汉文化展示、水上景观和城市休闲的综合公园，适合家庭游客短途游览。 建议结合周边街区一起游览，提前查看开放时间和交通安排，可获得更完整的旅行体验。 建议结合周边街区一起游览，提前查看开放时间和交通安排，可获得更完整的旅行体验。",
+  "image_url": "/static/images/placeholder-attraction.svg",
+  "city": "西安市",
+  "category_slug": "natural"
+ },
+ {
+  "name": "青龙寺遗址景区",
+  "description": "唐代佛教寺院遗址和樱花景观闻名，春季赏花与历史文化游览相结合。 建议结合周边街区一起游览，提前查看开放时间和交通安排，可获得更完整的旅行体验。 建议结合周边街区一起游览，提前查看开放时间和交通安排，可获得更完整的旅行体验。",
+  "image_url": "/static/images/placeholder-attraction.svg",
+  "city": "西安市",
+  "category_slug": "historical"
+ },
+ {
+  "name": "书院门文化街",
+  "description": "古城南门附近的传统文化街区，书画、文房四宝和关中建筑风貌集中。 建议结合周边街区一起游览，提前查看开放时间和交通安排，可获得更完整的旅行体验。 建议结合周边街区一起游览，提前查看开放时间和交通安排，可获得更完整的旅行体验。",
+  "image_url": "/static/images/placeholder-attraction.svg",
+  "city": "西安市",
+  "category_slug": "historical"
+ },
+ {
+  "name": "秦始皇帝陵博物院",
+  "description": "系统展示秦始皇陵园考古成果的博物馆群，适合与兵马俑坑安排联游。 建议结合周边街区一起游览，提前查看开放时间和交通安排，可获得更完整的旅行体验。 建议结合周边街区一起游览，提前查看开放时间和交通安排，可获得更完整的旅行体验。",
+  "image_url": "https://upload.wikimedia.org/wikipedia/commons/f/fc/Bronze_sword_of_Qin-style%2C_Warring_States_period%2C_Emperor_Qinshihuang%27s_Mausoleum_Site_Museum.jpg",
+  "city": "西安市",
+  "category_slug": "historical"
+ },
+ {
+  "name": "骊山",
+  "description": "华清宫背后的山地景区，登高可观关中景色，历史遗迹与自然景观相互结合。 建议结合周边街区一起游览，提前查看开放时间和交通安排，可获得更完整的旅行体验。 建议结合周边街区一起游览，提前查看开放时间和交通安排，可获得更完整的旅行体验。",
+  "image_url": "https://upload.wikimedia.org/wikipedia/commons/5/59/Shot_in_Lishan%2C_Lintong_District%2C_Xi%27an%2C_Shaanxi_Province.jpg",
+  "city": "西安市",
+  "category_slug": "natural"
+ },
+ {
+  "name": "西湖",
+  "description": "杭州最具代表性的城市湖泊，湖面开阔，三面环山，苏堤与白堤把水面分隔成几个区域。沿岸分布着大量古迹、园林与观景点，四季景色差别明显，适合步行或骑行环湖慢慢游览，也可以乘船看湖景。",
+  "image_url": "https://upload.wikimedia.org/wikipedia/commons/0/07/20090524_Hangzhou_West_Lake_7531.jpg",
+  "city": "杭州市",
+  "category_slug": "natural"
+ },
+ {
+  "name": "灵隐寺",
+  "description": "始建于东晋的佛教寺院，坐落在西湖以西的飞来峰下，是江南影响深远的古刹之一。殿宇沿山势层层展开，飞来峰一带保存着年代跨度较长的石窟造像，参观时请遵守宗教场所的礼仪要求。",
+  "image_url": "https://upload.wikimedia.org/wikipedia/commons/6/66/Lingyin_Temple%2C_Hangzhou_20161003.jpg",
+  "city": "杭州市",
+  "category_slug": "historical"
+ },
+ {
+  "name": "雷峰塔",
+  "description": "位于西湖南岸夕照山上的楼阁式塔，因民间传说而广为人知，现存建筑为在原址重建。塔内保留地宫遗址的展示，登塔可以俯瞰西湖南线水面与远处山峦，傍晚光线柔和，是环湖游览常走的一站。",
+  "image_url": "https://upload.wikimedia.org/wikipedia/commons/1/1b/Leifeng_Pagoda_%2820240729%29.jpg",
+  "city": "杭州市",
+  "category_slug": "historical"
+ },
+ {
+  "name": "六和塔",
+  "description": "钱塘江畔的砖木结构古塔，始建于北宋，历代多有修葺，塔身外观为八角多层。塔内可登临，视野开阔，能远眺钱塘江与钱塘江大桥。所在区域另有古塔文化展示，适合与江边散步一同安排。",
+  "image_url": "https://upload.wikimedia.org/wikipedia/commons/6/6e/Hangzhou_Liuhe_Pagoda_20161004.jpg",
+  "city": "杭州市",
+  "category_slug": "historical"
+ },
+ {
+  "name": "拱宸桥",
+  "description": "京杭大运河杭州段的标志性石拱桥，横跨运河主航道，桥体高大，旧时是水路交通的重要节点。桥西一带保留着历史街区的传统民居与作坊建筑，适合傍晚沿河步行，感受运河沿线的市井气息。",
+  "image_url": "https://upload.wikimedia.org/wikipedia/commons/b/b7/20231122_Gongchen_Bridge_04.jpg",
+  "city": "杭州市",
+  "category_slug": "historical"
+ },
+ {
+  "name": "西溪国家湿地公园",
+  "description": "位于杭州西部的城市湿地，水网密布，芦荡、鱼塘与河港交织，是多种水鸟的栖息地。园区用摇橹船与步行道串联各个区域，四季景观不同，秋季芦花较有名气。范围较大，建议留出半天时间。",
+  "image_url": "https://upload.wikimedia.org/wikipedia/commons/2/20/Xixi_Wetland_Park%2C_Hangzhou%2C_China.jpg",
+  "city": "杭州市",
+  "category_slug": "natural"
+ },
+ {
+  "name": "千岛湖",
+  "description": "位于杭州西部的大型人工湖，湖中岛屿众多，水质清澈，以湖光山色和环湖公路著称。可以乘船游湖、登岛观景，也适合环湖骑行。湖区距市区较远，通常安排整日行程，出发前留意船班时间。",
+  "image_url": "https://upload.wikimedia.org/wikipedia/commons/3/3a/Qiandao_Lake_%28near_Hangzhou%29.jpg",
+  "city": "杭州市",
+  "category_slug": "natural"
+ },
+ {
+  "name": "宋城",
+  "description": "以宋代市井风貌为主题的大型文化景区，园内建筑、街市和演艺项目围绕宋文化展开，主打实景演出。适合对传统民俗和舞台表演感兴趣的游客。节假日人流较大，建议提前查看演出场次安排。",
+  "image_url": "https://upload.wikimedia.org/wikipedia/commons/5/59/Song_Dynasty_City_%282970193581%29.jpg",
+  "city": "杭州市",
+  "category_slug": "theme-park"
+ },
+ {
+  "name": "河坊街",
+  "description": "西湖东侧的历史商业街区，沿街多为仿古建筑，集中了老字号商铺、传统小吃和手工艺店。街区与南宋御街相连，可以一路步行到鼓楼一带。适合傍晚游览，注意分辨旅游商品与本地日常消费。",
+  "image_url": "https://upload.wikimedia.org/wikipedia/commons/c/c8/Hangzhou_Hefang_Street_4.jpg",
+  "city": "杭州市",
+  "category_slug": "historical"
+ },
+ {
+  "name": "南宋御街",
+  "description": "南宋都城临安的中轴道路遗址所在街区，如今是步行街，路面保留着不同时期的遗迹展示。两侧建筑以民国风格和仿古风格为主，间有老字号和小型展馆，适合与河坊街串成一条步行线路慢慢逛。",
+  "image_url": "https://upload.wikimedia.org/wikipedia/commons/8/8e/Southern_Song_Imperial_Street%2C_Hangzhou.jpg",
+  "city": "杭州市",
+  "category_slug": "historical"
+ },
+ {
+  "name": "胡雪岩故居",
+  "description": "清末商人胡雪岩的宅邸，院落布局紧凑，木雕、砖雕和园林小品较为精细，体现了江南宅第的营造特点。宅内空间转折较多，参观时留意建筑细节与展陈说明，适合对近代建筑和商帮历史感兴趣的游客。",
+  "image_url": "https://upload.wikimedia.org/wikipedia/commons/8/8a/Former_Residence_of_Hu_Xueyan%2C_Hangzhou.jpg",
+  "city": "杭州市",
+  "category_slug": "historical"
+ },
+ {
+  "name": "浙江省博物馆",
+  "description": "省级综合性博物馆，馆藏涵盖书画、陶瓷、钱币和地方历史文物，孤山馆区与西湖景致相连。常设展与临时展并行，适合安排一到两小时参观。具体开放时间与预约要求需以官方公告为准。",
+  "image_url": "https://upload.wikimedia.org/wikipedia/commons/7/7d/Main_Hall_of_Zhejiang_Museum_Gushan_Branch_2012.JPG",
+  "city": "杭州市",
+  "category_slug": "historical"
+ },
+ {
+  "name": "中国茶叶博物馆",
+  "description": "以茶文化为主题的专题博物馆，展陈涵盖茶叶种类、制作工艺和饮茶习俗，馆区周边是成片的龙井茶园。可以在这里了解西湖龙井的产制背景，也能沿附近茶园步道散步，参观前建议确认各馆区开放情况。",
+  "image_url": "https://upload.wikimedia.org/wikipedia/commons/b/bc/China_National_Tea_Museum.jpg",
+  "city": "杭州市",
+  "category_slug": "historical"
+ },
+ {
+  "name": "龙井村",
+  "description": "西湖西南山地的茶村，梯状茶园沿山坡分布，是西湖龙井的主要产地之一。村内有多条步道通往茶园和山脊，可以俯瞰茶田与山谷。春季采茶时人流较多，请勿随意进入种植区踩踏茶树。",
+  "image_url": "https://upload.wikimedia.org/wikipedia/commons/6/6f/Longjing_Tea_field%2C_Dragon_Well_area%2C_Meijiawu_China.jpg",
+  "city": "杭州市",
+  "category_slug": "natural"
+ },
+ {
+  "name": "九溪十八涧",
+  "description": "西湖西南的山谷溪流景观，溪水沿谷地曲折而下，两侧林木茂密，步道以碎石和土路为主。夏季清凉，秋季色彩丰富，适合半日徒步。雨天路面湿滑，涉水路段需留意脚下安全，建议结伴而行。",
+  "image_url": "https://upload.wikimedia.org/wikipedia/commons/f/ff/Jiuxi_20161004.jpg",
+  "city": "杭州市",
+  "category_slug": "natural"
+ },
+ {
+  "name": "太子湾公园",
+  "description": "西湖西南角的免费公园，地形起伏，草坪、水面和林带交错，春季的郁金香与樱花较有知名度。公园与花港观鱼、苏堤相距不远，适合作为环湖游览中的休整点。花期人流集中，建议避开高峰时段。",
+  "image_url": "https://upload.wikimedia.org/wikipedia/commons/8/84/Taiziwan_Park_02.jpg",
+  "city": "杭州市",
+  "category_slug": "natural"
+ },
+ {
+  "name": "良渚古城遗址",
+  "description": "距今约五千年的史前城址，包含城墙、水利系统和祭坛等遗存，是研究长江下游早期文明的重要遗址。遗址公园以展示和步行为主，另有博物院陈列出土器物，参观建议预留较长时间。",
+  "image_url": "https://upload.wikimedia.org/wikipedia/commons/8/89/Liangzhu_Ancient_City_Site%2C_2016-06-18_10.jpg",
+  "city": "杭州市",
+  "category_slug": "historical"
+ },
+ {
+  "name": "钱塘江大桥",
+  "description": "由中国工程师主持设计建造的双层桁架桥，跨越钱塘江，是近代桥梁工程的重要实例。桥体与江岸可以远观，附近设有纪念馆介绍建桥历程。观潮季节江面水流湍急，请勿靠近危险区域。",
+  "image_url": "https://upload.wikimedia.org/wikipedia/commons/3/39/Qiantang_River_Bridge_01.jpg",
+  "city": "杭州市",
+  "category_slug": "historical"
+ },
+ {
+  "name": "湘湖",
+  "description": "萧山区的湖泊景区，水面开阔，湖岸分布着跨湖桥遗址博物馆和多处绿地，游人比西湖少。适合骑行、散步和亲子出游，周边餐饮与停车配套较完善。跨湖桥遗址展示了独木舟等重要考古发现。",
+  "image_url": "https://upload.wikimedia.org/wikipedia/commons/1/1f/Xiang_Lake%2C_Xiaoshan._View_from_Qiming_Bridge.jpg",
+  "city": "杭州市",
+  "category_slug": "natural"
+ },
+ {
+  "name": "塘栖古镇",
+  "description": "运河沿岸的古镇，以广济桥为中心，沿河保留着廊檐街和旧式商铺，是江南水乡市镇的典型样貌。镇内街巷不算长，适合半日闲逛，可结合运河游线安排。节假日较为拥挤，注意错峰出行。",
+  "image_url": "https://upload.wikimedia.org/wikipedia/commons/7/7f/Ancient_Town_of_Tangqi_01.jpg",
+  "city": "杭州市",
+  "category_slug": "historical"
+ },
+ {
+  "name": "洪崖洞",
+  "description": "依山沿江而建的吊脚楼建筑群，层层叠叠分布于崖壁之上，夜晚灯光亮起时与江面倒影相映，是重庆最具辨识度的城市景观之一。内部以餐饮和商铺为主，观景平台可俯瞰嘉陵江，节假日人流密集。",
+  "image_url": "https://upload.wikimedia.org/wikipedia/commons/f/f1/Hongyadong_night_lights_Chongqing.jpg",
+  "city": "重庆市",
+  "category_slug": "historical"
+ },
+ {
+  "name": "解放碑",
+  "description": "重庆母城中心的标志性纪念碑，周边是密集的商业街区与步行街，也是本地人约见面的常用地标。碑体周围高楼环绕，昼夜人流不断，适合作为游览渝中半岛的起点，步行可达多条老街与江边。",
+  "image_url": "https://upload.wikimedia.org/wikipedia/commons/e/ee/Chongqing_Jiefangbei_CBD.jpg",
+  "city": "重庆市",
+  "category_slug": "historical"
+ },
+ {
+  "name": "磁器口古镇",
+  "description": "嘉陵江畔的古镇，街巷沿山势起伏，保留着青石板路和旧式木构店铺，以陈麻花、毛血旺等本地小吃闻名。主街游客较多，往巷子深处走能看到更安静的民居。适合安排半天闲逛，节假日主街非常拥挤，建议早点前往。",
+  "image_url": "https://upload.wikimedia.org/wikipedia/commons/9/9b/Street_in_the_Old_Town_of_Ciqikou.jpg",
+  "city": "重庆市",
+  "category_slug": "historical"
+ },
+ {
+  "name": "长江索道",
+  "description": "横跨长江的客运索道，连接渝中区与南岸区，曾是市民日常过江的交通工具，如今更多作为观光体验。轿厢运行时可俯瞰江面与两岸城市轮廓，单程时间不长，排队高峰通常出现在节假日。",
+  "image_url": "https://upload.wikimedia.org/wikipedia/commons/e/ed/Chongqing_Changjiang_Cableway.jpg",
+  "city": "重庆市",
+  "category_slug": "historical"
+ },
+ {
+  "name": "朝天门",
+  "description": "长江与嘉陵江交汇处的码头区域，是重庆老城的水上门户，可看到两江汇流时水色差异的景象。周边有来福士广场等高层建筑，夜晚江岸灯光集中。适合傍晚散步，乘船夜游多从此处出发。",
+  "image_url": "https://upload.wikimedia.org/wikipedia/commons/5/54/Chaotianmen_nightview_20240721.jpg",
+  "city": "重庆市",
+  "category_slug": "historical"
+ },
+ {
+  "name": "重庆人民大礼堂",
+  "description": "建于二十世纪五十年代的大型礼堂，仿明清宫殿式样，圆形穹顶与层层挑檐是其主要特征，长期作为重庆的城市象征之一。礼堂前的广场视野开阔，可与相邻的三峡博物馆安排在同一行程。",
+  "image_url": "https://upload.wikimedia.org/wikipedia/commons/6/66/Chongqing_Great_Hall_of_the_People_20240721.jpg",
+  "city": "重庆市",
+  "category_slug": "historical"
+ },
+ {
+  "name": "大足石刻",
+  "description": "分布于大足区多处山崖的摩崖造像群，开凿年代跨越数百年，以题材丰富、雕刻精细著称，宝顶山与北山是其中规模较大的两处。造像保存状况较好，参观时请勿触摸，注意保护文物。",
+  "image_url": "https://upload.wikimedia.org/wikipedia/commons/8/8b/Dazu_Rock_Carvings_%2854067326757%29.jpg",
+  "city": "重庆市",
+  "category_slug": "historical"
+ },
+ {
+  "name": "白公馆",
+  "description": "歌乐山麓的旧式宅院，原为私人别墅，后曾作为关押政治犯的场所，现为纪念性遗址对外开放。院落与牢房保留原貌，展陈以历史照片和文字说明为主，参观氛围庄重，适合安静地了解相关历史。",
+  "image_url": "https://upload.wikimedia.org/wikipedia/commons/d/d1/20250521_Baigongguan.jpg",
+  "city": "重庆市",
+  "category_slug": "historical"
+ },
+ {
+  "name": "渣滓洞",
+  "description": "位于歌乐山下的旧监狱遗址，原为小煤窑，后被改作关押场所，是重庆著名的革命历史纪念地。现保留围墙、牢房与审讯室等遗迹，展陈讲述当年被关押者的事迹，参观时请保持肃静。",
+  "image_url": "https://upload.wikimedia.org/wikipedia/commons/f/f7/20250521_Zhazidong_%28140749%29.jpg",
+  "city": "重庆市",
+  "category_slug": "historical"
+ },
+ {
+  "name": "重庆中国三峡博物馆",
+  "description": "以三峡文物与巴渝历史为主的综合性博物馆，馆藏涵盖出土文物、民俗器物和书画，常设展系统介绍长江三峡的自然与人文。馆体正对人民大礼堂，两者可安排在同一次行程中参观。",
+  "image_url": "https://upload.wikimedia.org/wikipedia/commons/f/ff/Chongqing_Three_Gorges_Museum_China.JPG",
+  "city": "重庆市",
+  "category_slug": "historical"
+ },
+ {
+  "name": "龚滩古镇",
+  "description": "乌江沿岸的古镇，依山临水而建，青石板街与木质吊脚楼沿坡分布，江水碧绿，对岸是陡峭山壁。镇子规模不大，商业化程度相对较低，适合住一晚感受清晨江雾，交通以公路和乌江游船为主。",
+  "image_url": "https://upload.wikimedia.org/wikipedia/commons/2/25/Gongtan_ancient_town.JPG",
+  "city": "重庆市",
+  "category_slug": "historical"
+ },
+ {
+  "name": "合川钓鱼城",
+  "description": "嘉陵江、渠江与涪江交汇处的山城遗址，宋代曾凭险据守多年，是中国古代防御工程的代表性实例。城墙、城门与炮台遗迹沿山脊分布，登临可俯瞰三江汇流，适合对历史与军事工程感兴趣的游客。",
+  "image_url": "https://upload.wikimedia.org/wikipedia/commons/8/80/Diaoyu_Fortress%2C_2017-09-23_10.jpg",
+  "city": "重庆市",
+  "category_slug": "historical"
+ },
+ {
+  "name": "武隆天生三桥",
+  "description": "喀斯特地貌形成的三座天然石拱桥，桥体高跨于峡谷之上，谷底溪流穿过，植被茂密。景区以步行栈道串联观景点，途中可见天坑与崖壁，雨天路滑需小心。属于世界自然遗产的一部分。",
+  "image_url": "https://upload.wikimedia.org/wikipedia/commons/4/4d/Three_Natural_Bridges_CNS_2024_%283%29.png",
+  "city": "重庆市",
+  "category_slug": "natural"
+ },
+ {
+  "name": "南山一棵树观景台",
+  "description": "位于南山的城市观景平台，正对渝中半岛，是俯瞰重庆天际线和两江夜景的经典位置。傍晚至夜间灯光效果最好，观景台面积不大，节假日需要排队，上山可乘公交或自驾，建议傍晚前到达占位。",
+  "image_url": "https://upload.wikimedia.org/wikipedia/commons/3/39/SkylineOfChongqing.jpg",
+  "city": "重庆市",
+  "category_slug": "natural"
+ },
+ {
+  "name": "歌乐山",
+  "description": "重庆主城西侧的山地，林木茂密，山间步道与公路交错，是本地人徒步和避暑常去的地方。山中有多处历史纪念地，与白公馆、渣滓洞相距不远，可安排成一条半日的山地行程，山道较多，注意防晒补水。",
+  "image_url": "https://upload.wikimedia.org/wikipedia/commons/3/3b/%E6%AD%8C%E4%B9%90%E5%B1%B1_5139.jpg",
+  "city": "重庆市",
+  "category_slug": "natural"
+ },
+ {
+  "name": "黑山谷",
+  "description": "位于万盛的山谷景区，峡谷幽深，溪流与瀑布分布其间，栈道沿谷底延伸，夏季凉爽。植被覆盖率高，空气湿润，步道有一定起伏，全程步行需要体力，适合喜欢自然徒步的游客，建议穿防滑鞋。",
+  "image_url": "https://upload.wikimedia.org/wikipedia/commons/1/1f/Heishangu.jpg",
+  "city": "重庆市",
+  "category_slug": "natural"
+ },
+ {
+  "name": "金佛山",
+  "description": "南川区的高山景区，以喀斯特台原、悬崖栈道和高山草甸著称，冬季可见雾凇与积雪。山上气候多变，云海出现频率较高，索道与步道结合游览，昼夜温差大，需准备保暖衣物，旺季索道排队时间较长。",
+  "image_url": "https://upload.wikimedia.org/wikipedia/commons/4/42/Mount._Jinfo_1.JPG",
+  "city": "重庆市",
+  "category_slug": "natural"
+ },
+ {
+  "name": "四面山",
+  "description": "江津区的山地景区，以瀑布群、湖泊和丹霞地貌为主要看点，望乡台瀑布落差较大。景区面积广，各景点之间距离较远，适合自驾游览，夏季水量充沛时观瀑效果最好，部分路段弯道较多，注意行车安全。",
+  "image_url": "https://upload.wikimedia.org/wikipedia/commons/e/e9/Simian_Mountain_--_Boats_in_the_lake.jpg",
+  "city": "重庆市",
+  "category_slug": "natural"
+ },
+ {
+  "name": "芙蓉洞",
+  "description": "武隆区的石灰岩溶洞，洞内钟乳石、石幔与石花发育完整，色彩和形态变化丰富，是南方洞穴景观的代表之一。洞内步道较长，湿度大、路面湿滑，参观时注意保暖和脚下安全，洞内温度偏低，建议带件外套。",
+  "image_url": "https://upload.wikimedia.org/wikipedia/commons/e/e3/Furongdongfufashisun.JPG",
+  "city": "重庆市",
+  "category_slug": "natural"
+ },
+ {
+  "name": "重庆动物园",
+  "description": "位于九龙坡区的城市动物园，饲养大熊猫、华南虎等动物，园区绿化较好，是本地家庭周末常去的地方。场馆分布较分散，步行一圈需要一定时间，适合带小孩慢慢逛，园内另有游览车可以代步。",
+  "image_url": "https://upload.wikimedia.org/wikipedia/commons/9/90/Giant_panda%2C_Chongqing_Zoo%2C_China.JPG",
+  "city": "重庆市",
+  "category_slug": "theme-park"
+ },
+ {
+  "name": "黄鹤楼",
+  "description": "江南名楼之一，始建于三国时期，历代屡毁屡建，现楼为二十世纪八十年代重建。楼体五层，登顶可俯瞰长江与武汉三镇轮廓，楼内陈列与历代诗文相关。景区范围不大，适合与长江大桥一并游览。",
+  "image_url": "https://upload.wikimedia.org/wikipedia/commons/9/97/Yellow_Crane_Tower_61447-Wuhan_%2849150680222%29.jpg",
+  "city": "武汉市",
+  "category_slug": "historical"
+ },
+ {
+  "name": "东湖",
+  "description": "武汉城区东部的湖泊，水域面积广阔，环湖分布着听涛、磨山、落雁等多个景区，绿道串联其间。春季樱花与梅园较有名气，适合骑行或步行环湖。湖区较大，建议按区域分段游览，留出半天以上时间。",
+  "image_url": "https://upload.wikimedia.org/wikipedia/commons/2/23/Wuhan_East_Lake_01.jpg",
+  "city": "武汉市",
+  "category_slug": "natural"
+ },
+ {
+  "name": "武汉大学",
+  "description": "依山傍湖的百年学府，校园内保留着早期建筑群，樱花大道在春季吸引大量访客。平时入校需遵守学校管理规定，樱花季通常需要预约。老图书馆、行政楼一带的建筑风格值得细看，适合安静地散步。",
+  "image_url": "https://upload.wikimedia.org/wikipedia/commons/b/b6/University_Wuhan_-_Campus.JPG",
+  "city": "武汉市",
+  "category_slug": "historical"
+ },
+ {
+  "name": "湖北省博物馆",
+  "description": "省级综合性博物馆，馆藏以楚文化文物和曾侯乙墓出土器物最具代表性，编钟与青铜器是常设展的重点。展厅面积较大，参观建议预留两到三小时，具体开放安排与预约要求以官方公告为准。",
+  "image_url": "https://upload.wikimedia.org/wikipedia/commons/0/0b/Hubei_Provincial_Museum.JPG",
+  "city": "武汉市",
+  "category_slug": "historical"
+ },
+ {
+  "name": "户部巷",
+  "description": "武昌老城的小吃街，紧邻长江大桥和司门口，聚集了热干面、豆皮、糊汤粉等本地早点。街巷不长，早晚人流集中，适合清晨来吃一顿早饭，再步行去江边看大桥，注意避开节假日高峰。",
+  "image_url": "https://upload.wikimedia.org/wikipedia/commons/6/63/Hubu_Alley%2C_Wuchang%2C_Wuhan%2C_Hubei%2C_China%2C_430000_-_panoramio.jpg",
+  "city": "武汉市",
+  "category_slug": "historical"
+ },
+ {
+  "name": "武汉长江大桥",
+  "description": "跨越长江的公铁两用桥，建于二十世纪五十年代，是长江上的第一座大型桥梁。桥头堡与引桥可供步行，桥上可俯瞰江面与两岸城市景观。步行过桥需注意来往车流，建议走人行道并留意开放时间。",
+  "image_url": "https://upload.wikimedia.org/wikipedia/commons/5/51/Wuhan_Yangtze_River_Bridge_in_2020.jpg",
+  "city": "武汉市",
+  "category_slug": "historical"
+ },
+ {
+  "name": "江汉路步行街",
+  "description": "汉口老城区的商业步行街，沿街保留着近代银行、洋行等历史建筑，立面风格多样。街区连接江汉关一带，适合傍晚散步并观察老建筑细节，周边餐饮与商铺密集，节假日人流较大。",
+  "image_url": "https://upload.wikimedia.org/wikipedia/commons/4/4e/%E6%B1%9F%E6%B1%89%E8%B7%AF%E9%9B%95%E5%A1%91.jpg",
+  "city": "武汉市",
+  "category_slug": "historical"
+ },
+ {
+  "name": "归元禅寺",
+  "description": "汉阳的佛教寺院，始建于清代，以罗汉堂的五百罗汉塑像较为知名，寺内建筑沿中轴排列。香火较旺，节假日人多，参观时请遵守寺院礼仪，不要在殿内喧哗或随意拍照，注意看管随身物品。",
+  "image_url": "https://upload.wikimedia.org/wikipedia/commons/0/01/Guiyuan_Temple%2C_Wuhan_%2810160047775%29.jpg",
+  "city": "武汉市",
+  "category_slug": "historical"
+ },
+ {
+  "name": "晴川阁",
+  "description": "位于汉阳龟山东麓、临长江而建的楼阁，与黄鹤楼隔江相望，现存建筑为后来重修。登阁可看长江与大桥，视野开阔，与禹稷行宫同处一个景区，适合与江边漫步一起安排半天时间。",
+  "image_url": "https://upload.wikimedia.org/wikipedia/commons/8/89/Qingchuan_Pavilion%2C_Hubei%2C_China.jpg",
+  "city": "武汉市",
+  "category_slug": "historical"
+ },
+ {
+  "name": "古琴台",
+  "description": "汉阳月湖畔的纪念性建筑群，与伯牙、子期高山流水的传说相关，现存格局为清代以来逐步形成。园内面积不大，碑刻与庭院可供细看，适合与月湖、晴川阁串成半日线路，环境较为安静。",
+  "image_url": "https://upload.wikimedia.org/wikipedia/commons/f/f6/Guqin_Platform%2C_Hubei%2C_China5.jpg",
+  "city": "武汉市",
+  "category_slug": "historical"
+ },
+ {
+  "name": "昙华林",
+  "description": "武昌老城的历史街区，保留着近代教会建筑、老宅和石板巷，如今聚集了不少书店、咖啡馆和手作店。街区依山而建，坡道较多，适合慢慢步行，注意不要打扰沿街居民，部分院落不对外开放。",
+  "image_url": "https://upload.wikimedia.org/wikipedia/commons/a/a4/Tanhualin_2.JPG",
+  "city": "武汉市",
+  "category_slug": "historical"
+ },
+ {
+  "name": "武汉革命博物馆",
+  "description": "由武昌农讲所旧址、毛泽东旧居等几处近代建筑组成的纪念性场馆，展陈讲述大革命时期的历史。院落保留原有格局，参观以图片、实物和旧址复原为主，适合安静地看展，注意遵守场馆规定。",
+  "image_url": "https://upload.wikimedia.org/wikipedia/commons/d/dd/%E5%91%A8%E6%81%A9%E6%9D%A51958%E6%AD%A6%E6%98%8C%E5%86%9C%E8%AE%B2%E6%89%80%E9%A6%86%E5%90%8D.jpg",
+  "city": "武汉市",
+  "category_slug": "historical"
+ },
+ {
+  "name": "中山舰博物馆",
+  "description": "位于江夏金口的专题博物馆，馆体临水，陈列着一代名舰中山舰的打捞修复成果及相关文物。展厅围绕舰体布置，可近距离观察舰身结构，适合对近代海军史感兴趣的游客，位置较偏建议自驾。",
+  "image_url": "https://upload.wikimedia.org/wikipedia/commons/c/c8/Zhongshan_Warship_Museum.jpg",
+  "city": "武汉市",
+  "category_slug": "historical"
+ },
+ {
+  "name": "汉口江滩",
+  "description": "长江北岸的滨江公园，沿江铺开较长的步道与绿地，可以看江景、放风筝、骑行。傍晚和夜间人流较多，江风较大，夏季闷热。与江汉路、江汉关相距不远，适合散步串联，注意汛期江边封闭。",
+  "image_url": "/static/images/placeholder-attraction.svg",
+  "city": "武汉市",
+  "category_slug": "natural"
+ },
+ {
+  "name": "木兰天池",
+  "description": "黄陂区木兰山一带的山水景区，以峡谷、溪流和山顶湖泊为主，步道沿溪而上，途中可见瀑布与潭水。植被茂密，夏季凉爽，登山有一定强度，需要预留半天到一天时间，穿防滑的鞋子。",
+  "image_url": "https://upload.wikimedia.org/wikipedia/commons/5/59/%E6%9C%A8%E5%85%B0%E5%A4%A9%E6%B1%A0_2024-04-24.jpg",
+  "city": "武汉市",
+  "category_slug": "natural"
+ },
+ {
+  "name": "木兰草原",
+  "description": "黄陂区的草原主题景区，以起伏草坡、马场和露营区域为主，视野开阔，适合拍照和亲子活动。距市区较远，通常自驾前往，草原日晒较强，需要准备防晒和饮水，节假日活动较多。",
+  "image_url": "https://upload.wikimedia.org/wikipedia/commons/a/a5/%E6%9C%A8%E5%85%B0%E8%8D%89%E5%8E%9F%E9%A3%8E%E6%99%AF%E5%8C%BA%E5%A4%A7%E9%97%A8_-_panoramio.jpg",
+  "city": "武汉市",
+  "category_slug": "natural"
+ },
+ {
+  "name": "后官湖",
+  "description": "蔡甸区的城市湿地公园，湖岸线曲折，芦苇与水杉分布较多，设有环湖绿道和观鸟点。游客密度低于东湖，适合骑行和散步，清晨与傍晚光线较好，部分路段遮阴较少，夏天注意防晒。",
+  "image_url": "https://upload.wikimedia.org/wikipedia/commons/7/7f/%E5%90%8E%E5%AE%98%E6%B9%96_20250517.jpg",
+  "city": "武汉市",
+  "category_slug": "natural"
+ },
+ {
+  "name": "武汉动物园",
+  "description": "汉阳区的城市动物园，园内饲养大熊猫、金丝猴等动物，另有水禽湖与儿童游乐区域。园区依墨水湖而建，绿化较好，适合带小孩游玩，步行一圈需要两三个小时，园内可乘游览车。",
+  "image_url": "https://upload.wikimedia.org/wikipedia/commons/1/1f/WUHAN_ZOO.jpg",
+  "city": "武汉市",
+  "category_slug": "theme-park"
+ },
+ {
+  "name": "武汉欢乐谷",
+  "description": "位于东湖附近的主题乐园，设有过山车、激流勇进等大型游乐项目，按区域划分不同主题。节假日排队时间较长，建议提前查看项目开放情况，部分项目对身高和身体状况有限制，注意安全提示。",
+  "image_url": "https://upload.wikimedia.org/wikipedia/commons/5/5d/Happy_Valley_Wuhan_2.jpg",
+  "city": "武汉市",
+  "category_slug": "theme-park"
+ },
+ {
+  "name": "武汉海昌极地海洋公园",
+  "description": "以极地动物和海洋生物为主题的场馆，展出企鹅、白鲸、水母等，另有海豚表演场次。场馆多为室内，适合雨天或夏季游览，表演场次需按现场公告安排观看，馆内温度偏低建议带件外套。",
+  "image_url": "/static/images/placeholder-attraction.svg",
+  "city": "武汉市",
+  "category_slug": "theme-park"
+ },
+ {
+  "name": "橘子洲",
+  "description": "湘江江心的长条形沙洲，南北延伸数公里，洲上绿地和橘林成片，洲头立有青年毛泽东艺术雕塑。适合傍晚散步或骑行，节假日人流密集，洲上有观光小火车可以代步。江面开阔，对岸可见岳麓山轮廓。",
+  "image_url": "https://upload.wikimedia.org/wikipedia/commons/c/cc/Orange_Isle_2021122625.jpg",
+  "city": "长沙市",
+  "category_slug": "natural"
+ },
+ {
+  "name": "岳麓山",
+  "description": "长沙城西的山地，林木茂密，山道与公路交错，可步行或乘索道上山。山中有岳麓书院、爱晚亭等古迹，秋季红叶较有名气。登顶可俯瞰湘江与城区，适合安排半日行程，山上昼夜温差不大。",
+  "image_url": "https://upload.wikimedia.org/wikipedia/commons/8/84/Changsha_Yuelu_20230723.jpg",
+  "city": "长沙市",
+  "category_slug": "natural"
+ },
+ {
+  "name": "岳麓书院",
+  "description": "始建于北宋的书院，是中国古代四大书院之一，现存建筑为明清以来逐步修缮形成。讲堂、御书楼与庭院沿中轴展开，匾额碑刻较多，参观时留意建筑细节，与岳麓山同属一个景区。",
+  "image_url": "https://upload.wikimedia.org/wikipedia/commons/3/32/Yuelu-Academy-Gate.jpg",
+  "city": "长沙市",
+  "category_slug": "historical"
+ },
+ {
+  "name": "湖南省博物馆",
+  "description": "省级综合性博物馆，以马王堆汉墓出土文物最具代表性，帛画、漆器与辛追墓陈列是常设展重点。展厅面积较大，参观建议预留两到三小时，具体开放与预约要求以官方公告为准，馆内人流较多。",
+  "image_url": "https://upload.wikimedia.org/wikipedia/commons/c/c4/New_building_of_Hunan_Museum_20230403a.jpg",
+  "city": "长沙市",
+  "category_slug": "historical"
+ },
+ {
+  "name": "太平街",
+  "description": "长沙老城的街巷，青石板路两侧是晚清至民国风格的建筑，聚集了臭豆腐、糖油粑粑等本地小吃。街区不长，与坡子街、五一广场相连，适合傍晚边逛边吃，夜间灯笼亮起后更热闹。",
+  "image_url": "https://upload.wikimedia.org/wikipedia/commons/3/30/Taiping_Street%2C_Changsha.jpg",
+  "city": "长沙市",
+  "category_slug": "historical"
+ },
+ {
+  "name": "天心阁",
+  "description": "长沙古城墙遗址上的楼阁，现存城墙为明代遗存，阁体为后来重修。园内可看到城墙砖石与护城河遗迹，登阁能望见城区街景。规模不大，适合与周边老街一并游览，公园内古树较多。",
+  "image_url": "https://upload.wikimedia.org/wikipedia/commons/2/2a/Tianxin_Pavilion_in_Changsha_20250310.jpg",
+  "city": "长沙市",
+  "category_slug": "historical"
+ },
+ {
+  "name": "黄兴路步行街",
+  "description": "长沙最热闹的商业步行街，沿街商铺与小吃店密集，夜间灯光和人流尤为集中。街区北接五一广场，南连坡子街一带，适合感受城市夜生活，周边还有多家老字号小吃店。夜间灯光亮起后人流更集中。",
+  "image_url": "https://upload.wikimedia.org/wikipedia/commons/c/c0/Changsha_Pedestrian_Street_3_July_2024A.jpg",
+  "city": "长沙市",
+  "category_slug": "historical"
+ },
+ {
+  "name": "长沙简牍博物馆",
+  "description": "以走马楼吴简为核心的专题博物馆，展陈介绍简牍的出土、修复与释读过程，另有竹简实物陈列。馆体不大，参观时间约一小时，适合对简牍与地方历史感兴趣的游客，馆内提供讲解。",
+  "image_url": "https://upload.wikimedia.org/wikipedia/commons/d/d5/Changsha_Jiandu_Museum.jpg",
+  "city": "长沙市",
+  "category_slug": "historical"
+ },
+ {
+  "name": "贾谊故居",
+  "description": "西汉文学家贾谊被贬长沙时的居所旧址，现存建筑为后世重修，院内有井与碑刻。规模不大，位置就在太平街附近，适合顺路参观，了解汉代长沙的历史背景，院内环境清幽。院内有古井与碑廊可供细看。",
+  "image_url": "https://upload.wikimedia.org/wikipedia/commons/5/5c/Residence_of_Jia_Yi_in_Changsha.JPG",
+  "city": "长沙市",
+  "category_slug": "historical"
+ },
+ {
+  "name": "开福寺",
+  "description": "长沙城北的佛教寺院，始建于五代，现存殿宇为后来重建，寺内有观音像与石拱桥等。香火较旺，周边环境热闹，参观时请遵守寺院礼仪，不要在殿内大声喧哗，交通较为方便。殿宇沿中轴排列，格局完整。",
+  "image_url": "https://upload.wikimedia.org/wikipedia/commons/3/35/Shanmen_of_Kaifu_Temple_in_Changsha%2C_picture1.jpg",
+  "city": "长沙市",
+  "category_slug": "historical"
+ },
+ {
+  "name": "长沙世界之窗",
+  "description": "以世界建筑微缩景观和游乐项目为主题的园区，园内有仿建的各国地标与过山车、水上项目等。适合亲子出游，节假日排队时间较长，部分项目对身高有限制，园区面积不小，建议穿舒适的鞋。",
+  "image_url": "https://upload.wikimedia.org/wikipedia/commons/b/b8/Window_of_the_World_10.JPG",
+  "city": "长沙市",
+  "category_slug": "theme-park"
+ },
+ {
+  "name": "长沙生态动物园",
+  "description": "位于长沙县的大型动物园，园区面积较广，饲养大熊猫、金丝猴等动物，另设车行区与步行区。游览方式以观光车加步行结合，全程需要半天左右，餐饮选择有限，可自带饮水。园内步道较长，注意防晒。",
+  "image_url": "https://upload.wikimedia.org/wikipedia/commons/4/44/Changsha_Ecological_Zoo1.jpg",
+  "city": "长沙市",
+  "category_slug": "theme-park"
+ },
+ {
+  "name": "铜官窑古镇",
+  "description": "湘江东岸的古镇，以唐代长沙窑遗址为核心，街区为近年复建，展示陶瓷烧造历史与窑具。镇内有博物馆与手作体验，商业化程度较高，适合对陶瓷文化感兴趣的游客，江边视野开阔。",
+  "image_url": "https://upload.wikimedia.org/wikipedia/commons/2/27/Porcelain_jar%2C_Tang_dynasty%2C_Changsha_Tongguan_Kiln_Site_Museum.jpg",
+  "city": "长沙市",
+  "category_slug": "historical"
+ },
+ {
+  "name": "靖港古镇",
+  "description": "湘江西岸的古镇，保留着临河老街与旧式商铺，街巷不长，商业化程度低于热门古镇。可以吃到本地小吃，也能看到码头与河岸风貌，镇上还有几处旧宅与码头遗址可看，适合慢慢走。",
+  "image_url": "https://upload.wikimedia.org/wikipedia/commons/4/47/Gate%2C_Jinggang_Ancient_Town%2C_Wangcheng_District_of_Changsha%2C_Hunan%2C_China1.jpg",
+  "city": "长沙市",
+  "category_slug": "historical"
+ },
+ {
+  "name": "大围山国家森林公园",
+  "description": "浏阳东北部的山地森林，海拔较高，植被茂密，夏季气温明显低于城区。山中有溪流、瀑布与观景台，适合避暑和徒步，山上住宿有限，节假日需要提前安排，出行前留意天气。山里信号较弱，提前下载地图。",
+  "image_url": "https://upload.wikimedia.org/wikipedia/commons/7/7a/Li%E2%80%99s_shrine_in_Dawei_Mountain.jpg",
+  "city": "长沙市",
+  "category_slug": "natural"
+ },
+ {
+  "name": "石燕湖",
+  "description": "长沙南部的湖泊景区，水面不大，四周丘陵环绕，设有环湖步道与拓展项目。适合周末短途出游，部分区域需要另付费，湖边有烧烤与露营区域，周末人比较多，建议错峰。湖边可租船，适合亲子出游。",
+  "image_url": "/static/images/placeholder-attraction.svg",
+  "city": "长沙市",
+  "category_slug": "natural"
+ },
+ {
+  "name": "洋湖湿地公园",
+  "description": "湘江西岸的城市湿地公园，水面与绿地相间，设有栈道、观鸟点和儿童活动区。游客密度低于市中心，适合散步和骑行，春秋两季景色较好，园内有租车点，骑行一圈约一小时。园内草坪开阔，适合野餐。",
+  "image_url": "https://upload.wikimedia.org/wikipedia/commons/e/ef/Yanghu_Wetland_Park_20210429a.jpg",
+  "city": "长沙市",
+  "category_slug": "natural"
+ },
+ {
+  "name": "梅溪湖",
+  "description": "湘江新区的人工湖，湖岸有文化艺术中心与大剧院，建筑造型现代，夜景灯光较有特色。环湖步道适合散步，周边商业配套完善，湖面开阔，对岸的建筑群倒影清晰，适合傍晚前往拍照。",
+  "image_url": "https://upload.wikimedia.org/wikipedia/commons/a/a2/Meixi_Lake_in_Changsha%2C_picture1.jpg",
+  "city": "长沙市",
+  "category_slug": "natural"
+ },
+ {
+  "name": "湖南第一师范",
+  "description": "原湖南省立第一师范学校旧址，保留着民国时期的校舍与走廊，建筑中西合璧。校内设有陈列介绍学校历史，参观需遵守校园管理规定，校舍为砖木结构，走廊与天井保存较好。展室介绍了学校与近代教育史。",
+  "image_url": "https://upload.wikimedia.org/wikipedia/commons/4/4e/Site_of_Hunan_First_Normal_University%2C_2018-09-27_01.jpg",
+  "city": "长沙市",
+  "category_slug": "historical"
+ },
+ {
+  "name": "长沙海底世界",
+  "description": "以海洋生物展示为主题的场馆，设有海底隧道、水母展区和海狮表演，适合亲子游览。场馆为室内，受天气影响小，表演场次按现场公告安排，场馆不大，两三个小时可以逛完。馆内有互动区，适合带小孩。",
+  "image_url": "/static/images/placeholder-attraction.svg",
+  "city": "长沙市",
+  "category_slug": "theme-park"
+ },
+ {
+  "name": "鼓浪屿",
+  "description": "厦门岛西南侧的小岛，岛上禁止机动车通行，街巷曲折，分布着大量近代各国风格的领事馆、教堂与别墅。适合步行慢逛，龙头路一带小吃集中，节假日轮渡船票紧张，建议提前购票。",
+  "image_url": "https://upload.wikimedia.org/wikipedia/commons/b/b6/Gulangyu_Island_from_Zhongshan_Road%2C_Xiamen.jpg",
+  "city": "厦门市",
+  "category_slug": "historical"
+ },
+ {
+  "name": "日光岩",
+  "description": "鼓浪屿中部的花岗岩山丘，是岛上的制高点，沿石阶登顶可俯瞰全岛红瓦屋顶与周边海面。山体不高但台阶较陡，夏季日晒强烈，建议清晨或傍晚前往，避开正午的人流高峰。山顶风较大，注意站稳。",
+  "image_url": "https://upload.wikimedia.org/wikipedia/commons/9/99/Mount_Riguangyan_on_Gulangyu_Island_20121231.jpg",
+  "city": "厦门市",
+  "category_slug": "natural"
+ },
+ {
+  "name": "菽庄花园",
+  "description": "建于二十世纪初的私家园林，临海而筑，园内以曲桥、假山和藏海手法见长，另设有钢琴博物馆。园林面积不大，布局精巧，适合与日光岩、港仔后沙滩一并游览，注意参观时段。园内临海一侧视野开阔，值得细看。",
+  "image_url": "https://upload.wikimedia.org/wikipedia/commons/b/bd/Shuzhuang_Garden%2C_Xiamen%2C_China.JPG",
+  "city": "厦门市",
+  "category_slug": "historical"
+ },
+ {
+  "name": "厦门大学",
+  "description": "依山临海的百年学府，校园内有芙蓉湖、建南大礼堂等标志性建筑，风格中西合璧。平时入校需按学校规定预约，芙蓉隧道内的涂鸦是热门拍照点，参观时请保持安静。校园面积较大，建议按导览路线参观。",
+  "image_url": "https://upload.wikimedia.org/wikipedia/commons/b/b5/Panoramatic_view_of_xiamen_university_at_sunset.jpg",
+  "city": "厦门市",
+  "category_slug": "historical"
+ },
+ {
+  "name": "南普陀寺",
+  "description": "厦门岛东南的佛教寺院，始建于唐代，背靠五老峰，寺内殿宇沿中轴层层升高。香火旺盛，素斋较为知名，与厦门大学相邻，参观时请遵守寺院礼仪，注意着装得体。寺院后山有步道可登五老峰，适合短途徒步。",
+  "image_url": "https://upload.wikimedia.org/wikipedia/commons/f/f6/Nanputuo_Temple%2C_Xiamen%2C_China.JPG",
+  "city": "厦门市",
+  "category_slug": "historical"
+ },
+ {
+  "name": "环岛路",
+  "description": "沿厦门岛东南海岸修建的滨海道路，一侧是海景与沙滩，另一侧是绿地和山体。设有专门的自行车道与步道，适合骑行或散步，日出日落时段景色最好，节假日车流较多。沿途有多个观景平台可以停留。",
+  "image_url": "https://upload.wikimedia.org/wikipedia/commons/e/e8/20230131_Huandao_Road%2C_Xiamen.jpg",
+  "city": "厦门市",
+  "category_slug": "natural"
+ },
+ {
+  "name": "曾厝垵",
+  "description": "环岛路旁的老渔村，如今聚集了大量民宿、小吃摊与手作店，街巷狭窄曲折。适合傍晚闲逛和吃海鲜，商业化程度较高，节假日人流密集，注意保管随身物品。街上小吃以海鲜和闽南风味为主，价格差别较大。",
+  "image_url": "https://upload.wikimedia.org/wikipedia/commons/c/ca/%E6%9B%BE%E5%8E%9D%E5%9E%B5092633.jpg",
+  "city": "厦门市",
+  "category_slug": "historical"
+ },
+ {
+  "name": "中山路步行街",
+  "description": "厦门老城的商业步行街，沿街是骑楼建筑，店铺以本地特产和小吃为主，夜间灯光较热闹。街区直通海边，与鼓浪屿轮渡码头相距不远，适合傍晚逛完再去海边。骑楼廊下可以避雨遮阳，适合慢慢逛。",
+  "image_url": "https://upload.wikimedia.org/wikipedia/commons/1/13/Zhongshan_Road%2C_Xiamen_11.jpg",
+  "city": "厦门市",
+  "category_slug": "historical"
+ },
+ {
+  "name": "胡里山炮台",
+  "description": "清末修建的海防炮台，保存有大型海岸炮与兵营遗址，是近代海防史的重要实物。园区临海，视野开阔，可远眺金门方向，参观以步行为主，夏季注意防晒补水。园内展陈介绍了当年的海防布局。",
+  "image_url": "https://upload.wikimedia.org/wikipedia/commons/f/fb/Hulishan_Fortress%2C_Xiamen%2C_China.JPG",
+  "city": "厦门市",
+  "category_slug": "historical"
+ },
+ {
+  "name": "集美学村",
+  "description": "由陈嘉庚先生创办的学校建筑群，校舍以红砖与白石为主，屋顶采用闽南式燕尾脊，风格统一。片区包含多所学校与纪念馆，可步行参观外观，进入校舍需遵守学校规定。龙舟池一带视野开阔，适合傍晚散步。",
+  "image_url": "https://upload.wikimedia.org/wikipedia/commons/4/4d/20230131_Yungong_Building_of_Jimei_University.jpg",
+  "city": "厦门市",
+  "category_slug": "historical"
+ },
+ {
+  "name": "鳌园",
+  "description": "集美东南海滨的纪念性园林，由门廊、集美解放纪念碑与陈嘉庚墓组成，石刻与浮雕数量较多。园区临海，面积不大，适合与集美学村一并参观，注意保持安静。石刻内容以人物故事和建设场景为主。",
+  "image_url": "https://upload.wikimedia.org/wikipedia/commons/2/25/%E5%8E%A6%E9%97%A8%E9%9B%86%E7%BE%8E%E5%AD%A6%E6%9D%91%E9%B3%8C%E5%9B%AD_-_panoramio.jpg",
+  "city": "厦门市",
+  "category_slug": "historical"
+ },
+ {
+  "name": "厦门园林植物园",
+  "description": "位于万石山一带的植物园，园区面积较大，分为雨林世界、多肉植物区等多个专类园。雨林区有喷雾景观，适合拍照，园内步道起伏，建议穿舒适的鞋，预留半天时间。园内另有观光车，可减少步行距离。",
+  "image_url": "https://upload.wikimedia.org/wikipedia/commons/0/07/Xiamen_Botanical_Garden3.jpg",
+  "city": "厦门市",
+  "category_slug": "natural"
+ },
+ {
+  "name": "五缘湾湿地公园",
+  "description": "厦门岛东北部的湿地公园，水域开阔，设有木栈道、迷宫与观鸟区域，植被以红树林和湿地植物为主。游人相对较少，适合散步和骑行，候鸟季节可以观察水鸟。周边有商业与住宅区，交通较便利。",
+  "image_url": "https://upload.wikimedia.org/wikipedia/commons/d/df/WuyuanBay_-_2.jpg",
+  "city": "厦门市",
+  "category_slug": "natural"
+ },
+ {
+  "name": "白城沙滩",
+  "description": "厦门大学附近的海滩，沙质较细，紧邻环岛路与演武大桥，交通方便。傍晚时分人多，适合看日落和散步，夏季游泳需注意安全提示，涨潮时不要靠近礁石。沙滩与厦大芙蓉隧道相距不远，可以连着走。",
+  "image_url": "https://upload.wikimedia.org/wikipedia/commons/1/12/%E5%8E%A6%E9%97%A8%E7%99%BD%E5%9F%8E%E6%B5%B7%E6%BB%A9_-_panoramio.jpg",
+  "city": "厦门市",
+  "category_slug": "natural"
+ },
+ {
+  "name": "天竺山森林公园",
+  "description": "海沧区西北部的山地森林，海拔不高但面积广阔，有溪流、水库与多条登山步道。植被覆盖率高，夏季凉爽，适合徒步和野餐，山中信号较弱，建议结伴前往。山脚有水库和草地，适合带小孩的家庭。",
+  "image_url": "/static/images/placeholder-attraction.svg",
+  "city": "厦门市",
+  "category_slug": "natural"
+ },
+ {
+  "name": "方特梦幻王国",
+  "description": "以动漫主题包装的大型游乐园，设有过山车、漂流等游乐项目与室内剧场，项目按区域分布。适合亲子与年轻游客，节假日排队时间较长，部分项目对身高有限制。园区面积较大，建议穿舒适的鞋。",
+  "image_url": "https://upload.wikimedia.org/wikipedia/commons/1/1e/20150220%E5%8E%A6%E9%97%A8%E6%96%B9%E7%89%B9%E6%9E%81%E5%9C%B0%E5%BF%AB%E8%BD%A6%E7%AB%99%E5%8F%B0.jpg",
+  "city": "厦门市",
+  "category_slug": "theme-park"
+ },
+ {
+  "name": "灵玲国际马戏城",
+  "description": "以马戏表演为核心的园区，包含大剧场、动物互动区与游乐设施，演出以杂技和动物表演为主。场馆多为室内，受天气影响小，演出场次需按现场公告安排，建议提前入场。园区不大，半天时间足够。",
+  "image_url": "/static/images/placeholder-attraction.svg",
+  "city": "厦门市",
+  "category_slug": "theme-park"
+ },
+ {
+  "name": "同安影视城",
+  "description": "位于同安的仿古建筑景区，按明清宫廷与街市格局搭建，曾作为影视拍摄基地。园区面积不大，适合拍照和亲子游览，部分区域有演出安排，位置较偏建议自驾。城内街巷布置较紧凑，拍照点集中在主街。",
+  "image_url": "/static/images/placeholder-attraction.svg",
+  "city": "厦门市",
+  "category_slug": "theme-park"
+ },
+ {
+  "name": "中山公园",
+  "description": "厦门老城区的公园，建于二十世纪二十年代，园内有湖泊、假山与纪念碑，古树较多。免费开放，周边交通方便，适合散步和短时休憩，早晨常有本地人在此锻炼。公园面积不大，一小时内可逛完。",
+  "image_url": "https://upload.wikimedia.org/wikipedia/commons/8/85/The_South_Gate_of_Zhongshan_Park%2C_Xiamen.jpg",
+  "city": "厦门市",
+  "category_slug": "historical"
+ },
+ {
+  "name": "演武大桥",
+  "description": "沿厦门岛南海岸修建的高架桥，桥面贴近海面，可远眺鼓浪屿方向的海景。夜间灯光较有特色，适合驾车或步行经过，注意桥上不能随意停车，观景请到指定区域。桥下海边有步道，适合散步看海。",
+  "image_url": "https://upload.wikimedia.org/wikipedia/commons/7/7f/Night_view_of_Xiamen_Yanwu_Bridge_20230826_01.jpg",
+  "city": "厦门市",
+  "category_slug": "historical"
+ },
+ {
+  "name": "天涯海角",
+  "description": "位于三亚西部的海滨景区，岸边散布着刻有“天涯”“海角”字样的巨石，是三亚最具知名度的地标之一。景区沿海岸线展开，可步行游览，也可乘观光车，正午日晒强烈，建议避开高峰时段。",
+  "image_url": "https://upload.wikimedia.org/wikipedia/commons/b/bc/Tianya_Haijiao%2C_Sanya.jpg",
+  "city": "三亚市",
+  "category_slug": "natural"
+ },
+ {
+  "name": "亚龙湾",
+  "description": "三亚东部的弧形海湾，沙滩细白，海水清澈，沿岸集中了多家度假酒店。适合游泳、浮潜和晒太阳，海况较为平缓，但夏季紫外线强，注意防晒和补水，节假日沙滩人流较多。周边有商场与餐饮，配套较完善。",
+  "image_url": "https://upload.wikimedia.org/wikipedia/commons/8/81/HN_SanYa_YaLong_Bay_National_Resort.jpg",
+  "city": "三亚市",
+  "category_slug": "natural"
+ },
+ {
+  "name": "蜈支洲岛",
+  "description": "三亚北部的离岛，四周海水清澈，能见度较高，是潜水和水上项目的热门地点。上岛需乘船，船程不长但旺季排队明显，岛上以步行为主，环岛电瓶车需另行购票。岛上遮阴较少，注意防晒。",
+  "image_url": "https://upload.wikimedia.org/wikipedia/commons/1/19/Wuzhizhou_Island_-_01.jpg",
+  "city": "三亚市",
+  "category_slug": "natural"
+ },
+ {
+  "name": "南山文化旅游区",
+  "description": "以佛教文化为主题的大型景区，园内有海上观音像、南山寺等建筑，园区面积大，需乘观光车或步行较长时间。适合对宗教建筑和园林感兴趣的游客，参观时注意着装与礼仪。园区内餐饮选择有限，可自带饮水。",
+  "image_url": "https://upload.wikimedia.org/wikipedia/commons/f/ff/Nanshan_Guanyin_Park_%2810098462694%29.jpg",
+  "city": "三亚市",
+  "category_slug": "historical"
+ },
+ {
+  "name": "大小洞天",
+  "description": "三亚西部的海滨景区，以海蚀地貌、礁石与摩崖石刻见长，海岸线曲折，椰林成片。园区可步行或乘观光车，适合拍照和看海，涨潮时部分礁石区域不宜靠近。景区内有一处小型展馆可参观。",
+  "image_url": "https://upload.wikimedia.org/wikipedia/commons/5/55/20240504_Xiaodongtian%2C_Hainan.jpg",
+  "city": "三亚市",
+  "category_slug": "natural"
+ },
+ {
+  "name": "鹿回头",
+  "description": "位于三亚湾南侧山上的公园，因黎族传说得名，山顶有鹿回头雕塑，可俯瞰三亚湾与城区。登顶可步行或乘电瓶车，傍晚看日落和夜景的游客较多，山上风大注意保暖。公园面积不大，一小时左右可逛完。",
+  "image_url": "https://upload.wikimedia.org/wikipedia/commons/4/44/%E4%B8%89%E4%BA%9E%E9%B9%BF%E5%9B%9E%E9%A0%AD%E5%85%AC%E5%9C%92_Luhuitou_Park%2C_Sanya_-_panoramio.jpg",
+  "city": "三亚市",
+  "category_slug": "natural"
+ },
+ {
+  "name": "三亚湾",
+  "description": "三亚市区西侧的海湾，海岸线长，沿岸种满椰树，沙滩平缓。适合散步、看日落和骑行，海水质量不如东部海湾，但胜在交通方便，傍晚时分本地人与游客都较多。沿岸有多个公共入口，进出方便。",
+  "image_url": "https://upload.wikimedia.org/wikipedia/commons/1/18/Sanya_Bay_16.JPG",
+  "city": "三亚市",
+  "category_slug": "natural"
+ },
+ {
+  "name": "大东海",
+  "description": "三亚市区附近的海湾，沙滩较短但交通便利，周边餐饮与住宿集中。适合游泳和晒太阳，海况相对平稳，旺季人多，注意看管随身物品并留意救生员的提示。沙滩周边有更衣和冲淡设施。",
+  "image_url": "https://upload.wikimedia.org/wikipedia/commons/a/ab/Dadonghai_beach_Sanya.jpg",
+  "city": "三亚市",
+  "category_slug": "natural"
+ },
+ {
+  "name": "海棠湾",
+  "description": "三亚东北部的海湾，海岸线长，开发相对较晚，沿岸以高端度假酒店为主。沙滩开阔，适合散步和拍照，海水清澈但风浪有时较大，下海前先确认当天海况。周边商业配套相对分散，建议自驾。",
+  "image_url": "https://upload.wikimedia.org/wikipedia/commons/8/8f/Haitang_Bay_in_Sanya.jpg",
+  "city": "三亚市",
+  "category_slug": "natural"
+ },
+ {
+  "name": "呀诺达雨林",
+  "description": "位于保亭的热带雨林景区，植被茂密，溪流与瀑布分布其间，设有栈道与滑索等项目。园区面积较大，步行路线有起伏，夏季闷热多雨，建议穿防滑鞋并携带雨具。景区内有讲解服务，可跟随游览。",
+  "image_url": "https://upload.wikimedia.org/wikipedia/commons/7/73/Baoting%2C_Hainan%2C_China_-_panoramio_%2813%29.jpg",
+  "city": "三亚市",
+  "category_slug": "natural"
+ },
+ {
+  "name": "槟榔谷",
+  "description": "以黎族、苗族文化为主题的景区，村寨依山而建，展示传统民居、织锦与歌舞。可观看民俗表演，也有手工艺体验，商业化程度较高，适合对少数民族文化感兴趣的游客。景区提供观光车，可减少步行。",
+  "image_url": "https://upload.wikimedia.org/wikipedia/commons/0/07/Binglanggu_01.jpg",
+  "city": "三亚市",
+  "category_slug": "historical"
+ },
+ {
+  "name": "分界洲岛",
+  "description": "位于陵水与三亚交界的离岛，海水清澈，是潜水与水上项目的热门地点。上岛需乘船，岛上以步行为主，环岛线路不长，旺季船票与项目容易排队，建议提前安排。岛上遮阴较少，注意防晒补水。",
+  "image_url": "https://upload.wikimedia.org/wikipedia/commons/6/6f/Fenjiezhou_in_Lingshui.jpg",
+  "city": "三亚市",
+  "category_slug": "natural"
+ },
+ {
+  "name": "西岛",
+  "description": "三亚湾外的渔村小岛，岛上有居民居住，保留着部分旧式民居与渔港。适合体验渔村生活与海鲜，游客比蜈支洲岛少，上岛需乘船，岛上住宿与餐饮选择有限。岛上可租借自行车环岛游览。",
+  "image_url": "https://upload.wikimedia.org/wikipedia/commons/e/ed/Ximaozhou_in_Sanya_Bay.jpg",
+  "city": "三亚市",
+  "category_slug": "natural"
+ },
+ {
+  "name": "热带天堂森林公园",
+  "description": "位于亚龙湾北侧的山地公园，植被茂密，园内有索桥、观景台与度假木屋。可俯瞰亚龙湾全景，步行路线有起伏，夏季闷热，建议早上前往并带足饮水。山上气温略低，可带一件薄外套。",
+  "image_url": "/static/images/placeholder-attraction.svg",
+  "city": "三亚市",
+  "category_slug": "natural"
+ },
+ {
+  "name": "三亚千古情",
+  "description": "以海南历史文化为题材的大型演艺景区，园内有仿古街区和室内剧场，主打实景演出。适合晚间观看演出，演出场次固定，建议提前购票并对号入座。园区与演出分开检票，留意时间。",
+  "image_url": "/static/images/placeholder-attraction.svg",
+  "city": "三亚市",
+  "category_slug": "theme-park"
+ },
+ {
+  "name": "亚特兰蒂斯水世界",
+  "description": "度假酒店配套的水上乐园，设有大型滑道、漂流河与儿童戏水区，项目按区域分布。适合亲子出游，旺季排队时间较长，部分项目对身高和体重有限制。建议自带泳具与防水袋，储物柜需另行租用。",
+  "image_url": "https://upload.wikimedia.org/wikipedia/commons/4/40/Atlantis_Sanya_Aerial.png",
+  "city": "三亚市",
+  "category_slug": "theme-park"
+ },
+ {
+  "name": "海昌梦幻不夜城",
+  "description": "以海洋主题包装的夜间游乐街区，设有摩天轮、剧场与餐饮店铺，夜间灯光效果突出。适合傍晚之后前往，部分项目需另行购票，节假日人流密集。夜间摩天轮排队较久，可提前取号。",
+  "image_url": "https://upload.wikimedia.org/wikipedia/commons/e/e6/%E2%80%9C%E4%B8%89%E4%BA%9A%E4%B9%8B%E7%9C%BC%E2%80%9D88%E7%B1%B3%E6%B5%B7%E4%B8%8A%E6%91%A9%E5%A4%A9%E8%BD%AE_1_%E4%B8%89%E4%BA%9A%E6%B5%B7%E6%98%8C%E6%A2%A6%E5%B9%BB%E6%B5%B7%E6%B4%8B%E4%B8%8D%E5%A4%9C%E5%9F%8E.jpg",
+  "city": "三亚市",
+  "category_slug": "theme-park"
+ },
+ {
+  "name": "崖州古城",
+  "description": "三亚崖州区的古城遗址片区，保留有城墙、学宫等历史建筑，是海南南部较早的行政中心所在地。街区规模不大，适合对地方历史感兴趣的游客，参观时注意保护古迹。周边街巷仍保留部分旧式民居。",
+  "image_url": "/static/images/placeholder-attraction.svg",
+  "city": "三亚市",
+  "category_slug": "historical"
+ },
+ {
+  "name": "落笔洞",
+  "description": "三亚北部的石灰岩洞穴遗址，洞内留有古代人类活动的痕迹，是海南重要的考古地点。洞体不大，周边为山林，参观以了解遗址背景为主，交通相对不便。建议结伴前往并留意开放情况。",
+  "image_url": "/static/images/placeholder-attraction.svg",
+  "city": "三亚市",
+  "category_slug": "historical"
+ },
+ {
+  "name": "椰梦长廊",
+  "description": "沿三亚湾修建的滨海带状公园，椰树成行，步道与绿地沿海岸延伸。适合傍晚散步、骑行和看日落，免费开放，沿线有多个入口，注意过往车辆。日落时段光线最好，适合拍照，沿岸停车位较紧张。",
+  "image_url": "https://upload.wikimedia.org/wikipedia/commons/0/04/%E4%B8%89%E4%BA%9A%E6%A4%B0%E6%A2%A6%E9%95%BF%E5%BB%8A_-_panoramio.jpg",
+  "city": "三亚市",
+  "category_slug": "natural"
+ },
+ {
+  "name": "石林",
+  "description": "以喀斯特石柱群著称的景区，石峰密集排列，形态各异，游览路线以步行栈道为主。园区面积较大，分为大小石林等区域，夏季日照强，建议带水和遮阳用品，慢慢走完全程。景区内有观光车，可节省部分体力。",
+  "image_url": "https://upload.wikimedia.org/wikipedia/commons/f/fe/Shilin_Yunnan_China_Shilin-Stone-Forest-01.jpg",
+  "city": "昆明市",
+  "category_slug": "natural"
+ },
+ {
+  "name": "滇池",
+  "description": "云南最大的高原湖泊，水面开阔，东岸有海埂大坝，冬季可见成群红嘴鸥。适合沿湖散步、骑行和看日落，环湖公路较长，可以分段游览，注意湖边风大。湖边有步道与观景平台，适合慢慢走。",
+  "image_url": "https://upload.wikimedia.org/wikipedia/commons/8/8a/20260222_Kunming_Dianchi_Lake_09.jpg",
+  "city": "昆明市",
+  "category_slug": "natural"
+ },
+ {
+  "name": "翠湖公园",
+  "description": "昆明城区的免费公园，湖面与堤桥相间，冬季红嘴鸥聚集，是本地人常去的休闲地。公园面积不大，适合早晨或傍晚散步，周边有云南大学与老街区。公园四周有茶室与小吃店，可以歇脚。",
+  "image_url": "https://upload.wikimedia.org/wikipedia/commons/4/4a/Green_Lake_Park_%28Cuihu_Park%29-Kunming_%2810949736116%29.jpg",
+  "city": "昆明市",
+  "category_slug": "natural"
+ },
+ {
+  "name": "西山龙门",
+  "description": "位于滇池西岸的山崖景区，栈道沿崖壁开凿，尽头是龙门石窟，可俯瞰滇池。登山步道较长，也可乘索道上山，崖边路段狭窄，注意安全和排队时间。山顶视野开阔，天气好时可看到整个滇池。",
+  "image_url": "https://upload.wikimedia.org/wikipedia/commons/7/7a/The_Dragon_Gate%2C_built_on_the_cliff_of_Western_Hill%2C_Kunming_-_panoramio.jpg",
+  "city": "昆明市",
+  "category_slug": "natural"
+ },
+ {
+  "name": "大观楼",
+  "description": "滇池北岸的楼阁，因长联而闻名，现存建筑为清代以来重修，登楼可远眺滇池与西山。园内另有荷池与碑刻，面积不大，适合与海埂一带串联游览。楼前水面开阔，夏季荷花盛开时景色较好。",
+  "image_url": "https://upload.wikimedia.org/wikipedia/commons/8/8c/%E6%98%86%E6%98%8E%E5%A4%A7%E8%A7%82%E6%A5%BC%2C_2009-03-16.jpg",
+  "city": "昆明市",
+  "category_slug": "historical"
+ },
+ {
+  "name": "云南民族村",
+  "description": "滇池畔的民族文化主题园区，按不同民族建造村寨，展示民居、服饰与歌舞。园区面积较大，步行需两三个小时，节庆期间有表演，商业化程度较高。村寨之间距离较远，建议按导览图游览。",
+  "image_url": "https://upload.wikimedia.org/wikipedia/commons/9/91/%E4%BA%91%E5%8D%97%E6%B0%91%E6%97%8F%E6%9D%91-%E5%85%A5%E5%8F%A3%E7%89%8C%E5%9D%8A.jpg",
+  "city": "昆明市",
+  "category_slug": "historical"
+ },
+ {
+  "name": "金马碧鸡坊",
+  "description": "昆明老城中心的两座牌坊，始建于明代，现存建筑为后来重建，是城市的标志性景观。周边为商业街区，夜间灯光较亮，适合傍晚散步和拍照。两座牌坊相距不远，周边商铺密集。适合安排在行程中段游览。",
+  "image_url": "https://upload.wikimedia.org/wikipedia/commons/c/cc/%E9%87%91%E9%A9%AC%E7%A2%A7%E9%B8%A1%E5%9D%8A.jpg",
+  "city": "昆明市",
+  "category_slug": "historical"
+ },
+ {
+  "name": "云南大学",
+  "description": "始建于二十世纪二十年代的综合性大学，校园内有会泽院等早期建筑，银杏道在秋季较有名气。平时入校需遵守学校规定，银杏季人流较多，参观时保持安静。校园依山而建，台阶较多，注意脚下。",
+  "image_url": "https://upload.wikimedia.org/wikipedia/commons/5/5e/Campus_view_-_Yunnan_University_-_DSC01837.JPG",
+  "city": "昆明市",
+  "category_slug": "historical"
+ },
+ {
+  "name": "西南联大旧址",
+  "description": "抗战时期西南联合大学的办学旧址，现为纪念馆，保留教室与校门等遗迹。展陈以历史照片、实物和文字为主，适合了解那段教育史，参观时请保持安静。旧址位于校园内，需按指引进入参观。",
+  "image_url": "https://upload.wikimedia.org/wikipedia/commons/c/ca/The_Gate%2C_National_Southwestern_Associated_University%2C_1938.jpg",
+  "city": "昆明市",
+  "category_slug": "historical"
+ },
+ {
+  "name": "云南省博物馆",
+  "description": "省级综合性博物馆，馆藏以古滇国青铜器、南诏大理国佛教文物和少数民族服饰为特色。展厅面积较大，参观建议预留两小时左右，具体开放安排以官方公告为准。馆内常设展与临时展并行，可先看导览。",
+  "image_url": "https://upload.wikimedia.org/wikipedia/commons/0/0e/The_new_Yunnan_Provincial_Museum.jpg",
+  "city": "昆明市",
+  "category_slug": "historical"
+ },
+ {
+  "name": "圆通寺",
+  "description": "昆明城区的佛教寺院，始建于唐代，寺内建筑沿中轴排列，后院有水池与假山。香火较旺，周边为圆通山动物园，参观时请遵守寺院礼仪，不要大声喧哗。寺院面积不大，一小时内可以参观完。",
+  "image_url": "https://upload.wikimedia.org/wikipedia/commons/2/22/Yuantong_Temple%2C_Kunming_-_DSC03300.JPG",
+  "city": "昆明市",
+  "category_slug": "historical"
+ },
+ {
+  "name": "昆明世博园",
+  "description": "一九九九年世界园艺博览会的会址，园区保留各国展园与植物景观，面积较大。适合散步和拍照，园内可乘观光车，部分展园维护情况不一，建议留出半天时间。园内花卉按季节更换，观赏效果不同。",
+  "image_url": "https://upload.wikimedia.org/wikipedia/commons/2/21/Kunming_World_Horti-Expo_Garden_%2853695115652%29.jpg",
+  "city": "昆明市",
+  "category_slug": "theme-park"
+ },
+ {
+  "name": "昆明动物园",
+  "description": "位于圆通山的城市动物园，园内饲养多种动物，另有樱花区与游乐设施。园区依山而建，坡道较多，春季樱花开放时人流集中，适合带小孩游览。园内餐饮选择有限，可自带饮水。适合安排在行程中段游览。",
+  "image_url": "https://upload.wikimedia.org/wikipedia/commons/2/29/Kunming_Zoo_-_DSC04348.JPG",
+  "city": "昆明市",
+  "category_slug": "theme-park"
+ },
+ {
+  "name": "九乡风景区",
+  "description": "以溶洞群和峡谷景观为主的景区，洞内有地下河与钟乳石，可乘船游览一段。洞内湿滑阴凉，建议穿防滑鞋并带外套，景区距市区较远，通常安排一日行程。景区内步道有起伏，注意脚下安全。",
+  "image_url": "https://upload.wikimedia.org/wikipedia/commons/8/81/Jiuxiang_-_Entrance.jpg",
+  "city": "昆明市",
+  "category_slug": "natural"
+ },
+ {
+  "name": "轿子雪山",
+  "description": "昆明北部的高山景区，海拔较高，冬季有积雪与冰瀑，夏季则以草甸和杜鹃花为主。上山需换乘景区交通，海拔变化大，注意保暖并留意身体反应。山上天气变化快，出行前查看预报。",
+  "image_url": "https://upload.wikimedia.org/wikipedia/commons/c/c3/Jiaozi_snow_mountain_main_peak.jpg",
+  "city": "昆明市",
+  "category_slug": "natural"
+ },
+ {
+  "name": "官渡古镇",
+  "description": "昆明东南的古镇，以金刚塔为中心，街巷保留部分旧式民居与庙宇。镇内小吃较集中，商业化程度中等，适合半日闲逛，参观古建筑时注意保护。镇内有多处小吃摊，价格较为亲民。",
+  "image_url": "https://upload.wikimedia.org/wikipedia/commons/8/88/2026.04.27.160725_Vajra_Pagoda_Guandu_Ancient_Town_Kunming_Yunnan_China.jpg",
+  "city": "昆明市",
+  "category_slug": "historical"
+ },
+ {
+  "name": "海埂公园",
+  "description": "滇池北岸的滨湖公园，视野开阔，可远眺西山，冬季红嘴鸥聚集在湖边。适合散步和观鸟，公园免费开放，周边有滇池大坝与索道站。冬季观鸥时请勿投喂加工食品。适合安排在行程中段游览。",
+  "image_url": "https://upload.wikimedia.org/wikipedia/commons/e/eb/%E6%98%86%E6%98%8E%E6%BB%87%E6%B1%A0%E6%B5%B7%E5%9F%82%E5%85%AC%E5%9B%AD_01.jpg",
+  "city": "昆明市",
+  "category_slug": "natural"
+ },
+ {
+  "name": "黑龙潭公园",
+  "description": "昆明北郊的公园，以清浊两潭和古梅著称，园内有龙泉观等古建筑。面积不大，环境清幽，冬末春初梅花开放时游人较多，适合半日游览。园内古树较多，夏季遮阴效果不错。适合安排在行程中段游览。",
+  "image_url": "https://upload.wikimedia.org/wikipedia/commons/1/16/Black_Dragon_Pool_Park_in_Kunming_03.jpg",
+  "city": "昆明市",
+  "category_slug": "natural"
+ },
+ {
+  "name": "昙华寺",
+  "description": "昆明东郊的佛教寺院，以昙花和古树闻名，寺内建筑依山势分布。园内较为安静，适合散步和赏花，春季花开时游客较多，参观时注意保持安静。寺院与公园相连，可一并游览。适合安排在行程中段游览。",
+  "image_url": "https://upload.wikimedia.org/wikipedia/commons/2/26/Tanhua_Temple_in_Kunming%2C_China_2024031601.jpg",
+  "city": "昆明市",
+  "category_slug": "historical"
+ },
+ {
+  "name": "昆明老街",
+  "description": "昆明老城的传统街区，保留着民国时期的商铺与民居，街巷不宽，聚集了小吃与老字号。适合傍晚步行游览，部分院落仍在修缮，注意不要打扰居民。街区与南屏街相连，适合连着逛。",
+  "image_url": "https://upload.wikimedia.org/wikipedia/commons/b/b8/%E6%98%86%E6%98%8E%E8%80%81%E8%A1%97-%E6%96%87%E5%BA%99%E7%9B%B4%E8%A1%97.jpg",
+  "city": "昆明市",
+  "category_slug": "historical"
+ },
+ {
+  "name": "中央大街",
+  "description": "哈尔滨老城的主要商业步行街，路面以方石铺成，两侧保留着大量二十世纪初的欧式建筑。街上有马迭尔冰棍、红肠等本地吃食，夜间灯光较有氛围，冬季路面湿滑注意脚下。街区与索菲亚教堂相距不远，可以连着走。",
+  "image_url": "https://upload.wikimedia.org/wikipedia/commons/4/4d/201906_Harbin_Central_Street_at_night_08.jpg",
+  "city": "哈尔滨市",
+  "category_slug": "historical"
+ },
+ {
+  "name": "圣索菲亚教堂",
+  "description": "位于市中心的拜占庭风格教堂，建于二十世纪初，绿色穹顶与砖砌立面是其主要特征。现为建筑艺术馆，展出老照片，广场上常有拍照的游客，冬季雪景与夜景都较好看。教堂周边为步行广场，车辆较少。",
+  "image_url": "https://upload.wikimedia.org/wikipedia/commons/7/7c/Saint_Sophia_Cathedral%2C_Harbin_10.jpg",
+  "city": "哈尔滨市",
+  "category_slug": "historical"
+ },
+ {
+  "name": "防洪纪念塔",
+  "description": "松花江畔的纪念性建筑，为纪念战胜洪水而建，塔身与回廊保存完整。塔前广场开阔，可看江景与对岸太阳岛，夏季夜间人多，冬季江面封冻后有冰上活动。塔身与江岸之间有台阶，注意行走。",
+  "image_url": "https://upload.wikimedia.org/wikipedia/commons/a/ab/Flood_monument%2C_Harbin_1.jpg",
+  "city": "哈尔滨市",
+  "category_slug": "historical"
+ },
+ {
+  "name": "松花江",
+  "description": "穿城而过的大江，夏季可乘船游江，冬季江面封冻后成为冰上活动的场地。沿岸有斯大林公园与防洪纪念塔，适合傍晚散步看落日，冰封期上冰需留意安全提示。江边有游船码头与观景平台。",
+  "image_url": "https://upload.wikimedia.org/wikipedia/commons/5/5c/Songhua_River_in_Harbin_1.jpg",
+  "city": "哈尔滨市",
+  "category_slug": "natural"
+ },
+ {
+  "name": "太阳岛",
+  "description": "松花江北岸的岛屿公园，绿地与湿地面积较大，园内有俄罗斯风情建筑与人工瀑布。夏季适合野餐和骑行，冬季则是雪博会的主场地，上岛可乘索道或轮渡。岛上遮阴处不多，夏季注意防晒。",
+  "image_url": "https://upload.wikimedia.org/wikipedia/commons/0/02/%E5%93%88%E5%B0%94%E6%BB%A8%E5%A4%AA%E9%98%B3%E5%B2%9B_1.jpg",
+  "city": "哈尔滨市",
+  "category_slug": "natural"
+ },
+ {
+  "name": "冰雪大世界",
+  "description": "冬季开放的大型冰雪主题园区，用冰块砌成建筑与滑梯，夜间配合灯光效果。气温极低，建议穿厚羽绒服与防滑鞋，园内项目排队较久，注意给手机保暖。园区内地面结冰，行走需要小心。",
+  "image_url": "https://upload.wikimedia.org/wikipedia/commons/6/63/Harbin_Ice_Festival.jpg",
+  "city": "哈尔滨市",
+  "category_slug": "theme-park"
+ },
+ {
+  "name": "太阳岛雪博会",
+  "description": "太阳岛上的雪雕艺术展，展出大型雪雕作品，主题每年更换。白天观赏效果最好，展区面积较大，步行时间较长，冬季风大注意保暖。雪雕保存受气温影响，建议早些前往。适合安排在行程中段游览。",
+  "image_url": "https://upload.wikimedia.org/wikipedia/commons/b/b4/2011_Harbin_Sun_Island_International_Snow_Sculpture_EXPO_08.JPG",
+  "city": "哈尔滨市",
+  "category_slug": "theme-park"
+ },
+ {
+  "name": "东北虎林园",
+  "description": "以东北虎保护与展示为主题的园区，可乘观光车进入散放区观察老虎，另有步行区。适合亲子游览，园区面积较大，冬季参观需注意保暖与车辆安排。观光车按批次发车，留意时间。",
+  "image_url": "https://upload.wikimedia.org/wikipedia/commons/a/a1/Harbin_Siberian_Tiger_Park_2.JPG",
+  "city": "哈尔滨市",
+  "category_slug": "theme-park"
+ },
+ {
+  "name": "哈尔滨极地馆",
+  "description": "以极地动物为主题的场馆，展出白鲸、企鹅与北极熊等，另有表演场次。场馆为室内，适合冬季游览，表演时间固定，建议提前入场占位。场馆内温度较低，可穿薄外套。适合安排在行程中段游览。",
+  "image_url": "https://upload.wikimedia.org/wikipedia/commons/2/23/%E5%93%88%E5%B0%94%E6%BB%A8%E6%9E%81%E5%9C%B0%E9%A6%86_-_panoramio.jpg",
+  "city": "哈尔滨市",
+  "category_slug": "theme-park"
+ },
+ {
+  "name": "伏尔加庄园",
+  "description": "以俄罗斯建筑风格为主题的园区，园内复建了多座俄式木屋与教堂，冬季有雪景。适合拍照和散步，位置在郊区，通常自驾或乘专线前往，园区面积较大。园内建筑多为木结构，适合拍照。",
+  "image_url": "/static/images/placeholder-attraction.svg",
+  "city": "哈尔滨市",
+  "category_slug": "theme-park"
+ },
+ {
+  "name": "果戈里大街",
+  "description": "哈尔滨老城的主干道之一，沿街保留着俄式与欧式建筑，商业与居住混杂。适合步行观察建筑细节，周边有秋林公司等老字号，冬季人行道易结冰。沿街有多处老建筑可细看立面装饰。",
+  "image_url": "/static/images/placeholder-attraction.svg",
+  "city": "哈尔滨市",
+  "category_slug": "historical"
+ },
+ {
+  "name": "老道外",
+  "description": "哈尔滨旧城区，以中华巴洛克风格建筑著称，立面装饰融合中式纹样与西式构图。街区仍在修缮，部分院落破旧，适合对老建筑感兴趣的游客慢慢走。街区内有小吃店，可以边逛边吃。",
+  "image_url": "https://upload.wikimedia.org/wikipedia/commons/3/35/Chinese_Baroque_Street_Harbin.jpg",
+  "city": "哈尔滨市",
+  "category_slug": "historical"
+ },
+ {
+  "name": "黑龙江省博物馆",
+  "description": "省级综合性博物馆，馆藏以地方历史文物、少数民族民俗与自然标本为主。展厅面积不大，参观约需一小时，具体开放安排以官方公告为准。馆内常设展按主题分区，可先看导览。适合安排在行程中段游览。",
+  "image_url": "https://upload.wikimedia.org/wikipedia/commons/2/2e/Heilongjiang_Provincial_Museum_1.jpg",
+  "city": "哈尔滨市",
+  "category_slug": "historical"
+ },
+ {
+  "name": "哈尔滨大剧院",
+  "description": "松花江北岸的现代建筑，外形以曲线与白色曲面构成，与湿地景观相呼应。可参加演出或参观外观，夜间灯光效果突出，周边步行道适合散步。建筑外观在日落时分光线较好。适合安排在行程中段游览。",
+  "image_url": "https://upload.wikimedia.org/wikipedia/commons/8/8f/Harbin_Grand_Theatre_1.jpg",
+  "city": "哈尔滨市",
+  "category_slug": "historical"
+ },
+ {
+  "name": "侵华日军第七三一部队罪证陈列馆",
+  "description": "记录侵华日军第七三一部队罪行的专题展馆，展陈以遗址、实物与档案为主。参观氛围肃穆，建议保持安静，展馆内容较为沉重，适合安排充裕时间。展馆位于市郊，建议预留往返时间。",
+  "image_url": "https://upload.wikimedia.org/wikipedia/commons/d/dd/Main_entrance_of_Harbin%27s_Unit_731_Museum.jpg",
+  "city": "哈尔滨市",
+  "category_slug": "historical"
+ },
+ {
+  "name": "亚布力滑雪场",
+  "description": "位于尚志的滑雪度假区，雪季较长，有多条不同难度的雪道与缆车。适合滑雪爱好者，距哈尔滨市区较远，通常住一晚，冬季气温低注意防寒。雪具可在场内租借，提前确认价格。适合安排在行程中段游览。",
+  "image_url": "https://upload.wikimedia.org/wikipedia/commons/8/80/Yabuli_Ski_Resort.jpg",
+  "city": "哈尔滨市",
+  "category_slug": "natural"
+ },
+ {
+  "name": "龙塔",
+  "description": "哈尔滨的标志性高塔，塔身较高，设有观光层与旋转餐厅，可俯瞰城区。适合傍晚登塔看夜景，观光层面积不大，节假日需要排队。塔下有广场与商业设施，交通方便。适合安排在行程中段游览。",
+  "image_url": "https://upload.wikimedia.org/wikipedia/commons/7/76/Dragon_Tower_%28Harbin%29.jpg",
+  "city": "哈尔滨市",
+  "category_slug": "theme-park"
+ },
+ {
+  "name": "极乐寺",
+  "description": "哈尔滨的佛教寺院，建于二十世纪初，殿宇沿中轴排列，另有塔院。香火较旺，周边为老城区，参观时请遵守寺院礼仪，注意保持安静。寺院与周边街巷风格差异明显。适合安排在行程中段游览。",
+  "image_url": "https://upload.wikimedia.org/wikipedia/commons/5/57/%E3%83%8F%E3%83%AB%E3%83%93%E3%83%B3%E6%A5%B5%E6%A5%BD%E5%AF%BA%E7%8E%84%E9%96%A2.jpg",
+  "city": "哈尔滨市",
+  "category_slug": "historical"
+ },
+ {
+  "name": "兆麟公园",
+  "description": "市中心的公园，冬季以冰灯游园会闻名，园内有冰雕与滑梯。面积不大，适合傍晚游览，冰灯期间人流集中，注意保暖与防滑。公园免费开放，进出较为方便。适合安排在行程中段游览。",
+  "image_url": "https://upload.wikimedia.org/wikipedia/commons/a/a0/Zhaolin_Park_27274-Harbin_%2833202742858%29.jpg",
+  "city": "哈尔滨市",
+  "category_slug": "natural"
+ },
+ {
+  "name": "斯大林公园",
+  "description": "松花江南岸的带状公园，沿江种有树木，设有步道与座椅。适合散步和看江景，与防洪纪念塔相邻，冬季江面封冻后景观与夏季差别很大。公园内长椅较多，适合休息。适合安排在行程中段游览。",
+  "image_url": "https://upload.wikimedia.org/wikipedia/commons/a/a3/Stalin_Park%2C_Harbin.jpg",
+  "city": "哈尔滨市",
+  "category_slug": "natural"
+ }
 ]
