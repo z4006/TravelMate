@@ -1,0 +1,66 @@
+{% extends "base.html" %}
+
+{% block content %}
+<section class="page-head">
+    <div class="container">
+        <nav class="breadcrumb" aria-label="面包屑导航">
+            <a href="{{ url_for('pages.index') }}">首页</a>
+            <span aria-hidden="true">/</span>
+            <span>旅行足迹</span>
+        </nav>
+        <h1 class="page-title">旅行足迹</h1>
+        <p class="page-desc">收藏过的城市会自动在中国地图上点亮，一键生成可下载的足迹海报。</p>
+    </div>
+</section>
+
+<section class="section">
+    <div class="container">
+        <div class="fp-shell" data-footprint>
+            <div class="fp-stat-row" data-fp-stats aria-live="polite"></div>
+
+            <div class="fp-main">
+                <div class="fp-map-card">
+                    <div class="fp-map-head">
+                        <h2 class="fp-card-title">足迹地图</h2>
+                        <ul class="fp-legend">
+                            <li><span class="fp-dot fp-dot-visited"></span>已点亮</li>
+                            <li><span class="fp-dot fp-dot-idle"></span>待探索</li>
+                        </ul>
+                    </div>
+                    <div class="fp-map" data-fp-map aria-live="polite"></div>
+                </div>
+
+                <aside class="fp-side">
+                    <div class="fp-level" data-fp-level></div>
+                    <div class="fp-city-panel">
+                        <h2 class="fp-card-title">点亮的城市</h2>
+                        <div class="fp-city-list" data-fp-cities aria-live="polite"></div>
+                    </div>
+                    <button class="btn btn-primary btn-block" type="button" data-fp-poster>
+                        生成足迹海报
+                    </button>
+                    <p class="fp-hint">海报为 1080×1440 高清图，可直接保存分享。</p>
+                </aside>
+            </div>
+        </div>
+
+        <div class="fp-poster-panel" data-fp-posters hidden>
+            <div class="fp-poster-preview">
+                <img data-fp-poster-img alt="旅行足迹海报预览">
+            </div>
+            <div class="fp-poster-actions">
+                <h3 class="fp-card-title">生成成功</h3>
+                <p class="fp-hint">长按或点击下方按钮保存到本地，也可直接发到朋友圈。</p>
+                <a class="btn btn-primary btn-block" data-fp-download download="travelmate-footprint.png">
+                    下载海报
+                </a>
+                <button class="btn btn-ghost btn-block" type="button" data-fp-close-poster>收起预览</button>
+            </div>
+        </div>
+    </div>
+</section>
+{% endblock %}
+
+{% block scripts %}
+<script src="{{ url_for('static', filename='js/footprint.js') }}"></script>
+{% endblock %}

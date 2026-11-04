@@ -37,6 +37,108 @@
             });
     }
 
+    function copyText(text, done) {
+        if (navigator.clipboard && navigator.clipboard.writeText) {
+            navigator.clipboard.writeText(text).then(function () {
+                done(true);
+            }).catch(function () {
+                done(fallbackCopy(text));
+            });
+            return;
+        }
+        done(fallbackCopy(text));
+    }
+
+    function fallbackCopy(text) {
+        var area = document.createElement('textarea');
+        area.value = text;
+        area.setAttribute('readonly', 'readonly');
+        area.style.position = 'fixed';
+        area.style.top = '-1000px';
+        document.body.appendChild(area);
+        area.select();
+        var ok = false;
+        try {
+            ok = document.execCommand('copy');
+        } catch (error) {
+            ok = false;
+        }
+        document.body.removeChild(area);
+        return ok;
+    }
+
+    function openCopyDialog(itinerary, copy) {
+        var overlay = ui.el('div', 'share-overlay');
+        var dialog = ui.el('div', 'share-dialog');
+        dialog.setAttribute('role', 'dialog');
+        dialog.setAttribute('aria-modal', 'true');
+
+        var title = ui.el('h3', 'share-dialog-title', '分享文案 · ' + (itinerary.title || '我的行程'));
+        dialog.appendChild(title);
+
+        var box = ui.el('textarea', 'share-copy-box');
+        box.readOnly = true;
+        box.value = copy;
+        dialog.appendChild(box);
+
+        var actions = ui.el('div', 'share-dialog-actions');
+        var copyBtn = ui.el('button', 'btn btn-primary btn-sm', '一键复制');
+        copyBtn.type = 'button';
+        copyBtn.addEventListener('click', function () {
+            copyText(copy, function (ok) {
+                ui.toast(ok ? '文案已复制到剪贴板' : '复制失败，请手动选择文本', ok ? 'success' : 'error');
+            });
+        });
+        actions.appendChild(copyBtn);
+
+        var closeBtn = ui.el('button', 'btn btn-ghost btn-sm', '关闭');
+        closeBtn.type = 'button';
+        actions.appendChild(closeBtn);
+        dialog.appendChild(actions);
+
+        function close() {
+            overlay.remove();
+            document.removeEventListener('keydown', onKey);
+        }
+        function onKey(event) {
+            if (event.key === 'Escape') {
+                close();
+            }
+        }
+        closeBtn.addEventListener('click', close);
+        overlay.addEventListener('click', function (event) {
+            if (event.target === overlay) {
+                close();
+            }
+        });
+        document.addEventListener('keydown', onKey);
+
+        overlay.appendChild(dialog);
+        document.body.appendChild(overlay);
+        box.focus();
+        box.select();
+    }
+
+    function generateShareCopy(itinerary, button) {
+        ui.setBusy(button, true, '生成中…');
+        api.post('/api/itineraries/' + encodeURIComponent(itinerary.id) + '/share-copy', {})
+            .then(function (payload) {
+                ui.setBusy(button, false);
+                var data = (payload && payload.data) || {};
+                var copy = data.copy || '';
+                if (!copy) {
+                    ui.toast('文案生成失败，请稍后重试', 'error');
+                    return;
+                }
+                openCopyDialog(itinerary, copy);
+                ui.toast(data.source === 'model' ? 'AI 文案已生成' : '已生成文案（模板版）', 'success');
+            })
+            .catch(function (error) {
+                ui.setBusy(button, false);
+                ui.toast(error.message || '文案生成失败', 'error');
+            });
+    }
+
     function renderList(container, items, reload) {
         ui.clear(container);
         if (!items.length) {
@@ -51,12 +153,23 @@
 
             var head = ui.el('div', 'itinerary-head');
             head.appendChild(ui.el('h3', 'itinerary-title', itinerary.title || '未命名行程'));
+
+            var actions = ui.el('div', 'itinerary-actions');
+            var share = ui.el('button', 'btn btn-ghost btn-sm', '生成分享文案');
+            share.type = 'button';
+            share.addEventListener('click', function () {
+                generateShareCopy(itinerary, share);
+            });
+            actions.appendChild(share);
+
             var remove = ui.el('button', 'btn btn-ghost btn-sm', '删除');
             remove.type = 'button';
             remove.addEventListener('click', function () {
                 removeItinerary(itinerary.id, remove, reload);
             });
-            head.appendChild(remove);
+            actions.appendChild(remove);
+
+            head.appendChild(actions);
             card.appendChild(head);
 
             card.appendChild(ui.el(
