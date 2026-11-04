@@ -128,6 +128,7 @@ def _public_attraction(row: sqlite3.Row) -> dict[str, Any]:
         },
         "city": row["city"],
         "address": row["address"],
+        "phone": row["phone"],
         "description": row["description"],
         "ticket_price_cents": row["ticket_price_cents"],
         "opening_hours": row["opening_hours"],

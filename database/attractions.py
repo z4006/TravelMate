@@ -27,12 +27,12 @@ def migrate_attractions(database: sqlite3.Connection) -> None:
             category_id INTEGER NOT NULL,
             city TEXT NOT NULL,
             address TEXT,
+            phone TEXT,
             description TEXT,
             ticket_price_cents INTEGER CHECK (
                 ticket_price_cents IS NULL OR ticket_price_cents >= 0
             ),
             opening_hours TEXT,
-            phone TEXT,
             image_url TEXT,
             source TEXT NOT NULL DEFAULT 'manual',
             source_id TEXT,
@@ -194,7 +194,8 @@ def list_attractions(
         f"WHERE {where_clause} "
     )
     select_clause = (
-        "SELECT a.id, a.name, a.slug, a.city, a.address, a.description, "
+        "SELECT a.id, a.name, a.slug, a.city, a.address, a.phone, "
+        "a.description, "
         "a.ticket_price_cents, a.opening_hours, a.image_url, "
         "a.source, a.source_id, a.source_url, a.latitude, a.longitude, "
         "a.created_at, a.updated_at, c.id AS category_id, "
@@ -229,7 +230,8 @@ def get_attraction_by_id(
     """查询单个公开景点。"""
 
     return database.execute(
-        "SELECT a.id, a.name, a.slug, a.city, a.address, a.description, "
+        "SELECT a.id, a.name, a.slug, a.city, a.address, a.phone, "
+        "a.description, "
         "a.ticket_price_cents, a.opening_hours, a.image_url, "
         "a.source, a.source_id, a.source_url, a.latitude, a.longitude, "
         "a.created_at, a.updated_at, c.id AS category_id, "

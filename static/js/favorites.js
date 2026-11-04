@@ -20,6 +20,11 @@
         if (!item) {
             return null;
         }
+        // 收藏接口返回 {id: 收藏记录ID, attraction_id: 景点ID}，
+        // 卡片链接与取消收藏都必须使用 attraction_id，否则会操作到错误的记录。
+        if (raw.attraction_id !== undefined && raw.attraction_id !== null) {
+            item.id = raw.attraction_id;
+        }
         var price = priceText(raw);
         if (price) {
             item.priceText = price;
