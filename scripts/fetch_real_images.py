@@ -19,7 +19,6 @@ from app import create_app
 from database.connection import db_transaction
 
 
-TARGET_CITIES = ("北京市", "上海市", "广州市", "深圳市", "成都市", "西安市", "天津市")
 PLACEHOLDER_URL = "/static/images/placeholder-attraction.svg"
 COMMONS_API = "https://commons.wikimedia.org/w/api.php"
 IMAGE_SUFFIX = re.compile(r"\.(?:jpe?g|png)$", re.IGNORECASE)
@@ -70,13 +69,11 @@ def _search_image(session: requests.Session, name: str, city: str) -> str | None
 
 
 def fetch_images(database: sqlite3.Connection) -> tuple[int, int]:
-    """更新核心城市图片，返回（成功数量，回退数量）。"""
+    """更新所有核心景点图片，返回（成功数量，回退数量）。"""
 
-    placeholders = ",".join("?" for _ in TARGET_CITIES)
     rows = database.execute(
         f"SELECT id, name, city FROM attractions "
-        f"WHERE source = 'core' AND city IN ({placeholders}) ORDER BY id",
-        TARGET_CITIES,
+        f"WHERE source = 'core' ORDER BY id",
     ).fetchall()
     session = requests.Session()
     session.headers.update(
