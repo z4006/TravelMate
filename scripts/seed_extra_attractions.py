@@ -9,7 +9,7 @@
 """
 
 from app import create_app
-from database.attractions import migrate_attractions, seed_initial_attractions
+from database.attractions import migrate_attractions
 from database.connection import db_transaction, utc_now
 
 # (名称, slug, 分类 slug, 城市, 地址, 简介, 票价(分), 开放时间)
@@ -193,6 +193,13 @@ def seed_extra_attractions(database) -> int:
             raise RuntimeError(
                 f"缺少分类 {category_slug}，请先运行 scripts.seed_attractions"
             )
+        # 同名同城已存在时跳过，避免与核心数据集重复
+        exists = database.execute(
+            "SELECT 1 FROM attractions WHERE name = ? AND city = ?",
+            (name, city),
+        ).fetchone()
+        if exists:
+            continue
         cursor = database.execute(
             "INSERT INTO attractions "
             "(name, slug, category_id, city, address, description, "
@@ -222,8 +229,7 @@ def main() -> None:
     with app.app_context():
         with db_transaction() as database:
             migrate_attractions(database)
-            # 先写入成员 C 的基础数据，再追加本脚本的补充数据
-            seed_initial_attractions(database)
+            # 只追加补充数据；核心数据集已包含基础景点，重复调用会跳过同名同城
             added = seed_extra_attractions(database)
         total = database.execute("SELECT COUNT(*) FROM attractions").fetchone()[0]
     print(f"本次新增 {added} 条，当前景点总数：{total}")
