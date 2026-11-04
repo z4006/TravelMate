@@ -17,6 +17,18 @@ def _slug(value: str) -> str:
     return re.sub(r"[^a-z0-9]+", "-", value.lower()).strip("-") or "attraction"
 
 
+def _ticket_cents(value: str | None) -> int | None:
+    """把「免费」「¥60」等门票文案换算成以分为单位的整数。"""
+
+    if not value:
+        return None
+    text = str(value)
+    if "免费" in text:
+        return 0
+    match = re.search(r"\d+", text.replace(",", ""))
+    return int(match.group(0)) * 100 if match else None
+
+
 def rebuild(database: sqlite3.Connection) -> tuple[int, int]:
     """删除核心城市旧数据并写入精选数据，返回（删除数，新增数）。"""
 
@@ -35,16 +47,21 @@ def rebuild(database: sqlite3.Connection) -> tuple[int, int]:
         database.execute(
             """
             INSERT INTO attractions (
-                name, slug, category_id, city, description, image_url,
+                name, slug, category_id, city, address, description,
+                ticket_price_cents, opening_hours, phone, image_url,
                 source, source_id, source_url, status, created_at, updated_at
-            ) VALUES (?, ?, ?, ?, ?, ?, 'core', ?, ?, 'active', datetime('now'), datetime('now'))
+            ) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, 'core', ?, ?, 'active', datetime('now'), datetime('now'))
             """,
             (
                 record["name"],
                 f"core-{index:03d}-{_slug(record['city'])}-{_slug(record['name'])}",
                 category_ids[record["category_slug"]],
                 record["city"],
+                record.get("address"),
                 record["description"],
+                _ticket_cents(record.get("ticket_price")),
+                record.get("open_hours"),
+                record.get("phone"),
                 record["image_url"],
                 source_id,
                 record["image_url"],

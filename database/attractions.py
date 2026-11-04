@@ -32,6 +32,7 @@ def migrate_attractions(database: sqlite3.Connection) -> None:
                 ticket_price_cents IS NULL OR ticket_price_cents >= 0
             ),
             opening_hours TEXT,
+            phone TEXT,
             image_url TEXT,
             source TEXT NOT NULL DEFAULT 'manual',
             source_id TEXT,
@@ -57,6 +58,7 @@ def migrate_attractions(database: sqlite3.Connection) -> None:
         ("source_url", "TEXT"),
         ("latitude", "REAL"),
         ("longitude", "REAL"),
+        ("phone", "TEXT"),
     ):
         if column not in columns:
             database.execute(
