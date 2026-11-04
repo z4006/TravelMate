@@ -35,6 +35,7 @@ def ensure_itinerary_tables(database: sqlite3.Connection | None = None) -> None:
                 start_date TEXT,
                 end_date TEXT,
                 notes TEXT,
+                caption TEXT,
                 created_at TEXT NOT NULL,
                 updated_at TEXT NOT NULL,
                 FOREIGN KEY (user_id) REFERENCES users (id) ON DELETE CASCADE
@@ -58,6 +59,12 @@ def ensure_itinerary_tables(database: sqlite3.Connection | None = None) -> None:
                 ON itinerary_attractions (itinerary_id, sort_order);
             """
         )
+        # 兼容旧库：补充分享文案字段
+        existing = {
+            row[1] for row in connection.execute("PRAGMA table_info(itineraries)")
+        }
+        if "caption" not in existing:
+            connection.execute("ALTER TABLE itineraries ADD COLUMN caption TEXT")
 
 
 class _existing_transaction:
@@ -185,7 +192,7 @@ def create_itinerary(
 
 def list_itineraries(database: sqlite3.Connection, user_id: int) -> list[dict[str, Any]]:
     rows = database.execute(
-        "SELECT id, title, start_date, end_date, notes, created_at, updated_at "
+        "SELECT id, title, start_date, end_date, notes, caption, created_at, updated_at "
         "FROM itineraries WHERE user_id = ? ORDER BY start_date, id",
         (user_id,),
     ).fetchall()
@@ -196,7 +203,7 @@ def get_itinerary(
     database: sqlite3.Connection, user_id: int, itinerary_id: int
 ) -> dict[str, Any] | None:
     row = database.execute(
-        "SELECT id, title, start_date, end_date, notes, created_at, updated_at "
+        "SELECT id, title, start_date, end_date, notes, caption, created_at, updated_at "
         "FROM itineraries WHERE id = ? AND user_id = ?",
         (itinerary_id, user_id),
     ).fetchone()
@@ -239,6 +246,22 @@ def update_itinerary(
         ],
     )
     return get_itinerary(database, user_id, itinerary_id)
+
+
+def save_caption(
+    database: sqlite3.Connection,
+    user_id: int,
+    itinerary_id: int,
+    caption: str,
+) -> bool:
+    """写入分享文案；已有文案时不覆盖（保证每个行程只生成一次）。"""
+
+    cursor = database.execute(
+        "UPDATE itineraries SET caption = ?, updated_at = ? "
+        "WHERE id = ? AND user_id = ? AND (caption IS NULL OR caption = '')",
+        (caption, utc_now(), itinerary_id, user_id),
+    )
+    return cursor.rowcount == 1
 
 
 def delete_itinerary(
