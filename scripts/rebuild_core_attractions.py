@@ -10,7 +10,23 @@ from database.attractions import migrate_attractions, seed_initial_attractions
 from database.connection import db_transaction
 
 
-TARGET_CITIES = ("北京市", "上海市", "广州市", "深圳市", "成都市", "西安市")
+TARGET_CITIES = (
+    "北京市",
+    "上海市",
+    "广州市",
+    "深圳市",
+    "成都市",
+    "西安市",
+    "杭州市",
+    "重庆市",
+    "武汉市",
+    "长沙市",
+    "厦门市",
+    "三亚市",
+    "昆明市",
+    "哈尔滨市",
+)
+
 DATA_FILE = Path(__file__).resolve().parents[1] / "data" / "core_attractions.json"
 
 
