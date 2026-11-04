@@ -21,6 +21,11 @@ def csrf_protected(view: Callable):
         if not expected or not supplied or not secrets.compare_digest(
             str(expected), str(supplied)
         ):
+            # 该接口需要登录、但请求方还没有登录态时，优先返回 401，
+            # 让前端按登录引导处理；已登录用户仍按 CSRF 失败返回 403。
+            needs_login = getattr(view, "requires_login", False)
+            if needs_login and not isinstance(session.get("user_id"), int):
+                return api_response(False, "请先登录", None, 401)
             return api_response(False, "CSRF 校验失败", None, 403)
         return view(*args, **kwargs)
 
@@ -45,6 +50,8 @@ def login_required(view: Callable):
         g.current_user = user
         return view(*args, **kwargs)
 
+    # 标记该视图需要登录，供外层的 csrf_protected 判断返回 401 还是 403
+    wrapped.requires_login = True
     return wrapped
 
 
