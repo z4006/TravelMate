@@ -67,6 +67,158 @@
         return ok;
     }
 
+    /* ---------- 旅行人格鉴定（纯前端统计，不依赖后端） ---------- */
+
+    // 从 price 相关字段里用正则提取数字；ticket_price_cents 为分，需除以 100
+    function parsePriceNumber(value) {
+        if (typeof value === 'number' && isFinite(value)) {
+            return value;
+        }
+        if (typeof value === 'string') {
+            var match = value.match(/\d+(?:\.\d+)?/);
+            if (match) {
+                var parsed = parseFloat(match[0]);
+                return isFinite(parsed) ? parsed : NaN;
+            }
+        }
+        return NaN;
+    }
+
+    function attractionPrice(item) {
+        if (!item || typeof item !== 'object') {
+            return 0;
+        }
+        if (typeof item.ticket_price_cents === 'number' && isFinite(item.ticket_price_cents)) {
+            return item.ticket_price_cents / 100;
+        }
+        var candidates = [item.ticket_price, item.price, item.ticket, item.admission];
+        for (var i = 0; i < candidates.length; i += 1) {
+            var price = parsePriceNumber(candidates[i]);
+            if (!isNaN(price)) {
+                return price;
+            }
+        }
+        return 0;
+    }
+
+    function collectStats(itinerary) {
+        var attractions = (itinerary && itinerary.attractions) || [];
+        var total = 0;
+        attractions.forEach(function (item) {
+            total += attractionPrice(item);
+        });
+        return {
+            count: attractions.length,
+            total: Math.round(total * 100) / 100
+        };
+    }
+
+    var PERSONAS = {
+        special: {
+            name: '纯正特种兵',
+            motto: '主打一个来过',
+            tone: 'red',
+            comment: '景点密集、门票克制，节奏拉满，一天打卡八个地方不是梦。'
+        },
+        chill: {
+            name: '尊享躺平党',
+            motto: '主打一个享受',
+            tone: 'green',
+            comment: '景点不多但舍得花钱，慢慢逛、好好住，讲究的是体验。'
+        },
+        balanced: {
+            name: '均衡旅行家',
+            motto: '该冲就冲，该躺就躺',
+            tone: 'amber',
+            comment: '数量与花费都拿捏得刚刚好，行程张弛有度。'
+        }
+    };
+
+    // 景点数 >= 5 且门票合计 < 200：特种兵；景点数 <= 3 且门票合计 >= 200：躺平党
+    function classifyPersona(stats) {
+        if (stats.count >= 5 && stats.total < 200) {
+            return PERSONAS.special;
+        }
+        if (stats.count <= 3 && stats.total >= 200) {
+            return PERSONAS.chill;
+        }
+        return PERSONAS.balanced;
+    }
+
+    function moneyText(value) {
+        var number = isFinite(value) ? value : 0;
+        return number % 1 === 0 ? String(number) : number.toFixed(2);
+    }
+
+    function openPersonaDialog(itinerary, stats) {
+        var persona = classifyPersona(stats);
+        var overlay = ui.el('div', 'share-overlay');
+        var dialog = ui.el('div', 'share-dialog persona-dialog');
+        dialog.setAttribute('role', 'dialog');
+        dialog.setAttribute('aria-modal', 'true');
+        dialog.setAttribute('aria-label', '旅行人格鉴定结果');
+
+        dialog.appendChild(ui.el(
+            'h3',
+            'share-dialog-title',
+            '旅行人格鉴定 · ' + (itinerary.title || '我的行程')
+        ));
+
+        var badge = ui.el('div', 'persona-badge persona-badge-' + persona.tone);
+        var badgeText = ui.el('div', 'persona-badge-text');
+        badgeText.appendChild(ui.el('strong', 'persona-badge-name', persona.name));
+        badgeText.appendChild(ui.el('span', 'persona-badge-motto', persona.motto));
+        badge.appendChild(badgeText);
+        dialog.appendChild(badge);
+
+        var summary = ui.el('p', 'persona-summary');
+        summary.textContent = '本行程共 ' + stats.count + ' 个景点，门票合计 ¥' + moneyText(stats.total)
+            + '。' + persona.comment;
+        dialog.appendChild(summary);
+
+        var meta = ui.el('div', 'persona-meta');
+        meta.appendChild(ui.el('span', 'persona-meta-item', '景点数 ' + stats.count));
+        meta.appendChild(ui.el('span', 'persona-meta-item', '门票合计 ¥' + moneyText(stats.total)));
+        meta.appendChild(ui.el('span', 'persona-meta-item', '判定标准 5/200'));
+        dialog.appendChild(meta);
+
+        var actions = ui.el('div', 'share-dialog-actions');
+        var closeBtn = ui.el('button', 'btn btn-ghost btn-sm', '知道啦');
+        closeBtn.type = 'button';
+        actions.appendChild(closeBtn);
+        dialog.appendChild(actions);
+
+        function close() {
+            overlay.remove();
+            document.removeEventListener('keydown', onKey);
+        }
+        function onKey(event) {
+            if (event.key === 'Escape') {
+                close();
+            }
+        }
+        closeBtn.addEventListener('click', close);
+        overlay.addEventListener('click', function (event) {
+            if (event.target === overlay) {
+                close();
+            }
+        });
+        document.addEventListener('keydown', onKey);
+
+        overlay.appendChild(dialog);
+        document.body.appendChild(overlay);
+        closeBtn.focus();
+    }
+
+    function identifyPersona(itinerary) {
+        var stats = collectStats(itinerary);
+        if (!stats.count) {
+            ui.toast('这个行程还没有景点，先去景点详情页点「加入行程」吧', 'info');
+            return;
+        }
+        openPersonaDialog(itinerary, stats);
+    }
+
     function openCopyDialog(itinerary, copy) {
         var overlay = ui.el('div', 'share-overlay');
         var dialog = ui.el('div', 'share-dialog');
@@ -155,6 +307,13 @@
             head.appendChild(ui.el('h3', 'itinerary-title', itinerary.title || '未命名行程'));
 
             var actions = ui.el('div', 'itinerary-actions');
+            var persona = ui.el('button', 'btn btn-primary btn-sm', '鉴定旅行人格');
+            persona.type = 'button';
+            persona.addEventListener('click', function () {
+                identifyPersona(itinerary);
+            });
+            actions.appendChild(persona);
+
             var share = ui.el('button', 'btn btn-ghost btn-sm', '生成分享文案');
             share.type = 'button';
             share.addEventListener('click', function () {

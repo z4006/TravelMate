@@ -122,6 +122,76 @@
     gap: 8px;
 }
 
+/* 旅行人格鉴定徽章（纯前端统计） */
+.persona-dialog {
+    width: min(520px, 100%);
+}
+
+.persona-badge {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 18px 20px;
+    border: 2px dashed currentColor;
+    border-radius: var(--radius-md, 12px);
+    text-align: center;
+}
+
+.persona-badge-text {
+    display: flex;
+    flex-direction: column;
+    gap: 4px;
+}
+
+.persona-badge-name {
+    font-size: 1.45rem;
+    font-weight: 800;
+    letter-spacing: .04em;
+}
+
+.persona-badge-motto {
+    font-size: .88rem;
+    opacity: .9;
+}
+
+.persona-badge-red {
+    color: #b42318;
+    background: linear-gradient(150deg, #fef3f2 0%, #fee4e2 100%);
+}
+
+.persona-badge-green {
+    color: #067647;
+    background: linear-gradient(150deg, #ecfdf3 0%, #d1fadf 100%);
+}
+
+.persona-badge-amber {
+    color: #b54708;
+    background: linear-gradient(150deg, #fffaeb 0%, #fef0c7 100%);
+}
+
+.persona-summary {
+    margin: 0;
+    color: #40515a;
+    font-size: .93rem;
+    line-height: 1.7;
+}
+
+.persona-meta {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 8px;
+}
+
+.persona-meta-item {
+    padding: 5px 12px;
+    border: 1px solid #e2e8ec;
+    border-radius: 999px;
+    background: #f8fafc;
+    color: #5c6b73;
+    font-size: .82rem;
+    white-space: nowrap;
+}
+
 @media (max-width: 640px) {
     .itinerary-head {
         flex-direction: column;
