@@ -19,7 +19,28 @@ from app import create_app
 from database.connection import db_transaction
 
 
-TARGET_CITIES = ("北京市", "上海市", "广州市", "深圳市", "成都市", "西安市", "天津市")
+TARGET_CITIES = (
+    "三亚市",
+    "上海市",
+    "北京市",
+    "南京市",
+    "厦门市",
+    "哈尔滨市",
+    "大连市",
+    "天津市",
+    "广州市",
+    "成都市",
+    "昆明市",
+    "杭州市",
+    "武汉市",
+    "济南市",
+    "深圳市",
+    "苏州市",
+    "西安市",
+    "重庆市",
+    "长沙市",
+    "青岛市",
+)
 PLACEHOLDER_URL = "/static/images/placeholder-attraction.svg"
 COMMONS_API = "https://commons.wikimedia.org/w/api.php"
 IMAGE_SUFFIX = re.compile(r"\.(?:jpe?g|png)$", re.IGNORECASE)
