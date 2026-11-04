@@ -1,0 +1,24 @@
+/* 全站海报背景（成员 D 接入）
+ * 用 html 铺底图、body 透明，避免与各页面自身的区块背景冲突。
+ * 海报本身已带白色蒙版，保证正文对比度。
+ */
+html {
+    background-color: #f4f8f9;
+    background-image: url("/static/images/poster-bg.svg");
+    background-position: center center;
+    background-size: cover;
+    background-repeat: no-repeat;
+    background-attachment: fixed;
+}
+
+body {
+    background: transparent;
+}
+
+/* 不支持 fixed 背景的移动端，退化为随内容滚动 */
+@media (max-width: 640px) {
+    html {
+        background-attachment: scroll;
+        background-size: cover;
+    }
+}
