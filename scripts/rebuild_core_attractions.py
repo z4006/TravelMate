@@ -1,4 +1,4 @@
-"""用六城核心景点数据重建本地演示数据库。"""
+"""用核心城市景点数据重建本地演示数据库。"""
 
 import re
 import sqlite3
@@ -18,7 +18,7 @@ def _slug(value: str) -> str:
 
 
 def rebuild(database: sqlite3.Connection) -> tuple[int, int]:
-    """删除六城旧数据并写入精选数据，返回（删除数，新增数）。"""
+    """删除核心城市旧数据并写入精选数据，返回（删除数，新增数）。"""
 
     deleted = database.execute(
         "DELETE FROM attractions WHERE source = 'core'"

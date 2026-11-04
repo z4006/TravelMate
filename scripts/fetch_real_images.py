@@ -1,4 +1,4 @@
-"""为六城核心景点从 Wikimedia Commons 获取真实图片直链。
+"""为内置核心城市景点从 Wikimedia Commons 获取真实图片直链。
 
 脚本不抓取搜索结果 HTML，也不需要 API Key。只有 Wikimedia API 返回的、
 扩展名为 jpg/jpeg/png 且响应类型为图片的原图 URL 才会写入数据库。
@@ -19,7 +19,7 @@ from app import create_app
 from database.connection import db_transaction
 
 
-TARGET_CITIES = ("北京市", "上海市", "广州市", "深圳市", "成都市", "西安市")
+TARGET_CITIES = ("北京市", "上海市", "广州市", "深圳市", "成都市", "西安市", "天津市")
 PLACEHOLDER_URL = "/static/images/placeholder-attraction.svg"
 COMMONS_API = "https://commons.wikimedia.org/w/api.php"
 IMAGE_SUFFIX = re.compile(r"\.(?:jpe?g|png)$", re.IGNORECASE)
@@ -70,7 +70,7 @@ def _search_image(session: requests.Session, name: str, city: str) -> str | None
 
 
 def fetch_images(database: sqlite3.Connection) -> tuple[int, int]:
-    """更新六城图片，返回（成功数量，回退数量）。"""
+    """更新核心城市图片，返回（成功数量，回退数量）。"""
 
     placeholders = ",".join("?" for _ in TARGET_CITIES)
     rows = database.execute(
@@ -95,7 +95,9 @@ def fetch_images(database: sqlite3.Connection) -> tuple[int, int]:
             ).fetchone()["image_url"]
             or ""
         )
-        if current_url.startswith("https://") and IMAGE_SUFFIX.search(current_url):
+        if current_url.startswith("https://") and (
+            IMAGE_SUFFIX.search(current_url) or "baidu.com" in current_url
+        ):
             success += 1
             continue
         image_url = None
