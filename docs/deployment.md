@@ -2,6 +2,29 @@
 
 适用于：一台云服务器、直接通过公网 IP 访问、暂不配置域名和证书。
 
+## 快速方式：一键脚本
+
+新服务器上执行：
+
+```bash
+git clone https://gitee.com/letsgo225/TravelMate.git /tmp/tm
+sudo bash /tmp/tm/deploy/deploy.sh
+```
+
+指定分支：
+
+```bash
+sudo BRANCH=feature/d-agent bash /tmp/tm/deploy/deploy.sh
+```
+
+脚本会自动完成：装依赖、拉代码、建虚拟环境、初始化数据、配置 systemd 与 Nginx、
+健康检查，最后打印访问地址和待办事项。
+
+脚本跑完后仍**需要手动**做两件事：配置 AI 密钥（`instance/agent.env`）和
+创建管理员账号（`scripts.create_admin`，交互式）。
+
+下面是手动模式的分步说明，遇到问题时可对照排查。
+
 ## 0. 前置条件
 
 - 服务器：1 核 2G 起，Ubuntu 22.04 / Debian 12
