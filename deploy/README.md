@@ -1,0 +1,8 @@
+# 部署文件说明
+
+| 文件 | 用途 |
+| --- | --- |
+| `travelmate.service` | systemd 服务，守护 gunicorn 并开机自启 |
+| `nginx.conf` | Nginx 站点配置，反代到 127.0.0.1:8000 |
+
+完整步骤见 `docs/deployment.md`。

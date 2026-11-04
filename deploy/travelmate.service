@@ -1,0 +1,29 @@
+[Unit]
+Description=TravelMate Flask application
+After=network.target
+
+[Service]
+Type=simple
+User=www-data
+Group=www-data
+WorkingDirectory=/opt/travelmate
+
+Environment="TRAVELMATE_ENV=production"
+Environment="TRAVELMATE_DATABASE=/var/lib/travelmate/travelmate.db"
+# 必须改成随机长字符串，不要使用下面的示例值
+Environment="TRAVELMATE_SECRET_KEY=CHANGE_ME_TO_A_RANDOM_STRING"
+# 答辩演示用 IP 直接访问（没有 HTTPS）时设为 0；配好证书后改成 1 或删掉此项
+Environment="TRAVELMATE_COOKIE_SECURE=0"
+
+ExecStart=/opt/travelmate/.venv/bin/gunicorn \
+    --workers 2 --threads 4 \
+    --bind 127.0.0.1:8000 \
+    --timeout 60 \
+    --access-logfile - --error-logfile - \
+    app:app
+
+Restart=always
+RestartSec=3
+
+[Install]
+WantedBy=multi-user.target
