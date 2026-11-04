@@ -51,8 +51,26 @@ def test_agent_requires_login(app, client, csrf_headers):
     assert plan.status_code == 401
 
 
-def test_agent_write_requires_csrf(client):
-    assert client.post("/api/agent/chat", json={"message": "hi"}).status_code == 403
+def test_guest_write_returns_401_for_login_required_endpoints(app, client):
+    """需要登录的写接口，未登录时应返回 401 而不是 403。"""
+
+    prepare(app)
+    response = client.post("/api/agent/chat", json={"message": "hi"})
+
+    assert response.status_code == 401
+    assert "登录" in response.get_json()["message"]
+
+
+def test_public_write_without_csrf_still_returns_403(client):
+    """注册这类公开写接口，缺少 CSRF Token 仍然是 403。"""
+
+    response = client.post(
+        "/api/register",
+        json={"username": "nocsrfcases", "password": "Password123"},
+    )
+
+    assert response.status_code == 403
+    assert "CSRF" in response.get_json()["message"]
 
 
 def test_plan_falls_back_to_rules_without_model(app, client, csrf_headers, monkeypatch):
