@@ -17,11 +17,16 @@
 ### 当前数据基线（合并前请先核对）
 
 ```text
-城市数：24
-景点总数：404
-全字段齐全：404（address / phone / ticket_price_cents / opening_hours / image_url / description / city）
+城市数：34
+景点总数：604
+全字段齐全：604（address / phone / ticket_price_cents / opening_hours / image_url / description / city）
+满额城市：30 个（每城 20 条，合计 600 条）
+零散记录：4 条（张家界市、桂林市、黄山市、大理市各 1 条，为早期基线遗留）
 重复景点（同城同名）：0
 ```
+
+`database/travelmate.db` 中 `status='active'` 的记录必须与 JSON 的 604 条逐条对应：
+重建数据库后比对「同城同名」集合，双向差集必须同时为空。
 
 如果你的 `git pull` 后城市数或景点总数变少，说明合并有误，必须先停下来排查，不要继续叠加数据。
 
@@ -130,7 +135,7 @@ TravelMate\.venv\Scripts\python.exe
 
 ## 四、建议新增城市清单
 
-目前已经完成 24 个城市、共 404 条核心景点数据（含三亚、上海、北京、南京、厦门、哈尔滨、大连、天津、广州、成都、杭州、武汉、桂林、深圳、西安、重庆、长沙、青岛、丽江、昆明、苏州、郑州、张家界等）。后续在此基础上继续增加新城市，不建议一次导入过多小城市。
+目前已经完成 30 个城市、共 600 条核心景点数据（每城 20 条），覆盖三亚、上海、北京、南京、厦门、哈尔滨、大连、天津、广州、成都、杭州、武汉、深圳、西安、重庆、长沙、青岛、昆明、苏州、郑州、沈阳、长春、太原、呼和浩特、兰州、南昌、福州、海口、贵阳、济南。另有 4 条早期基线零散记录（张家界市、桂林市、黄山市、大理市各 1 条）保留未删除，全库合计 34 城 / 604 条。后续在此基础上继续增加新城市，不建议一次导入过多小城市。
 
 推荐清单：
 
@@ -274,7 +279,7 @@ TravelMate\.venv\Scripts\python.exe
 .\.venv\Scripts\python.exe -c "import json; rows=json.load(open('data/core_attractions.json', encoding='utf-8')); print('总数', len(rows)); print('城市数', len({x['city'] for x in rows})); print('缺字段总数', sum(1 for x in rows if not all(x.get(k) not in (None,'') for k in ('address','phone','description','opening_hours','image_url'))))"
 ```
 
-当前基线为 404 条 / 24 城 / 缺字段 0。
+当前基线为 604 条 / 34 城（满额城市 30 个）/ 缺字段 0。合并后只允许增加，不允许减少。
 
 ### 2. 重建本地数据库
 
