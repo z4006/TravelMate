@@ -10,6 +10,9 @@
         </nav>
         <h1 class="page-title">景点库</h1>
         <p class="page-desc">按城市筛选或输入关键词，找到你感兴趣的目的地。</p>
+        <p class="page-desc page-highlight" data-city-summary aria-live="polite">
+            当前城市：全部城市
+        </p>
     </div>
 </section>
 
@@ -61,5 +64,5 @@
 {% endblock %}
 
 {% block scripts %}
-<script src="{{ url_for('static', filename='js/attractions.js') }}"></script>
+<script src="{{ url_for('static', filename='js/attractions.js', v='20261104-images2') }}"></script>
 {% endblock %}

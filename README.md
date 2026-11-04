@@ -13,6 +13,18 @@ python -m venv .venv
 启动后浏览器访问 <http://127.0.0.1:5000/>。服务状态接口为
 <http://127.0.0.1:5000/api/health>。开发配置默认开启调试模式，修改代码后会自动重启。
 
+答辩临时共享时，可以使用 cpolar 等内网穿透工具把本机的 `5000` 端口映射为
+临时公网地址：
+
+```powershell
+cpolar http 5000
+```
+
+把工具显示的 `https://...` 地址发给队友或评委即可。电脑、Flask 进程和
+内网穿透进程必须保持运行，程序停止或电脑断网后链接会失效。内网穿透只
+适合本次答辩和临时测试，不是长期部署方案；请只使用演示账号和虚拟数据，
+不要通过公网暴露真实用户信息，也不要把穿透工具 token 提交到 Git。
+
 开发环境默认使用本地配置。正式环境启动前必须设置密钥：
 
 ```powershell
@@ -57,12 +69,46 @@ Werkzeug 哈希保存，不会通过接口返回。
 测试应用通过 `create_app(..., overrides={"DATABASE": ...})` 注入临时数据库，
 不会初始化或污染 `database/travelmate.db`。
 
+### 同步核心景点数据
+
+六个城市的核心景点名称、简介、城市和最终图片地址保存在
+`data/core_attractions.json`。队友拉取代码后运行：
+
+```powershell
+.\.venv\Scripts\python.exe -m scripts.rebuild_core_attractions
+```
+
+该脚本会重建本地六城核心景点数据。`database/travelmate.db` 仍然不会提交，
+因此不会同步用户账号、密码哈希或其他本地演示数据。
+
 数据库初始化会自动创建用户、景点、收藏和行程所需的数据表，但不会自动写入
 演示景点数据。若需要本地演示数据，可以执行：
 
 ```powershell
 .venv\Scripts\python.exe -m scripts.seed_attractions
 ```
+
+### 导入 OpenStreetMap 景点数据
+
+项目提供本地导入脚本，支持合法获取的 Overpass JSON 文件。脚本不会自动抓取
+网络数据，也不会把原始数据文件写入仓库。建议按城市或区域分批导入：
+
+```powershell
+.venv\Scripts\python.exe -m scripts.import_osm_attractions data\beijing.json
+```
+
+对于 Geofabrik 的区域 PBF 文件，可以使用：
+
+```powershell
+.venv\Scripts\python.exe -m scripts.import_osm_pbf_attractions `
+    data\beijing-261101.osm.pbf --city 北京市
+```
+
+导入记录会保存 `source=openstreetmap`、来源对象编号、来源链接和经纬度，
+按来源编号幂等更新，不会重复插入。使用 OSM 数据时必须遵守 ODbL，
+在公开页面保留“© OpenStreetMap contributors”及数据来源链接。原始数据的
+下载范围、许可和更新时间应由团队记录；不要提交大型原始数据文件或未经授权
+的图片、描述和商业数据。
 
 运行测试：
 

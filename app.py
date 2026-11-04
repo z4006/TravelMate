@@ -128,4 +128,7 @@ app = create_app(init_database=False)
 
 if __name__ == "__main__":
     init_db(app)
-    app.run()
+    app.run(
+        host=os.getenv("TRAVELMATE_HOST", "0.0.0.0"),
+        port=int(os.getenv("TRAVELMATE_PORT", "5000")),
+    )

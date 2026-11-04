@@ -33,6 +33,11 @@ def _public_attraction(row: sqlite3.Row) -> dict[str, Any]:
         "ticket_price_cents": row["ticket_price_cents"],
         "opening_hours": row["opening_hours"],
         "image_url": row["image_url"],
+        "source": row["source"],
+        "source_id": row["source_id"],
+        "source_url": row["source_url"],
+        "latitude": row["latitude"],
+        "longitude": row["longitude"],
         "created_at": row["created_at"],
         "updated_at": row["updated_at"],
     }
@@ -47,7 +52,7 @@ def attractions():
         page_size = int(request.args.get("page_size", "20"))
     except ValueError:
         return api_response(False, "分页参数必须是整数", None, 400)
-    if page < 1 or not 1 <= page_size <= 100:
+    if page < 1 or not 1 <= page_size <= 1000:
         return api_response(False, "分页参数不合法", None, 400)
 
     category = request.args.get("category", "").strip()

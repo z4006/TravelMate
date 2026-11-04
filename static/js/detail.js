@@ -54,6 +54,27 @@
         setText(root, '[data-detail-price]', item.priceText, '暂无信息');
         setText(root, '[data-detail-address]', item.address, '暂无信息');
         setText(root, '[data-detail-phone]', item.phone, '暂无信息');
+
+        var coordinates = root.querySelector('[data-detail-coordinates]');
+        var coordinateValue = root.querySelector('[data-detail-coordinate-value]');
+        var coordinateLink = root.querySelector('[data-detail-coordinate-link]');
+        var hasCoordinates = Number.isFinite(item.latitude) && Number.isFinite(item.longitude);
+        if (coordinates) {
+            coordinates.hidden = !hasCoordinates;
+        }
+        if (hasCoordinates) {
+            var coordinateText = item.latitude.toFixed(6) + ', ' + item.longitude.toFixed(6);
+            if (coordinateValue) {
+                coordinateValue.textContent = coordinateText;
+            }
+            if (coordinateLink) {
+                coordinateLink.href = 'https://www.openstreetmap.org/?mlat='
+                    + encodeURIComponent(item.latitude)
+                    + '&mlon=' + encodeURIComponent(item.longitude)
+                    + '#map=16/' + encodeURIComponent(item.latitude)
+                    + '/' + encodeURIComponent(item.longitude);
+            }
+        }
     }
 
     function load(root, attractionId) {
