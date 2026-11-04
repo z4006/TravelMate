@@ -94,3 +94,14 @@ def itineraries():
         active_page="itineraries",
         page_title="我的行程 - TravelMate",
     )
+
+
+@pages_bp.get("/agent")
+def agent():
+    """AI 助手页面：行程规划与旅行问答。"""
+
+    return render_template(
+        "agent.html",
+        active_page="agent",
+        page_title="AI 助手 - TravelMate",
+    )

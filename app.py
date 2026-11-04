@@ -40,6 +40,7 @@ def create_app(
     from routes.attractions import attractions_bp
     from routes.itinerary import itinerary_bp
     from routes.pages import pages_bp
+    from routes.agent import agent_bp
 
     app.register_blueprint(base_bp)
     app.register_blueprint(auth_bp)
@@ -47,6 +48,7 @@ def create_app(
     app.register_blueprint(attractions_bp)
     app.register_blueprint(itinerary_bp)
     app.register_blueprint(pages_bp)
+    app.register_blueprint(agent_bp)
     app.teardown_appcontext(close_db)
     if init_database:
         init_db(app)
