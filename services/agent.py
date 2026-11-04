@@ -39,8 +39,9 @@ PLAN_SYSTEM_PROMPT = (
 
 CHAT_SYSTEM_PROMPT = (
     "你是 TravelMate 的旅行助手，语气友好、回答简短实用（不超过 120 字）。"
-    "只能依据下面提供的景点信息回答；信息里没有的内容要明确说\"暂时没有这项资料\"，"
-    "不要编造门票、开放时间或地址。"
+    "景点列表里带有 ticket（门票）、open（开放时间）、address（地址）字段，"
+    "可以直接引用这些字段回答，不要再说没有资料。"
+    "列表里完全没有提到的景点，才回答\"景点库暂时没有收录\"，不要编造它的票价或地址。"
 )
 
 
@@ -129,12 +130,55 @@ def ask_model(
         return None
 
 
+def pick_candidates(
+    rows: list[dict[str, Any]],
+    message: str,
+    limit: int = 30,
+) -> list[dict[str, Any]]:
+    """从全部景点中挑出与提问相关的记录。
+
+    命中规则：景点名出现在问题里，或问题里提到了该景点所在城市。
+    命中的排在前面，其余按原顺序补齐，保证上下文里既有相关内容也有备选。
+    """
+
+    text = message or ""
+
+    def score(row: dict[str, Any]) -> int:
+        name = row.get("name") or ""
+        if name and name in text:
+            return 3
+        # 允许"故宫"命中"故宫博物院"这类简称
+        for size in (4, 3, 2):
+            if len(name) >= size and name[:size] in text:
+                return 2
+        city = (row.get("city") or "").rstrip("市")
+        if city and city in text:
+            return 1
+        return 0
+
+    ranked = sorted(rows, key=score, reverse=True)
+    return ranked[:limit]
+
+
+def _format_price(cents: Any) -> str:
+    """把「分」转换成展示用价格。"""
+
+    if not isinstance(cents, int) or isinstance(cents, bool):
+        return "未知"
+    if cents == 0:
+        return "免费"
+    return "¥" + str(cents // 100)
+
+
 def _attraction_catalogue(candidates: list[dict[str, Any]]) -> list[dict[str, Any]]:
     return [
         {
             "attraction_id": item["id"],
             "name": item["name"],
             "city": item["city"],
+            "ticket": _format_price(item.get("ticket_price_cents")),
+            "open": item.get("opening_hours") or "未知",
+            "address": item.get("address") or "未知",
             "description": (item.get("description") or "")[:80],
         }
         for item in candidates

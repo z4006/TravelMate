@@ -9,6 +9,7 @@ from services.agent import (
     MAX_MESSAGE_LENGTH,
     chat_reply,
     is_configured,
+    pick_candidates,
     plan_itinerary,
     to_itinerary_payload,
 )
@@ -18,9 +19,12 @@ from utils.responses import api_response, request_data
 agent_bp = Blueprint("agent", __name__)
 
 
-def _load_candidates(city: str | None) -> list[dict]:
-    rows, _total = list_attractions(get_db(), None, city, None, 40, 0)
-    return [dict(row) for row in rows]
+def _load_candidates(city: str | None, message: str = "") -> list[dict]:
+    """读取景点后按问题筛选，避免只把前几十条塞给模型。"""
+
+    rows, _total = list_attractions(get_db(), None, city, None, 500, 0)
+    records = [dict(row) for row in rows]
+    return pick_candidates(records, message, limit=30)
 
 
 @agent_bp.get("/api/agent/status")
@@ -53,7 +57,7 @@ def agent_chat():
         return api_response(False, "history 必须是数组", None, 400)
     history = [item for item in raw_history if isinstance(item, dict)][:12]
 
-    candidates = _load_candidates(None)
+    candidates = _load_candidates(None, message)
     reply, source = chat_reply(message, history, candidates)
     return api_response(
         True,
@@ -98,7 +102,7 @@ def agent_plan():
     if not isinstance(save, bool):
         return api_response(False, "save 必须是布尔值", None, 400)
 
-    candidates = _load_candidates(city)
+    candidates = _load_candidates(city, message)
     if not candidates:
         return api_response(False, "景点库暂时没有可用数据，请先导入景点", None, 404)
 
