@@ -37,29 +37,18 @@ def test_agent_status_is_public(client):
     assert client.get("/api/agent/status").status_code == 200
 
 
-def test_guest_can_chat_and_plan_but_not_save(app, client, csrf_headers, monkeypatch):
-    monkeypatch.setattr(
-        "services.agent.settings",
-        lambda: {"api_key": "", "model": "", "base_url": ""},
-    )
+def test_agent_requires_login(app, client, csrf_headers):
     prepare(app)
 
     chat = client.post(
         "/api/agent/chat", json={"message": "西湖门票多少"}, headers=csrf_headers
     )
-    assert chat.status_code == 200
+    assert chat.status_code == 401
 
     plan = client.post(
         "/api/agent/plan", json={"message": "杭州两天"}, headers=csrf_headers
     )
-    assert plan.status_code == 200
-
-    save = client.post(
-        "/api/agent/plan",
-        json={"message": "杭州两天", "save": True},
-        headers=csrf_headers,
-    )
-    assert save.status_code == 401
+    assert plan.status_code == 401
 
 
 def test_agent_write_requires_csrf(client):

@@ -202,8 +202,42 @@
         });
     }
 
+    function showLoginRequired() {
+        var log = document.querySelector('[data-chat-log]');
+        var result = document.querySelector('[data-plan-result]');
+        var chatForm = document.querySelector('[data-chat-form]');
+        var planForm = document.querySelector('[data-plan-form]');
+
+        if (chatForm) {
+            chatForm.hidden = true;
+        }
+        if (planForm) {
+            planForm.hidden = true;
+        }
+        if (log) {
+            appendBubble(log, 'bot', 'AI 助手需要登录后才能使用，请点击右上角「登录」。');
+        }
+        if (result) {
+            ui.clear(result);
+            result.appendChild(ui.buildState(
+                '请先登录',
+                '使用 AI 助手需要先登录账号。',
+                '去登录',
+                function () {
+                    window.location.assign(
+                        document.body.getAttribute('data-login-url') || '/login'
+                    );
+                }
+            ));
+        }
+    }
+
     document.addEventListener('DOMContentLoaded', function () {
-        setupChat();
-        setupPlan();
+        api.get('/api/user/info').then(function () {
+            setupChat();
+            setupPlan();
+        }).catch(function () {
+            showLoginRequired();
+        });
     });
 })(window, document);
