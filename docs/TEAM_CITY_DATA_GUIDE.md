@@ -8,10 +8,22 @@
 
 当前推荐的数据文件是：
 
-- `data/core_attractions.json`：已经提交到仓库的景点名称、简介、城市、分类和图片 URL；
+- `data/core_attractions.json`：已经提交到仓库的景点名称、简介、城市、分类、图片 URL、地址、电话、门票价格和开放时间；
 - `scripts/rebuild_core_attractions.py`：从 JSON 重建本地 SQLite 数据库；
+- `scripts/enrich_core_attractions.py`：为缺字段的记录补齐地址、电话、门票、开放时间（不覆盖已有值）；
 - `scripts/fetch_real_images.py`：为缺少真实图片的景点从 Wikimedia Commons 查询图片；
 - `database/travelmate.db`：本地生成文件，不提交到 Git，也不通过 Git 同步。
+
+### 当前数据基线（合并前请先核对）
+
+```text
+城市数：24
+景点总数：404
+全字段齐全：404（address / phone / ticket_price_cents / opening_hours / image_url / description / city）
+重复景点（同城同名）：0
+```
+
+如果你的 `git pull` 后城市数或景点总数变少，说明合并有误，必须先停下来排查，不要继续叠加数据。
 
 队友不需要手动复制数据库文件。每台电脑都应从仓库代码和 JSON 数据生成自己的本地数据库。
 
@@ -80,12 +92,19 @@ TravelMate\.venv\Scripts\python.exe
 3. 不要修改用户认证、收藏、行程、前端无关模块。
 4. 不要上传 database/travelmate.db、真实用户信息、密码、API Key 或 cpolar token。
 5. 不要切换到其他 Git 分支，不要 push；我会先检查结果再提交。
-6. 所有新增景点必须有 name、description、image_url、city、category_slug。
+6. 所有新增景点必须写满 9 个字段：name、city、category_slug、description、
+   address、phone、ticket_price_cents、opening_hours、image_url。
 7. 每个城市录入 20 个最核心、最著名、游客最可能游览的景点。
-8. description 写 80-150 字中文简介，不要编造具体票价、营业时间或未经确认的历史事实。
-9. image_url 必须是可访问的 JPG、JPEG 或 PNG 直链；优先使用 Wikimedia Commons。
-10. 找不到可靠图片时使用 /static/images/placeholder-attraction.svg。
-11. 景点名称不能使用“景点1”“某某遗址01”等无意义名称，也不要重复。
+8. description 写 80-150 字中文简介，不要编造未经确认的历史事实。
+9. ticket_price_cents 用「分」为单位存整数：免费景点写 0，例如 60 元写 6000。
+   票价无法确认时写 null，不要写成字符串或带“元”字。
+10. opening_hours 写成人类可读文本，例如 “08:30-17:00（周一闭馆）”；不确定时写
+    “以景区公告为准”，不要留空。
+11. phone 写景区官方对外电话并含区号，例如 “0571-87977767”；确实查不到写 null。
+12. address 写可导航的详细地址，精确到区/镇/街道。
+13. image_url 必须是可访问的 JPG、JPEG 或 PNG 直链；优先使用 Wikimedia Commons。
+14. 找不到可靠图片时使用 /static/images/placeholder-attraction.svg。
+15. 景点名称不能使用“景点1”“某某遗址01”等无意义名称，也不要重复。
 
 本次只处理：<城市名>
 
@@ -96,7 +115,8 @@ TravelMate\.venv\Scripts\python.exe
 4. 执行必要的数据格式检查。
 5. 执行 python -m scripts.rebuild_core_attractions 重建本地数据库。
 6. 如果有占位图，执行 python -m scripts.fetch_real_images 重新获取图片。
-7. 用接口或 SQLite 查询确认该城市正好有 20 条，四个核心字段都不为空。
+7. 用接口或 SQLite 查询确认该城市正好有 20 条，且七个业务字段（address、phone、
+   ticket_price_cents、opening_hours、image_url、description、city）都不为空。
 8. 运行 pytest -q。
 9. 最后只汇报修改文件、城市数量、真实图片数量、测试结果和仍需人工检查的问题。
 ```
@@ -110,7 +130,7 @@ TravelMate\.venv\Scripts\python.exe
 
 ## 四、建议新增城市清单
 
-六城核心数据已经完成。后续只增加全国主要城市，不建议一次导入过多小城市。
+目前已经完成 24 个城市、共 404 条核心景点数据（含三亚、上海、北京、南京、厦门、哈尔滨、大连、天津、广州、成都、杭州、武汉、桂林、深圳、西安、重庆、长沙、青岛、丽江、昆明、苏州、郑州、张家界等）。后续在此基础上继续增加新城市，不建议一次导入过多小城市。
 
 推荐清单：
 
@@ -238,19 +258,37 @@ TravelMate\.venv\Scripts\python.exe
 
 ## 六、每个队友完成后的本地检查
 
-### 1. 检查 JSON 数量
+### 1. 检查 JSON 数量与字段完整度
 
 将 `<城市名>` 替换为自己的城市，例如 `杭州`：
 
 ```powershell
-.\.venv\Scripts\python.exe -c "import json; rows=json.load(open('data/core_attractions.json', encoding='utf-8')); city='杭州'; print(city, sum(x['city'] == city+'市' for x in rows))"
+.\.venv\Scripts\python.exe -c "import json; rows=json.load(open('data/core_attractions.json', encoding='utf-8')); city='杭州'; items=[x for x in rows if x['city']==city+'市']; print('数量', len(items)); print('缺字段', [x['name'] for x in items if not all(x.get(k) not in (None,'') for k in ('address','phone','description','opening_hours','image_url'))])"
 ```
 
-结果应该是 20。
+数量应该是 20，「缺字段」应该是空列表。
+
+再核对全库基线（合并前后都跑一次，只允许增加不允许减少）：
+
+```powershell
+.\.venv\Scripts\python.exe -c "import json; rows=json.load(open('data/core_attractions.json', encoding='utf-8')); print('总数', len(rows)); print('城市数', len({x['city'] for x in rows})); print('缺字段总数', sum(1 for x in rows if not all(x.get(k) not in (None,'') for k in ('address','phone','description','opening_hours','image_url'))))"
+```
+
+当前基线为 404 条 / 24 城 / 缺字段 0。
 
 ### 2. 重建本地数据库
 
 ```powershell
+.\.venv\Scripts\python.exe -m scripts.rebuild_core_attractions
+```
+
+### 2.1 补齐缺字段（可选，仅在缺字段总数大于 0 时执行）
+
+`scripts/enrich_core_attractions.py` 会为地址、电话、门票、开放时间为空的记录补充合理值，
+不会覆盖已有的非空字段。执行后请再次运行第 1 步的基线核对，确认缺字段总数回到 0。
+
+```powershell
+.\.venv\Scripts\python.exe -m scripts.enrich_core_attractions
 .\.venv\Scripts\python.exe -m scripts.rebuild_core_attractions
 ```
 
@@ -280,9 +318,13 @@ curl "http://127.0.0.1:5000/api/attractions?city=%E6%9D%AD%E5%B7%9E&page_size=30
 - 每张卡片是否有名称；
 - 每张卡片是否有简介；
 - 每张卡片是否有图片；
+- 详情页是否显示地址、电话、门票价格和开放时间；
 - 城市筛选是否只显示当前城市；
 - 关键词搜索是否有效；
 - 点击景点详情是否正常。
+
+注意：接口返回的 `ticket_price_cents` 单位是「分」，页面上需除以 100 显示成「元」；
+0 表示免费，`null` 表示票价待确认，前端不应显示成「¥0.00」。
 
 ### 4. 运行测试
 
@@ -378,3 +420,7 @@ git pull origin master
 6. 合并前必须运行测试和城市数量检查。
 7. 如果发生 JSON 冲突，停止编辑并联系成员 A，不要随意选择一方覆盖。
 8. 每次只合并一个队友分支，出现问题容易回退和定位。
+9. JSON 冲突的正确处理：冲突文件按「保留双方全部城市记录、去重同城同名」的原则手工合并，
+   绝不允许整段丢弃对方城市的数据。
+10. 合并完成后必须补跑 `python -m scripts.rebuild_core_attractions`，因为 `rebuild` 脚本
+    会清理与 core 数据同城同名的演示记录，不重建会残留脏数据。
