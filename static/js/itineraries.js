@@ -1,4 +1,4 @@
-/* TravelMate 已保存行程页（成员 D）：查看、生成文案、删除 */
+/* TravelMate 已保存行程页（成员 D）：查看行程、生成文案、删除 */
 (function (window, document) {
     'use strict';
 
@@ -69,13 +69,45 @@
         return box;
     }
 
-    function toggleCaption(card, text) {
-        var existing = card.querySelector('[data-caption-box]');
+    function buildDetailBox(itinerary) {
+        var box = ui.el('div', 'itinerary-detail');
+        box.setAttribute('data-detail-box', '1');
+
+        var attractions = itinerary.attractions || [];
+        if (!attractions.length) {
+            box.appendChild(ui.el('p', 'itinerary-notes', '这个行程还没有景点'));
+            return box;
+        }
+
+        box.appendChild(ui.el('h4', 'caption-title', '🗺️ 行程安排'));
+        var list = ui.el('ol', 'plan-items');
+        attractions.forEach(function (item) {
+            var li = ui.el('li', 'plan-item');
+            var link = ui.el('a', null, item.name || ('景点 #' + item.attraction_id));
+            link.href = ui.detailUrl(item.attraction_id);
+            li.appendChild(link);
+            if (item.city) {
+                li.appendChild(ui.el('span', 'plan-city', item.city));
+            }
+            if (item.visit_date) {
+                li.appendChild(ui.el('span', 'plan-note', '游玩日期 ' + item.visit_date));
+            }
+            if (item.notes) {
+                li.appendChild(ui.el('span', 'plan-note', item.notes));
+            }
+            list.appendChild(li);
+        });
+        box.appendChild(list);
+        return box;
+    }
+
+    function toggleBox(card, selector, builder) {
+        var existing = card.querySelector(selector);
         if (existing) {
             existing.parentNode.removeChild(existing);
             return;
         }
-        card.appendChild(buildCaptionBox(text));
+        card.appendChild(builder());
     }
 
     function generateCaption(card, button, itinerary, reload) {
@@ -84,12 +116,11 @@
             .then(function (data) {
                 ui.setBusy(button, false);
                 ui.toast('文案已生成', 'success');
-                var box = buildCaptionBox(data.caption || '');
                 var old = card.querySelector('[data-caption-box]');
                 if (old) {
                     old.parentNode.removeChild(old);
                 }
-                card.appendChild(box);
+                card.appendChild(buildCaptionBox(data.caption || ''));
                 reload();
             })
             .catch(function (error) {
@@ -119,12 +150,15 @@
             });
     }
 
-    function renderList(container, items, reload) {
+    function renderList(container, items, reload, countNode) {
         ui.clear(container);
+        if (countNode) {
+            countNode.textContent = items.length ? '共 ' + items.length + ' 个行程' : '';
+        }
         if (!items.length) {
             container.appendChild(ui.buildState(
                 '还没有保存的行程',
-                '去 AI 助手生成一份行程并保存，就会出现在这里。',
+                '去 AI 助手生成一份行程并点击保存，就会出现在这里。',
                 '去 AI 助手',
                 function () {
                     window.location.assign('/agent');
@@ -154,25 +188,33 @@
             if (attractions.length) {
                 var tags = ui.el('div', 'tag-list');
                 attractions.forEach(function (item) {
-                    var label = item.name ? item.name : ('景点 #' + item.attraction_id);
-                    tags.appendChild(ui.el('span', 'tag', label));
+                    tags.appendChild(ui.el('span', 'tag', item.name || ('景点 #' + item.attraction_id)));
                 });
                 card.appendChild(tags);
-            } else {
-                card.appendChild(ui.el('p', 'itinerary-notes', '还没有添加景点'));
             }
 
             var actions = ui.el('div', 'plan-actions');
+
+            var detailBtn = ui.el('button', 'btn btn-ghost btn-sm', '查看行程');
+            detailBtn.type = 'button';
+            detailBtn.addEventListener('click', function () {
+                toggleBox(card, '[data-detail-box]', function () {
+                    return buildDetailBox(itinerary);
+                });
+            });
+            actions.appendChild(detailBtn);
 
             if (itinerary.caption) {
                 var viewBtn = ui.el('button', 'btn btn-ghost btn-sm', '查看我的文案');
                 viewBtn.type = 'button';
                 viewBtn.addEventListener('click', function () {
-                    toggleCaption(card, itinerary.caption);
+                    toggleBox(card, '[data-caption-box]', function () {
+                        return buildCaptionBox(itinerary.caption);
+                    });
                 });
                 actions.appendChild(viewBtn);
             } else {
-                var genBtn = ui.el('button', 'btn btn-primary btn-sm', '✍️ 生成分享文案');
+                var genBtn = ui.el('button', 'btn btn-primary btn-sm', '生成分享文案');
                 genBtn.type = 'button';
                 genBtn.addEventListener('click', function () {
                     generateCaption(card, genBtn, itinerary, reload);
@@ -192,66 +234,17 @@
         });
     }
 
-    function createItinerary(form, reload) {
-        var errorNode = form.querySelector('[data-itinerary-error]');
-        var submit = form.querySelector('button[type="submit"]');
-        var title = (form.querySelector('[name="title"]').value || '').trim();
-        var startDate = form.querySelector('[name="start_date"]').value || '';
-        var endDate = form.querySelector('[name="end_date"]').value || '';
-        var notes = (form.querySelector('[name="notes"]').value || '').trim();
-
-        if (errorNode) {
-            errorNode.textContent = '';
-        }
-        if (!title) {
-            if (errorNode) {
-                errorNode.textContent = '请填写行程名称';
-            }
-            return;
-        }
-        if (startDate && endDate && endDate < startDate) {
-            if (errorNode) {
-                errorNode.textContent = '结束日期不能早于开始日期';
-            }
-            return;
-        }
-
-        var payload = { title: title, attractions: [] };
-        if (startDate) {
-            payload.start_date = startDate;
-        }
-        if (endDate) {
-            payload.end_date = endDate;
-        }
-        if (notes) {
-            payload.notes = notes;
-        }
-
-        ui.setBusy(submit, true, '创建中…');
-        api.post('/api/itineraries', payload).then(function () {
-            ui.setBusy(submit, false);
-            form.reset();
-            ui.toast('行程创建成功', 'success');
-            reload();
-        }).catch(function (error) {
-            ui.setBusy(submit, false);
-            if (errorNode) {
-                errorNode.textContent = error.message || '创建失败，请稍后重试';
-            }
-        });
-    }
-
     function load() {
         var container = document.querySelector('[data-itinerary-list]');
-        var form = document.querySelector('[data-itinerary-form]');
         if (!container) {
             return;
         }
+        var countNode = document.querySelector('[data-itinerary-count]');
 
         function reload() {
             ui.showSkeletons(container, 2);
             api.get('/api/itineraries').then(function (payload) {
-                renderList(container, ui.extractList(payload).items, reload);
+                renderList(container, ui.extractList(payload).items, reload, countNode);
             }).catch(function (error) {
                 if (error.status === 401) {
                     showLoginRequired(container);
@@ -264,13 +257,6 @@
                     '重新加载',
                     reload
                 ));
-            });
-        }
-
-        if (form) {
-            form.addEventListener('submit', function (event) {
-                event.preventDefault();
-                createItinerary(form, reload);
             });
         }
 

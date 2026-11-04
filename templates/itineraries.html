@@ -15,32 +15,9 @@
 
 <section class="section">
     <div class="container">
-        <div class="d-panel">
-            <h2 class="d-panel-title">新建行程</h2>
-            <form class="d-form" data-itinerary-form novalidate>
-                <div class="d-field">
-                    <label for="itinerary-title">行程名称</label>
-                    <input id="itinerary-title" name="title" type="text" maxlength="120"
-                           placeholder="例如：杭州三日游" required>
-                </div>
-                <div class="d-field">
-                    <label for="itinerary-start">开始日期</label>
-                    <input id="itinerary-start" name="start_date" type="date">
-                </div>
-                <div class="d-field">
-                    <label for="itinerary-end">结束日期</label>
-                    <input id="itinerary-end" name="end_date" type="date">
-                </div>
-                <div class="d-field d-field-wide">
-                    <label for="itinerary-notes">备注</label>
-                    <textarea id="itinerary-notes" name="notes" rows="2" maxlength="2000"
-                              placeholder="可选的补充说明"></textarea>
-                </div>
-                <div class="d-form-actions">
-                    <button class="btn btn-primary" type="submit">创建行程</button>
-                    <span class="d-form-error" data-itinerary-error role="alert"></span>
-                </div>
-            </form>
+        <div class="result-bar">
+            <p class="result-count" data-itinerary-count aria-live="polite"></p>
+            <a class="btn btn-ghost btn-sm" href="{{ url_for('pages.agent') }}">去 AI 助手生成行程</a>
         </div>
 
         <div class="d-list" data-itinerary-list aria-live="polite"></div>
