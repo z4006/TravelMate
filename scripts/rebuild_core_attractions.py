@@ -10,7 +10,6 @@ from database.attractions import migrate_attractions, seed_initial_attractions
 from database.connection import db_transaction
 
 
-TARGET_CITIES = ("北京市", "上海市", "广州市", "深圳市", "成都市", "西安市")
 DATA_FILE = Path(__file__).resolve().parents[1] / "data" / "core_attractions.json"
 
 
@@ -21,10 +20,8 @@ def _slug(value: str) -> str:
 def rebuild(database: sqlite3.Connection) -> tuple[int, int]:
     """删除六城旧数据并写入精选数据，返回（删除数，新增数）。"""
 
-    placeholders = ",".join("?" for _ in TARGET_CITIES)
     deleted = database.execute(
-        f"DELETE FROM attractions WHERE city IN ({placeholders})",
-        TARGET_CITIES,
+        "DELETE FROM attractions WHERE source = 'core'"
     ).rowcount
     category_ids = {
         row["slug"]: row["id"]
