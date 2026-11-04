@@ -419,6 +419,60 @@
     white-space: pre-line;
 }
 
+/* 无障碍语音导览 */
+.detail-desc-head {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    gap: 12px;
+    margin-top: 18px;
+}
+
+.detail-desc-title {
+    margin: 0;
+    font-size: 1.02rem;
+    font-weight: 700;
+    color: var(--color-text);
+}
+
+.tts-btn {
+    display: inline-flex;
+    align-items: center;
+    gap: 6px;
+    padding: 6px 14px;
+    border-radius: 999px;
+    font-size: .85rem;
+    line-height: 1.4;
+    cursor: pointer;
+    user-select: none;
+    -webkit-user-select: none;
+    transition: all .2s ease;
+}
+
+.tts-btn:focus-visible {
+    outline: 2px solid var(--color-primary);
+    outline-offset: 2px;
+}
+
+.tts-btn:hover {
+    border-color: var(--color-primary);
+    background: var(--color-primary-soft);
+    color: var(--color-primary-dark);
+}
+
+.tts-btn.is-speaking {
+    border-color: var(--color-primary);
+    background: var(--color-primary);
+    color: #fff;
+    box-shadow: 0 0 0 4px rgba(15, 118, 110, .14);
+}
+
+.tts-hint {
+    margin: 8px 0 0;
+    color: #94a3b8;
+    font-size: .78rem;
+}
+
 .detail-meta {
     display: grid;
     grid-template-columns: repeat(auto-fit, minmax(160px, 1fr));

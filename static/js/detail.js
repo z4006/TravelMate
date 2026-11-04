@@ -311,3 +311,155 @@
         setup(root, parseInt(raw, 10));
     });
 })(window, document);
+
+
+/* 无障碍语音导览：浏览器原生 Web Speech API，纯前端朗读景点简介 */
+(function (window, document) {
+    'use strict';
+
+    var synth = window.speechSynthesis;
+    var Utterance = window.SpeechSynthesisUtterance;
+    var supported = !!(synth && Utterance && typeof synth.speak === 'function');
+
+    var BTN_IDLE = '🔊 语音导览';
+    var BTN_PLAYING = '⏹️ 停止播放';
+
+    function toast(message, type) {
+        var ui = window.TMUI;
+        if (ui && typeof ui.toast === 'function') {
+            ui.toast(message, type || 'info');
+        }
+    }
+
+    function pickChineseVoice() {
+        if (!supported || typeof synth.getVoices !== 'function') {
+            return null;
+        }
+        var voices = synth.getVoices() || [];
+        for (var i = 0; i < voices.length; i += 1) {
+            var lang = (voices[i].lang || '').toLowerCase();
+            if (lang.indexOf('zh') === 0) {
+                return voices[i];
+            }
+        }
+        return null;
+    }
+
+    function setupTts(root) {
+        var button = root.querySelector('[data-tts-toggle]');
+        var hint = root.querySelector('[data-tts-hint]');
+        var descNode = root.querySelector('[data-detail-description]');
+        var body = root.querySelector('[data-detail-body]');
+        if (!button || !descNode) {
+            return;
+        }
+
+        var speaking = false;
+
+        function setState(playing) {
+            speaking = playing;
+            button.textContent = playing ? BTN_PLAYING : BTN_IDLE;
+            button.setAttribute('aria-pressed', playing ? 'true' : 'false');
+            button.classList.toggle('is-speaking', playing);
+        }
+
+        function stop() {
+            if (supported) {
+                try {
+                    synth.cancel();
+                } catch (error) {
+                    /* 忽略：部分浏览器在无朗读队列时 cancel 会抛错 */
+                }
+            }
+            setState(false);
+        }
+
+        function buildText() {
+            var nameNode = root.querySelector('[data-detail-name]');
+            var name = nameNode ? (nameNode.textContent || '').trim() : '';
+            var bodyText = (descNode.textContent || '').trim();
+            if (!bodyText) {
+                return '';
+            }
+            return (name ? name + '。' : '') + bodyText;
+        }
+
+        function syncAvailability() {
+            var text = (descNode.textContent || '').trim();
+            var ready = !!text && !(body && body.hidden);
+            button.hidden = !ready;
+            if (hint) {
+                hint.hidden = !ready;
+            }
+            if (!ready && speaking) {
+                stop();
+            }
+        }
+
+        button.addEventListener('click', function () {
+            if (!supported) {
+                toast('当前浏览器不支持语音合成，建议使用 Chrome / Edge', 'error');
+                return;
+            }
+            if (speaking) {
+                stop();
+                return;
+            }
+            var text = buildText();
+            if (!text) {
+                toast('这个景点还没有可朗读的简介', 'info');
+                return;
+            }
+
+            var utterance = new Utterance(text);
+            utterance.lang = 'zh-CN';
+            utterance.rate = 1.0;
+            var voice = pickChineseVoice();
+            if (voice) {
+                utterance.voice = voice;
+            }
+            utterance.onend = function () {
+                setState(false);
+            };
+            utterance.onerror = function (event) {
+                setState(false);
+                if (event && (event.error === 'canceled' || event.error === 'interrupted')) {
+                    return;
+                }
+                toast('语音播放失败，请检查浏览器语音库是否可用', 'error');
+            };
+
+            try {
+                synth.cancel();
+                setState(true);
+                synth.speak(utterance);
+            } catch (error) {
+                setState(false);
+                toast('语音播放失败，请检查浏览器语音库是否可用', 'error');
+            }
+        });
+
+        /* 简介内容是异步渲染的，监听 DOM 变化以决定按钮何时可见 */
+        if (window.MutationObserver) {
+            var observer = new MutationObserver(syncAvailability);
+            if (body) {
+                observer.observe(body, { attributes: true, attributeFilter: ['hidden'] });
+            }
+            observer.observe(descNode, { childList: true, characterData: true, subtree: true });
+        }
+
+        /* 离开页面时停止朗读，避免语音残留 */
+        window.addEventListener('pagehide', stop);
+        window.addEventListener('beforeunload', stop);
+
+        syncAvailability();
+    }
+
+    document.addEventListener('DOMContentLoaded', function () {
+        var root = document.querySelector('[data-attraction-id]');
+        if (!root) {
+            return;
+        }
+        setupTts(root);
+    });
+})(window, document);
