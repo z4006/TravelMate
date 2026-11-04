@@ -71,14 +71,14 @@ Werkzeug 哈希保存，不会通过接口返回。
 
 ### 同步核心景点数据
 
-六个城市的核心景点名称、简介、城市和最终图片地址保存在
-`data/core_attractions.json`。队友拉取代码后运行：
+当前版本的核心景点名称、简介、城市和最终图片地址保存在
+`data/core_attractions.json`，共覆盖 24 个城市、404 条记录。队友拉取代码后运行：
 
 ```powershell
 .\.venv\Scripts\python.exe -m scripts.rebuild_core_attractions
 ```
 
-该脚本会重建本地六城核心景点数据。`database/travelmate.db` 仍然不会提交，
+该脚本会按 JSON 数据重建本地核心景点数据。`database/travelmate.db` 仍然不会提交，
 因此不会同步用户账号、密码哈希或其他本地演示数据。
 
 团队成员继续增加城市时，请先阅读
@@ -119,6 +119,9 @@ Werkzeug 哈希保存，不会通过接口返回。
 ```powershell
 .venv\Scripts\python.exe -m pytest -q
 ```
+
+当前版本的完整功能清单见
+[`docs/FEATURES.md`](docs/FEATURES.md)。
 
 ## 管理员初始化
 
