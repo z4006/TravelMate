@@ -120,6 +120,10 @@
             })
             .catch(function (error) {
                 ui.setBusy(button, false);
+                if (error.status === 401) {
+                    ui.toast('保存行程需要先登录，页面右上角可以注册', 'info');
+                    return;
+                }
                 ui.toast(error.message || '保存失败', 'error');
             });
     }

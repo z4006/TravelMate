@@ -1,10 +1,13 @@
 """AI 助手接口（成员 D）：行程规划与旅行问答。"""
 
-from flask import Blueprint, g
+import time
+
+from flask import Blueprint, g, request, session
 
 from database.attractions import list_attractions
 from database.connection import db_transaction, get_db
 from database.itineraries import create_itinerary
+from database.users import find_user_by_id
 from services.agent import (
     MAX_MESSAGE_LENGTH,
     chat_reply,
@@ -13,10 +16,46 @@ from services.agent import (
     plan_itinerary,
     to_itinerary_payload,
 )
-from utils.decorators import csrf_protected, login_required
+from utils.decorators import csrf_protected
 from utils.responses import api_response, request_data
 
 agent_bp = Blueprint("agent", __name__)
+
+# 游客（未登录）调用限制：默认每小时 30 次，避免共用密钥被刷
+ANON_LIMIT = 30
+ANON_WINDOW_SECONDS = 3600
+_anon_hits: dict[str, list[float]] = {}
+
+
+def _current_user():
+    """可选登录：有有效会话就返回用户，否则返回 None。"""
+
+    user = getattr(g, "current_user", None)
+    if user is not None:
+        return user
+    user_id = session.get("user_id")
+    version = session.get("session_version")
+    if not isinstance(user_id, int) or not isinstance(version, int):
+        return None
+    row = find_user_by_id(get_db(), user_id)
+    if row is None or row["status"] != "active" or row["session_version"] != version:
+        return None
+    g.current_user = row
+    return row
+
+
+def _anon_limited() -> bool:
+    """对未登录访客做内存级限流，登录用户不受影响。"""
+
+    ip = request.remote_addr or "unknown"
+    now = time.time()
+    hits = [moment for moment in _anon_hits.get(ip, []) if now - moment < ANON_WINDOW_SECONDS]
+    if len(hits) >= ANON_LIMIT:
+        _anon_hits[ip] = hits
+        return True
+    hits.append(now)
+    _anon_hits[ip] = hits
+    return False
 
 
 def _load_candidates(city: str | None, message: str = "") -> list[dict]:
@@ -28,7 +67,6 @@ def _load_candidates(city: str | None, message: str = "") -> list[dict]:
 
 
 @agent_bp.get("/api/agent/status")
-@login_required
 def agent_status():
     """返回 AI 助手是否已配置模型，供前端提示。"""
 
@@ -37,7 +75,6 @@ def agent_status():
 
 @agent_bp.post("/api/agent/chat")
 @csrf_protected
-@login_required
 def agent_chat():
     """旅行问答，支持前端回传多轮历史。"""
 
@@ -51,6 +88,9 @@ def agent_chat():
     message = message.strip()
     if len(message) > MAX_MESSAGE_LENGTH:
         return api_response(False, "问题描述过长，请精简后再试", None, 400)
+
+    if _current_user() is None and _anon_limited():
+        return api_response(False, "游客体验次数已用完，登录后可继续使用", None, 429)
 
     raw_history = payload.get("history", [])
     if not isinstance(raw_history, list):
@@ -68,7 +108,6 @@ def agent_chat():
 
 @agent_bp.post("/api/agent/plan")
 @csrf_protected
-@login_required
 def agent_plan():
     """根据自然语言需求生成行程，可选直接保存。"""
 
@@ -102,6 +141,12 @@ def agent_plan():
     if not isinstance(save, bool):
         return api_response(False, "save 必须是布尔值", None, 400)
 
+    user = _current_user()
+    if save and user is None:
+        return api_response(False, "保存行程需要先登录", None, 401)
+    if user is None and _anon_limited():
+        return api_response(False, "游客体验次数已用完，登录后可继续使用", None, 429)
+
     candidates = _load_candidates(city, message)
     if not candidates:
         return api_response(False, "景点库暂时没有可用数据，请先导入景点", None, 404)
@@ -116,7 +161,7 @@ def agent_plan():
         with db_transaction():
             saved = create_itinerary(
                 get_db(),
-                g.current_user["id"],
+                user["id"],
                 itinerary_payload["title"][:120],
                 itinerary_payload["start_date"],
                 itinerary_payload["end_date"],
