@@ -72,7 +72,7 @@ Werkzeug 哈希保存，不会通过接口返回。
 ### 同步核心景点数据
 
 当前版本的核心景点名称、简介、城市和最终图片地址保存在
-`data/core_attractions.json`，共覆盖 24 个城市、404 条记录。队友拉取代码后运行：
+`data/core_attractions.json`，共覆盖 34 个城市、604 条记录。队友拉取代码后运行：
 
 ```powershell
 .\.venv\Scripts\python.exe -m scripts.rebuild_core_attractions
