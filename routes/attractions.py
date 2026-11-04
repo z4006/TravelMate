@@ -36,7 +36,7 @@ WIKIMEDIA_HOST = "upload.wikimedia.org"
 IMAGE_CACHE = Path(__file__).resolve().parents[1] / "data" / "image-cache"
 # Wikimedia 只允许预设缩略图宽度，实测 500 与 1280 可用
 THUMB_WIDTHS = (500, 1280)
-FETCH_TIMEOUT = 20
+FETCH_TIMEOUT = 5
 
 
 def _proxied_image(url: str) -> str:
@@ -61,7 +61,7 @@ def _thumb_urls(url: str) -> list[str]:
         f"{head}{marker}thumb/{tail}/{width}px-{filename}"
         for width in THUMB_WIDTHS
     ]
-    return thumbs + [url]
+    return thumbs[:1] + [url]
 
 
 @attractions_bp.get("/api/attraction-image")
@@ -75,9 +75,20 @@ def attraction_image():
 
     suffix = Path(parsed.path).suffix.lower() or ".jpg"
     cache_path = IMAGE_CACHE / (hashlib.sha256(src.encode()).hexdigest() + suffix)
+
+    # 空文件表示「已知抓取失败」，直接给占位图，避免每次访问都重新下载
+    if cache_path.is_file() and cache_path.stat().st_size == 0:
+        return redirect("/static/images/placeholder-attraction.svg")
+
     if not cache_path.is_file():
         if not _download_image(src, cache_path):
-            return redirect(src)
+            try:
+                cache_path.parent.mkdir(parents=True, exist_ok=True)
+                cache_path.touch()
+            except OSError:
+                pass
+            return redirect("/static/images/placeholder-attraction.svg")
+
     response = send_file(cache_path, conditional=True, max_age=604800)
     response.headers["Cache-Control"] = "public, max-age=604800"
     return response

@@ -5,12 +5,15 @@
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <title>{% block title %}{{ page_title|default('TravelMate 旅游信息与行程规划') }}{% endblock %}</title>
     <meta name="description" content="TravelMate 旅游信息与行程规划系统：浏览热门景点、按城市筛选、查看景点详情。">
-    <link rel="icon" type="image/svg+xml" href="{{ url_for('static', filename='images/logo.svg') }}">
+    <link rel="icon" href="{{ url_for('static', filename='images/favicon.ico') }}?v=3" sizes="any">
+    <link rel="icon" type="image/png" href="{{ url_for('static', filename='images/favicon.png') }}?v=3">
+    <link rel="apple-touch-icon" href="{{ url_for('static', filename='images/logo.png') }}?v=3">
     <link rel="stylesheet" href="{{ url_for('static', filename='css/base.css') }}">
     <link rel="stylesheet" href="{{ url_for('static', filename='css/pages.css') }}">
     <link rel="stylesheet" href="{{ url_for('static', filename='css/responsive.css') }}">
     <link rel="stylesheet" href="{{ url_for('static', filename='css/member-d.css') }}">
     <link rel="stylesheet" href="{{ url_for('static', filename='css/footprint.css') }}">
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/poster-bg.css') }}">
 </head>
 <body data-page="{{ active_page|default('') }}"
       data-placeholder-image="{{ url_for('static', filename='images/placeholder-attraction.svg') }}"

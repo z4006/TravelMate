@@ -67,6 +67,18 @@
         return [];
     }
 
+    // 列表卡片使用 thumbs/ 下的小图，详情页仍用原图
+    function thumbUrl(src) {
+        if (!src) {
+            return '';
+        }
+        var match = String(src).match(/^(.*\/static\/images\/attractions\/)([^/]+)$/i);
+        if (match) {
+            return match[1] + 'thumbs/' + match[2];
+        }
+        return src;
+    }
+
     function placeholderImage() {
         return document.body.getAttribute('data-placeholder-image') || '/static/images/placeholder-attraction.svg';
     }
@@ -259,15 +271,22 @@
         var card = el('article', 'attraction-card');
         var media = el('div', 'attraction-media');
         var img = document.createElement('img');
-        img.src = item.image || placeholderImage();
+        var originalSrc = item.image || '';
+        img.src = thumbUrl(originalSrc) || placeholderImage();
         img.alt = item.name;
         img.loading = 'lazy';
+        img.decoding = 'async';
         img.width = 480;
         img.height = 300;
         img.addEventListener('error', function () {
+            // 缩略图缺失时退回原图，再失败才用占位图
+            if (originalSrc && img.src.indexOf('/thumbs/') !== -1) {
+                img.src = originalSrc;
+                return;
+            }
             img.src = placeholderImage();
             img.alt = '';
-        }, { once: true });
+        });
         media.appendChild(img);
         if (item.city) {
             media.appendChild(el('span', 'attraction-city', item.city));

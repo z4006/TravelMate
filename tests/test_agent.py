@@ -33,9 +33,26 @@ def register_and_login(client, headers):
     ).get_json()["data"]["csrf_token"]
 
 
-def test_agent_requires_login(client):
-    assert client.post("/api/agent/plan", json={"message": "杭州三日游"}).status_code == 403
-    assert client.get("/api/agent/status").status_code == 401
+def test_agent_status_is_public(client):
+    assert client.get("/api/agent/status").status_code == 200
+
+
+def test_agent_requires_login(app, client, csrf_headers):
+    prepare(app)
+
+    chat = client.post(
+        "/api/agent/chat", json={"message": "西湖门票多少"}, headers=csrf_headers
+    )
+    assert chat.status_code == 401
+
+    plan = client.post(
+        "/api/agent/plan", json={"message": "杭州两天"}, headers=csrf_headers
+    )
+    assert plan.status_code == 401
+
+
+def test_agent_write_requires_csrf(client):
+    assert client.post("/api/agent/chat", json={"message": "hi"}).status_code == 403
 
 
 def test_plan_falls_back_to_rules_without_model(app, client, csrf_headers, monkeypatch):
@@ -145,3 +162,65 @@ def test_chat_falls_back_without_model(app, client, csrf_headers, monkeypatch):
     data = response.get_json()["data"]
     assert data["reply"]
     assert data["source"] == "rule"
+
+def test_copywrite_returns_caption(app, client, csrf_headers, monkeypatch):
+    monkeypatch.setattr(
+        "services.agent.ask_model",
+        lambda *args, **kwargs: "🎒 两天把西安逛明白了\n\n#西安 #旅行",
+    )
+    prepare(app)
+    register_and_login(client, csrf_headers)
+
+    response = client.post(
+        "/api/agent/copywrite",
+        json={
+            "plan": {
+                "title": "西安两日",
+                "days": [{"day": 1, "items": [{"name": "大雁塔"}]}],
+            }
+        },
+        headers=csrf_headers,
+    )
+
+    assert response.status_code == 200
+    data = response.get_json()["data"]
+    assert data["source"] == "model"
+    assert "西安" in data["text"]
+
+
+def test_copywrite_falls_back_without_model(app, client, csrf_headers, monkeypatch):
+    monkeypatch.setattr(
+        "services.agent.settings",
+        lambda: {"api_key": "", "model": "", "base_url": ""},
+    )
+    prepare(app)
+    register_and_login(client, csrf_headers)
+
+    response = client.post(
+        "/api/agent/copywrite",
+        json={
+            "plan": {
+                "title": "杭州两日",
+                "days": [{"day": 1, "items": [{"name": "西湖"}]}],
+            },
+            "city": "杭州市",
+        },
+        headers=csrf_headers,
+    )
+
+    assert response.status_code == 200
+    data = response.get_json()["data"]
+    assert data["source"] == "rule"
+    assert "西湖" in data["text"]
+
+
+def test_copywrite_rejects_empty_plan(app, client, csrf_headers):
+    prepare(app)
+    register_and_login(client, csrf_headers)
+
+    assert client.post(
+        "/api/agent/copywrite", json={}, headers=csrf_headers
+    ).status_code == 400
+    assert client.post(
+        "/api/agent/copywrite", json={"plan": {"days": []}}, headers=csrf_headers
+    ).status_code == 400

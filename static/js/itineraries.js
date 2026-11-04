@@ -1,4 +1,4 @@
-/* TravelMate 我的行程页（成员 D 接入） */
+/* TravelMate 已保存行程页（成员 D）：查看行程、生成文案、删除 */
 (function (window, document) {
     'use strict';
 
@@ -13,7 +13,7 @@
         ui.clear(container);
         container.appendChild(ui.buildState(
             '请先登录',
-            '登录后可以创建和查看自己的行程。',
+            '登录后可以查看和管理自己的行程。',
             '去登录',
             function () {
                 window.location.assign(document.body.getAttribute('data-login-url') || '/login');
@@ -21,8 +21,121 @@
         ));
     }
 
+    function copyText(text) {
+        function done() {
+            ui.toast('已复制，去小红书粘贴吧', 'success');
+        }
+
+        function fallback() {
+            var area = document.createElement('textarea');
+            area.value = text;
+            area.style.position = 'fixed';
+            area.style.opacity = '0';
+            document.body.appendChild(area);
+            area.select();
+            try {
+                document.execCommand('copy');
+                done();
+            } catch (error) {
+                ui.toast('复制失败，请手动选择文本', 'error');
+            }
+            document.body.removeChild(area);
+        }
+
+        if (navigator.clipboard && navigator.clipboard.writeText) {
+            navigator.clipboard.writeText(text).then(done, fallback);
+        } else {
+            fallback();
+        }
+    }
+
+    function buildCaptionBox(text) {
+        var box = ui.el('div', 'caption-box');
+        box.setAttribute('data-caption-box', '1');
+        box.appendChild(ui.el('h4', 'caption-title', '📝 分享文案'));
+
+        var body = ui.el('pre', 'caption-text');
+        body.textContent = text;
+        box.appendChild(body);
+
+        var actions = ui.el('div', 'plan-actions');
+        var copyBtn = ui.el('button', 'btn btn-primary btn-sm', '复制文案');
+        copyBtn.type = 'button';
+        copyBtn.addEventListener('click', function () {
+            copyText(text);
+        });
+        actions.appendChild(copyBtn);
+        box.appendChild(actions);
+        return box;
+    }
+
+    function buildDetailBox(itinerary) {
+        var box = ui.el('div', 'itinerary-detail');
+        box.setAttribute('data-detail-box', '1');
+
+        var attractions = itinerary.attractions || [];
+        if (!attractions.length) {
+            box.appendChild(ui.el('p', 'itinerary-notes', '这个行程还没有景点'));
+            return box;
+        }
+
+        box.appendChild(ui.el('h4', 'caption-title', '🗺️ 行程安排'));
+        var list = ui.el('ol', 'plan-items');
+        attractions.forEach(function (item) {
+            var li = ui.el('li', 'plan-item');
+            var link = ui.el('a', null, item.name || ('景点 #' + item.attraction_id));
+            link.href = ui.detailUrl(item.attraction_id);
+            li.appendChild(link);
+            if (item.city) {
+                li.appendChild(ui.el('span', 'plan-city', item.city));
+            }
+            if (item.visit_date) {
+                li.appendChild(ui.el('span', 'plan-note', '游玩日期 ' + item.visit_date));
+            }
+            if (item.notes) {
+                li.appendChild(ui.el('span', 'plan-note', item.notes));
+            }
+            list.appendChild(li);
+        });
+        box.appendChild(list);
+        return box;
+    }
+
+    function toggleBox(card, selector, builder) {
+        var existing = card.querySelector(selector);
+        if (existing) {
+            existing.parentNode.removeChild(existing);
+            return;
+        }
+        card.appendChild(builder());
+    }
+
+    function generateCaption(card, button, itinerary, reload) {
+        ui.setBusy(button, true, '生成中…');
+        api.post('/api/itineraries/' + encodeURIComponent(itinerary.id) + '/caption', {})
+            .then(function (data) {
+                ui.setBusy(button, false);
+                ui.toast('文案已生成', 'success');
+                var old = card.querySelector('[data-caption-box]');
+                if (old) {
+                    old.parentNode.removeChild(old);
+                }
+                card.appendChild(buildCaptionBox(data.caption || ''));
+                reload();
+            })
+            .catch(function (error) {
+                ui.setBusy(button, false);
+                if (error.status === 409) {
+                    ui.toast('这个行程已经生成过文案了', 'info');
+                    reload();
+                    return;
+                }
+                ui.toast(error.message || '生成文案失败', 'error');
+            });
+    }
+
     function removeItinerary(id, button, reload) {
-        if (!window.confirm('确定要删除这个行程吗？')) {
+        if (!window.confirm('确定要删除这个行程吗？删除后文案也会一起移除。')) {
             return;
         }
         ui.setBusy(button, true, '删除中…');
@@ -35,36 +148,6 @@
                 ui.setBusy(button, false);
                 ui.toast(error.message || '删除失败', 'error');
             });
-    }
-
-    function copyText(text, done) {
-        if (navigator.clipboard && navigator.clipboard.writeText) {
-            navigator.clipboard.writeText(text).then(function () {
-                done(true);
-            }).catch(function () {
-                done(fallbackCopy(text));
-            });
-            return;
-        }
-        done(fallbackCopy(text));
-    }
-
-    function fallbackCopy(text) {
-        var area = document.createElement('textarea');
-        area.value = text;
-        area.setAttribute('readonly', 'readonly');
-        area.style.position = 'fixed';
-        area.style.top = '-1000px';
-        document.body.appendChild(area);
-        area.select();
-        var ok = false;
-        try {
-            ok = document.execCommand('copy');
-        } catch (error) {
-            ok = false;
-        }
-        document.body.removeChild(area);
-        return ok;
     }
 
     /* ---------- 旅行人格鉴定（纯前端统计，不依赖后端） ---------- */
@@ -219,116 +302,28 @@
         openPersonaDialog(itinerary, stats);
     }
 
-    function openCopyDialog(itinerary, copy) {
-        var overlay = ui.el('div', 'share-overlay');
-        var dialog = ui.el('div', 'share-dialog');
-        dialog.setAttribute('role', 'dialog');
-        dialog.setAttribute('aria-modal', 'true');
-
-        var title = ui.el('h3', 'share-dialog-title', '分享文案 · ' + (itinerary.title || '我的行程'));
-        dialog.appendChild(title);
-
-        var box = ui.el('textarea', 'share-copy-box');
-        box.readOnly = true;
-        box.value = copy;
-        dialog.appendChild(box);
-
-        var actions = ui.el('div', 'share-dialog-actions');
-        var copyBtn = ui.el('button', 'btn btn-primary btn-sm', '一键复制');
-        copyBtn.type = 'button';
-        copyBtn.addEventListener('click', function () {
-            copyText(copy, function (ok) {
-                ui.toast(ok ? '文案已复制到剪贴板' : '复制失败，请手动选择文本', ok ? 'success' : 'error');
-            });
-        });
-        actions.appendChild(copyBtn);
-
-        var closeBtn = ui.el('button', 'btn btn-ghost btn-sm', '关闭');
-        closeBtn.type = 'button';
-        actions.appendChild(closeBtn);
-        dialog.appendChild(actions);
-
-        function close() {
-            overlay.remove();
-            document.removeEventListener('keydown', onKey);
-        }
-        function onKey(event) {
-            if (event.key === 'Escape') {
-                close();
-            }
-        }
-        closeBtn.addEventListener('click', close);
-        overlay.addEventListener('click', function (event) {
-            if (event.target === overlay) {
-                close();
-            }
-        });
-        document.addEventListener('keydown', onKey);
-
-        overlay.appendChild(dialog);
-        document.body.appendChild(overlay);
-        box.focus();
-        box.select();
-    }
-
-    function generateShareCopy(itinerary, button) {
-        ui.setBusy(button, true, '生成中…');
-        api.post('/api/itineraries/' + encodeURIComponent(itinerary.id) + '/share-copy', {})
-            .then(function (payload) {
-                ui.setBusy(button, false);
-                var data = (payload && payload.data) || {};
-                var copy = data.copy || '';
-                if (!copy) {
-                    ui.toast('文案生成失败，请稍后重试', 'error');
-                    return;
-                }
-                openCopyDialog(itinerary, copy);
-                ui.toast(data.source === 'model' ? 'AI 文案已生成' : '已生成文案（模板版）', 'success');
-            })
-            .catch(function (error) {
-                ui.setBusy(button, false);
-                ui.toast(error.message || '文案生成失败', 'error');
-            });
-    }
-
-    function renderList(container, items, reload) {
+    function renderList(container, items, reload, countNode) {
         ui.clear(container);
+        if (countNode) {
+            countNode.textContent = items.length ? '共 ' + items.length + ' 个行程' : '';
+        }
         if (!items.length) {
             container.appendChild(ui.buildState(
-                '还没有行程',
-                '在上面的表单里创建第一个行程吧。'
+                '还没有保存的行程',
+                '去 AI 助手生成一份行程并点击保存，就会出现在这里。',
+                '去 AI 助手',
+                function () {
+                    window.location.assign('/agent');
+                }
             ));
             return;
         }
+
         items.forEach(function (itinerary) {
             var card = ui.el('article', 'itinerary-card');
 
             var head = ui.el('div', 'itinerary-head');
             head.appendChild(ui.el('h3', 'itinerary-title', itinerary.title || '未命名行程'));
-
-            var actions = ui.el('div', 'itinerary-actions');
-            var persona = ui.el('button', 'btn btn-primary btn-sm', '鉴定旅行人格');
-            persona.type = 'button';
-            persona.addEventListener('click', function () {
-                identifyPersona(itinerary);
-            });
-            actions.appendChild(persona);
-
-            var share = ui.el('button', 'btn btn-ghost btn-sm', '生成分享文案');
-            share.type = 'button';
-            share.addEventListener('click', function () {
-                generateShareCopy(itinerary, share);
-            });
-            actions.appendChild(share);
-
-            var remove = ui.el('button', 'btn btn-ghost btn-sm', '删除');
-            remove.type = 'button';
-            remove.addEventListener('click', function () {
-                removeItinerary(itinerary.id, remove, reload);
-            });
-            actions.appendChild(remove);
-
-            head.appendChild(actions);
             card.appendChild(head);
 
             card.appendChild(ui.el(
@@ -345,82 +340,70 @@
             if (attractions.length) {
                 var tags = ui.el('div', 'tag-list');
                 attractions.forEach(function (item) {
-                    var label = item.name ? item.name : ('景点 #' + item.attraction_id);
-                    tags.appendChild(ui.el('span', 'tag', label));
+                    tags.appendChild(ui.el('span', 'tag', item.name || ('景点 #' + item.attraction_id)));
                 });
                 card.appendChild(tags);
+            }
+
+            var actions = ui.el('div', 'plan-actions');
+
+            var personaBtn = ui.el('button', 'btn btn-primary btn-sm', '鉴定旅行人格');
+            personaBtn.type = 'button';
+            personaBtn.addEventListener('click', function () {
+                identifyPersona(itinerary);
+            });
+            actions.appendChild(personaBtn);
+
+            var detailBtn = ui.el('button', 'btn btn-ghost btn-sm', '查看行程');
+            detailBtn.type = 'button';
+            detailBtn.addEventListener('click', function () {
+                toggleBox(card, '[data-detail-box]', function () {
+                    return buildDetailBox(itinerary);
+                });
+            });
+            actions.appendChild(detailBtn);
+
+            if (itinerary.caption) {
+                var viewBtn = ui.el('button', 'btn btn-ghost btn-sm', '查看我的文案');
+                viewBtn.type = 'button';
+                viewBtn.addEventListener('click', function () {
+                    toggleBox(card, '[data-caption-box]', function () {
+                        return buildCaptionBox(itinerary.caption);
+                    });
+                });
+                actions.appendChild(viewBtn);
             } else {
-                card.appendChild(ui.el(
-                    'p',
-                    'itinerary-notes',
-                    '还没有添加景点，可以在景点详情页点击「加入行程」。'
-                ));
+                var genBtn = ui.el('button', 'btn btn-primary btn-sm', '生成分享文案');
+                genBtn.type = 'button';
+                genBtn.addEventListener('click', function () {
+                    generateCaption(card, genBtn, itinerary, reload);
+                });
+                actions.appendChild(genBtn);
             }
 
+            var delBtn = ui.el('button', 'btn btn-ghost btn-sm', '删除行程');
+            delBtn.type = 'button';
+            delBtn.addEventListener('click', function () {
+                removeItinerary(itinerary.id, delBtn, reload);
+            });
+            actions.appendChild(delBtn);
+
+            card.appendChild(actions);
             container.appendChild(card);
-        });
-    }
-
-    function createItinerary(form, reload) {
-        var errorNode = form.querySelector('[data-itinerary-error]');
-        var submit = form.querySelector('button[type="submit"]');
-        var title = (form.querySelector('[name="title"]').value || '').trim();
-        var startDate = form.querySelector('[name="start_date"]').value || '';
-        var endDate = form.querySelector('[name="end_date"]').value || '';
-        var notes = (form.querySelector('[name="notes"]').value || '').trim();
-
-        if (errorNode) {
-            errorNode.textContent = '';
-        }
-        if (!title) {
-            if (errorNode) {
-                errorNode.textContent = '请填写行程名称';
-            }
-            return;
-        }
-        if (startDate && endDate && endDate < startDate) {
-            if (errorNode) {
-                errorNode.textContent = '结束日期不能早于开始日期';
-            }
-            return;
-        }
-
-        var payload = { title: title, attractions: [] };
-        if (startDate) {
-            payload.start_date = startDate;
-        }
-        if (endDate) {
-            payload.end_date = endDate;
-        }
-        if (notes) {
-            payload.notes = notes;
-        }
-
-        ui.setBusy(submit, true, '创建中…');
-        api.post('/api/itineraries', payload).then(function () {
-            ui.setBusy(submit, false);
-            form.reset();
-            ui.toast('行程创建成功', 'success');
-            reload();
-        }).catch(function (error) {
-            ui.setBusy(submit, false);
-            if (errorNode) {
-                errorNode.textContent = error.message || '创建失败，请稍后重试';
-            }
         });
     }
 
     function load() {
         var container = document.querySelector('[data-itinerary-list]');
-        var form = document.querySelector('[data-itinerary-form]');
         if (!container) {
             return;
         }
+        var countNode = document.querySelector('[data-itinerary-count]');
 
         function reload() {
             ui.showSkeletons(container, 2);
             api.get('/api/itineraries').then(function (payload) {
-                renderList(container, ui.extractList(payload).items, reload);
+                renderList(container, ui.extractList(payload).items, reload, countNode);
             }).catch(function (error) {
                 if (error.status === 401) {
                     showLoginRequired(container);
@@ -433,13 +416,6 @@
                     '重新加载',
                     reload
                 ));
-            });
-        }
-
-        if (form) {
-            form.addEventListener('submit', function (event) {
-                event.preventDefault();
-                createItinerary(form, reload);
             });
         }
 

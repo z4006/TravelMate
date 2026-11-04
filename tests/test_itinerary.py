@@ -156,3 +156,50 @@ def test_partial_update_preserves_omitted_fields(app, client, csrf_headers):
     assert data["title"] == "新标题"
     assert data["start_date"] == "2026-11-10"
     assert data["attractions"][0]["attraction_id"] == 1
+
+def test_itinerary_caption_generated_only_once(app, client, csrf_headers, monkeypatch):
+    monkeypatch.setattr(
+        "services.agent.ask_model",
+        lambda *args, **kwargs: "🎒 两天把杭州逛明白了\n\n#杭州 #旅行",
+    )
+    add_attractions(app)
+    register_and_login(client, csrf_headers)
+
+    created = client.post(
+        "/api/itineraries",
+        json={"title": "杭州两日", "attractions": [{"attraction_id": 1}]},
+        headers=csrf_headers,
+    ).get_json()["data"]
+
+    first = client.post(
+        f"/api/itineraries/{created['id']}/caption", json={}, headers=csrf_headers
+    )
+    assert first.status_code == 200
+    caption = first.get_json()["data"]["caption"]
+    assert caption
+
+    second = client.post(
+        f"/api/itineraries/{created['id']}/caption", json={}, headers=csrf_headers
+    )
+    assert second.status_code == 409
+    assert second.get_json()["data"]["caption"] == caption
+
+    listed = client.get("/api/itineraries").get_json()["data"]
+    assert listed[0]["caption"] == caption
+
+
+def test_itinerary_caption_requires_attractions(app, client, csrf_headers, monkeypatch):
+    monkeypatch.setattr("services.agent.ask_model", lambda *args, **kwargs: "x")
+    add_attractions(app)
+    register_and_login(client, csrf_headers)
+
+    created = client.post(
+        "/api/itineraries",
+        json={"title": "空行程", "attractions": []},
+        headers=csrf_headers,
+    ).get_json()["data"]
+
+    response = client.post(
+        f"/api/itineraries/{created['id']}/caption", json={}, headers=csrf_headers
+    )
+    assert response.status_code == 400

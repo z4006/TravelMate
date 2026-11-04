@@ -4,6 +4,7 @@ import os
 from typing import Any, Type
 
 from flask import Flask, jsonify
+from werkzeug.middleware.proxy_fix import ProxyFix
 
 from config import CONFIG_BY_NAME, ProductionConfig
 from database.connection import close_db, init_db
@@ -30,6 +31,9 @@ def create_app(
 
     app = Flask(__name__)
     app.config.from_object(config_class)
+    # 部署在 Nginx 等反向代理之后时，取回真实的客户端 IP 与协议，
+    # 否则登录限流会把所有用户当成同一个来源地址。
+    app.wsgi_app = ProxyFix(app.wsgi_app, x_for=1, x_proto=1, x_host=1)
     if overrides:
         app.config.update(overrides)
     app.json.ensure_ascii = False

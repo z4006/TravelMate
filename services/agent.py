@@ -38,10 +38,18 @@ PLAN_SYSTEM_PROMPT = (
 )
 
 CHAT_SYSTEM_PROMPT = (
-    "你是 TravelMate 的旅行助手，语气友好、回答简短实用（不超过 120 字）。"
-    "景点列表里带有 ticket（门票）、open（开放时间）、address（地址）字段，"
-    "可以直接引用这些字段回答，不要再说没有资料。"
-    "列表里完全没有提到的景点，才回答\"景点库暂时没有收录\"，不要编造它的票价或地址。"
+    "你是 TravelMate 的旅行助手，说话像本地朋友：轻松、有点幽默、不说官腔。"
+    "回答控制在 120 字以内，先给结论，再给一两条能马上行动的建议。\n"
+    "信息使用规则：\n"
+    "1. 景点列表里的 ticket（门票）、open（开放时间）、address（地址）可以直接引用。\n"
+    "2. 用户问的东西列表里没有时（比如某家火锅店、某条小吃街），"
+    "**不要说\"没有资料\"、\"未收录\"、\"抱歉查不到\"这类话**。"
+    "改用同城或邻近的景点作为参照，给出方向性建议，"
+    "例如\"云南大学那一带的小吃街应该有，逛完顺路找一家\"。"
+    "语气要自然，像在给建议而不是在报数据。\n"
+    "3. 不要编造具体店名、电话、精确价格或门牌号；"
+    "需要精确信息时，提醒用户用地图或点评类应用确认。\n"
+    "4. 用户闲聊或开玩笑时，轻松接住，不要硬推景点。"
 )
 
 
@@ -344,6 +352,62 @@ def to_itinerary_payload(plan: dict[str, Any], start_date: str | None) -> dict[s
         "notes": plan.get("summary") or None,
         "attractions": attractions,
     }
+
+
+COPY_SYSTEM_PROMPT = (
+    "你是小红书上的旅行博主，写文案幽默、接地气、有点夸张但不假。"
+    "要求：第一人称；150-250 字；分成 3-5 个小段，每段开头放一个 emoji；"
+    "多用短句和口语；不要写具体价格、店名和地址；"
+    "结尾给 3-5 个话题标签，以 # 开头。"
+    "只输出文案正文，不要任何解释或标题。"
+)
+
+
+def _plan_outline(plan: dict[str, Any], city: str | None) -> str:
+    lines = []
+    if city:
+        lines.append("目的地：" + city)
+    lines.append("行程标题：" + str(plan.get("title") or ""))
+    for day in plan.get("days", [])[:7]:
+        names = [str(item.get("name")) for item in day.get("items", [])[:5]]
+        lines.append("第 " + str(day.get("day")) + " 天：" + "、".join(names))
+    return "\n".join(lines)
+
+
+def build_copywrite_fallback(plan: dict[str, Any], city: str | None) -> str:
+    """模型不可用时的模板文案。"""
+
+    title = str(plan.get("title") or "这趟行程")
+    days = plan.get("days", []) or []
+    chunks = ["🎒 " + title + "，安排上了！"]
+    emojis = ["🌿", "🍜", "📸", "🌇", "🚶"]
+    for index, day in enumerate(days[:5]):
+        names = "、".join(str(item.get("name")) for item in day.get("items", [])[:3])
+        if names:
+            chunks.append(emojis[index % len(emojis)] + " Day" + str(day.get("day")) + "：" + names)
+    chunks.append("💡 主打一个随机应变，走累了就找家小店坐坐，别把行程排太满。")
+    tag_city = (city or "").rstrip("市")
+    tags = ["#旅行", "#行程分享", "#citywalk"]
+    if tag_city:
+        tags.insert(0, "#" + tag_city)
+    chunks.append(" ".join(tags[:5]))
+    return "\n\n".join(chunks)
+
+
+def write_caption(plan: dict[str, Any], city: str | None) -> tuple[str, str]:
+    """生成分享文案，返回 (文案, 来源)。"""
+
+    outline = _plan_outline(plan, city)
+    content = ask_model(
+        [
+            {"role": "system", "content": COPY_SYSTEM_PROMPT},
+            {"role": "user", "content": "根据这份行程写一条分享文案：\n" + outline},
+        ],
+        temperature=0.9,
+    )
+    if content and content.strip():
+        return content.strip(), "model"
+    return build_copywrite_fallback(plan, city), "rule"
 
 
 def chat_reply(

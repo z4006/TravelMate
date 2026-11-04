@@ -43,7 +43,8 @@ class ProductionConfig(BaseConfig):
     """正式环境配置。正式环境必须显式提供密钥。"""
 
     DEBUG = False
-    SESSION_COOKIE_SECURE = True
+    # 默认要求 HTTPS；仅在没有证书的临时演示环境才设 TRAVELMATE_COOKIE_SECURE=0
+    SESSION_COOKIE_SECURE = os.getenv("TRAVELMATE_COOKIE_SECURE", "1") != "0"
 
     @classmethod
     def validate(cls) -> None:

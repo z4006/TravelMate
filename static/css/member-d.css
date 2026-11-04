@@ -342,3 +342,55 @@
     display: flex;
     gap: 10px;
 }
+
+
+/* AI 分享文案 */
+.caption-box {
+    border: 1px dashed #0f766e;
+    border-radius: 12px;
+    padding: 14px 16px;
+    background: #f6fbfa;
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+}
+
+.caption-title {
+    margin: 0;
+    font-size: 0.95rem;
+    color: #0f766e;
+}
+
+.caption-text {
+    margin: 0;
+    white-space: pre-wrap;
+    word-break: break-word;
+    font-family: inherit;
+    font-size: 0.9rem;
+    line-height: 1.7;
+    color: #1f2d33;
+    background: #fff;
+    border-radius: 10px;
+    padding: 12px 14px;
+    max-height: 320px;
+    overflow-y: auto;
+}
+
+
+/* 行程详情展开块 */
+.itinerary-detail {
+    border: 1px solid #e2e8ec;
+    border-radius: 12px;
+    padding: 14px 16px;
+    background: #fafcfd;
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+}
+
+/* 字段说明文字 */
+.d-field-hint {
+    font-size: 0.78rem;
+    color: #7b8a93;
+    line-height: 1.4;
+}

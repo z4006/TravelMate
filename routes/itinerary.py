@@ -18,8 +18,10 @@ from database.itineraries import (
     get_itinerary,
     list_favorites,
     list_itineraries,
+    save_caption,
     update_itinerary,
 )
+from services.agent import write_caption
 from services.share import build_share_copy
 from utils.decorators import csrf_protected, login_required
 from utils.responses import api_response, request_data
@@ -218,6 +220,52 @@ def edit_itinerary(itinerary_id: int):
             title, start_date, end_date, notes, attractions,
         )
     return api_response(True, "行程修改成功", itinerary)
+
+
+@itinerary_bp.post("/api/itineraries/<int:itinerary_id>/caption")
+@csrf_protected
+@login_required
+def generate_itinerary_caption(itinerary_id: int):
+    """为该行程生成分享文案，每个行程只能生成一次。"""
+
+    _ensure_tables()
+    database = get_db()
+    itinerary = get_itinerary(database, g.current_user["id"], itinerary_id)
+    if itinerary is None:
+        return api_response(False, "行程不存在", None, 404)
+
+    if itinerary.get("caption"):
+        return api_response(
+            False,
+            "这个行程已经生成过文案了",
+            {"caption": itinerary["caption"]},
+            409,
+        )
+
+    names = [item.get("name") for item in itinerary.get("attractions", []) if item.get("name")]
+    if not names:
+        return api_response(False, "行程里还没有景点，先添加景点再生成", None, 400)
+
+    days = []
+    for index in range(0, len(names), 3):
+        chunk = names[index:index + 3]
+        days.append({"day": index // 3 + 1, "items": [{"name": name} for name in chunk]})
+
+    text, source = write_caption({"title": itinerary.get("title") or "", "days": days}, None)
+
+    with db_transaction():
+        saved = save_caption(database, g.current_user["id"], itinerary_id, text)
+
+    if not saved:
+        latest = get_itinerary(database, g.current_user["id"], itinerary_id)
+        return api_response(
+            False,
+            "这个行程已经生成过文案了",
+            {"caption": latest.get("caption") if latest else None},
+            409,
+        )
+
+    return api_response(True, "文案生成成功", {"caption": text, "source": source})
 
 
 @itinerary_bp.delete("/api/itineraries/<int:itinerary_id>")
