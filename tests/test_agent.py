@@ -95,13 +95,24 @@ def test_plan_falls_back_to_rules_without_model(app, client, csrf_headers, monke
 
 
 def test_plan_drops_unknown_attraction_ids(app, client, csrf_headers, monkeypatch):
+    prepare(app)
+    register_and_login(client, csrf_headers)
+
+    # 核心数据每次重建都会重新分配自增 ID，这里动态取一个真实景点；
+    # 并把名称写进提问，保证它进入后端筛出的候选集（候选集只保留前 30 条）
+    payload = client.get("/api/attractions", query_string={"page_size": 1})
+    listed = payload.get_json()["data"]["items"]
+    assert listed, "景点数据为空，测试无法继续"
+    real_id = listed[0]["id"]
+    real_name = listed[0]["name"]
+
     fake = json.dumps(
         {
             "title": "模型生成的行程",
             "summary": "测试",
             "days": [
                 {"day": 1, "items": [
-                    {"attraction_id": 1, "note": "上午"},
+                    {"attraction_id": real_id, "note": "上午"},
                     {"attraction_id": 999999, "note": "不存在的景点"},
                 ]}
             ],
@@ -109,12 +120,10 @@ def test_plan_drops_unknown_attraction_ids(app, client, csrf_headers, monkeypatc
         ensure_ascii=False,
     )
     monkeypatch.setattr("services.agent.ask_model", lambda *a, **k: fake)
-    prepare(app)
-    register_and_login(client, csrf_headers)
 
     response = client.post(
         "/api/agent/plan",
-        json={"message": "随便安排一下"},
+        json={"message": "想去" + real_name + "玩一天"},
         headers=csrf_headers,
     )
 
@@ -122,7 +131,7 @@ def test_plan_drops_unknown_attraction_ids(app, client, csrf_headers, monkeypatc
     data = response.get_json()["data"]
     assert data["source"] == "model"
     ids = [item["attraction_id"] for item in data["plan"]["days"][0]["items"]]
-    assert 1 in ids
+    assert real_id in ids
     assert 999999 not in ids
 
 

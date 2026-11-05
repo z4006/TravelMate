@@ -22,10 +22,26 @@ agent_bp = Blueprint("agent", __name__)
 
 
 def _load_candidates(city: str | None, message: str = "") -> list[dict]:
-    """读取景点后按问题筛选，避免只把前几十条塞给模型。"""
+    """读取景点后按问题筛选，避免只把前几十条塞给模型。
 
-    rows, _total = list_attractions(get_db(), None, city, None, 500, 0)
-    records = [dict(row) for row in rows]
+    核心景点已有数百条，必须分页取全量再筛选，
+    否则模型返回的合法 ID 可能因为不在前 500 条内被误判为不存在。
+    """
+
+    database = get_db()
+    page_size = 500
+    offset = 0
+    records: list[dict] = []
+    while True:
+        rows, total = list_attractions(
+            database, None, city, None, page_size, offset
+        )
+        records.extend(dict(row) for row in rows)
+        offset += page_size
+        if not rows or offset >= total:
+            break
+    # 按 id 稳定排序，保证候选集与库内主键一致，避免结果随名称排序漂移
+    records.sort(key=lambda row: row["id"])
     return pick_candidates(records, message, limit=30)
 
 

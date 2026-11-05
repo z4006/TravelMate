@@ -1,9 +1,22 @@
 """景点与分类的数据访问、迁移和演示数据初始化。"""
 
+import hashlib
+import json
+import re
 import sqlite3
+from pathlib import Path
 from typing import Any
 
 from database.connection import utc_now
+
+
+CORE_DATA_FILE = Path(__file__).resolve().parents[1] / "data" / "core_attractions.json"
+_CORE_VERSION_KEY = "core_attractions_sha256"
+_CORE_CATEGORIES = {
+    "historical": ("历史古迹", "historical"),
+    "natural": ("自然风光", "natural"),
+    "theme-park": ("主题乐园", "theme-park"),
+}
 
 
 def migrate_attractions(database: sqlite3.Connection) -> None:
@@ -331,3 +344,126 @@ def seed_initial_attractions(database: sqlite3.Connection) -> None:
                 now,
             ),
         )
+
+
+def _core_slug(value: str) -> str:
+    return re.sub(r"[^a-z0-9]+", "-", str(value).lower()).strip("-") or "attraction"
+
+
+def _core_records() -> list[dict[str, Any]]:
+    """读取仓库内核心城市景点数据，文件缺失或损坏时返回空列表。"""
+
+    try:
+        raw = CORE_DATA_FILE.read_bytes()
+    except OSError:
+        return []
+    try:
+        records = json.loads(raw.decode("utf-8"))
+    except (UnicodeDecodeError, json.JSONDecodeError):
+        return []
+    return records if isinstance(records, list) else []
+
+
+def _core_digest(records: list[dict[str, Any]]) -> str:
+    payload = json.dumps(records, ensure_ascii=False, sort_keys=True)
+    return hashlib.sha256(payload.encode("utf-8")).hexdigest()
+
+
+def _ensure_state_table(database: sqlite3.Connection) -> None:
+    database.execute(
+        "CREATE TABLE IF NOT EXISTS app_state ("
+        "key TEXT PRIMARY KEY, value TEXT NOT NULL, updated_at TEXT NOT NULL)"
+    )
+
+
+def core_sync_state(database: sqlite3.Connection) -> str | None:
+    """读取已写入的核心景点数据版本指纹。"""
+
+    _ensure_state_table(database)
+    row = database.execute(
+        "SELECT value FROM app_state WHERE key = ?", (_CORE_VERSION_KEY,)
+    ).fetchone()
+    return row["value"] if row else None
+
+
+def rebuild_core_attractions(database: sqlite3.Connection) -> tuple[int, int]:
+    """用仓库 JSON 重建核心城市景点，返回（删除数，写入数）。"""
+
+    records = _core_records()
+    if not records:
+        return 0, 0
+    for slug, (name, _slug) in _CORE_CATEGORIES.items():
+        database.execute(
+            "INSERT INTO attraction_categories (name, slug) VALUES (?, ?) "
+            "ON CONFLICT(slug) DO NOTHING",
+            (name, _slug),
+        )
+    category_ids = {
+        row["slug"]: row["id"]
+        for row in database.execute(
+            "SELECT id, slug FROM attraction_categories"
+        ).fetchall()
+    }
+    deleted = database.execute(
+        "DELETE FROM attractions WHERE source = 'core'"
+    ).rowcount
+    now = utc_now()
+    for index, record in enumerate(records, start=1):
+        category_id = category_ids.get(record.get("category_slug") or "")
+        if category_id is None:
+            category_id = next(iter(category_ids.values()))
+        database.execute(
+            "INSERT INTO attractions ("
+            "name, slug, category_id, city, address, phone, description, "
+            "ticket_price_cents, opening_hours, image_url, source, source_id, "
+            "source_url, status, created_at, updated_at"
+            ") VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, 'core', ?, ?, 'active', ?, ?)",
+            (
+                record.get("name") or "未命名景点",
+                f"core-{index:03d}-{_core_slug(record.get('city'))}-"
+                f"{_core_slug(record.get('name'))}",
+                category_id,
+                record.get("city") or "",
+                record.get("address"),
+                record.get("phone"),
+                record.get("description") or "",
+                record.get("ticket_price_cents"),
+                record.get("opening_hours"),
+                record.get("image_url"),
+                f"core/{index}",
+                record.get("image_url"),
+                now,
+                now,
+            ),
+        )
+    # 清掉与核心数据同名同城的演示景点，避免列表出现重复卡片
+    database.execute(
+        "DELETE FROM attractions WHERE source <> 'core' AND EXISTS ("
+        "SELECT 1 FROM attractions AS core WHERE core.source = 'core' "
+        "AND core.city = attractions.city AND core.name = attractions.name)"
+    )
+    _ensure_state_table(database)
+    database.execute(
+        "INSERT INTO app_state (key, value, updated_at) VALUES (?, ?, ?) "
+        "ON CONFLICT(key) DO UPDATE SET value = excluded.value, "
+        "updated_at = excluded.updated_at",
+        (_CORE_VERSION_KEY, _core_digest(records), now),
+    )
+    return deleted, len(records)
+
+
+def sync_core_attractions(database: sqlite3.Connection) -> int:
+    """数据版本与仓库 JSON 不一致时自动重建，返回写入条数（无需重建为 0）。"""
+
+    records = _core_records()
+    if not records:
+        return 0
+    expected = _core_digest(records)
+    current = core_sync_state(database)
+    count = database.execute(
+        "SELECT COUNT(*) FROM attractions WHERE source = 'core'"
+    ).fetchone()[0]
+    if current == expected and int(count) == len(records):
+        return 0
+    _, inserted = rebuild_core_attractions(database)
+    return inserted

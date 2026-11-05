@@ -54,7 +54,11 @@ def init_db(app: Flask) -> None:
 
     if app.extensions.get("travelmate_database_initialized"):
         return
-    from database.attractions import migrate_attractions
+    from database.attractions import (
+        migrate_attractions,
+        seed_initial_attractions,
+        sync_core_attractions,
+    )
     from database.itineraries import ensure_itinerary_tables
     from database.users import migrate_users
 
@@ -66,4 +70,8 @@ def init_db(app: Flask) -> None:
             migrate_users(database)
             migrate_attractions(database)
             ensure_itinerary_tables(database)
+            seed_initial_attractions(database)
+            # 数据自愈：若数据库中的核心景点与仓库 data/core_attractions.json
+            # 的版本指纹或数量不一致（例如更新代码后未重新导入），自动重建。
+            sync_core_attractions(database)
     app.extensions["travelmate_database_initialized"] = True

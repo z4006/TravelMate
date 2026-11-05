@@ -26,11 +26,21 @@ def register_and_login(client, headers, username="zhangsan"):
 
 
 def add_attractions(app):
+    """灌入核心景点，并返回一个真实存在的景点 ID。
+
+    重建核心数据后自增主键会变化，测试不能假设 ID 一定是 1。
+    """
+
     with app.app_context():
         database = get_db()
         with db_transaction():
             migrate_attractions(database)
             seed_initial_attractions(database)
+        row = database.execute(
+            "SELECT id FROM attractions ORDER BY id LIMIT 1"
+        ).fetchone()
+        assert row is not None, "景点数据为空，测试无法继续"
+        return row[0]
 
 
 def test_favorite_requires_login(client):
@@ -40,33 +50,38 @@ def test_favorite_requires_login(client):
 
 
 def test_create_list_and_remove_favorite(app, client, csrf_headers):
-    add_attractions(app)
+    attraction_id = add_attractions(app)
     register_and_login(client, csrf_headers)
 
     response = client.post(
-        "/api/favorites", json={"attraction_id": 1}, headers=csrf_headers
+        "/api/favorites", json={"attraction_id": attraction_id}, headers=csrf_headers
     )
     assert response.status_code == 201
-    assert client.get("/api/favorites").get_json()["data"][0]["attraction_id"] == 1
+    assert (
+        client.get("/api/favorites").get_json()["data"][0]["attraction_id"]
+        == attraction_id
+    )
 
     response = client.post(
-        "/api/favorites", json={"attraction_id": 1}, headers=csrf_headers
+        "/api/favorites", json={"attraction_id": attraction_id}, headers=csrf_headers
     )
     assert response.status_code == 409
 
-    response = client.delete("/api/favorites/1", headers=csrf_headers)
+    response = client.delete(
+        f"/api/favorites/{attraction_id}", headers=csrf_headers
+    )
     assert response.status_code == 200
 
 
 def test_itinerary_crud_and_ownership(app, client, csrf_headers):
-    add_attractions(app)
+    attraction_id = add_attractions(app)
     register_and_login(client, csrf_headers)
     payload = {
         "title": "杭州之旅",
         "start_date": "2026-11-10",
         "end_date": "2026-11-12",
         "notes": "慢游",
-        "attractions": [{"attraction_id": 1, "visit_date": "2026-11-10"}],
+        "attractions": [{"attraction_id": attraction_id, "visit_date": "2026-11-10"}],
     }
 
     response = client.post(
@@ -92,11 +107,11 @@ def test_itinerary_crud_and_ownership(app, client, csrf_headers):
 
 
 def test_other_user_cannot_access_itinerary(app, client, csrf_headers):
-    add_attractions(app)
+    attraction_id = add_attractions(app)
     register_and_login(client, csrf_headers, username="alice")
     response = client.post(
         "/api/itineraries",
-        json={"title": "私人行程", "attractions": [{"attraction_id": 1}]},
+        json={"title": "私人行程", "attractions": [{"attraction_id": attraction_id}]},
         headers=csrf_headers,
     )
     itinerary_id = response.get_json()["data"]["id"]
@@ -130,7 +145,7 @@ def test_invalid_itinerary_dates_are_rejected(app, client, csrf_headers):
 
 
 def test_partial_update_preserves_omitted_fields(app, client, csrf_headers):
-    add_attractions(app)
+    attraction_id = add_attractions(app)
     register_and_login(client, csrf_headers)
     response = client.post(
         "/api/itineraries",
@@ -139,7 +154,7 @@ def test_partial_update_preserves_omitted_fields(app, client, csrf_headers):
             "start_date": "2026-11-10",
             "end_date": "2026-11-12",
             "notes": "保留",
-            "attractions": [{"attraction_id": 1}],
+            "attractions": [{"attraction_id": attraction_id}],
         },
         headers=csrf_headers,
     )
@@ -155,19 +170,19 @@ def test_partial_update_preserves_omitted_fields(app, client, csrf_headers):
     data = response.get_json()["data"]
     assert data["title"] == "新标题"
     assert data["start_date"] == "2026-11-10"
-    assert data["attractions"][0]["attraction_id"] == 1
+    assert data["attractions"][0]["attraction_id"] == attraction_id
 
 def test_itinerary_caption_generated_only_once(app, client, csrf_headers, monkeypatch):
     monkeypatch.setattr(
         "services.agent.ask_model",
         lambda *args, **kwargs: "🎒 两天把杭州逛明白了\n\n#杭州 #旅行",
     )
-    add_attractions(app)
+    attraction_id = add_attractions(app)
     register_and_login(client, csrf_headers)
 
     created = client.post(
         "/api/itineraries",
-        json={"title": "杭州两日", "attractions": [{"attraction_id": 1}]},
+        json={"title": "杭州两日", "attractions": [{"attraction_id": attraction_id}]},
         headers=csrf_headers,
     ).get_json()["data"]
 
