@@ -386,12 +386,87 @@ def core_sync_state(database: sqlite3.Connection) -> str | None:
     return row["value"] if row else None
 
 
+def _snapshot_user_references(
+    database: sqlite3.Connection,
+) -> tuple[list[sqlite3.Row], list[sqlite3.Row]]:
+    """重建前快照用户引用（按城市 + 名称），用于重建后回填。"""
+
+    tables = {
+        row["name"]
+        for row in database.execute(
+            "SELECT name FROM sqlite_master WHERE type = 'table'"
+        ).fetchall()
+    }
+    favorites: list[sqlite3.Row] = []
+    itinerary_items: list[sqlite3.Row] = []
+    if "favorites" in tables:
+        favorites = database.execute(
+            "SELECT f.user_id, f.created_at, a.city, a.name "
+            "FROM favorites AS f JOIN attractions AS a ON a.id = f.attraction_id"
+        ).fetchall()
+    if "itinerary_attractions" in tables:
+        itinerary_items = database.execute(
+            "SELECT ia.itinerary_id, ia.visit_date, ia.sort_order, ia.notes, "
+            "a.city, a.name "
+            "FROM itinerary_attractions AS ia "
+            "JOIN attractions AS a ON a.id = ia.attraction_id"
+        ).fetchall()
+    return favorites, itinerary_items
+
+
+def _restore_user_references(
+    database: sqlite3.Connection,
+    favorites: list[sqlite3.Row],
+    itinerary_items: list[sqlite3.Row],
+) -> None:
+    """重建后把快照中的收藏与行程重新挂到同名同城的新记录上。"""
+
+    if not favorites and not itinerary_items:
+        return
+    id_by_key = {
+        (row["city"], row["name"]): row["id"]
+        for row in database.execute(
+            "SELECT id, city, name FROM attractions WHERE source = 'core'"
+        ).fetchall()
+    }
+    for row in favorites:
+        new_id = id_by_key.get((row["city"], row["name"]))
+        if new_id is None:
+            continue
+        database.execute(
+            "INSERT OR IGNORE INTO favorites (user_id, attraction_id, created_at) "
+            "VALUES (?, ?, ?)",
+            (row["user_id"], new_id, row["created_at"]),
+        )
+    for row in itinerary_items:
+        new_id = id_by_key.get((row["city"], row["name"]))
+        if new_id is None:
+            continue
+        database.execute(
+            "INSERT OR IGNORE INTO itinerary_attractions "
+            "(itinerary_id, attraction_id, visit_date, sort_order, notes) "
+            "VALUES (?, ?, ?, ?, ?)",
+            (
+                row["itinerary_id"],
+                new_id,
+                row["visit_date"],
+                row["sort_order"],
+                row["notes"],
+            ),
+        )
+
+
 def rebuild_core_attractions(database: sqlite3.Connection) -> tuple[int, int]:
-    """用仓库 JSON 重建核心城市景点，返回（删除数，写入数）。"""
+    """用仓库 JSON 重建核心城市景点，返回（删除数，写入数）。
+
+    DELETE 核心景点会级联删除收藏与行程关联，所以重建前先快照、
+    重建后按「城市 + 名称」回填，保证用户数据不丢失。
+    """
 
     records = _core_records()
     if not records:
         return 0, 0
+    favorite_snapshot, itinerary_snapshot = _snapshot_user_references(database)
     for slug, (name, _slug) in _CORE_CATEGORIES.items():
         database.execute(
             "INSERT INTO attraction_categories (name, slug) VALUES (?, ?) "
@@ -442,6 +517,7 @@ def rebuild_core_attractions(database: sqlite3.Connection) -> tuple[int, int]:
         "SELECT 1 FROM attractions AS core WHERE core.source = 'core' "
         "AND core.city = attractions.city AND core.name = attractions.name)"
     )
+    _restore_user_references(database, favorite_snapshot, itinerary_snapshot)
     _ensure_state_table(database)
     database.execute(
         "INSERT INTO app_state (key, value, updated_at) VALUES (?, ?, ?) "
