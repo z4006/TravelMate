@@ -68,11 +68,14 @@
                 coordinateValue.textContent = coordinateText;
             }
             if (coordinateLink) {
-                coordinateLink.href = 'https://www.openstreetmap.org/?mlat='
+                // 用高德地图：国内可访问，微信内可以直接唤起 App
+                // 坐标是 WGS84，通过 coordinate=wgs84 让高德自行纠偏
+                coordinateLink.href = 'https://uri.amap.com/marker?position='
+                    + encodeURIComponent(item.longitude) + ','
                     + encodeURIComponent(item.latitude)
-                    + '&mlon=' + encodeURIComponent(item.longitude)
-                    + '#map=16/' + encodeURIComponent(item.latitude)
-                    + '/' + encodeURIComponent(item.longitude);
+                    + '&name=' + encodeURIComponent(item.name || '景点')
+                    + '&src=travelmate&coordinate=wgs84&callnative=1';
+                coordinateLink.textContent = '在高德地图中查看';
             }
         }
     }
